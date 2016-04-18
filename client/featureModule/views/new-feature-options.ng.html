@@ -1,0 +1,35 @@
+<div>
+	New Feature Deck
+	<div>
+		<h4>Name</h4>
+		<input ng-model="deck.name">
+	</div>
+
+	<div>
+		<h4>Deck Size</h4>
+		<div numpicker
+			numvalue="deck.deckSize"
+			numvaluemin="0"
+			numvaluemax="64"
+			numdelay="200"></div>
+	</div>
+
+	<div>
+		<button ng-click="addNewDeck();">Create Deck</button>
+	</div>
+
+	<div class="dropdown">
+		<h4>Deck Type</h4>
+		<button class="dropdown-toggle" data-toggle="dropdown">
+			{{deck.deckType}}
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
+				<a href="" ng-click="deck.deckType = deckType;">
+				{{deckType}}
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,61 @@
+<div style="display: table; height: 100%; width: 100%">
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[0].image}}
+				ng-click="abilityDice.chooseDie(pcDeck, 0);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[1].image}}
+				ng-show="pcDeck.dicepool[1].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 1);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[2].image}}
+				ng-show="pcDeck.dicepool[2].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 2);"
+				class="dice-box-image" />
+		</div>
+	</div>
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[3].image}}
+				ng-show="pcDeck.dicepool[3].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 3);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[4].image}}
+				ng-show="pcDeck.dicepool[4].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 4);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[5].image}}
+				ng-show="pcDeck.dicepool[5].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 5);"
+				class="dice-box-image" />
+		</div>
+	</div>
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[6].image}}
+				ng-show="pcDeck.dicepool[6].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 6);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[7].image}}
+				ng-show="pcDeck.dicepool[7].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 7);"
+				class="dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{pcDeck.dicepool[8].image}}
+				ng-show="pcDeck.dicepool[8].order > 0"
+				ng-click="abilityDice.chooseDie(pcDeck, 8);"
+				class="dice-box-image" />
+		</div>
+	</div>
+</div>

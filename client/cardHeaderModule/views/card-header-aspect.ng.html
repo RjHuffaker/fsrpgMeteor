@@ -1,0 +1,23 @@
+<ul class="text-8">
+	<li>Archetype</li>
+	<li ng-repeat="archetype in dataSrvc.archetypeList track by $index"><label>
+		<input type="radio" ng-checked="card.aspect.name === archetype.name"
+			ng-click="BuilderHub.changeAspect(card, archetype); featureCardForm.$setDirty();">
+		{{archetype.name}}
+	</label></li>
+	<li>Allegiance</li>
+	<li ng-repeat="allegiance in dataSrvc.allegianceList"
+		ng-if="allegiance.name !== 'Unaligned'"><label>
+		<input type="radio" ng-checked="card.aspect.name === allegiance.name"
+			ng-click="BuilderHub.changeAspect(card, allegiance); featureCardForm.$setDirty();">
+		{{allegiance.name}}
+	</label></li>
+	<li>Race</li>
+	<li ng-repeat="race in dataSrvc.raceList" ng-if="race.name !== 'Weolda'">
+		<label>
+			<input type="radio" ng-checked="card.aspect.name === race.name"
+				ng-click="BuilderHub.changeAspect(card, race); featureCardForm.$setDirty();">
+			{{race.name}}
+		</label>
+	</li>
+</ul>

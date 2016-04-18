@@ -1,0 +1,24 @@
+<div ng-switch on="panel.panelType" class="fill-parent">
+	
+	<div ng-switch-when="featureDeckOptions" feature-deck-options class="fill-parent"></div>
+	<div ng-switch-when="featureSummary" feature-summary class="fill-parent {{panel.deckType}}"></div>
+	<div ng-switch-when="featureOptions" feature-options class="fill-parent"></div>
+	
+	<div ng-switch-when="pcDeckOptions" pc-deck-options class="fill-parent"></div>
+	<div ng-switch-when="pcSummary" pc-summary class="fill-parent"></div>
+	<div ng-switch-when="pcOptions" pc-options class="fill-parent"></div>
+	
+	<div ng-switch-when="npcDeckOptions" npc-deck-options class="fill-parent"></div>
+	<div ng-switch-when="npcSummary" npc-summary class="fill-parent"></div>
+	<div ng-switch-when="npcOptions" npc-options class="fill-parent"></div>
+	
+	<div ng-switch-when="deckDemo" deck-demo class="fill-parent"></div>
+	
+	<div ng-switch-when="pc1" card-pc-1 class="fill-parent"></div>
+	<div ng-switch-when="pc2" card-pc-2 class="fill-parent"></div>
+	<div ng-switch-when="pc3" card-pc-3 class="fill-parent"></div>
+	
+	<div ng-switch-when="featureCard" feature-card
+		card="panel.cardData" panel="panel"
+		class="{{panel.cardData.cardType}} fill-parent"></div>
+</div>

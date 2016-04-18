@@ -1,0 +1,7 @@
+<ul>
+	<li>Weapon/Implement Type</li>
+	<li ng-repeat="itemType in dataSrvc.itemTypes"><label>
+		<input type="radio" ng-model="card.itemType" value="{{itemType}}">
+		{{itemType}}
+	</label></li>
+</ul>

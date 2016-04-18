@@ -1,0 +1,165 @@
+<div class="content-panel">
+	<div class="dropdown card-icon-top-left text-8" dropdown stop-event
+		on-toggle="toggled(open)" >
+		<a id="cardDropdown" class="dropdown-toggle" dropdown-toggle
+			ng-click="dropdown" aria-expanded="true">
+			<i class="card-icon glyphicon glyphicon-cog"></i>
+		</a>
+		<ul class="card-menu-list dropdown-menu" aria-labelledby="cardDropdown">
+			<li ng-click="editPc(breadSrvc.deck);"><label>
+				<i class="glyphicon glyphicon-ok alert-success"></i> Save Character
+			</label></li>
+			<li ng-click="editPc(breadSrvc.deck); exitPc(breadSrvc.deck);"><label>
+				<i class="glyphicon glyphicon-remove alert-danger"></i> Save & Exit
+			</label></li>
+			<li ng-click="exitPc();"><label>
+				<i class="glyphicon glyphicon-exit alert-warning"></i> Exit Without Saving
+			</label></li>
+		</ul>
+	</div>
+	<table width="100%" height="16%">
+		<tbody>
+			<tr height="55%" class="text-10">
+				<td>
+					<label for="name"><strong>Name: </strong></label>
+				</td>
+				<td colspan="3">
+					<input id="name" class="fill-width card-input" type="text"
+						 ng-model="breadSrvc.deck.name" stop-event/>
+				</td>
+			</tr>
+
+			<tr height="45%" class="text-9">
+				<td width="25%">
+					<label for="race"><strong>Race:  </strong></label>
+				</td>
+				<td width="30%">
+					<div id="race">
+						{{breadSrvc.deck.race}}
+					</div>
+				</td>
+				<td width="15%">
+					<label for="sex"><strong>Sex: </strong></label>
+				</td>
+				<td width="30%">
+					<div id="race">
+						{{breadSrvc.deck.sex}}
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<table width="100%" height="84%">
+		<tbody>
+			<tr height="15%">
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[0]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>STR</strong>ength
+				</td>
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[1]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>PHY</strong>sique
+				</td>	
+			</tr>
+
+			<tr height="10%">
+				<td colspan="2" class="text-right">
+					<div class="text-6"><strong>Block Defense:</strong></div>
+					<div class="text-6">Item + (STR or PHY)</div>
+				</td>
+				<td colspan="2" class="text-center">
+					<small>
+						{{breadSrvc.deck.block}}
+					</small>
+				</td>
+			</tr>
+
+			<tr height="15%">
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[2]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>FLE</strong>xibility
+				</td>
+				
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[3]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>DEX</strong>terity
+				</td>
+			</tr>
+
+			<tr height="10%">
+				<td colspan="2" class="text-right">
+					<div class="text-6"><strong>Dodge Defense:</strong></div>
+					<div class="text-6">2d(FLE or DEX)</div>
+				</td>
+				<td colspan="2" class="text-center">
+					<small>
+						{{breadSrvc.deck.dodge}}
+					</small>
+				</td>
+			</tr>
+
+			<tr height="15%">
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[4]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>ACU</strong>ity
+				</td>
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[5]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>INT</strong>ellect
+				</td>
+			</tr>
+
+			<tr height="10%">
+				<td colspan="2" class="text-right">
+					<div class="text-6"><strong>Alertness Defense:</strong></div>
+					<div class="text-6">2d(ACU or INT)</div>
+				</td>
+				<td colspan="2" class="text-center">
+					<small>
+						{{breadSrvc.deck.alertness}}
+					</small>
+				</td>
+			</tr>
+
+			<tr height="15%">
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[6]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>WIS</strong>dom
+				</td>
+				<td width="15%">
+					<div ability="breadSrvc.deck.abilities[7]"></div>
+				</td>
+				<td width="35%" class="text-9">
+					<strong>CHA</strong>risma
+				</td>
+			</tr>
+
+			<tr height="10%">
+				<td colspan="2" class="text-right">
+					<div class="text-6"><strong>Tenacity Defense:</strong></div>
+					<div class="text-6">2d(WIS or CHA)</div>
+				</td>
+				<td colspan="2" class="text-center">
+					<small>
+						{{breadSrvc.deck.tenacity}}
+					</small>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

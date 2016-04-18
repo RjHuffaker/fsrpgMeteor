@@ -1,0 +1,121 @@
+.card-modal {
+	z-index: 12000;
+	position: fixed;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	border-radius: .5em;
+	border-top: 1px solid #222;
+	border-left: 1px solid #222;
+	border-right: 2px solid #111;
+	border-bottom: 2px solid #111;
+	background-color: lightGrey;
+	white-space: normal;
+	padding: .25em;
+	opacity: 1;
+}
+
+.modal-overlay {
+	z-index: 11000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	opacity: .5;
+	background-color: black;
+}
+
+.show-hide.ng-hide-add {
+	-webkit-transition: all 1s linear;
+	-moz-transition: all 1s linear;
+	-o-transition: all 1s linear;
+	-ms-transition: all 1s linear;
+	transition: all 1s linear;
+	opacity: 1;
+}
+
+.show-hide.ng-hide-remove {
+	-webkit-transition: all 1s linear;
+	-moz-transition: all 1s linear;
+	-o-transition: all 1s linear;
+	-ms-transition: all 1s linear;
+	transition: all 1s linear;
+	opacity: 0;
+}
+
+.card-modal ul {
+	list-style-type: none;
+	display: inline-block;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.card-modal li {
+	margin: 0 !important;
+	padding: .15em !important;
+	white-space: nowrap;
+}
+
+.card-modal label {
+	cursor: pointer;
+}
+
+.card-modal label:hover {
+	text-shadow: 0.5px 0.5px #555;
+}
+
+.card-modal.top-caret:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 .9em .9em;
+	border-color: lightGrey transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	top: -.8em;
+	left: .6em;
+}
+
+.card-modal.top-caret:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 .9em .9em;
+	border-color: black transparent;
+	display: block;
+	width: 0;
+	z-index: 0;
+	top: -.9em;
+	left: .6em;
+}
+
+.card-modal.bottom-caret:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: .9em .9em 0;
+	border-color: lightGrey transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	bottom: -.8em;
+	left: .6em;
+}
+
+.card-modal.bottom-caret:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: .9em .9em 0;
+	border-color: black transparent;
+	display: block;
+	width: 0;
+	z-index: 0;
+	bottom: -.9em;
+	left: .6em;
+}
+
+.card-modal-content {
+	display: none;
+}

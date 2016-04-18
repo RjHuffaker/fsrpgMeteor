@@ -1,0 +1,140 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid" ng-controller="NavCtrl">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Freedomsworn</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"
+            data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">
+            <span>PCs</span>
+            <span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><a href="/pcDecks">Browse PCs</a></li>
+              <li><a href="/pcDecks/new">New PC</a></li>
+              <li ng-if="checkCurrentPath('/pcDecks/')"><a href="" ng-click="editPc()">Save PC</a></li>
+            </ul>
+          </a>
+        </li>
+        
+        <li>
+          <a href="#">
+            <div card-modal-toggle modalxalign="left">
+              <span>New Cards</span>
+              <div class="card-modal-content">
+                <ul>
+                  <li><a href="/featureDecks">Browse Feature Decks</a></li>
+                  <li ng-show="$root.currentUser">
+                    <div href="#" card-modal-toggle modalxalign="right">New Feature Deck
+                      <div class="card-modal-content">
+                        <div new-feature-options></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li ng-if="checkCurrentPath('/featureDecks/')">
+                    <a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </a>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" id="featureDecks"
+            data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false">
+            <span>Cards</span>
+            <span class="caret"></span>
+            <ul class="dropdown-menu" aria-labelledby="featureDecks">
+              <li><a href="/featureDecks">Browse Feature Decks</a></li>
+              <li ng-show="$root.currentUser">
+                <a href="#" card-modal-toggle modalxalign="right">New Feature Deck
+                  <div class="card-modal-content">
+                    <div new-feature-options></div>
+                  </div>
+                </a>
+              </li>
+              <li ng-if="checkCurrentPath('/featureDecks/')">
+                <a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
+              </li>
+            </ul>
+          </a>
+        </li>
+        
+        
+        <li><a href="/npcDeck">NPCs</a></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown navbar-inverse" ng-show="$root.currentUser">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span>{{ $root.currentUser.username }}</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="">Account Settings</a></li>
+            <li><a href="" ng-click="logout()" ng-show="$root.currentUser">Logout</a></li>
+          </ul>
+        </li>
+        
+        <li class="dropdown" ng-hide="$root.currentUser">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span>Login</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <form class="form login-register">
+                <input class="form-control" type="text"
+                  placeholder="username" aria-label="username"
+                  ng-model="credentials.username"/>
+                <input class="form-control" type="password"
+                  placeholder="password" aria-label="password"
+                  ng-model="credentials.password"/>
+                <button class="btn btn-primary form-control" ng-click="login()">
+                  Login
+                </button>
+                <div ng-if="loginError" class="alert-danger">Login Error</div>
+              </form>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown" ng-hide="$root.currentUser">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span>Register</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <form class="form login-register">
+                <input class="form-control" type="text"
+                  placeholder="username" aria-label="username"
+                  ng-model="credentials.username"/>
+                <input class="form-control" type="password"
+                  placeholder="password" aria-label="password"
+                  ng-model="credentials.password"/>
+                <button class="btn btn-primary form-control" ng-click="register()">
+                  Register
+                </button>
+                <div ng-if="registerError" class="alert-danger">Registration Error</div>
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,75 @@
+body {
+	height: 100%;
+	width: 100%;
+	background-color: lightGrey;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.defaultCursor{
+	cursor: default;
+}
+
+.login-register {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.login-register input, .login-register button {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.undecorated-link:hover {
+	text-decoration: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
+.ng-invalid.ng-dirty {
+    border-color:#FA787E;
+}
+
+.ng-valid.ng-dirty {
+    border-color:#78FA89;
+}
+
+.navbar {
+	position: absolute;
+	z-index: 10000;
+	width: 100%;
+}
+
+.dropdown-menu{
+	z-index: 7000 !important;
+	position: absolute;
+}
+
+.black-line {
+	margin: 1px 0;
+	border: solid 1px black;
+	background-color: black;
+	height: 0;
+}
+
+.fill-height {
+	height: 100% !important;
+}
+
+.fill-width {
+	width: 100% !important;
+}
+
+.fill-parent {
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.no-gutter {
+	margin: 0;
+	padding: 0;
+}

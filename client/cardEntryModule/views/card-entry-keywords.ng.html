@@ -1,0 +1,33 @@
+<div class="title-row text-8" ng-if="cardEntry.usage !== 'Defense'">
+	<div class="title-block">
+		<strong class="pull-left">
+			{{cardEntry.usage}}<span ng-if="cardEntry.attack.show && cardEntry.attack.attackType">, {{cardEntry.attack.attackType}}</span><span ng-if="cardEntry.reflexive && cardEntry.attack.attackType === 'Melee'">, Reflexive</span><span ng-if="cardEntry.thrown && cardEntry.attack.attackType === 'Ranged'">, Thrown</span>
+		</strong>
+	</div>
+	<div class="title-block">
+		<div class="pull-right" ng-if="panel.locked">
+			<strong>
+				{{cardEntry.frequency}}
+			</strong>
+			<strong ng-if="!cardEntry.frequency">
+				[Frequency]
+			</strong>
+		</div>
+		<div ng-if="!panel.locked" class="dropdown dropup pull-right"
+			dropdown on-toggle="toggled(open)" stop-event>
+			<a class="dropdown-toggle" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">
+				<strong>{{cardEntry.frequency}}</strong>
+				<strong ng-if="!cardEntry.frequency">[Frequency]</strong>
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="cardDropdown" stop-click>
+				<li role="presentation" class="dropdown-header">Action Frequency</li>
+				<li ng-repeat="frequency in dataSrvc.actionFrequency"><label>
+					<input type="radio" value="{{frequency}}"
+						ng-model="cardEntry.frequency">
+					{{frequency}}
+				</label></li>
+			</ul>
+		</div>
+	</div>
+</div>

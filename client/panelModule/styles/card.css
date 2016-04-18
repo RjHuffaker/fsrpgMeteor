@@ -1,0 +1,199 @@
+.content-panel {
+	height: 100%;
+	width: 100%;
+	padding: .5em;
+}
+
+.content-table {
+	height: 100%;
+	width: 100%;
+	display: table;
+	padding: .5em;
+}
+
+.content-row {
+	display: table-row;
+}
+
+.content-cell {
+	display: table-cell;
+	vertical-align: center;
+}
+
+.content-cell-top {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.content-cell-bottom {
+	display: table-cell;
+	vertical-align: bottom;
+}
+
+[fit-content] {
+	height: 100%;
+	width: 100%;
+}
+
+[elastic-text] {
+	resize: none;
+	border: 1px solid black;
+	overflow: hidden;
+}
+
+.card-header {
+	font: inherit;
+	padding: 0;
+	margin: 0;
+}
+
+ul.card-list {
+	width: 100%;
+	list-style-type: none;
+}
+
+ul.card-list,
+ul.card-list li,
+ul.card-list li div {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.card-icon {
+	font-size: 1em;
+	cursor: pointer;
+}
+
+.green-icon {
+	font-size: 1em;
+	cursor: pointer;
+	color: green;
+}
+
+.grey-icon {
+	font-size: 1em;
+	cursor: pointer;
+	color: grey;
+}
+
+.blue-icon {
+	font-size: 1em;
+	cursor: pointer;
+	color: dark-blue;
+}
+
+.orange-icon {
+	font-size: 1em;
+	cursor: pointer;
+	color: orange;
+}
+
+.red-icon {
+	font-size: 1em;
+	cursor: pointer;
+	color: red;
+}
+
+.card-icon-top-left {
+	position: absolute;
+	top: -.5em;
+	left: -.4em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.card-icon-left {
+	position: absolute;
+	left: -.4em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.card-icon-bottom-right {
+	position: absolute;
+	top: 20em;
+	left: 14em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.absolute-left {
+	position: absolute;
+	left: 0;
+}
+
+.indent-left {
+	position: absolute;
+	left: .8em;
+}
+
+.text-descriptive {
+	resize: none;
+	white-space: normal;
+	font-style: italic !important;
+}
+
+.title-row {
+	display: table;
+	width: 100%;
+}
+
+.title-block {
+	display: table-cell;
+}
+
+.card-width {
+	position: absolute;
+	left: .8em;
+	width: 17rem;
+}
+
+.card-indent {
+	position: relative;
+	left: .5em;
+	width: 14em;
+}
+
+.card-input {
+	font: inherit;
+	overflow: hidden;
+	height: 1.4em !important;
+	padding: 0;
+	margin: -4px 0 0 0;
+	border: none;
+	background: transparent;
+}
+
+.card-textarea {
+	font: inherit;
+	overflow: hidden;
+	width: 100%;
+	padding: 0;
+	margin: 0 0 -5px 0;
+	border: none;
+	background: transparent;
+}
+
+.card-textarea-indent {
+	font: inherit;
+	overflow: hidden;
+	width: 96%;
+	padding: 0;
+	margin: 0 0 -5px 0;
+	margin-left: 4%;
+	border: none;
+	background: transparent;
+}
+
+.card-input-indent {
+	font: inherit;
+	position: relative;
+	left: .5em;
+	width: 14em;
+	overflow: hidden;
+	padding: 0;
+	margin-bottom: -.25em;
+	border: none;
+	background: transparent;
+	background-origin: none;
+}

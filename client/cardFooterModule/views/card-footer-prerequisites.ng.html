@@ -1,0 +1,11 @@
+<ul class="text-8">
+	<li>Prerequisite</li>
+	<li><label>
+		<input type="radio" ng-model="card.prerequisite" value="">
+		None
+	</label></li>
+	<li ng-repeat="prerequisite in dataSrvc.prerequisites"><label>
+		<input type="radio" ng-model="card.prerequisite" value="{{prerequisite}}">
+		{{prerequisite}}
+	</label></li>
+</ul>

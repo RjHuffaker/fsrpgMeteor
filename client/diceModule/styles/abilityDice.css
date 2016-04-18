@@ -1,0 +1,12 @@
+[ability] img {
+	height: 2em;
+	width: 2em;
+	cursor: pointer;
+}
+
+.dice-box-image {
+	height: 2em;
+	width: 2em;
+	margin: .25em;
+	cursor: pointer;
+}

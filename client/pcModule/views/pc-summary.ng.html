@@ -1,0 +1,30 @@
+<div class="content-panel">
+	<h4>
+		<i style="font-size: 5em;" class="glyphicon glyphicon-user"></i>
+	</h4>
+	<h4>
+	Pc: {{panel.name}}
+	</h4>
+	Archetype: {{panel.archetype}}
+	<br>
+	Allegiance: {{panel.allegiance}}
+	<br>
+	Race: {{panel.race}} ({{panel.sex}})
+	<br>
+	Level: {{panel.level}}
+	<br>
+	<small class="list-group-item-text text-muted">
+		Created
+		<span data-ng-bind="panel.created | date:'short'"></span>
+	</small>
+	<div style="position: absolute; top: 19em; left: 0.5em; width: 2em;" class="text-left">
+		<a href="/pcDecks/{{panel._id}}" stop-event>
+			<i class="glyphicon glyphicon-edit green-icon text-14"></i>
+		</a>
+	</div>
+	<div style="position: absolute; top: 19em; left: 12.5em; width: 2em;" class="text-right">
+		<a data-ng-click="breadSrvc.delete(panel);" stop-event>
+			<i class="glyphicon glyphicon-trash red-icon text-14"></i>
+		</a>
+	</div>
+</div>

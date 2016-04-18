@@ -1,0 +1,30 @@
+[fs-dropdown] {
+	color: green;
+}
+
+.fs-dropdown-toggle {
+	cursor: pointer;
+}
+
+.fs-dropdown-panel {
+	position: absolute;
+	z-index: 1000;
+	border: 1px solid black;
+	background-color: lightgrey;
+	list-style-type: none;
+	padding: 0.1em !important;
+	margin: 0.2em !important;
+}
+
+.fs-dropdown-panel > li {
+	cursor: pointer;
+	list-style-type: none;
+	position: relative;
+	border: 1px solid blue;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.fs-dropdown-panel > li > a{
+	display: block;
+}

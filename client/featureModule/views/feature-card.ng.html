@@ -1,0 +1,47 @@
+<div class="content-panel" card-form>
+	<table class="fill-parent" fit-content>
+		<tbody>
+			<tr>
+				<td style="vertical-align: top;">
+					<div card-header></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="vertical-align: top;">
+					<div ng-if="card.description.show" style="margin: .25em">
+						<div description-input
+							style="width: 100%" panel="panel"
+							body-text="card.description.content"
+							default-text="'Descriptive text.'"></div>
+					</div>
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="vertical-align: bottom;">
+					<div card-modifiers></div>
+					<div ng-if="card.benefit.show" class="text-8"
+						style="white-space: normal;">
+						<div definition-input panel="panel" style="width: 100%"
+							leader-text="'Benefit'" default-text="'Benefit effect.'"
+							body-text="card.benefit.content"></div>
+						<br />
+						<div ng-if="card.benefit.criticalSuccess.show"
+							definition-input panel="panel" style="width: 100%"
+							leader-text="'Critical Success'" default-text="'Critical success effect.'"
+							body-text="card.benefit.criticalSuccess.content"></div>
+						<br />
+					</div>
+					<div ng-repeat="entry in card.entries" card-entry="entry" panel="panel"></div>
+					<div card-footer></div>
+				 </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div style="position: absolute; top: 20em; left: 14em; width: 1em;" class="text-center">
+	<a data-ng-click="$parent.panel.locked = !$parent.panel.locked;" stop-event>
+		<i ng-hide="$parent.panel.locked" class="glyphicon glyphicon-lock grey-icon"></i>
+		<i ng-show="$parent.panel.locked" class="glyphicon glyphicon-lock blue-icon"></i>
+	</a>
+</div>

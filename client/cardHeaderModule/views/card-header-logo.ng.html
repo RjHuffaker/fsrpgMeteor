@@ -1,0 +1,41 @@
+<ul class="text-8">
+	<li stop-click>File Options</li>
+	<li ng-click="$parent.addCard($parent.Bakery.resource, card.cardType, card.cardNumber, true, false)"><label>
+		<i class="glyphicon glyphicon-chevron-left alert-primary"></i> Insert Before
+	</label></li>
+	<li ng-click="$parent.addCard($parent.Bakery.resource, card.cardType, card.cardNumber+1, true, false)"><label>
+		<i class="glyphicon glyphicon-chevron-right alert-primary"></i> Insert After
+	</label></li>
+	<li data-ng-click="$parent.deleteCard(panel);"><label>
+		<i class="glyphicon glyphicon-trash alert-warning"></i> Delete Card
+	</label></li>
+	<li stop-click>Card Features</li>
+	<li stop-click><label>
+		<input type="checkbox" ng-model="card.description.show"> Description
+	</label></li>
+	<li stop-click><label>
+		<input type="checkbox" ng-model="card.benefit.show"> Benefit
+	</label></li>
+	<li ng-if="card.benefit.show" stop-click><label>
+		<input type="checkbox" ng-model="card.benefit.criticalSuccess.show"> Critical Success
+	</label></li>
+	<li stop-click><label>
+		<input type="checkbox" ng-model="card.entries[0].show"> Entry 1
+	</label></li>
+	<li ng-if="card.cardType === 'Item'" stop-click><label>
+		<input type="checkbox" ng-model="card.entries[1].show"> Entry 2
+	</label></li>
+	<li ng-if="card.cardType === 'Item'" stop-click><label>
+		<input type="checkbox" ng-model="card.entries[2].show"> Entry 3
+	</label></li>
+	<li ng-if="card.cardType === 'Item'" stop-click>Modifiers</li>
+	<li ng-if="card.cardType === 'Item'" stop-click><label>
+		<input type="checkbox" ng-model="card.durability.show"> Durability
+	</label></li>
+	<li ng-if="card.cardType === 'Item'" stop-click><label>
+		<input type="checkbox" ng-model="card.speed.show"> Speed
+	</label></li>
+	<li ng-if="card.cardType === 'Item'" stop-click><label>
+		<input type="checkbox" ng-model="card.finesse.show"> Finesse
+	</label></li>
+</ul>

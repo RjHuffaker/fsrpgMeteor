@@ -1,0 +1,83 @@
+<table class="fill-parent" fit-content>
+	<tbody>
+		<tr>
+			<td style="vertical-align: top;">
+				<div card-modal-toggle modal-id="cardHeaderLogo" modal-card="card" modalxalign="left">
+					<span class="text-argos text-18"
+						ng-class="{'text-14': card.cardType === 'Augment',
+							'text-16': card.cardType === 'Origin',
+							'text-narrow': card.cardType === 'Augment'}">
+						{{card.cardType}}&nbsp;
+					</span>
+					<div class="card-modal-content" card="modalSrvc.current.modal_card">
+						<div card-header-logo></div>
+					</div>
+				</div>
+			</td>
+			
+			<td class="fill-parent">
+				<div class="card-header fill-parent">
+					
+					<div card-modal-toggle modal-card="card" modalxalign="both">
+						<strong>
+							{{card.name}} 
+						</strong>
+						<br/>
+						<div class="card-modal-content" card="modalSrvc.current.modal_card">
+							<input type="text" ng-model="card.name" class="text-10" style="width: 100%;">
+						</div>
+					</div>
+					
+					<hr class="black-line">
+					
+					<div ng-if="card.cardType !== 'Item' && card.cardType !== 'Aspect'">
+						<div card-modal-toggle modal-card="card" modalxalign="right">
+							<span class="text-capitalize">
+								{{card.aspect.name}}
+							</span>
+							<span ng-if="!card.aspect">
+								[Aspect]
+							</span>
+							<div class="card-modal-content" card="modalSrvc.current.modal_card">
+								<div card-header-aspect></div>
+							</div>
+						</div>
+					</div>
+					
+					<div ng-if="card.cardType === 'Item'
+						&& (card.itemSlot === 'One-handed'
+						|| card.itemSlot === 'Two-handed'
+						|| card.itemSlot === 'One-handed or Paired'
+						|| card.itemSlot === 'One-handed or Two-handed')">
+						<div card-modal-toggle modal-card="card" modalxalign="right">
+							<span>
+								{{card.itemType}}
+							</span>
+							<span ng-if="!card.itemType">
+								[Item Type]
+							</span>
+							<div class="card-modal-content" card="modalSrvc.current.modal_card">
+								<div card-header-item-type></div>
+							</div>
+						</div>
+					</div>
+					
+					<div ng-if="card.cardType === 'Aspect'">
+						<div card-modal-toggle modal-card="card" modalxalign="right">
+							<span>
+								{{card.aspectType}}
+							</span>
+							<span ng-if="!card.aspectType">
+								[Aspect Type]
+							</span>
+							<div class="card-modal-content" card="modalSrvc.current.modal_card">
+								<div card-header-aspect-type></div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

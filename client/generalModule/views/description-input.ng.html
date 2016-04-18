@@ -1,0 +1,19 @@
+<div class="dropdown text-8" dropdown on-toggle="toggled(open)"
+	style="width: 100%; white-space: normal; word-wrap: break-word;" stop-event>
+	<div class="dropdown-toggle text-descriptive text-center" data-toggle="dropdown"
+		aria-haspopup="true" aria-expanded="  true">
+		<span>
+			{{bodyText}}
+		</span>
+		<span ng-if="!bodyText">
+			{{defaultText}}
+		</span>
+	</div>
+	<div class="dropdown-menu" aria-labelledby="cardDropdown"
+		style="width: 100%; padding: .2em;">
+		<textarea ng-model="bodyText"
+			class="text-descriptive text-center"
+			style="width: 100%; word-wrap: break-word; resize: none;">
+		</textarea>
+	</div>
+</div>

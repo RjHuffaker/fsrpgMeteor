@@ -1,0 +1,8 @@
+div[nav-bar] {
+	border: 1px solid black;
+}
+
+div[nav-bar] div[fs-dropdown] {
+	border: 1px solid orange;
+	display: inline-block;
+}

@@ -1,0 +1,10 @@
+<div class="modal-overlay show-hide" ng-show="modalSrvc.current.show"
+	ng-click="modalSrvc.current.show = !modalSrvc.current.show;"></div>
+
+<div class="card-modal show-hide" ng-show="modalSrvc.current.show"
+	ng-style="{'top': modal_y_coord+'px', 'left': modal_x_coord+'px',
+		'height': modal_y_dim+'px', 'width': modal_x_dim+'px'}">
+	
+	<div class="card-modal-slot"></div>
+	
+</div>
