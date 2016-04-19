@@ -25,23 +25,18 @@
 	background-color: black;
 }
 
-.show-hide.ng-hide-add {
+.show-hide {
 	-webkit-transition: all 1s linear;
 	-moz-transition: all 1s linear;
 	-o-transition: all 1s linear;
 	-ms-transition: all 1s linear;
 	transition: all 1s linear;
-	opacity: 1;
 }
 
-.show-hide.ng-hide-remove {
-	-webkit-transition: all 1s linear;
-	-moz-transition: all 1s linear;
-	-o-transition: all 1s linear;
-	-ms-transition: all 1s linear;
-	transition: all 1s linear;
+.show-hide.ng-hide {
 	opacity: 0;
 }
+
 
 .card-modal ul {
 	list-style-type: none;
