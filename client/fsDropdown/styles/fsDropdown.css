@@ -14,17 +14,39 @@
 	list-style-type: none;
 	padding: 0.1em !important;
 	margin: 0.2em !important;
+	overflow: hidden;
 }
 
 .fs-dropdown-panel > li {
 	cursor: pointer;
 	list-style-type: none;
-	position: relative;
-	border: 1px solid blue;
 	cursor: pointer;
 	white-space: nowrap;
 }
 
 .fs-dropdown-panel > li > a{
 	display: block;
+}
+
+.fs-dropdown-panel {
+	-webkit-transition: all 2s linear;
+	-moz-transition: all 2s linear;
+	-o-transition: all 2s linear;
+	-ms-transition: all 2s linear;
+	transition: all 2s linear;
+}
+
+.fs-dropdown-panel li {
+	-webkit-transition: all 2s linear;
+	-moz-transition: all 2s linear;
+	-o-transition: all 2s linear;
+	-ms-transition: all 2s linear;
+	transition: all 2s linear;
+	height: 1.5em;
+}
+
+.fs-dropdown-panel.ng-hide li {
+	border: 1px solid red;
+	white-space: nowrap;
+	height: 0;
 }

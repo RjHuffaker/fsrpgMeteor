@@ -4,12 +4,13 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	padding: .1em;
+	padding: .2em;
 	margin-top: 3em;
 	cursor: move;
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: grab;
+	box-sizing: border-box;
 }
 
 [card-panel].card-moving {
@@ -45,14 +46,15 @@
 	background-color: Wheat;
 }
 
-[card-panel].ng-leave, [card-panel].ng-enter {
-	margin-top: 3em;
+[card-panel].ng-leave,
+[card-panel].ng-enter {
 	transition-property:  left;
 	-webkit-transition: 1.5s ease-in-out !important;
 	-moz-transition: 1.5s ease-in-out !important;
 	-o-transition: 1.5s ease-in-out !important;
 	-ms-transition: 1.5s ease-in-out !important;
 	transition: 1.5s ease-in-out !important;
+	margin-top: 3em;
 }
 
 [card-panel].ng-leave.ng-leave-active {

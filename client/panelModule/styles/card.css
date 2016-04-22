@@ -1,7 +1,8 @@
 .content-panel {
 	height: 100%;
 	width: 100%;
-	padding: .5em;
+	padding: .1em;
+	box-sizing: border-box;
 }
 
 .content-table {

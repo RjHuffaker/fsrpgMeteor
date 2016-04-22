@@ -1,8 +1,11 @@
 angular.module('freedomsworn')
-	.directive('fsDropdown', ['$document', '$timeout', function($document, $timeout){
+	.directive('fsDropdown', ['$document', '$timeout', '$animate', function($document, $timeout, $animate){
 		return {
 			restrict: 'A',
+			scope: true,
 			link: function(scope, element, attrs){
+				
+				scope.hidePanel = true;
 				
 				var dropdownToggle;
 				
@@ -10,14 +13,13 @@ angular.module('freedomsworn')
 				
 				var showHandler;
 				
-				var panelShown = false;
-				
 				var exemptList = ['keep-open', 'form', 'form-control', 'fs-dropdown-panel'];
 				
 				var toggleHideListener = function(enable){
 					if(enable){
 						$timeout(function(){
 							$document.on('click', toggleHide);
+							console.log('toggleHideListener');
 						}, 0);
 					} else {
 						$document.off('click', toggleHide);
@@ -45,16 +47,26 @@ angular.module('freedomsworn')
 				};
 				
 				var toggleShow = function(event){
+					
+					//if(scope.hidePanel){
 					if(dropdownPanel.hasClass('ng-hide')){
-						dropdownPanel.removeClass('ng-hide');
+						//dropdownPanel.removeClass('ng-hide');
+						//scope.hidePanel = false;
+						$animate.removeClass(dropdownPanel, 'ng-hide');
+						
 						toggleHideListener(true);
 					} else {
-						dropdownPanel.addClass('ng-hide');
+						//dropdownPanel.addClass('ng-hide');
+						//scope.hidePanel = true;
+						$animate.addClass(dropdownPanel, 'ng-hide');
+						
 						toggleHideListener(false);
 					}
+					
 				};
 				
 				var toggleHide = function(event){
+					console.log('toggleHide');
 					var l = exemptList.length;
 					for(elem = event.target; elem; elem = elem.parentNode) {
 						if(elem.id === attrs.id){
@@ -63,7 +75,12 @@ angular.module('freedomsworn')
 							}
 						}
 					}
-					dropdownPanel.addClass('ng-hide');
+					
+					//scope.hidePanel = false;
+					//dropdownPanel.addClass('ng-hide');
+					$animate.addClass(dropdownPanel, 'ng-hide');
+					
+					
 					toggleHideListener(false);
 				};
 				

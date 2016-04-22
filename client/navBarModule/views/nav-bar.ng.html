@@ -5,7 +5,7 @@
 		<div class="fs-dropdown-toggle">
 			PCs
 		</div>
-		<ul class="fs-dropdown-panel ng-hide">
+		<ul class="fs-dropdown-panel drop-animate">
 			<li>
 				<a href="/pcDecks">Browse PCs</a>
 			</li>
@@ -18,11 +18,11 @@
 		</ul>
 	</div>
 	-
-	<div fs-dropdown id="cardsDropdown" >
+	<div fs-dropdown id="cardsDropdown">
 		<div class="fs-dropdown-toggle">
 			Cards
 		</div>
-		<ul class="fs-dropdown-panel ng-hide">
+		<ul class="fs-dropdown-panel drop-animate" ng-animate="drop-animate">
 			<li>
 				<a href="/featureDecks">Browse Feature Decks</a>
 			</li>
@@ -44,7 +44,7 @@
 			<span>{{ $root.currentUser.username }}</span>
       <span class="caret"></span>
 		</div>
-		<ul class="fs-dropdown-panel ng-hide">
+		<ul class="fs-dropdown-panel drop-animate">
       <li><a href="">Account Settings</a></li>
       <li><a href="" ng-click="logout()" ng-show="$root.currentUser">Logout</a></li>
     </ul>

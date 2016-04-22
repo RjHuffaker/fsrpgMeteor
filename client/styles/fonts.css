@@ -14,6 +14,7 @@
 .text-argos {
 	font-family: 'Argos';
 	font-weight: bold;
+	opacity: .8;
 }
 
 a.text-argos {
@@ -83,6 +84,10 @@ a.text-argos {
 
 .text-5{
 	font-size: 0.5em;
+}
+
+body {
+	font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
 }
 
 @media (min-height: 481px){

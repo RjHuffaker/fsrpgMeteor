@@ -26,7 +26,7 @@ angular.module('freedomsworn')
 					
 					var _dropdownOpen = false;
 					
-					var _panel = $parse(attrs.panel) || null;
+					var _panel = $parse(attrs.cardPanel) || null;
 					
 					var _deck = $parse(attrs.deck) || null;
 					
@@ -58,7 +58,7 @@ angular.module('freedomsworn')
 							
 							// add listeners
 							scope.$on('$destroy', onDestroy);
-							_cardWatcher = scope.$watch(attrs.panel, onCardChange);
+							_cardWatcher = scope.$watch(attrs.cardPanel, onCardChange);
 							_deckWatcher = scope.$watch(attrs.deck, onDeckChange);
 							_heightHandler = scope.$on('screenSize:onHeightChange', onHeightChange);
 							_pressHandler = scope.$on('cardPanel:onPressCard', onPressCard);
