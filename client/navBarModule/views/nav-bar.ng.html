@@ -5,38 +5,46 @@
 		<div class="fs-dropdown-toggle">
 			PCs
 		</div>
-		<ul class="fs-dropdown-panel drop-animate">
-			<li>
-				<a href="/pcDecks">Browse PCs</a>
-			</li>
-			<li>
-				<a href="/pcDecks/new">New PC</a>
-			</li>
-			<li ng-if="checkCurrentPath('/pcDecks/')">
-				<a href="" ng-click="editPc()">Save PC</a>
-			</li>
-		</ul>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul>
+					<li>
+						<a href="/pcDecks">Browse PCs</a>
+					</li>
+					<li>
+						<a href="/pcDecks/new">New PC</a>
+					</li>
+					<li ng-if="checkCurrentPath('/pcDecks/')">
+						<a href="" ng-click="editPc()">Save PC</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	-
 	<div fs-dropdown id="cardsDropdown">
 		<div class="fs-dropdown-toggle">
 			Cards
 		</div>
-		<ul class="fs-dropdown-panel drop-animate" ng-animate="drop-animate">
-			<li>
-				<a href="/featureDecks">Browse Feature Decks</a>
-			</li>
-			<li ng-show="$root.currentUser">
-				<div href="#" card-modal-toggle modalxalign="right">New Feature Deck
-					<div class="card-modal-content">
-						<div new-feature-options></div>
-					</div>
-				</div>
-			</li>
-			<li ng-if="checkCurrentPath('/featureDecks/')">
-				<a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
-			</li>
-		</ul>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul>
+					<li>
+						<a href="/featureDecks">Browse Feature Decks</a>
+					</li>
+					<li ng-show="$root.currentUser">
+						<div href="#" card-modal-toggle modalxalign="right">New Feature Deck
+							<div class="card-modal-content">
+								<div new-feature-options></div>
+							</div>
+						</div>
+					</li>
+					<li ng-if="checkCurrentPath('/featureDecks/')">
+						<a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	-
 	<div fs-dropdown id="userDropdown" ng-show="$root.currentUser">
@@ -44,10 +52,14 @@
 			<span>{{ $root.currentUser.username }}</span>
       <span class="caret"></span>
 		</div>
-		<ul class="fs-dropdown-panel drop-animate">
-      <li><a href="">Account Settings</a></li>
-      <li><a href="" ng-click="logout()" ng-show="$root.currentUser">Logout</a></li>
-    </ul>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul>
+		      <li><a href="">Account Settings</a></li>
+		      <li><a href="" ng-click="logout()" ng-show="$root.currentUser">Logout</a></li>
+		    </ul>
+	 		</div>
+	  </div>
 	</div>
 	-
 	<div fs-dropdown id="loginDropdown" ng-hide="$root.currentUser">
@@ -55,19 +67,21 @@
 			<span>Login</span>
       <span class="caret"></span>
 		</div>
-		<div class="fs-dropdown-panel ng-hide">
-      <form class="form login-register">
-        <input class="form-control" type="text"
-          placeholder="username" aria-label="username"
-          ng-model="credentials.username"/>
-        <input class="form-control" type="password"
-          placeholder="password" aria-label="password"
-          ng-model="credentials.password"/>
-        <button class="btn btn-primary form-control" ng-click="login()">
-          Login
-        </button>
-        <div ng-if="loginError" class="alert-danger">Login Error</div>
-      </form>
+		<div class="fs-dropdown-panel">
+      <div>
+	      <form class="form login-register">
+	        <input class="form-control" type="text"
+	          placeholder="username" aria-label="username"
+	          ng-model="credentials.username"/>
+	        <input class="form-control" type="password"
+	          placeholder="password" aria-label="password"
+	          ng-model="credentials.password"/>
+	        <button class="btn btn-primary form-control" ng-click="login()">
+	          Login
+	        </button>
+	        <div ng-if="loginError" class="alert-danger">Login Error</div>
+	      </form>
+    	</div>
     </div>
 	</div>
 	-
@@ -76,19 +90,21 @@
 			<span>Register</span>
       <span class="caret"></span>
 		</div>
-		<div class="fs-dropdown-panel ng-hide">
-      <form class="form login-register">
-        <input class="form-control" type="text"
-          placeholder="username" aria-label="username"
-          ng-model="credentials.username"/>
-        <input class="form-control" type="password"
-          placeholder="password" aria-label="password"
-          ng-model="credentials.password"/>
-        <button class="btn btn-primary form-control" ng-click="register()">
-          Register
-        </button>
-        <div ng-if="registerError" class="alert-danger">Registration Error</div>
-      </form>
+		<div class="fs-dropdown-panel">
+      <div>
+	      <form class="form login-register">
+	        <input class="form-control" type="text"
+	          placeholder="username" aria-label="username"
+	          ng-model="credentials.username"/>
+	        <input class="form-control" type="password"
+	          placeholder="password" aria-label="password"
+	          ng-model="credentials.password"/>
+	        <button class="btn btn-primary form-control" ng-click="register()">
+	          Register
+	        </button>
+	        <div ng-if="registerError" class="alert-danger">Registration Error</div>
+	      </form>
+	    </div>
     </div>
 	</div>
 	

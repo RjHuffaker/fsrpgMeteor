@@ -19,7 +19,6 @@ angular.module('freedomsworn')
 					if(enable){
 						$timeout(function(){
 							$document.on('click', toggleHide);
-							console.log('toggleHideListener');
 						}, 0);
 					} else {
 						$document.off('click', toggleHide);
@@ -47,22 +46,31 @@ angular.module('freedomsworn')
 				};
 				
 				var toggleShow = function(event){
+					var panelContent = dropdownPanel.children()[0];
+					var contentHeight = panelContent.offsetHeight;
+					var contentWidth = panelContent.offsetWidth;
 					
-					//if(scope.hidePanel){
-					if(dropdownPanel.hasClass('ng-hide')){
-						//dropdownPanel.removeClass('ng-hide');
-						//scope.hidePanel = false;
-						$animate.removeClass(dropdownPanel, 'ng-hide');
-						
+					var toggleHeight = dropdownToggle[0].offsetHeight;
+					var toggleWidth = dropdownToggle[0].offsetWidth;
+					
+					//TODO: Customize coordinates of dropdownPanel according to left/right/top/bottom class variable(s).
+					
+					console.log('toggleShow');
+					console.log(dropdownToggle);
+					console.log(toggleHeight);
+					console.log(toggleWidth);
+					
+					if(!dropdownPanel.hasClass('show-panel')){
+						dropdownPanel.height(contentHeight);
+						dropdownPanel.width(contentWidth);
+						dropdownPanel.addClass('show-panel');
 						toggleHideListener(true);
 					} else {
-						//dropdownPanel.addClass('ng-hide');
-						//scope.hidePanel = true;
-						$animate.addClass(dropdownPanel, 'ng-hide');
-						
+						dropdownPanel.height(0);
+						dropdownPanel.removeClass('show-panel')
 						toggleHideListener(false);
 					}
-					
+					scope.$digest();
 				};
 				
 				var toggleHide = function(event){
@@ -76,11 +84,7 @@ angular.module('freedomsworn')
 						}
 					}
 					
-					//scope.hidePanel = false;
-					//dropdownPanel.addClass('ng-hide');
-					$animate.addClass(dropdownPanel, 'ng-hide');
-					
-					
+					toggleShow(event);
 					toggleHideListener(false);
 				};
 				
