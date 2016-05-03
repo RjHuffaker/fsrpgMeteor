@@ -16,4 +16,10 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			templateUrl: paths.cardFooterModule.views+'card-footer-item-slot.ng.html'
 		};
+	})
+	.directive('cardFooterItemWeightCost', function(){
+		return {
+			restrict: 'A',
+			templateUrl: paths.cardFooterModule.views+'card-footer-item-weight-cost.ng.html'
+		};
 	});

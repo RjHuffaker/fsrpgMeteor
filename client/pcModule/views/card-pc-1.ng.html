@@ -1,22 +1,27 @@
 <div class="content-panel">
-	<div class="dropdown card-icon-top-left text-8" dropdown stop-event
-		on-toggle="toggled(open)" >
-		<a id="cardDropdown" class="dropdown-toggle" dropdown-toggle
-			ng-click="dropdown" aria-expanded="true">
-			<i class="card-icon glyphicon glyphicon-cog"></i>
-		</a>
-		<ul class="card-menu-list dropdown-menu" aria-labelledby="cardDropdown">
-			<li ng-click="editPc(breadSrvc.deck);"><label>
-				<i class="glyphicon glyphicon-ok alert-success"></i> Save Character
-			</label></li>
-			<li ng-click="editPc(breadSrvc.deck); exitPc(breadSrvc.deck);"><label>
-				<i class="glyphicon glyphicon-remove alert-danger"></i> Save & Exit
-			</label></li>
-			<li ng-click="exitPc();"><label>
-				<i class="glyphicon glyphicon-exit alert-warning"></i> Exit Without Saving
-			</label></li>
-		</ul>
+	
+	<div fs-dropdown id="pcOptions" class="card-icon-top-left text-8" stop-event>
+		<div class="fs-dropdown-toggle">
+			<b>(+)</b>
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul class="card-menu-list">
+					<li ng-click="editPc(breadSrvc.deck);"><label>
+						Save Character
+					</label></li>
+					<li ng-click="editPc(breadSrvc.deck); exitPc(breadSrvc.deck);"><label>
+						Save & Exit
+					</label></li>
+					<li ng-click="exitPc();"><label>
+						Exit Without Saving
+					</label></li>
+				</ul>
+	 		</div>
+	  </div>
 	</div>
+	
+	
 	<table width="100%" height="16%">
 		<tbody>
 			<tr height="55%" class="text-10">

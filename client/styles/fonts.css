@@ -14,7 +14,6 @@
 .text-argos {
 	font-family: 'Argos';
 	font-weight: bold;
-	opacity: .8;
 }
 
 a.text-argos {
@@ -30,59 +29,71 @@ a.text-argos {
 	transform:scale(1,1.5); /* W3C */
 }
 
-.text-24{
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-24 {
 	font-size: 2.4em;
 }
 
-.text-22{
+.text-22 {
 	font-size: 2.2em;
 }
 
-.text-20{
+.text-20 {
 	font-size: 2.0em;
 }
 
-.text-18{
+.text-18 {
 	font-size: 1.8em;
 }
 
-.text-16{
+.text-16 {
 	font-size: 1.6em;
 }
 
-.text-14{
+.text-14 {
 	font-size: 1.4em;
 }
 
-.text-12{
+.text-12 {
 	font-size: 1.2em;
 }
 
-.text-11{
+.text-11 {
 	font-size: 1.1em;
 }
 
-.text-10{
+.text-10 {
 	font-size: 1.0em;
 }
 
-.text-9{
+.text-9 {
 	font-size: 0.9em;
 }
 
-.text-8{
+.text-8 {
 	font-size: 0.8em;
 }
 
-.text-7{
+.text-7 {
 	font-size: 0.7em;
 }
 
-.text-6{
+.text-6 {
 	font-size: 0.6em;
 }
 
-.text-5{
+.text-5 {
 	font-size: 0.5em;
 }
 

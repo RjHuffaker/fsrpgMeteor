@@ -6,6 +6,8 @@ angular.module("freedomsworn")
     
     $scope.error = '';
     
+    $scope.credentials = {};
+    
     $scope.checkCurrentPath = function(path){
       return $location.path().indexOf(path) > -1;
     };

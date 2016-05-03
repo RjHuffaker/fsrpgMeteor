@@ -1,8 +1,8 @@
 <div ng-controller="NavCtrl">
-	<a href="/">Freedomsworn</a>
+	<a href="/" class="text-16">Freedomsworn</a>
 	-
-	<div fs-dropdown id="pcsDropdown" >
-		<div class="fs-dropdown-toggle">
+	<div fs-dropdown id="pcsDropdown">
+		<div class="fs-dropdown-toggle text-12">
 			PCs
 		</div>
 		<div class="fs-dropdown-panel">
@@ -23,7 +23,7 @@
 	</div>
 	-
 	<div fs-dropdown id="cardsDropdown">
-		<div class="fs-dropdown-toggle">
+		<div class="fs-dropdown-toggle text-12">
 			Cards
 		</div>
 		<div class="fs-dropdown-panel">
@@ -33,7 +33,7 @@
 						<a href="/featureDecks">Browse Feature Decks</a>
 					</li>
 					<li ng-show="$root.currentUser">
-						<div href="#" card-modal-toggle modalxalign="right">New Feature Deck
+						<div href="#" card-modal-toggle>New Feature Deck
 							<div class="card-modal-content">
 								<div new-feature-options></div>
 							</div>
@@ -48,9 +48,8 @@
 	</div>
 	-
 	<div fs-dropdown id="userDropdown" ng-show="$root.currentUser">
-		<div class="fs-dropdown-toggle">
+		<div class="fs-dropdown-toggle text-12">
 			<span>{{ $root.currentUser.username }}</span>
-      <span class="caret"></span>
 		</div>
 		<div class="fs-dropdown-panel">
 			<div>
@@ -63,9 +62,8 @@
 	</div>
 	-
 	<div fs-dropdown id="loginDropdown" ng-hide="$root.currentUser">
-		<div class="fs-dropdown-toggle">
+		<div class="fs-dropdown-toggle text-12">
 			<span>Login</span>
-      <span class="caret"></span>
 		</div>
 		<div class="fs-dropdown-panel">
       <div>
@@ -86,9 +84,8 @@
 	</div>
 	-
 	<div fs-dropdown id="registerDropdown" ng-hide="$root.currentUser">
-		<div class="fs-dropdown-toggle">
+		<div class="fs-dropdown-toggle text-12">
 			<span>Register</span>
-      <span class="caret"></span>
 		</div>
 		<div class="fs-dropdown-panel">
       <div>

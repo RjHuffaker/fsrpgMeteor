@@ -1,7 +1,21 @@
-<ul>
-	<li>Aspect Type</li>
-	<li ng-repeat="aspectType in dataSrvc.aspectTypes"><label>
-		<input type="radio" ng-model="card.aspectType" value="{{aspectType}}">
-		{{aspectType}}
-	</label></li>
-</ul>
+<div fs-dropdown id="cardHeaderAspectType" stop-event>
+	<div class="fs-dropdown-toggle">
+		<span>
+			{{card.aspectType}}
+		</span>
+		<span ng-if="!card.aspectType">
+			[Aspect Type]
+		</span>
+	</div>
+	<div class="fs-dropdown-panel">
+		<div>
+			<ul class="text-9">
+				<li stop-click>Aspect Type</li>
+				<li ng-repeat="aspectType in dataSrvc.aspectTypes" stop-click><label>
+					<input type="radio" ng-model="card.aspectType" value="{{aspectType}}">
+					{{aspectType}}
+				</label></li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,11 +1,18 @@
-<ul class="text-8">
-	<li>Prerequisite</li>
-	<li><label>
-		<input type="radio" ng-model="card.prerequisite" value="">
-		None
-	</label></li>
-	<li ng-repeat="prerequisite in dataSrvc.prerequisites"><label>
-		<input type="radio" ng-model="card.prerequisite" value="{{prerequisite}}">
-		{{prerequisite}}
-	</label></li>
-</ul>
+<div fs-dropdown id="cardPrerequisites" stop-event>
+	<div class="fs-dropdown-toggle text-9">
+		{{card.keyword}} {{card.prerequisite}}
+	</div>
+	<div class="fs-dropdown-panel" stop-click>
+		<ul class="text-8">
+			<li>Prerequisite</li>
+			<li><label>
+				<input type="radio" ng-model="card.prerequisite" value="">
+				None
+			</label></li>
+			<li ng-repeat="prerequisite in dataSrvc.prerequisites"><label>
+				<input type="radio" ng-model="card.prerequisite" value="{{prerequisite}}">
+				{{prerequisite}}
+			</label></li>
+		</ul>
+	</div>
+</div>

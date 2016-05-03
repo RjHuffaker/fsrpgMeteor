@@ -1,11 +1,9 @@
 angular.module('freedomsworn')
-	.directive('fsDropdown', ['$document', '$timeout', '$animate', function($document, $timeout, $animate){
+	.directive('fsDropdown', ['$document', '$timeout', '$window', function($document, $timeout, $window){
 		return {
 			restrict: 'A',
 			scope: true,
 			link: function(scope, element, attrs){
-				
-				scope.hidePanel = true;
 				
 				var dropdownToggle;
 				
@@ -29,7 +27,7 @@ angular.module('freedomsworn')
 					if(enable){
 						showHandler = dropdownToggle.on('click', toggleShow);
 					} else {
-						showHandler();
+						if(showHandler) showHandler();
 						toggleHideListener(false);
 					}
 				};
@@ -46,29 +44,11 @@ angular.module('freedomsworn')
 				};
 				
 				var toggleShow = function(event){
-					var panelContent = dropdownPanel.children()[0];
-					var contentHeight = panelContent.offsetHeight;
-					var contentWidth = panelContent.offsetWidth;
-					
-					var toggleHeight = dropdownToggle[0].offsetHeight;
-					var toggleWidth = dropdownToggle[0].offsetWidth;
-					
-					//TODO: Customize coordinates of dropdownPanel according to left/right/top/bottom class variable(s).
-					
-					console.log('toggleShow');
-					console.log(dropdownToggle);
-					console.log(toggleHeight);
-					console.log(toggleWidth);
 					
 					if(!dropdownPanel.hasClass('show-panel')){
-						dropdownPanel.height(contentHeight);
-						dropdownPanel.width(contentWidth);
-						dropdownPanel.addClass('show-panel');
-						toggleHideListener(true);
+						showPanel();
 					} else {
-						dropdownPanel.height(0);
-						dropdownPanel.removeClass('show-panel')
-						toggleHideListener(false);
+						hidePanel();
 					}
 					scope.$digest();
 				};
@@ -84,7 +64,48 @@ angular.module('freedomsworn')
 						}
 					}
 					
-					toggleShow(event);
+					hidePanel()
+				};
+				
+				var showPanel = function(){
+					var panelContent = dropdownPanel.children()[0];
+					var contentHeight = panelContent.offsetHeight;
+					var contentWidth = panelContent.offsetWidth;
+					
+					var toggleHeight = element[0].offsetHeight;
+					var toggleWidth = element[0].offsetWidth;
+					
+					if(element.offset().top * 2 > $window.innerHeight){
+						dropdownPanel.addClass('anchor-top');
+						dropdownPanel.removeClass('anchor-bottom');
+						dropdownPanel.css('margin-top', -toggleHeight+'px');
+						dropdownPanel.css('margin-top', -(toggleHeight+contentHeight)+'px');
+					} else {
+						dropdownPanel.addClass('anchor-bottom');
+						dropdownPanel.removeClass('anchor-top');
+					}
+					
+					if(attrs.spanWidth){
+						dropdownPanel.width(toggleWidth);
+					} else {
+						dropdownPanel.width(contentWidth);
+					}
+					
+					dropdownPanel.height(contentHeight);
+					dropdownPanel.addClass('show-panel');
+					toggleHideListener(true);
+					
+				};
+				
+				var hidePanel = function(){
+					var toggleHeight = element[0].offsetHeight;
+					
+					if(element.offset().top * 2 > $window.innerHeight){
+						dropdownPanel.css('margin-top', -toggleHeight+'px');
+					}
+					
+					dropdownPanel.height(0);
+					dropdownPanel.removeClass('show-panel')
 					toggleHideListener(false);
 				};
 				

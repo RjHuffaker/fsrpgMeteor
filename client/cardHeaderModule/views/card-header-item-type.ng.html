@@ -1,7 +1,21 @@
-<ul>
-	<li>Weapon/Implement Type</li>
-	<li ng-repeat="itemType in dataSrvc.itemTypes"><label>
-		<input type="radio" ng-model="card.itemType" value="{{itemType}}">
-		{{itemType}}
-	</label></li>
-</ul>
+<div fs-dropdown id="cardHeaderItemType" stop-event>
+	<div class="fs-dropdown-toggle">
+		<span>
+			{{card.itemType}}
+		</span>
+		<span ng-if="!card.itemType">
+			[Item Type]
+		</span>
+	</div>
+	<div class="fs-dropdown-panel">
+		<div>
+			<ul class="text-9">
+				<li stop-click>Weapon/Implement Type</li>
+				<li ng-repeat="itemType in dataSrvc.itemTypes" stop-click><label>
+					<input type="radio" ng-model="card.itemType" value="{{itemType}}">
+					{{itemType}}
+				</label></li>
+			</ul>
+		</div>
+	</div>
+</div>

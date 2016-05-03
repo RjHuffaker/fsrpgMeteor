@@ -27,6 +27,9 @@ paths = {
 	fsDropdown: {
 		views: 'client/fsDropdown/views/'
 	},
+	fsText: {
+		views: 'client/fsText/views/'
+	},
 	generalModule: {
 		views: 'client/generalModule/views/'
 	},
