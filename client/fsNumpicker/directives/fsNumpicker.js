@@ -1,5 +1,5 @@
 angular.module('freedomsworn')
-	.directive('numpicker', ['$timeout', '$interval',
+	.directive('fsNumpicker', ['$timeout', '$interval',
 		function($timeout, $interval){
 			return {
 				restrict: 'A',
@@ -10,7 +10,7 @@ angular.module('freedomsworn')
 					numdelay: '=',
 					callback: '='
 				},
-				templateUrl: paths.generalModule.views+'numpicker.ng.html',
+				templateUrl: paths.fsNumpicker.views+'fs-numpicker.ng.html',
 				link: function(scope, element, attrs){
 					
 					var mouseCounter = {};

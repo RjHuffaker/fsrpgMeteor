@@ -38,6 +38,7 @@ angular.module('freedomsworn')
 			};
 			
 			service.edit = function(){
+				console.log(service.deck.cardList);
 				if(service.deck._id){
 					service.deck.save();
 				} else if($rootScope.currentUser){

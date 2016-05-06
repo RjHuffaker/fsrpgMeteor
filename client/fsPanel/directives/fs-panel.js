@@ -2,11 +2,11 @@
 
 // Directive for managing card decks.
 angular.module('freedomsworn')
-	.directive('cardPanel', ['$document', '$parse', '$rootScope', '$window', 'CoreVars', 'checkEdge', 'onCardMove', 'toggleOverlap', 'PanelUtils', 'DeckUtils',
+	.directive('fsPanel', ['$document', '$parse', '$rootScope', '$window', 'CoreVars', 'checkEdge', 'onCardMove', 'toggleOverlap', 'PanelUtils', 'DeckUtils',
 		function($document, $parse, $rootScope, $window, CoreVars, checkEdge, onCardMove, toggleOverlap, PanelUtils, DeckUtils){
 			return {
 				restrict: 'A',
-				templateUrl: paths.panelModule.views+'card-panel.ng.html',
+				templateUrl: paths.fsPanel.views+'fs-panel.ng.html',
 				link: function(scope, element, attrs){
 					
 					scope.CoreVars = CoreVars;
@@ -26,7 +26,7 @@ angular.module('freedomsworn')
 					
 					var _dropdownOpen = false;
 					
-					var _panel = $parse(attrs.cardPanel) || null;
+					var _panel = $parse(attrs.fsPanel) || null;
 					
 					var _deck = $parse(attrs.deck) || null;
 					
@@ -58,13 +58,13 @@ angular.module('freedomsworn')
 							
 							// add listeners
 							scope.$on('$destroy', onDestroy);
-							_cardWatcher = scope.$watch(attrs.cardPanel, onCardChange);
+							_cardWatcher = scope.$watch(attrs.fsPanel, onCardChange);
 							_deckWatcher = scope.$watch(attrs.deck, onDeckChange);
 							_heightHandler = scope.$on('screenSize:onHeightChange', onHeightChange);
-							_pressHandler = scope.$on('cardPanel:onPressCard', onPressCard);
-							_moveHandler = scope.$on('cardPanel:onMoveCard', onMoveCard);
-							_releaseHander = scope.$on('cardPanel:onReleaseCard', onReleaseCard);
-							_leaveHander = scope.$on('deckStack:onMouseLeave', onMouseLeave);
+							_pressHandler = scope.$on('fsPanel:onPressCard', onPressCard);
+							_moveHandler = scope.$on('fsPanel:onMoveCard', onMoveCard);
+							_releaseHander = scope.$on('fsPanel:onReleaseCard', onReleaseCard);
+							_leaveHander = scope.$on('fsDeck:onMouseLeave', onMouseLeave);
 							_dropdownHandler = scope.$on('CardsCtrl:onDropdown', onDropdown);
 							_panelXWatcher = scope.$watch('panel.x_coord', resetPosition);
 							_panelYWatcher = scope.$watch('panel.y_coord', resetPosition);
@@ -197,7 +197,7 @@ angular.module('freedomsworn')
 	              }
 						});
 						
-						$rootScope.$broadcast('cardPanel:onPressCard', {
+						$rootScope.$broadcast('fsPanel:onPressCard', {
 							startX: _startX,
 							startY: _startY,
 							panel: _panel
@@ -231,7 +231,7 @@ angular.module('freedomsworn')
 						_panelX = _moveX + _startCol - (_startCol - _mouseCol);
 						_panelY = _moveY + _startRow - (_startRow - _mouseRow);
 						
-						$rootScope.$broadcast('cardPanel:onMoveCard', {
+						$rootScope.$broadcast('fsPanel:onMoveCard', {
 							mouseX: _mouseX,
 							mouseY: _mouseY,
 							moveX: _moveX,
@@ -262,7 +262,7 @@ angular.module('freedomsworn')
 					var onRelease = function(){
 						$document.off(_moveEvents, onMove);
 						$document.off(_releaseEvents, onRelease);
-						$rootScope.$broadcast('cardPanel:onReleaseCard', {
+						$rootScope.$broadcast('fsPanel:onReleaseCard', {
 							panel: _panel
 						});
 						
@@ -295,7 +295,7 @@ angular.module('freedomsworn')
 					var onMouseLeave = function(){
 						$document.off(_moveEvents, onMove);
 						$document.off(_releaseEvents, onRelease);
-						$rootScope.$broadcast('cardPanel:onReleaseCard', {
+						$rootScope.$broadcast('fsPanel:onReleaseCard', {
 							panel: _panel
 						});
 					};

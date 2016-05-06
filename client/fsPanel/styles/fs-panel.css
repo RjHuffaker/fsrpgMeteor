@@ -1,4 +1,9 @@
-[card-panel] {
+.fs-panel {
+	
+}
+
+
+[fs-panel] {
 	position: absolute;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -13,7 +18,7 @@
 	box-sizing: border-box;
 }
 
-[card-panel].card-moving {
+[fs-panel].card-moving {
 	-webkit-transition: .5s ease-in-out !important;
 	-moz-transition: .5s ease-in-out !important;
 	-o-transition: .5s ease-in-out !important;
@@ -21,21 +26,21 @@
 	transition: .5s ease-in-out !important;
 }
 
-[card-panel].dragging {
+[fs-panel].dragging {
 	cursor: move;
 	cursor: -webkit-grabbing;
 	cursor: -moz-grabbing;
 	cursor: grabbing;
 }
 
-[card-panel].dragging > div > div {
+[fs-panel].dragging > div > div {
 	border-top: 2px solid #222;
 	border-left: 2px solid #222;
 	border-right: 3px solid #111;
 	border-bottom: 3px solid #111;
 }
 
-[card-panel] > div > div {
+[fs-panel] > div > div {
 	-moz-border-radius: .5em;
 	-webkit-border-radius: .5em;
 	border-radius: .5em;
@@ -46,8 +51,8 @@
 	background-color: Wheat;
 }
 
-[card-panel].ng-leave,
-[card-panel].ng-enter {
+[fs-panel].ng-leave,
+[fs-panel].ng-enter {
 	transition-property:  left;
 	-webkit-transition: 1.5s ease-in-out !important;
 	-moz-transition: 1.5s ease-in-out !important;
@@ -57,6 +62,6 @@
 	margin-top: 3em;
 }
 
-[card-panel].ng-leave.ng-leave-active {
+[fs-panel].ng-leave.ng-leave-active {
 	margin-top: 45em;
 }

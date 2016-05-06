@@ -1,23 +1,20 @@
 angular.module('freedomsworn')
-	.directive('titleInput', [function(){
+	.directive('descriptionInput', ['$parse', function($parse){
 		return {
 			restrict: 'A',
-			templateUrl: paths.generalModule.views+'title-input.ng.html',
-			scope: { panel: '=', bodyText: '=', defaultText: '=' }
-		};
-	}])
-	
-	.directive('descriptionInput', [function(){
-		return {
-			restrict: 'A',
+			scope: { contenttext: '=', defaultcontent: '=', panel: '=' },
 			templateUrl: paths.generalModule.views+'description-input.ng.html',
-			scope: { panel: '=', bodyText: '=', defaultText: '=' }
+			link: function(scope, element, attrs){
+				scope.onChangeContent = function(){
+					scope.contenttext = element.find('textarea')[0].value;
+				};
+			}
 		};
 	}])
 	.directive('definitionInput', [function(){
 		return {
 			restrict: 'A',
-			templateUrl: paths.generalModule.views+'definition-input.ng.html',
-			scope: { panel: '=', leaderText: '=', bodyText: '=', defaultText: '=' }
+			scope: { leadertext: '=', bodytext: '=', defaulttext: '=' },
+			templateUrl: paths.generalModule.views+'definition-input.ng.html'
 		};
 	}]);

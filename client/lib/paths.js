@@ -15,20 +15,20 @@ paths = {
 	cardModule: {
 		views: 'client/cardModule/views/'
 	},
-	deckModule: {
-		views: 'client/deckModule/views/'
-	},
 	diceModule: {
 		views: 'client/diceModule/views/'
 	},
 	featureModule: {
 		views: 'client/featureModule/views/'
 	},
-	fsDropdown: {
-		views: 'client/fsDropdown/views/'
+	fsDeck: {
+		views: 'client/fsDeck/views/'
 	},
-	fsText: {
-		views: 'client/fsText/views/'
+	fsNumpicker: {
+		views: 'client/fsNumpicker/views/'
+	},
+	fsPanel: {
+		views: 'client/fsPanel/views/'
 	},
 	generalModule: {
 		views: 'client/generalModule/views/'
@@ -38,9 +38,6 @@ paths = {
 	},
 	navBarModule: {
 		views: 'client/navBarModule/views/'
-	},
-	panelModule: {
-		views: 'client/panelModule/views/'
 	},
 	pcModule: {
 		views: 'client/pcModule/views/'

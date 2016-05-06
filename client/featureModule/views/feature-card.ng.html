@@ -9,10 +9,9 @@
 			<tr>
 				<td colspan="2" style="vertical-align: top;">
 					<div ng-if="card.description.show" style="margin: .25em">
-						<div description-input
-							style="width: 100%" panel="panel"
-							body-text="card.description.content"
-							default-text="'Descriptive text.'"></div>
+						<div description-input class="fill-width"
+							contenttext="card.description.content" panel="panel"
+							defaultcontent="'Descriptive text.'"></div>
 					</div>
 					
 				</td>
@@ -22,14 +21,14 @@
 					<div card-modifiers></div>
 					<div ng-if="card.benefit.show" class="text-8"
 						style="white-space: normal;">
-						<div definition-input panel="panel" style="width: 100%"
-							leader-text="'Benefit'" default-text="'Benefit effect.'"
-							body-text="card.benefit.content"></div>
+						<div definition-input class="fill-width"
+							leadertext="'Benefit'" defaulttext="'Benefit effect.'"
+							bodytext="card.benefit.content"></div>
 						<br />
 						<div ng-if="card.benefit.criticalSuccess.show"
-							definition-input panel="panel" style="width: 100%"
-							leader-text="'Critical Success'" default-text="'Critical success effect.'"
-							body-text="card.benefit.criticalSuccess.content"></div>
+							definition-input class="fill-width"
+							leadertext="'Critical Success'" defaulttext="'Critical success effect.'"
+							bodytext="card.benefit.criticalSuccess.content"></div>
 						<br />
 					</div>
 					<div ng-repeat="entry in card.entries" card-entry="entry" panel="panel"></div>

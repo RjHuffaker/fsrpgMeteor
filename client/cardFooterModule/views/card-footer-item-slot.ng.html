@@ -1,7 +1,11 @@
 <div fs-dropdown id="itemSlot" stop-event>
 	<div class="fs-dropdown-toggle">
-		
-		{{card.itemSlot}}
+		<span>
+			{{card.itemSlot}}
+		</span>
+		<span ng-if="!card.itemSlot">
+			[Item Slot]
+		</span>
 	</div>
 	<div class="fs-dropdown-panel" stop-click>
 		<div>

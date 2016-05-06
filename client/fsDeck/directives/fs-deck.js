@@ -2,12 +2,12 @@
 
 // Directive for managing card decks.
 angular.module('freedomsworn')
-	.directive('deckStack', ['$rootScope', '$window', 'PanelUtils', 'DeckUtils', 'movePanel',
+	.directive('fsDeck', ['$rootScope', '$window', 'PanelUtils', 'DeckUtils', 'movePanel',
 		function($rootScope, $window, PanelUtils, DeckUtils, movePanel){
 			return {
 				restrict: 'A',
 				scope: { breadSrvc: '=' },
-				templateUrl: paths.deckModule.views+'deck-stack.ng.html',
+				templateUrl: paths.fsDeck.views+'fs-deck.ng.html',
 				link: function(scope, element, attrs) {
 					
 					var pressed = false;
@@ -91,7 +91,7 @@ angular.module('freedomsworn')
 					
 					var onMouseLeave = function(event){
 						if(pressed){
-							$rootScope.$broadcast('deckStack:onMouseLeave');
+							$rootScope.$broadcast('fsDeck:onMouseLeave');
 						}
 					};
 					

@@ -1,0 +1,11 @@
+[fs-numpicker] {
+	display: inline-block;
+}
+
+[fs-numpicker] input {
+	width: 50%;
+}
+
+[fs-numpicker] button {
+	width: 25%;
+}

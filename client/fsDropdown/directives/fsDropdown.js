@@ -72,10 +72,10 @@ angular.module('freedomsworn')
 					var contentHeight = panelContent.offsetHeight;
 					var contentWidth = panelContent.offsetWidth;
 					
-					var toggleHeight = element[0].offsetHeight;
-					var toggleWidth = element[0].offsetWidth;
+					var toggleHeight = dropdownToggle[0].offsetHeight;
+					var toggleWidth = dropdownToggle[0].offsetWidth;
 					
-					if(element.offset().top * 2 > $window.innerHeight){
+					if(dropdownToggle.offset().top * 2 > $window.innerHeight){
 						dropdownPanel.addClass('anchor-top');
 						dropdownPanel.removeClass('anchor-bottom');
 						dropdownPanel.css('margin-top', -toggleHeight+'px');
@@ -100,8 +100,13 @@ angular.module('freedomsworn')
 				var hidePanel = function(){
 					var toggleHeight = element[0].offsetHeight;
 					
-					if(element.offset().top * 2 > $window.innerHeight){
+					if(dropdownToggle.offset().top * 2 > $window.innerHeight){
+						dropdownPanel.addClass('anchor-top');
+						dropdownPanel.removeClass('anchor-bottom');
 						dropdownPanel.css('margin-top', -toggleHeight+'px');
+					} else {
+						dropdownPanel.addClass('anchor-bottom');
+						dropdownPanel.removeClass('anchor-top');
 					}
 					
 					dropdownPanel.height(0);

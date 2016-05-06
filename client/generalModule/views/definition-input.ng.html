@@ -1,13 +1,13 @@
-<div fs-dropdown id="definition-input" span-width="true" stop-event>
+<div fs-dropdown id="definition-input" class="fill-width" span-width="true" stop-click stop-event>
 	<div class="fs-dropdown-toggle text-9">
-		<b>{{leaderText}}:</b> {{bodyText}}
+		<b>{{leadertext}}:</b> {{bodytext}}
 	</div>
 	<div class="fs-dropdown-panel" stop-click>
 		<div class="text-9">
 			Leader Text:
-			<input type="text" ng-model="leaderText"/>
+			<input type="text" ng-model="leadertext" stop-click/>
 			Content:
-			<textarea ng-model="bodyText"></textarea>
+			<textarea ng-model="bodytext" stop-click></textarea>
 		</div>
 	</div>
 </div>
