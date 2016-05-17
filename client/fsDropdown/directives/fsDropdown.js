@@ -9,7 +9,7 @@ angular.module('freedomsworn')
 				
 				var dropdownPanel;
 				
-				var showHandler;
+				var showHandler = null;
 				
 				var exemptList = ['keep-open', 'form', 'form-control', 'fs-dropdown-panel'];
 				
@@ -25,10 +25,10 @@ angular.module('freedomsworn')
 				
 				var toggleListeners = function(enable){
 					if(enable){
-						showHandler = dropdownToggle.on('click', toggleShow);
+						dropdownToggle.on('click', toggleShow);
 					} else {
-						if(showHandler) showHandler();
-						toggleHideListener(false);
+						dropdownToggle.off('click', toggleShow);
+						$document.off('click', toggleHide);
 					}
 				};
 				

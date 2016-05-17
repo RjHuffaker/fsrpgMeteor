@@ -9,9 +9,6 @@ paths = {
 	cardHeaderModule: {
 		views: 'client/cardHeaderModule/views/'
 	},
-	cardModalModule: {
-		views: 'client/cardModalModule/views/'
-	},
 	cardModule: {
 		views: 'client/cardModule/views/'
 	},
@@ -21,8 +18,14 @@ paths = {
 	featureModule: {
 		views: 'client/featureModule/views/'
 	},
+	fsBlockInput: {
+		views: 'client/fsBlockInput/views/'
+	},
 	fsDeck: {
 		views: 'client/fsDeck/views/'
+	},
+	fsModal: {
+		views: 'client/fsModal/views/',
 	},
 	fsNumpicker: {
 		views: 'client/fsNumpicker/views/'

@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('freedomsworn')
-	.directive('cardModal', ['$window', '$compile', 'modalSrvc', 'dataSrvc',
+	.directive('fsModal', ['$window', '$compile', 'modalSrvc', 'dataSrvc',
 		function($window, $compile, modalSrvc, dataSrvc){
 			return {
 				restrict: 'A',
-				templateUrl: paths.cardModalModule.views+'card-modal.ng.html',
+				templateUrl: paths.fsModal.views+'fs-modal.ng.html',
 				link: function(scope, element, attrs){
 					scope.modalSrvc = modalSrvc;
 					
@@ -13,7 +13,7 @@ angular.module('freedomsworn')
 					
 					var modal = {};
 					
-					var cardModalHandler = null;
+					var fsModalHandler = null;
 					var modalHeightHandler = null;
 					var modalWidthHandler = null;
 					
@@ -25,14 +25,14 @@ angular.module('freedomsworn')
 						if(enable){
 							scope.$on('$destroy', onDestroy);
 							
-							cardModalHandler = scope.$watch('modalSrvc.current.show', setModal);
+							fsModalHandler = scope.$watch('modalSrvc.current.show', setModal);
 							
 							modalHeightHandler = scope.$watch(getHeight, setHeight);
 							
 							modalWidthHandler = scope.$watch(getWidth, setWidth);
 							
 						} else {
-							cardModalHandler();
+							fsModalHandler();
 							modalHeightHandler();
 							modalWidthHandler();
 						}
@@ -53,11 +53,11 @@ angular.module('freedomsworn')
 					};
 					
 					var getHeight = function(){
-						return element[0].querySelector('.card-modal').offsetHeight;
+						return element[0].querySelector('.fs-modal').offsetHeight;
 					};
 					
 					var getWidth = function(){
-						return element[0].querySelector('.card-modal').offsetWidth;
+						return element[0].querySelector('.fs-modal').offsetWidth;
 					};
 					
 					var setHeight = function(newVal, oldVal){
@@ -97,18 +97,17 @@ angular.module('freedomsworn')
 						
 						$compile(modalSrvc.current.modal_content)(scope);
 						
-						angular.element(element[0].querySelector('.card-modal'))
+						angular.element(element[0].querySelector('.fs-modal'))
 							.empty()
 							.append(modalSrvc.current.modal_content);
 						
-						angular.element(element.find('.card-modal-content')[0])
-							.removeClass('card-modal-content')
-							.addClass('card-modal-slot');
-							
+						angular.element(element.find('.fs-modal-content')[0])
+							.removeClass('fs-modal-content')
+							.addClass('fs-modal-slot');
 					};
 					
 					initialize();
-				
+					
 				}
 			};
 		}]);

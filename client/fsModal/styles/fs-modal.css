@@ -1,4 +1,4 @@
-.card-modal {
+.fs-modal {
 	z-index: 12000;
 	position: fixed;
 	-moz-border-radius: .5em;
@@ -37,28 +37,28 @@
 	opacity: 0;
 }
 
-.card-modal ul {
+.fs-modal ul {
 	list-style-type: none;
 	display: inline-block;
 	padding: 0 !important;
 	margin: 0 !important;
 }
 
-.card-modal li {
+.fs-modal li {
 	margin: 0 !important;
 	padding: .15em !important;
 	white-space: nowrap;
 }
 
-.card-modal label {
+.fs-modal label {
 	cursor: pointer;
 }
 
-.card-modal label:hover {
+.fs-modal label:hover {
 	text-shadow: 0.5px 0.5px #555;
 }
 
-.card-modal.top-caret:after {
+.fs-modal.top-caret:after {
 	content: '';
 	position: absolute;
 	border-style: solid;
@@ -71,7 +71,7 @@
 	left: .6em;
 }
 
-.card-modal.top-caret:before {
+.fs-modal.top-caret:before {
 	content: '';
 	position: absolute;
 	border-style: solid;
@@ -84,7 +84,7 @@
 	left: .6em;
 }
 
-.card-modal.bottom-caret:after {
+.fs-modal.bottom-caret:after {
 	content: '';
 	position: absolute;
 	border-style: solid;
@@ -97,7 +97,7 @@
 	left: .6em;
 }
 
-.card-modal.bottom-caret:before {
+.fs-modal.bottom-caret:before {
 	content: '';
 	position: absolute;
 	border-style: solid;
@@ -110,6 +110,6 @@
 	left: .6em;
 }
 
-.card-modal-content {
+.fs-modal-content {
 	display: none;
 }

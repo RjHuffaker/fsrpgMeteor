@@ -1,32 +1,30 @@
-<div ng-if="!panel.locked" class="dropdown"
-	style="position: absolute; left: -.4em;"
-	dropdown on-toggle="toggled(open)" stop-event>
-	<a class="dropdown-toggle card-icon" data-toggle="dropdown"
-		aria-haspopup="true" aria-expanded="false">
-		<i class="glyphicon glyphicon-cog"></i>
-	</a>
-	<div class="dropdown-menu dropup" style="width: 15em;"
-		aria-labelledby="cardDropdown" stop-click>
-		<ul class="col-xs-5 text-8">
-			<li role="presentation" class="dropdown-header">Action Usage</li>
-			<li><label>
-				<input type="radio" ng-model="cardEntry.usage" value="Defense"> Defense
-			</label></li>
-			<li><label>
-				<input type="radio" ng-model="cardEntry.usage" value="Default"> Default
-			</label></li>
-			<li><label>
-				<input type="radio" ng-model="cardEntry.usage" value="Single-use"> Single-use
-			</label></li>
-		</ul>
-		<ul class="col-xs-7 text-8">
-			<li role="presentation" class="dropdown-header">Action Entries</li>
-			<li ng-show="cardEntry.usage !== 'Defense'"><label>
-				<input type="checkbox" ng-model="cardEntry.effect.show"> Effect
-			</label></li>
-			<li ng-show="cardEntry.usage !== 'Defense'"><label>
-				<input type="checkbox" ng-model="cardEntry.attack.show"> Attack
-			</label></li>
-		</ul>
+<div ng-if="!panel.locked" fs-dropdown id="entry-icon" stop-event>
+	<div class="fs-dropdown-toggle card-icon">
+		(+)
+	</div>
+	<div class="fs-dropdown-panel" style="width: 15em;" stop-click>
+		<div>
+			<ul class="col-xs-5 text-8">
+				<li class="dropdown-header">Action Usage</li>
+				<li><label>
+					<input type="radio" ng-model="cardEntry.usage" value="Defense"> Defense
+				</label></li>
+				<li><label>
+					<input type="radio" ng-model="cardEntry.usage" value="Default"> Default
+				</label></li>
+				<li><label>
+					<input type="radio" ng-model="cardEntry.usage" value="Single-use"> Single-use
+				</label></li>
+			</ul>
+			<ul class="col-xs-7 text-8">
+				<li role="presentation" class="dropdown-header">Action Entries</li>
+				<li ng-show="cardEntry.usage !== 'Defense'"><label>
+					<input type="checkbox" ng-model="cardEntry.effect.show"> Effect
+				</label></li>
+				<li ng-show="cardEntry.usage !== 'Defense'"><label>
+					<input type="checkbox" ng-model="cardEntry.attack.show"> Attack
+				</label></li>
+			</ul>
+		</div>
 	</div>
 </div>

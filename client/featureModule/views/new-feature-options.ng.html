@@ -18,18 +18,20 @@
 		<button ng-click="addNewDeck();">Create Deck</button>
 	</div>
 
-	<div class="dropdown">
+	<div fs-dropdown>
 		<h4>Deck Type</h4>
-		<button class="dropdown-toggle" data-toggle="dropdown">
+		<span class="fs-dropdown-toggle" data-toggle="dropdown">
 			{{deck.deckType}}
 			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-			<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
-				<a href="" ng-click="deck.deckType = deckType;">
-				{{deckType}}
-				</a>
-			</li>
-		</ul>
+		</span>
+		<div class="fs-dropdown-panel">
+			<ul>
+				<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
+					<a href="" ng-click="deck.deckType = deckType;">
+					{{deckType}}
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>

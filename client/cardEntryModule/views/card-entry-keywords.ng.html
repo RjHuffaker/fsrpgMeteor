@@ -13,21 +13,23 @@
 				[Frequency]
 			</strong>
 		</div>
-		<div ng-if="!panel.locked" class="dropdown dropup pull-right"
-			dropdown on-toggle="toggled(open)" stop-event>
-			<a class="dropdown-toggle" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
+		<div class="pull-right" fs-dropdown id="entry-frequency" stop-event>
+			<div class="fs-dropdown-toggle">
 				<strong>{{cardEntry.frequency}}</strong>
 				<strong ng-if="!cardEntry.frequency">[Frequency]</strong>
-			</a>
-			<ul class="dropdown-menu" aria-labelledby="cardDropdown" stop-click>
-				<li role="presentation" class="dropdown-header">Action Frequency</li>
-				<li ng-repeat="frequency in dataSrvc.actionFrequency"><label>
-					<input type="radio" value="{{frequency}}"
-						ng-model="cardEntry.frequency">
-					{{frequency}}
-				</label></li>
-			</ul>
+			</div>
+			<div class="fs-dropdown-panel" stop-click>
+				<div>
+					<ul>
+						<li>Action Frequency</li>
+						<li ng-repeat="frequency in dataSrvc.actionFrequency"><label>
+							<input type="radio" value="{{frequency}}"
+								ng-model="cardEntry.frequency">
+							{{frequency}}
+						</label></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

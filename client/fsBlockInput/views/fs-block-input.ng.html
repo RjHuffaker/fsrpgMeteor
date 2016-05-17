@@ -1,0 +1,30 @@
+<div fs-dropdown id="id" class="fill-width" span-width="true" stop-event>
+	<div class="fs-dropdown-toggle" stop-event>
+		<div class="text-9" ng-if="leadertext">
+			<b>{{leadertext}}</b>
+			<span ng-if="!blocktext">{{defaultblock}}</span><span>{{blocktext}}</span>
+		</div>
+		<div ng-if="defaultbullet" class="text-9">
+			&nbsp;&#8226; <span ng-if="!bullettext">{{defaultbullet}}</span><span>{{bullettext}}</span>
+		</div>
+		<div ng-if="defaultcenter" class="text-9 text-descriptive text-center">
+			<span ng-if="!centertext">{{defaultcenter}}</span><span>{{centertext}}</span>
+		</div>
+	</div>
+	<div class="fs-dropdown-panel" stop-click>
+		<div class="fill-width" stop-click>
+			<textarea ng-if="defaultblock" ng-model="blocktext"
+        class="fill-width"
+        ng-change="onChangeBlock()" stop-click>
+      </textarea>
+      <textarea ng-if="defaultbullet" ng-model="bullettext"
+        class="fill-width"
+        ng-change="onChangeBullet()" stop-click>
+      </textarea>
+    	<textarea ng-if="defaultcenter" ng-model="centertext"
+        class="fill-width text-descriptive text-center"
+        ng-change="onChangeCenter()" stop-click>
+      </textarea>
+		</div>
+	</div>
+</div>

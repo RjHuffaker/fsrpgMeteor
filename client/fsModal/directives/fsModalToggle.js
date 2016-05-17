@@ -2,7 +2,7 @@
 
 // Directive for managing ability dice
 angular.module('freedomsworn')
-	.directive('cardModalToggle', ['$parse', '$rootScope', '$window', 'modalSrvc',
+	.directive('fsModalToggle', ['$parse', '$rootScope', '$window', 'modalSrvc',
 		function($parse, $rootScope, $window, modalSrvc){
 			return {
 				restrict: 'A',
@@ -52,7 +52,7 @@ angular.module('freedomsworn')
 						var modal_x_dim = convertEm(attrs.modalxdim);
 						var modal_y_dim = convertEm(attrs.modalydim);
 						var modal_card = scope.modalCard;
-						var modal_content = angular.element(element.find('.card-modal-content')[0]).clone(true);
+						var modal_content = angular.element(element.find('.fs-modal-content')[0]).clone(true);
 						
 						console.log(modal_content);
 						

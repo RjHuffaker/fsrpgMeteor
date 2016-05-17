@@ -1,29 +1,12 @@
 <div ng-if="cardEntry.usage === 'Defense'" class="text-8" style="white-space: normal;">
-	<div ng-if="panel.locked">
-		<strong ng-hide="cardEntry.defense.defenseType">[Type]</strong>
-		<strong>{{cardEntry.defense.defenseType}} Defense: </strong>
-		{{cardEntry.defense.dice_a}}
-		<span ng-hide="cardEntry.defense.dice_a">1d__</span>
-		+
-		{{cardEntry.defense.dice_b}}
-		<span ng-hide="cardEntry.defense.dice_b">1d__</span>
-		<div ng-if="cardEntry.defense.success.show">
-			<strong>Success: </strong>{{cardEntry.defense.success.content}}
+	<div fs-dropdown id="defense-type" stop-event>
+		<div class="fs-dropdown-toggle">
+			<strong ng-hide="cardEntry.defense.defenseType">[Type]</strong>
+			<strong>{{cardEntry.defense.defenseType}} Defense: </strong>
 		</div>
-		<div ng-if="cardEntry.defense.criticalSuccess.show">
-			<strong>Critical Success: </strong>{{cardEntry.defense.criticalSuccess.content}}
-		</div>
-	</div>
-	<div ng-if="!panel.locked">
-		<div ng-if="!panel.locked" class="dropdown"
-			dropdown on-toggle="toggled(open)" stop-event>
-			<a class="dropdown-toggle" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				<strong ng-hide="cardEntry.defense.defenseType">[Type]</strong>
-				<strong>{{cardEntry.defense.defenseType}} Defense: </strong>
-			</a>
-			<div class="dropdown-menu" aria-labelledby="cardDropdown">
-				<ul class="col-xs-5">
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul style="width: 40%">
 					<li role="presentation" class="dropdown-header">Defense Type</li>
 					<li ng-repeat="defenseType in dataSrvc.defenseTypes"><label>
 						<input type="radio" value="{{defenseType}}"
@@ -31,7 +14,7 @@
 						{{defenseType}}
 					</label></li>
 				</ul>
-				<ul class="col-xs-7">
+				<ul style="width: 40%">
 					<li role="presentation" class="dropdown-header">Defense Options</li>
 					<li><label>
 						<input type="checkbox" ng-model="cardEntry.defense.success.show"> Success
@@ -42,16 +25,16 @@
 				</ul>
 			</div>
 		</div>
-		
-		<div ng-if="!panel.locked" class="dropdown"
-			dropdown on-toggle="toggled(open)" stop-event>
-			<a class="dropdown-toggle" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				{{cardEntry.defense.dice_a}}
-				<span ng-hide="cardEntry.defense.dice_a">1d__</span>
-			</a>
-			<div class="dropdown-menu" aria-labelledby="cardDropdown">
-				<ul class="col-xs-4" stop-click>
+	</div>
+	
+	<div fs-dropdown id="defense-dice-a" stop-event>
+		<div class="fs-dropdown-toggle">
+			{{cardEntry.defense.dice_a}}
+			<span ng-hide="cardEntry.defense.dice_a">1d__</span>
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul style="width: 30%" stop-click>
 					<li role="presentation" class="dropdown-header"><strong>Fixed Die</Strong></li>
 					<li ng-repeat="dice in dataSrvc.dice"><label>
 						<input type="radio" value="{{dice}}"
@@ -59,7 +42,7 @@
 						{{dice}}
 					</label></li>
 				</ul>
-				<ul class="col-xs-4 text-8" stop-click>
+				<ul style="width: 30%" stop-click>
 					<li role="presentation" class="dropdown-header"><strong>Physical</Strong></li>
 					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index < 4"><label>
 						<input type="radio" value="{{ability}}"
@@ -67,7 +50,7 @@
 						{{ability}}
 					</label></li>
 				</ul>
-				<ul class="col-xs-4 text-8" stop-click>
+				<ul style="width: 30%" stop-click>
 					<li role="presentation" class="dropdown-header"><strong>Mental</Strong></li>
 					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index > 3"><label>
 						<input type="radio" value="{{ability}}"
@@ -77,16 +60,16 @@
 				</ul>
 			</div>
 		</div>
-		+
-		
-		<div ng-if="!panel.locked" class="dropdown"
-			dropdown on-toggle="toggled(open)" stop-event>
-			<a class="dropdown-toggle" data-toggle="dropdown"
-				aria-haspopup="true" aria-expanded="false">
-				{{cardEntry.defense.dice_b}}
-				<span ng-hide="cardEntry.defense.dice_b">1d__</span>
-			</a>
-			<div class="dropdown-menu" aria-labelledby="cardDropdown">
+	</div>
+	+
+	
+	<div fs-dropdown id="defense-dice-b" stop-event>
+		<div class="fs-dropdown-toggle">
+			{{cardEntry.defense.dice_b}}
+			<span ng-hide="cardEntry.defense.dice_b">1d__</span>
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
 				<ul class="col-xs-4 text-8" stop-click>
 					<li role="presentation" class="dropdown-header"><strong>Fixed Die</Strong></li>
 					<li ng-repeat="dice in dataSrvc.dice"><label>
@@ -113,23 +96,19 @@
 				</ul>
 			</div>
 		</div>
-		<div ng-if="cardEntry.defense.success.show">
-			<label for="defenseSuccess" class="indent-left">Success: </label>
-			<textarea elastic-text stop-event
-				ng-model="cardEntry.defense.success.content"
-				id="defenseSuccess"
-				class="card-textarea"
-				style="text-indent: 4.5em;" rows="1">
-			</textarea>
-		</div>
-		<div ng-if="cardEntry.defense.criticalSuccess.show">
-			<label for="defenseCriticalSuccess" class="indent-left">Critical Success: </label>
-			<textarea elastic-text stop-event
-				ng-model="cardEntry.defense.criticalSuccess.content"
-				id="defenseCriticalSuccess"
-				class="card-textarea"
-				style="text-indent: 8.3em;" rows="1">
-			</textarea>
-		</div>
+	</div>
+	<div ng-if="cardEntry.defense.success.show">
+		<div fs-block-input="defense-success"
+			class="fill-width" panel="panel"
+			leadertext="'Success:'"
+			blocktext="cardEntry.defense.success.content"
+			defaultblock="'Success effect.'"></div>
+	</div>
+	<div ng-if="cardEntry.defense.criticalSuccess.show">
+		<div fs-block-input="defense-critical-success"
+			class="fill-width" panel="panel"
+			leadertext="'Critical Success:'"
+			blocktext="cardEntry.defense.criticalSuccess.content"
+			defaultblock="'Critical success effect.'"></div>
 	</div>
 </div>

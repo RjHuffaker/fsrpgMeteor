@@ -1,16 +1,18 @@
-<div>
-  <span>
-    <button ng-mousedown="decreaseDown()"
-      ng-mouseup="mouseUp()" ng-mouseleave="mouseUp()">
-    	-
-    </button>
-  </span>
+<div style="width: 10em">
+  <button class="text-center"
+    ng-mousedown="increaseDown()"
+    ng-mouseup="mouseUp()"
+    ng-mouseleave="mouseUp()">
+    +
+  </button>
+  <br>
   <input class="text-center"
-    type="text" ng-model="numvalue" ng-change="onChange(value)">
-  <span class="input-group-btn">
-    <button ng-mousedown="increaseDown()"
-      ng-mouseup="mouseUp()" ng-mouseleave="mouseUp()">
-    	+
-    </button>
-  </span>
+    type="text" ng-model="numvalue" ng-change="onChange(value)"/>
+  <br>
+  <button class="text-center"
+    ng-mousedown="decreaseDown()"
+    ng-mouseup="mouseUp()"
+    ng-mouseleave="mouseUp()">
+  	-
+  </button>
 </div>
