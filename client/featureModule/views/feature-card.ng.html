@@ -8,99 +8,35 @@
 			</tr>
 			<tr>
 				<td colspan="2" style="vertical-align: top;">
-					<div ng-if="card.description.show" style="margin: .25em">
-						<div fs-block-input="description-input"
-							class="fill-width" panel="panel"
-							centertext="card.description.content"
-							defaultcenter="'Descriptive text.'"></div>
-						<br />
-					</div>
+					<div card-description></div>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="vertical-align: bottom;">
+				<td class="text-8" colspan="2" style="vertical-align: bottom;">
 					
-					<div ng-if="card.cardType === 'Item'" class="text-9">
-						<div ng-if="card.durability.show" class="fill-width">
-							<div fs-dropdown id="card-durability" class="fill-width text-8" stop-event>
-								<div class="fs-dropdown-toggle">
-									<strong>Durability Modifier: </strong>
-									{{card.durability.modifier}}
-								</div>
-								<div class="fs-dropdown-panel">
-									<div>
-									<div class="text-center"><strong>Durability<br />Modifier</strong></div>
-										<div fs-numpicker stop-click stop-event
-											numvalue="card.durability.modifier"
-											numvaluemin="0"
-											numvaluemax="15"
-											numdelay="200"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div ng-if="card.speed.show" class="fill-width">
-							<div fs-dropdown id="card-speed" class="fill-width text-8" stop-event>
-								<div class="fs-dropdown-toggle">
-									<strong>Speed Modifier: </strong>
-									{{card.speed.modifier}}
-								</div>
-								<div class="fs-dropdown-panel">
-									<div>
-										<div class="text-center"><strong>Speed<br />Modifier</strong></div>
-										<div fs-numpicker stop-click stop-event
-											numvalue="card.speed.modifier"
-											numvaluemin="0"
-											numvaluemax="15"
-											numdelay="200"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div ng-if="card.finesse.show" class="fill-width">
-							<div fs-dropdown id="card-finesse" class="fill-width text-8" stop-event>
-								<div class="fs-dropdown-toggle">
-									<strong>Finesse Modifier: </strong>
-									{{card.finesse.modifier}}
-								</div>
-								<div class="fs-dropdown-panel">
-									<div>
-										<div class="text-center"><strong>Finesse<br />Modifier</strong></div>
-										<div fs-numpicker stop-click stop-event
-											numvalue="card.finesse.modifier"
-											numvaluemin="0"
-											numvaluemax="15"
-											numdelay="200"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<br ng-if="card.durability.show || card.speed.show || card.finesse.show" />
-					</div>
+					<div durability-modifier></div>
 					
-					<div ng-if="card.benefit.show" class="text-8"
-						style="white-space: normal;">
-						<div fs-block-input="benefit-input"
-							class="fill-width" panel="panel"
-							leadertext="'Benefit:'"
-							blocktext="card.benefit.content"
-							defaultblock="'Benefit effect.'"></div>
-						<br />
-					</div>
-					<div ng-if="card.benefit.criticalSuccess.show" class="text-8"
-						style="white-space: normal;">
-						<div fs-block-input="critical-success-input"
-							class="fill-width" panel="panel"
-							leadertext="'Critical Success:'"
-							blocktext="card.benefit.criticalSuccess.content"
-							defaultblock="'Critical success effect.'"></div>
-						<br />
-					</div>
-					<div ng-repeat="entry in card.entries" card-entry="entry" panel="panel"></div>
+					<div speed-modifier></div>
+					
+					<div finesse-modifier></div>
+					
+					<div card-benefit></div>
+					
+					<div card-benefit-critical-success></div>
+					
+					<div block-defense></div>
+					
+					<div dodge-defense></div>
+					
+					<div alertness-defense></div>
+					
+					<div tenacity-defense></div>
+					
+					<div ng-repeat="action in card.actions" card-action="action" panel="panel"></div>
+					
 					<div card-footer></div>
-				 </td>
+					
+				</td>
 			</tr>
 		</tbody>
 	</table>

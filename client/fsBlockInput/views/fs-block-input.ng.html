@@ -1,13 +1,14 @@
-<div fs-dropdown id="id" class="fill-width" span-width="true" stop-event>
+<div fs-dropdown id="id" class="fill-width" span-width="true" 
+	open-callback="onDropOpen" stop-event>
 	<div class="fs-dropdown-toggle" stop-event>
-		<div class="text-9" ng-if="leadertext">
+		<div ng-if="leadertext">
 			<b>{{leadertext}}</b>
 			<span ng-if="!blocktext">{{defaultblock}}</span><span>{{blocktext}}</span>
 		</div>
-		<div ng-if="defaultbullet" class="text-9">
+		<div ng-if="defaultbullet">
 			&nbsp;&#8226; <span ng-if="!bullettext">{{defaultbullet}}</span><span>{{bullettext}}</span>
 		</div>
-		<div ng-if="defaultcenter" class="text-9 text-descriptive text-center">
+		<div ng-if="defaultcenter" class="text-descriptive text-center">
 			<span ng-if="!centertext">{{defaultcenter}}</span><span>{{centertext}}</span>
 		</div>
 	</div>

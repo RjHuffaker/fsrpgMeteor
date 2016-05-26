@@ -1,13 +1,19 @@
 angular.module('freedomsworn')
-	.directive('fsDropdown', ['$document', '$timeout', '$window', function($document, $timeout, $window){
+	.directive('fsDropdown', ['$document', '$parse', '$timeout', '$window', function($document, $parse, $timeout, $window){
 		return {
 			restrict: 'A',
-			scope: true,
+			scope: {
+				openCallback: '=',
+				closeCallback: '='
+			},
 			link: function(scope, element, attrs){
 				
 				var dropdownToggle;
 				
 				var dropdownPanel;
+				
+				var opencallback;
+				var closecallback;
 				
 				var showHandler = null;
 				
@@ -91,6 +97,8 @@ angular.module('freedomsworn')
 						dropdownPanel.width(contentWidth);
 					}
 					
+					if(angular.isFunction(scope.openCallback)) scope.openCallback();
+					
 					dropdownPanel.height(contentHeight);
 					dropdownPanel.addClass('show-panel');
 					toggleHideListener(true);
@@ -108,6 +116,8 @@ angular.module('freedomsworn')
 						dropdownPanel.addClass('anchor-bottom');
 						dropdownPanel.removeClass('anchor-top');
 					}
+					
+					if(angular.isFunction(scope.closeCallback)) scope.closeCallback();
 					
 					dropdownPanel.height(0);
 					dropdownPanel.removeClass('show-panel')

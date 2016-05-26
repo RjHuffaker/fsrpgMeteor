@@ -63,8 +63,7 @@ ul.card-list li div {
 .card-icon {
 	font-size: 1em;
 	cursor: pointer;
-	position: absolute;
-	left: -.2em;
+	margin-left: -.5em;
 }
 
 .green-icon {

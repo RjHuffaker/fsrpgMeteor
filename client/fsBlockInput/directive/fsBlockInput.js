@@ -28,6 +28,10 @@ angular.module('freedomsworn')
 					scope.blocktext = element.find('textarea')[0].value;
 				};
 				
+				scope.onDropOpen = function(){
+					element.find('textarea')[0].focus(); 
+				};
+				
 			}
 		};
 	}]);

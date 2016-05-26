@@ -1,6 +1,6 @@
-<div ng-if="cardEntry.effect.show && cardEntry.usage !== 'Defense'"
+<div ng-if="cardAction.effect.show"
 	style="white-space: normal;" class="text-8">
-	<div fs-dropdown stop-event>
+	<div fs-dropdown style="position: absolute" stop-event>
 		<div class="fs-dropdown-toggle card-icon">
 			(+)
 		</div>
@@ -9,23 +9,23 @@
 				<ul>
 					<li><label>
 						<input type="radio" value="none"
-							ng-model="cardEntry.effect.list.listType"> None
+							ng-model="cardAction.effect.list.listType"> None
 					</label></li>
 					<li><label>
 						<input type="radio" value="skillCheck"
-							ng-model="cardEntry.effect.list.listType"> Skill Check
+							ng-model="cardAction.effect.list.listType"> Skill Check
 					</label></li>
 					<li><label>
 						<input type="radio" value="bullets2"
-							ng-model="cardEntry.effect.list.listType"> Bullet List (2)
+							ng-model="cardAction.effect.list.listType"> Bullet List (2)
 					</label></li>
 					<li><label>
 						<input type="radio" value="bullets3"
-							ng-model="cardEntry.effect.list.listType"> Bullet List (3)
+							ng-model="cardAction.effect.list.listType"> Bullet List (3)
 					</label></li>
 					<li><label>
 						<input type="radio" value="bullets4"
-							ng-model="cardEntry.effect.list.listType"> Bullet List (4)
+							ng-model="cardAction.effect.list.listType"> Bullet List (4)
 					</label></li>
 				</ul>
 			</div>
@@ -38,57 +38,57 @@
 		blocktext="card.effect.content"
 		defaultblock="'Effect details.'"></div>
 	
-	<div ng-if="cardEntry.effect.list.listType !== 'none'">
+	<div ng-if="cardAction.effect.list.listType !== 'none'">
 		
-		<ul class="card-list" ng-if="cardEntry.effect.list.listType === 'bullets2' 
-				|| cardEntry.effect.list.listType === 'bullets3'
-				|| cardEntry.effect.list.listType === 'bullets4'">
+		<ul class="card-list" ng-if="cardAction.effect.list.listType === 'bullets2' 
+				|| cardAction.effect.list.listType === 'bullets3'
+				|| cardAction.effect.list.listType === 'bullets4'">
 			<li>
 				<div fs-block-input="effect-list-1"
 					class="fill-width" panel="panel"
-					bullettext="cardEntry.effect.list.items[0]"
+					bullettext="cardAction.effect.list.items[0]"
 					defaultbullet="'List item 1.'"></div>
 			</li>
 			<li>
 				<div fs-block-input="effect-list-2"
 					class="fill-width" panel="panel"
-					bullettext="cardEntry.effect.list.items[1]"
+					bullettext="cardAction.effect.list.items[1]"
 					defaultbullet="'List item 2.'"></div>
 			</li>
-			<li ng-if="cardEntry.effect.list.listType === 'bullets3'
-				|| cardEntry.effect.list.listType === 'bullets4'">
+			<li ng-if="cardAction.effect.list.listType === 'bullets3'
+				|| cardAction.effect.list.listType === 'bullets4'">
 				<div fs-block-input="effect-list-3"
 					class="fill-width" panel="panel"
-					bullettext="cardEntry.effect.list.items[2]"
+					bullettext="cardAction.effect.list.items[2]"
 					defaultbullet="'List item 3.'"></div>
 			</li>
-			<li class="row" ng-if="cardEntry.effect.list.listType === 'bullets4'">
+			<li class="row" ng-if="cardAction.effect.list.listType === 'bullets4'">
 				<div fs-block-input="effect-list-4"
 					class="fill-width" panel="panel"
-					bullettext="cardEntry.effect.list.items[3]"
+					bullettext="cardAction.effect.list.items[3]"
 					defaultbullet="'List item 4.'"></div>
 			</li>
 		</ul>
-		<ul class="card-list" ng-show="cardEntry.effect.list.listType === 'skillCheck'">
+		<ul class="card-list" ng-show="cardAction.effect.list.listType === 'skillCheck'">
 			<li>
 				<div fs-block-input="highest-result"
 					class="fill-width" panel="panel"
 					leadertext="'12 or higher:'"
-					blocktext="cardEntry.effect.list.items[0]"
+					blocktext="cardAction.effect.list.items[0]"
 					defaultblock="'Highest result.'"></div>
 			</li>
 			<li>
 				<div fs-block-input="moderate-result"
 					class="fill-width" panel="panel"
 					leadertext="'11 to 7:'"
-					blocktext="cardEntry.effect.list.items[1]"
+					blocktext="cardAction.effect.list.items[1]"
 					defaultblock="'Moderate result.'"></div>
 			</li>
 			<li>
 				<div fs-block-input="effect-list-4"
 					class="fill-width" panel="panel"
 					leadertext="'11 to 7:'"
-					blocktext="cardEntry.effect.list.items[2]"
+					blocktext="cardAction.effect.list.items[2]"
 					defaultblock="'Moderate result.'"></div>
 			</li>
 		</ul>

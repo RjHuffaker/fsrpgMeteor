@@ -1,4 +1,4 @@
-<div ng-if="cardEntry.attack.show && cardEntry.usage !== 'Defense'"
+<div ng-if="cardAction.attack.show"
 	style="white-space: normal;" class="text-8">
 	<div fs-dropdown id="attack-type" stop-event>
 		<div class="fs-dropdown-toggle">
@@ -10,23 +10,23 @@
 					<li>Attack Type</li>
 					<li ng-repeat="attackType in dataSrvc.attackTypes"><label>
 						<input type="radio" value="{{attackType}}"
-							ng-model="cardEntry.attack.attackType">
+							ng-model="cardAction.attack.attackType">
 						{{attackType}}
 					</label></li>
 				</ul>
 				<ul style="width: 45%">
 					<li>Attack Options</li>
-					<li ng-show="cardEntry.attack.attackType === 'Melee'"><label>
-						<input type="checkbox" ng-model="cardEntry.reflexive"> Reflexive
+					<li ng-show="cardAction.attack.attackType === 'Melee'"><label>
+						<input type="checkbox" ng-model="cardAction.reflexive"> Reflexive
 					</label></li>
-					<li ng-if="cardEntry.attack.attackType === 'Ranged'"><label>
-						<input type="checkbox" ng-model="cardEntry.thrown"> Thrown
-					</label></li>
-					<li><label>
-						<input type="checkbox" ng-model="cardEntry.attack.success.show"> Success
+					<li ng-if="cardAction.attack.attackType === 'Ranged'"><label>
+						<input type="checkbox" ng-model="cardAction.thrown"> Thrown
 					</label></li>
 					<li><label>
-						<input type="checkbox" ng-model="cardEntry.attack.criticalSuccess.show"> Critical Success
+						<input type="checkbox" ng-model="cardAction.attack.success.show"> Success
+					</label></li>
+					<li><label>
+						<input type="checkbox" ng-model="cardAction.attack.criticalSuccess.show"> Critical Success
 					</label></li>
 				</ul>
 			</div>
@@ -35,22 +35,22 @@
 	
 	<div fs-dropdown id="attack-dice-a" stop-event>
 		<div class="fs-dropdown-toggle">
-			{{cardEntry.attack.dice_a}}
-			<span ng-hide="cardEntry.attack.dice_a">1d__</span>
+			{{cardAction.attack.dice_a}}
+			<span ng-hide="cardAction.attack.dice_a">1d__</span>
 		</div>
 		<div class="fs-dropdown-panel">
 			<div>
 				<ul style="width: 45%">
 					<li ng-repeat="dice in dataSrvc.dice"><label>
 						<input type="radio" value="{{dice}}"
-							ng-model="cardEntry.attack.dice_a">
+							ng-model="cardAction.attack.dice_a">
 						{{dice}}
 					</label></li>
 				</ul>
 				<ul style="width: 45%">
 					<li ng-repeat="ability in dataSrvc.abilities"><label>
 						<input type="radio" value="{{ability}}"
-							ng-model="cardEntry.attack.dice_a">
+							ng-model="cardAction.attack.dice_a">
 						{{ability}}
 					</label></li>
 				</ul>
@@ -60,22 +60,22 @@
 	+
 	<div fs-dropdown id="attack-dice-b" stop-event>
 		<div class="fs-dropdown-toggle">
-			{{cardEntry.attack.dice_b}}
-			<span ng-hide="cardEntry.attack.dice_b">1d__</span>
+			{{cardAction.attack.dice_b}}
+			<span ng-hide="cardAction.attack.dice_b">1d__</span>
 		</div>
 		<div class="fs-dropdown-panel">
 			<div>
 				<ul style="width: 45%">
 					<li ng-repeat="dice in dataSrvc.dice"><label>
 						<input type="radio" value="{{dice}}"
-							ng-model="cardEntry.attack.dice_b">
+							ng-model="cardAction.attack.dice_b">
 						{{dice}}
 					</label></li>
 				</ul>
 				<ul style="width: 45%">
 					<li ng-repeat="ability in dataSrvc.abilities"><label>
 						<input type="radio" value="{{ability}}"
-							ng-model="cardEntry.attack.dice_b">
+							ng-model="cardAction.attack.dice_b">
 						{{ability}}
 					</label></li>
 				</ul>
@@ -85,8 +85,8 @@
 	vs
 	<div fs-dropdown id="attack-dice-b" stop-event>
 		<div class="fs-dropdown-toggle">
-			{{cardEntry.attack.versus}}
-			<span ng-hide="cardEntry.attack.versus">[Defense]</span>
+			{{cardAction.attack.versus}}
+			<span ng-hide="cardAction.attack.versus">[Defense]</span>
 		</div>
 		<div class="fs-dropdown-panel">
 			<div>
@@ -94,21 +94,21 @@
 					<li role="presentation" class="dropdown-header">Defense Attacked</li>
 					<li ng-repeat="defenseType in dataSrvc.defenseTypes"><label>
 						<input type="radio" value="{{defenseType}}"
-							ng-model="cardEntry.attack.versus">
+							ng-model="cardAction.attack.versus">
 						{{defenseType}}
 					</label></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div ng-if="cardEntry.attack.success.show">
+	<div ng-if="cardAction.attack.success.show">
 		<div fs-block-input="success-content"
 			class="fill-width" panel="panel"
 			leadertext="'Success:'"
 			blocktext="card.attack.success.content"
 			defaultblock="'Success details.'"></div>
 	</div>
-	<div ng-if="cardEntry.attack.criticalSuccess.show">
+	<div ng-if="cardAction.attack.criticalSuccess.show">
 		<div fs-block-input="success-content"
 			class="fill-width" panel="panel"
 			leadertext="'Critical Success:'"

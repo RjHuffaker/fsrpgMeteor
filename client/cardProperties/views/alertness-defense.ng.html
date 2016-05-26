@@ -1,0 +1,73 @@
+<div ng-if="card.defense.alertness.show" class="fill-width">
+	<strong>Alertness Defense: </strong>
+	
+	<div fs-dropdown id="alertness-defense-dice-a" stop-event>
+		<div class="fs-dropdown-toggle">
+			{{card.defense.alertness.dice_a}}
+			<span ng-hide="card.defense.alertness.dice_a">1d__</span>
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul style="width: 30%" stop-click>
+					<li role="presentation" class="dropdown-header"><strong>Fixed Die</Strong></li>
+					<li ng-repeat="dice in dataSrvc.dice"><label>
+						<input type="radio" value="{{dice}}"
+							ng-model="card.defense.alertness.dice_a">
+						{{dice}}
+					</label></li>
+				</ul>
+				<ul style="width: 30%" stop-click>
+					<li role="presentation" class="dropdown-header"><strong>Physical</Strong></li>
+					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index < 4"><label>
+						<input type="radio" value="{{ability}}"
+							ng-model="card.defense.alertness.dice_a">
+						{{ability}}
+					</label></li>
+				</ul>
+				<ul style="width: 30%" stop-click>
+					<li role="presentation" class="dropdown-header"><strong>Mental</Strong></li>
+					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index > 3"><label>
+						<input type="radio" value="{{ability}}"
+							ng-model="card.defense.alertness.dice_a">
+						{{ability}}
+					</label></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	+
+	<div fs-dropdown id="alertness-defense-dice-b" stop-event>
+		<div class="fs-dropdown-toggle">
+			{{card.defense.alertness.dice_b}}
+			<span ng-hide="card.defense.alertness.dice_b">1d__</span>
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul stop-click>
+					<li role="presentation" class="dropdown-header"><strong>Fixed Die</Strong></li>
+					<li ng-repeat="dice in dataSrvc.dice"><label>
+						<input type="radio" value="{{dice}}"
+							ng-model="card.defense.alertness.dice_b">
+						{{dice}}
+					</label></li>
+				</ul>
+				<ul stop-click>
+					<li role="presentation" class="dropdown-header"><strong>Physical</Strong></li>
+					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index < 4"><label>
+						<input type="radio" value="{{ability}}"
+							ng-model="card.defense.alertness.dice_b">
+						{{ability}}
+					</label></li>
+				</ul>
+				<ul stop-click>
+					<li role="presentation" class="dropdown-header"><strong>Mental</Strong></li>
+					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index > 3"><label>
+						<input type="radio" value="{{ability}}"
+							ng-model="card.defense.alertness.dice_b">
+						{{ability}}
+					</label></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

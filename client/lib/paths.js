@@ -1,16 +1,13 @@
 paths = {
 	views: 'client/views/',
-	cardEntryModule: {
-		views: 'client/cardEntryModule/views/'
+	cardAction: {
+		views: 'client/cardAction/views/'
 	},
-	cardFooterModule: {
-		views: 'client/cardFooterModule/views/'
+	cardFooter: {
+		views: 'client/cardFooter/views/'
 	},
-	cardHeaderModule: {
-		views: 'client/cardHeaderModule/views/'
-	},
-	cardModule: {
-		views: 'client/cardModule/views/'
+	cardHeader: {
+		views: 'client/cardHeader/views/'
 	},
 	diceModule: {
 		views: 'client/diceModule/views/'
