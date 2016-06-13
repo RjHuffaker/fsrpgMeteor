@@ -11,24 +11,26 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
       
       .state('pcDeckList', {
         url: '/pcDecks',
-        templateUrl: paths.pcModule.views+'pc-deck.ng.html',
-        controller: 'PcDeckListCtrl'
+        templateUrl: paths.pcModule.views+'pc-deck-list.ng.html'
       })
       .state('pcDeckDetails', {
         url: '/pcDecks/:pcDeckId',
-        templateUrl: paths.pcModule.views+'pc-deck.ng.html',
-        controller: 'PcDeckDetailsCtrl'
+        templateUrl: paths.pcModule.views+'pc-deck-details.ng.html'
+      })
+      
+      .state('newFeatureDeck', {
+        url: '/newFeatureDeck',
+        templateUrl: paths.featureModule.views+'new-feature-options.ng.html'
       })
       
       .state('featureDeckList', {
         url: '/featureDecks',
-        templateUrl: paths.featureModule.views+'feature-deck.ng.html',
-        controller: 'FeatureDeckListCtrl'
+        templateUrl: paths.featureModule.views+'feature-deck-list.ng.html'
       })
+      
       .state('featureDeckDetails', {
         url: '/featureDecks/:featureDeckId',
-        templateUrl: paths.featureModule.views+'feature-deck.ng.html',
-        controller: 'FeatureDeckDetailsCtrl'
+        templateUrl: paths.featureModule.views+'feature-deck.ng.html'
       })
       
       .state('npcDeck', {

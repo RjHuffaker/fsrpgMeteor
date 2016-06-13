@@ -49,10 +49,6 @@ angular.module("freedomsworn")
       );
 		};
 		
-    $scope.editPc = function(){
-      pcBread.edit();
-    };
-    
     $scope.editFeatureDeck = function(){
       featureBread.edit();
     };

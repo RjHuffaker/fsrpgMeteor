@@ -54,8 +54,6 @@ angular.module('freedomsworn')
 						var modal_card = scope.modalCard;
 						var modal_content = angular.element(element.find('.fs-modal-content')[0]).clone(true);
 						
-						console.log(modal_content);
-						
 						return {
 							toggle_x_coord: toggle_x_coord,
 							toggle_y_coord: toggle_y_coord,

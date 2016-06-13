@@ -7,10 +7,10 @@
 		<div class="fs-dropdown-panel">
 			<div>
 				<ul class="card-menu-list">
-					<li ng-click="editPc(breadSrvc.deck);"><label>
+					<li ng-click="pcBread.edit(deck);"><label>
 						Save Character
 					</label></li>
-					<li ng-click="editPc(breadSrvc.deck); exitPc(breadSrvc.deck);"><label>
+					<li ng-click="pcBread.edit(deck); exitPc();"><label>
 						Save & Exit
 					</label></li>
 					<li ng-click="exitPc();"><label>
@@ -30,7 +30,7 @@
 				</td>
 				<td colspan="3">
 					<input id="name" class="fill-width card-input" type="text"
-						 ng-model="breadSrvc.deck.name" stop-event/>
+						 ng-model="deck.name" stop-event/>
 				</td>
 			</tr>
 
@@ -40,7 +40,7 @@
 				</td>
 				<td width="30%">
 					<div id="race">
-						{{breadSrvc.deck.race}}
+						{{deck.race}}
 					</div>
 				</td>
 				<td width="15%">
@@ -48,7 +48,7 @@
 				</td>
 				<td width="30%">
 					<div id="race">
-						{{breadSrvc.deck.sex}}
+						{{deck.sex}}
 					</div>
 				</td>
 			</tr>
@@ -59,13 +59,13 @@
 		<tbody>
 			<tr height="15%">
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[0]"></div>
+					<div ability="deck.abilities[0]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>STR</strong>ength
 				</td>
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[1]"></div>
+					<div ability="deck.abilities[1]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>PHY</strong>sique
@@ -79,21 +79,21 @@
 				</td>
 				<td colspan="2" class="text-center">
 					<small>
-						{{breadSrvc.deck.block}}
+						{{deck.block}}
 					</small>
 				</td>
 			</tr>
 
 			<tr height="15%">
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[2]"></div>
+					<div ability="deck.abilities[2]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>FLE</strong>xibility
 				</td>
 				
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[3]"></div>
+					<div ability="deck.abilities[3]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>DEX</strong>terity
@@ -107,20 +107,20 @@
 				</td>
 				<td colspan="2" class="text-center">
 					<small>
-						{{breadSrvc.deck.dodge}}
+						{{deck.dodge}}
 					</small>
 				</td>
 			</tr>
 
 			<tr height="15%">
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[4]"></div>
+					<div ability="deck.abilities[4]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>ACU</strong>ity
 				</td>
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[5]"></div>
+					<div ability="deck.abilities[5]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>INT</strong>ellect
@@ -134,20 +134,20 @@
 				</td>
 				<td colspan="2" class="text-center">
 					<small>
-						{{breadSrvc.deck.alertness}}
+						{{deck.alertness}}
 					</small>
 				</td>
 			</tr>
 
 			<tr height="15%">
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[6]"></div>
+					<div ability="deck.abilities[6]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>WIS</strong>dom
 				</td>
 				<td width="15%">
-					<div ability="breadSrvc.deck.abilities[7]"></div>
+					<div ability="deck.abilities[7]" deck="deck"></div>
 				</td>
 				<td width="35%" class="text-9">
 					<strong>CHA</strong>risma
@@ -161,7 +161,7 @@
 				</td>
 				<td colspan="2" class="text-center">
 					<small>
-						{{breadSrvc.deck.tenacity}}
+						{{deck.tenacity}}
 					</small>
 				</td>
 			</tr>

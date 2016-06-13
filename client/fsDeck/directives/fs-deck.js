@@ -6,7 +6,7 @@ angular.module('freedomsworn')
 		function($rootScope, $window, PanelUtils, DeckUtils, movePanel){
 			return {
 				restrict: 'A',
-				scope: { breadSrvc: '=' },
+				scope: { deck: '=fsDeck' },
 				templateUrl: paths.fsDeck.views+'fs-deck.ng.html',
 				link: function(scope, element, attrs) {
 					
@@ -42,7 +42,7 @@ angular.module('freedomsworn')
 					};
 					
 					var setDeckWidth = function(){
-						var deckWidth = DeckUtils.getDeckWidth(scope.breadSrvc.deck.cardList);
+						var deckWidth = DeckUtils.getDeckWidth(scope.deck.cardList);
 						element.css({
 							'width': deckWidth+'em'
 						});
@@ -69,10 +69,10 @@ angular.module('freedomsworn')
 					var onMoveCard = function(event, object){
 						
 						var _deckOffset = element.offset();
-						var _deckWidth = DeckUtils.getDeckWidth(scope.breadSrvc.deck.cardList);
+						var _deckWidth = DeckUtils.getDeckWidth(scope.deck.cardList);
 						var _deckLeftEdge = _deckOffset.left;
 						var _deckRightEdge = convertEm(_deckWidth + 3);
-						var _deck = scope.breadSrvc.deck.cardList;
+						var _deck = scope.deck.cardList;
 						var _panel = object.panel;
 						
 						var _panelStart = PanelUtils.getClusterStart(_deck, _panel._id);

@@ -1,28 +1,17 @@
 angular.module('freedomsworn')
-	.directive('pcDeckOptions', function(){
+	.directive('cardPc1', ['$location', 'pcBread', function($location, pcBread){
 		return {
 			restrict: 'A',
-			templateUrl: paths.pcModule.views+'pc-deck-options.ng.html'
+			templateUrl: paths.pcModule.views+'card-pc-1.ng.html',
+			link: function(scope, element, attrs) {
+				scope.pcBread = pcBread;
+				
+				scope.exitPc = function(){
+					$location.path('/pcDecks');
+				};
+			}
 		};
-	})
-	.directive('pcSummary', function(){
-		return {
-			restrict: 'A',
-			templateUrl: paths.pcModule.views+'pc-summary.ng.html'
-		};
-	})
-	.directive('pcOptions', function(){
-		return {
-			restrict: 'A',
-			templateUrl: paths.pcModule.views+'pc-options.ng.html'
-		};
-	})
-	.directive('cardPc1', function(){
-		return {
-			restrict: 'A',
-			templateUrl: paths.pcModule.views+'card-pc-1.ng.html'
-		};
-	})
+	}])
 	.directive('cardPc2', function(){
 		return {
 			restrict: 'A',

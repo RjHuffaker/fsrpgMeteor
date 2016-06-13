@@ -9,7 +9,7 @@ FeatureDecks.allow({
     return true;
     // return userId && featureDeck.owner === userId;
   },
-  remove: function(userId, featureDeck){
+  remove: function(featureDeck){
     return true;
     // return userId && featureDeck.owner === userId;
   }

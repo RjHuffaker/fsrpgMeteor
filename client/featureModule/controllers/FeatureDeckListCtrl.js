@@ -1,9 +1,26 @@
 angular.module("freedomsworn")
-	.controller("FeatureDeckListCtrl", ['$scope', '$rootScope', '$meteor', '$stateParams', '$location', 'featureBread',
-		function($scope, $rootScope, $meteor, $stateParams, $location, featureBread){
+	.controller("FeatureDeckListCtrl",
+		function($scope, $rootScope, $reactive){
+			'ngInject';
 			
-			featureBread.browse();
+			$reactive(this).attach($scope);
 			
-			$scope.featureBread = featureBread;
+			this.subscribe('featureDecks');
 			
-		}]);
+			this.currentRow ='';
+			
+			this.helpers({
+				deckList(){
+					return FeatureDecks.find({});
+				}
+			});
+			
+			this.selectRow = function(row){
+				this.currentRow = row;
+			};
+			
+			this.deleteDeck = function(deck){
+				FeatureDecks.remove(deck._id);
+			};
+			
+		});

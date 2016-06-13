@@ -1,7 +1,7 @@
 <div ng-mouseleave="true">
 	<ul>
-		<li ng-repeat="panel in breadSrvc.deck.cardList track by $index"
-			fs-panel="panel" deck="breadSrvc.deck" class="fs-panel"
+		<li ng-repeat="panel in deck.cardList track by $index"
+			fs-panel="panel" deck="deck" class="fs-panel"
 			ng-class="{'dragging': panel.dragging}"
 			ng-style="{'z-index': panel.z_coord, 'height': panel.y_dim+'em', 'width': panel.x_dim+'em'}"
 			ng-mousemove="true" ng-click="true">

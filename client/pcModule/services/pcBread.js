@@ -3,42 +3,48 @@
 angular.module('freedomsworn').factory('pcBread', ['$rootScope', '$meteor', '$location', 'pcDefault', 'DeckUtils',
 	function($rootScope, $meteor, $location, pcDefault, DeckUtils){
 		
-		var pcDeckList = $meteor.collection(PcDecks, true).subscribe('pcDecks');
-		
-		var service = {
-			deck: {}
-		};
+		var service = {};
 		
 		service.browse = function(){
-			service.deck.cardList = pcDeckList;
-			service.deck.deckSize = pcDeckList.length;
-			DeckUtils.setCardList(service.deck.cardList);
+			return PcDecks.find({});
 		};
 		
-		service.read = function(pcDeckId){
-			if(pcDeckId === 'new'){
-				service.deck = pcDefault;
+		service.read = function(deckId){
+			if(deckId === 'new'){
+				return pcDefault;
 			} else {
-				service.deck = $meteor.object(PcDecks, pcDeckId, false);
+				return $meteor.object(PcDecks, deckId, false);
 			}
 		};
 		
-		service.edit = function(){
-			if(service.deck._id){
-				service.deck.save();
+		service.edit = function(deck){
+			if(deck._id){
+				deck.save();
 			} else if($rootScope.currentUser){
-				service.deck.owner = $rootScope.currentUser._id;
-				pcDeckList.push(service.deck);
+				deck.owner = $rootScope.currentUser._id;
+				PcDecks.insert(deck);
+			} else {
+				console.log('Error: Not Logged In');
 			}
 		};
 		
 		service.add = function(){
-			service.deck = pcDefault;
+			var newDeck = pcDefault;
+			
+			newDeck._id = new Meteor.Collection.ObjectID().toString();
+			newDeck.owner = $rootScope.currentUser._id;
+			
+			DeckUtils.setCardList(newDeck.cardList);
+			PcDecks.insert(newDeck);
+			
+			console.log(newDeck);
+			
+			$location.path('/pcDecks/'+newDeck._id);
+			
 		};
 		
-		service.delete = function(pcDeck){
-			pcDeckList.splice(pcDeckList.indexOf(pcDeck), 1);
-			service.deck.deckSize = pcDeckList.length;
+		service.delete = function(deckId){
+			PcDecks.remove(deckId);
 		};
 		
 		return service;

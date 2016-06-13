@@ -4,7 +4,7 @@
 angular.module('freedomsworn').factory('pcDefault', [
 		function(){
 			return {
-				name: 'George',
+				name: 'Randolph',
 				sex: '',
 				race: 'Weolda',
 				abilities: [
@@ -78,7 +78,7 @@ angular.module('freedomsworn').factory('pcDefault', [
 						_id: 'pc1',
 						panelType: 'pc1',
 						deckType: 'pc',
-						deckSize: 3,
+						deckSize: 4,
 						above: {
 							adjacent: null,
 							overlap: null
@@ -104,7 +104,7 @@ angular.module('freedomsworn').factory('pcDefault', [
 						_id: 'pc2',
 						panelType: 'pc2',
 						deckType: 'pc',
-						deckSize: 3,
+						deckSize: 4,
 						above: {
 							adjacent: null,
 							overlap: null
@@ -130,7 +130,7 @@ angular.module('freedomsworn').factory('pcDefault', [
 						_id: 'pc3',
 						panelType: 'pc3',
 						deckType: 'pc',
-						deckSize: 3,
+						deckSize: 4,
 						above: {
 							adjacent: null,
 							overlap: null
@@ -144,13 +144,43 @@ angular.module('freedomsworn').factory('pcDefault', [
 							overlap: null
 						},
 						right: {
-							adjacent: null,
+							adjacent: 'trait1',
 							overlap: null
 						},
 						x_coord: 30,
 						y_coord: 0,
 						x_dim: 15,
 						y_dim: 21
+					},
+					{
+						_id: 'trait1',
+						panelType: 'featureCard',
+						deckType: 'pc',
+						deckSize: 4,
+						above: {
+							adjacent: null,
+							overlap: null
+						},
+						below: {
+							adjacent: null,
+							overlap: null
+						},
+						left: {
+							adjacent: 'pc3',
+							overlap: null
+						},
+						right: {
+							adjacent: null,
+							overlap: null
+						},
+						x_coord: 45,
+						y_coord: 0,
+						x_dim: 15,
+						y_dim: 21,
+						cardData: {
+							name: 'Super Card!!!',
+							cardType: 'Trait'
+						}
 					}
 				]
 			};

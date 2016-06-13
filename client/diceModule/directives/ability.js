@@ -5,7 +5,7 @@ angular.module('freedomsworn')
 		return {
 			restrict: 'A',
 			templateUrl: paths.diceModule.views+'ability.ng.html',
-			scope: {ability: '='},
+			scope: { ability: '=', deck: '=' },
 			link: function(scope, element, attrs){
 				scope.abilityDice = abilityDice;
 			}

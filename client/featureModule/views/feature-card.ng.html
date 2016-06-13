@@ -3,12 +3,16 @@
 		<tbody>
 			<tr>
 				<td style="vertical-align: top;">
+					
 					<div card-header></div>
+					
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" style="vertical-align: top;">
+				<td class="text-8" style="vertical-align: top;">
+					
 					<div card-description></div>
+					
 				</td>
 			</tr>
 			<tr>
@@ -41,9 +45,10 @@
 		</tbody>
 	</table>
 </div>
+
 <div style="position: absolute; top: 20em; left: 14em; width: 1em;" class="text-center">
 	<a data-ng-click="$parent.panel.locked = !$parent.panel.locked;" stop-event>
-		<i ng-hide="$parent.panel.locked" class="glyphicon glyphicon-lock grey-icon"></i>
-		<i ng-show="$parent.panel.locked" class="glyphicon glyphicon-lock blue-icon"></i>
+		<span ng-hide="$parent.panel.locked" class="grey-icon">U</span>
+		<span ng-show="$parent.panel.locked" class="blue-icon">L</span>
 	</a>
 </div>

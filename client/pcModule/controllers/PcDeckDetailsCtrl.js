@@ -1,6 +1,7 @@
 angular.module("freedomsworn")
-	.controller("PcDeckDetailsCtrl", ['$scope', '$rootScope', '$meteor', '$stateParams', '$location', 'CoreVars', 'pcBread', 'abilityDice', 'factorDefenses', 'factorStats', 'PcFeature',
-		function($scope, $rootScope, $meteor, $stateParams, $location, CoreVars, pcBread, abilityDice, factorDefenses, factorStats, PcFeature){
+	.controller("PcDeckDetailsCtrl", 
+		function($scope, $meteor, $reactive, $stateParams, CoreVars, pcBread, abilityDice, PcFeature, factorStats){
+			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
 			
@@ -8,56 +9,40 @@ angular.module("freedomsworn")
 			
 			$scope.abilityDice = abilityDice;
 			
-			$scope.pcBread.read($stateParams.pcDeckId);
+			$reactive(this).attach($scope);
 			
-			$rootScope.$on('abilityDice:chooseDie', function(event, ability){
-				switch(ability){
-					case 0:
-					case 1:
-						factorDefenses.factorBlock(pcBread.deck);
-						factorStats.factorHealth(pcBread.deck);
-						factorStats.factorStamina(pcBread.deck);
-						factorStats.factorCarryingCapacity(pcBread.deck);
-						break;
-					case 2:
-					case 3:
-						factorDefenses.factorDodge(pcBread.deck);
-						break;
-					case 4:
-					case 5:
-						factorDefenses.factorAlertness(pcBread.deck);
-						break;
-					case 6:
-					case 7:
-						factorDefenses.factorTenacity(pcBread.deck);
-						break;
+			this.subscribe('pcDecks');
+			
+			this.helpers({
+				pcDeck(){
+					return $meteor.object(PcDecks, $stateParams.pcDeckId, false);
 				}
 			});
 			
 			$scope.$watch('CoreVars.EXP', function(newVal, oldVal){
 				if(newVal !== oldVal){
 					CoreVars.EXP = parseInt(newVal);
-					pcBread.deck.experience = parseInt(newVal);
+					$scope.vm.pcDeck.experience = parseInt(newVal);
 				}
 			});
 			
-			$scope.$watch('pcBread.deck.experience', function(newVal, oldVal){
+			$scope.$watch('vm.pcDeck.experience', function(newVal, oldVal){
 				if(newVal !== oldVal){
-					factorStats.factorExperience(pcBread.deck);
+					factorStats.factorExperience($scope.vm.pcDeck);
 					if(newVal !== CoreVars.EXP){
 						CoreVars.EXP = newVal;
 					}
 				}
 			});
 			
-			$scope.$watch('pcBread.deck.level', function(newVal, oldVal){
+			$scope.$watch('vm.pcDeck.level', function(newVal, oldVal){
 				if(newVal !== oldVal){
-					factorStats.factorHealth(pcBread.deck);
-					factorStats.factorStamina(pcBread.deck);
-					PcFeature.factorTraitLimit(pcBread.deck);
-					PcFeature.factorFeatLimit(pcBread.deck);
-					PcFeature.factorAugmentLimit(pcBread.deck);
+					factorStats.factorHealth($scope.vm.pcDeck);
+					factorStats.factorStamina($scope.vm.pcDeck);
+					PcFeature.factorTraitLimit($scope.vm.pcDeck);
+					PcFeature.factorFeatLimit($scope.vm.pcDeck);
+					PcFeature.factorAugmentLimit($scope.vm.pcDeck);
 				}
 			});
 			
-		}]);
+		});

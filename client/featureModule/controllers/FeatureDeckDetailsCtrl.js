@@ -1,13 +1,22 @@
 angular.module("freedomsworn")
-	.controller("FeatureDeckDetailsCtrl", ['$scope', '$meteor', '$stateParams', '$location', 'CoreVars', 'dataSrvc', 'featureBread',
-		function($scope, $meteor, $stateParams, $location, CoreVars, dataSrvc, featureBread){
+	.controller("FeatureDeckDetailsCtrl",
+		function($scope, $meteor, $stateParams, CoreVars, dataSrvc){
+			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
 			
 			$scope.dataSrvc = dataSrvc;
 			
-			featureBread.read($stateParams.featureDeckId);
+			$reactive(this).attach($scope);
 			
-			$scope.featureBread = featureBread;
+			this.subscribe('featureDecks');
 			
-		}]);
+			this.helpers({
+				featureDeck(){
+					return FeatureDecks.find({});
+				}
+			});
+			
+			
+			
+		});

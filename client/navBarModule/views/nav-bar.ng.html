@@ -1,51 +1,9 @@
 <div ng-controller="NavCtrl">
 	<a href="/" class="text-16">Freedomsworn</a>
 	-
-	<div fs-dropdown id="pcsDropdown">
-		<div class="fs-dropdown-toggle text-12">
-			PCs
-		</div>
-		<div class="fs-dropdown-panel">
-			<div>
-				<ul>
-					<li>
-						<a href="/pcDecks">Browse PCs</a>
-					</li>
-					<li>
-						<a href="/pcDecks/new">New PC</a>
-					</li>
-					<li ng-if="checkCurrentPath('/pcDecks/')">
-						<a href="" ng-click="editPc()">Save PC</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<a href="/pcDecks" class="text-14">PCs</a>
 	-
-	<div fs-dropdown id="cardsDropdown">
-		<div class="fs-dropdown-toggle text-12">
-			Cards
-		</div>
-		<div class="fs-dropdown-panel">
-			<div>
-				<ul>
-					<li>
-						<a href="/featureDecks">Browse Feature Decks</a>
-					</li>
-					<li ng-show="$root.currentUser">
-						<div href="#" fs-modal-toggle>New Feature Deck
-							<div class="fs-modal-content">
-								<div new-feature-options></div>
-							</div>
-						</div>
-					</li>
-					<li ng-if="checkCurrentPath('/featureDecks/')">
-						<a href="" ng-click="editFeatureDeck()">Save Feature Deck</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<a href="/featureDecks" class="text-14">Cards</a>
 	-
 	<div fs-dropdown id="userDropdown" ng-show="$root.currentUser">
 		<div class="fs-dropdown-toggle text-12">

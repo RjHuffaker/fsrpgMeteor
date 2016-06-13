@@ -11,7 +11,12 @@ angular.module('freedomsworn')
 					
 					scope.dataSrvc = dataSrvc;
 					
-					var modal = {};
+					scope.overlayToggle = function(){
+						
+						if (!angular.element(element.find('.modal-overlay')[0]).hasClass('ng-animate')){
+							modalSrvc.current.show = !modalSrvc.current.show;
+						}
+					};
 					
 					var fsModalHandler = null;
 					var modalHeightHandler = null;
@@ -62,35 +67,34 @@ angular.module('freedomsworn')
 					
 					var setHeight = function(newVal, oldVal){
 						if(!newVal) return;
-						switch(modal.modal_y_align){
+						switch(modalSrvc.current.modal_y_align){
 							case "bottom":
-								scope.modal_y_coord = modal.toggle_y_coord + modal.toggle_y_dim;
+								scope.modal_y_coord = modalSrvc.current.toggle_y_coord + modalSrvc.current.toggle_y_dim;
 								break;
 							case "top":
-								scope.modal_y_coord = modal.toggle_y_coord - newVal;
+								scope.modal_y_coord = modalSrvc.current.toggle_y_coord - newVal;
 								break;
 							}
 					};
 					
 					var setWidth = function(newVal, oldVal){
 						if(!newVal) return;
-						switch(modal.modal_x_align){
+						switch(modalSrvc.current.modal_x_align){
 							case "left":
-								scope.modal_x_coord = modal.toggle_x_coord;
+								scope.modal_x_coord = modalSrvc.current.toggle_x_coord;
 								break;
 							case "right":
-								scope.modal_x_coord = modal.toggle_x_coord + (modal.toggle_x_dim - newVal);
+								scope.modal_x_coord = modalSrvc.current.toggle_x_coord + (modalSrvc.current.toggle_x_dim - newVal);
 								break;
 							case "both":
-								scope.modal_x_coord = modal.toggle_x_coord;
-								scope.modal_x_dim = modal.toggle_x_dim;
+								scope.modal_x_coord = modalSrvc.current.toggle_x_coord;
+								scope.modal_x_dim = modalSrvc.current.toggle_x_dim;
 								break;
 						}
 					};
 					
 					var setModal = function(newVal, oldVal){
 						if(!modalSrvc.current.show) return;
-						modal = modalSrvc.current;
 						scope.card = modalSrvc.current.modal_card;
 						scope.modal_x_dim = modalSrvc.current.modal_x_dim;
 						scope.modal_y_dim = modalSrvc.current.modal_y_dim;

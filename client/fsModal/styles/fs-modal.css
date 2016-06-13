@@ -26,11 +26,11 @@
 }
 
 .show-hide {
-	-webkit-transition: opacity 1s linear;
-	-moz-transition: opacity 1s linear;
-	-o-transition: opacity 1s linear;
-	-ms-transition: opacity 1s linear;
-	transition: opacity 1s linear;
+	-webkit-transition: opacity .25s linear;
+	-moz-transition: opacity .25s linear;
+	-o-transition: opacity .25s linear;
+	-ms-transition: opacity .25s linear;
+	transition: opacity .25s linear;
 }
 
 .show-hide.ng-hide {

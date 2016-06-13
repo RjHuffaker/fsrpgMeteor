@@ -1,4 +1,4 @@
-<div>
+<div ngController="NewFeatureDeckCtrl">
 	New Feature Deck
 	<div>
 		<h4>Name</h4>
@@ -8,30 +8,32 @@
 	<div>
 		<h4>Deck Size</h4>
 		<div fs-numpicker
-			numvalue="deck.deckSize"
+			numvalue="deck.size"
 			numvaluemin="0"
 			numvaluemax="64"
 			numdelay="200"></div>
 	</div>
 
-	<div>
-		<button ng-click="addNewDeck();">Create Deck</button>
-	</div>
-
+	<h4>Deck Type</h4>
 	<div fs-dropdown>
-		<h4>Deck Type</h4>
-		<span class="fs-dropdown-toggle" data-toggle="dropdown">
-			{{deck.deckType}}
+		<div class="fs-dropdown-toggle" data-toggle="dropdown">
+			{{deck.type}}
 			<span class="caret"></span>
-		</span>
+			<span ng-hide="deck.type">Deck Type</span>
+		</div>
 		<div class="fs-dropdown-panel">
 			<ul>
 				<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
-					<a href="" ng-click="deck.deckType = deckType;">
+					<a href="" ng-click="deck.type = deckType;">
 					{{deckType}}
 					</a>
 				</li>
 			</ul>
 		</div>
 	</div>
+	
+	<div>
+		<button ng-click="featureBread.add(deck.name, deck.size, deck.type);">Create Deck</button>
+	</div>
+	
 </div>

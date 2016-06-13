@@ -50,18 +50,3 @@
 	border-bottom: 2px solid #111;
 	background-color: Wheat;
 }
-
-[fs-panel].ng-leave,
-[fs-panel].ng-enter {
-	transition-property:  left;
-	-webkit-transition: 1.5s ease-in-out !important;
-	-moz-transition: 1.5s ease-in-out !important;
-	-o-transition: 1.5s ease-in-out !important;
-	-ms-transition: 1.5s ease-in-out !important;
-	transition: 1.5s ease-in-out !important;
-	margin-top: 3em;
-}
-
-[fs-panel].ng-leave.ng-leave-active {
-	margin-top: 45em;
-}
