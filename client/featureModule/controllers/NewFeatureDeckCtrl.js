@@ -1,12 +1,19 @@
 angular.module("freedomsworn")
 	.controller("NewFeatureDeckCtrl",
-		function($scope, $meteor, $stateParams, $location, CoreVars, dataSrvc, featureBread){
+		function($scope, $meteor, $reactive, $stateParams, $location, featureBread){
 			'ngInject';
 			
-			$scope.CoreVars = CoreVars;
+			$reactive(this).attach($scope);
 			
-			$scope.dataSrvc = dataSrvc;
+			this.deck = {
+				name: 'New Deck',
+				type: 'Aspect',
+				size: 5
+			};
 			
-			$scope.featureBread = featureBread;
+			this.addNewDeck = function(name, size, type){
+				featureBread.add(name, size, type);
+			};
+			
 			
 		});

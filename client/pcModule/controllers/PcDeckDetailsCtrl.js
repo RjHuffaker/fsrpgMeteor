@@ -5,17 +5,13 @@ angular.module("freedomsworn")
 			
 			$scope.CoreVars = CoreVars;
 			
-			$scope.pcBread = pcBread;
-			
-			$scope.abilityDice = abilityDice;
-			
 			$reactive(this).attach($scope);
 			
 			this.subscribe('pcDecks');
 			
 			this.helpers({
 				pcDeck(){
-					return $meteor.object(PcDecks, $stateParams.pcDeckId, false);
+					return pcBread.read($stateParams.deckId);
 				}
 			});
 			

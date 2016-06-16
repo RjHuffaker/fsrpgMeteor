@@ -10,8 +10,8 @@
 								PC Deck List
 							</div>
 						</div>
-						<div class="innerRow row" ng-click="vm.selectRow(deck.name)"
-							ng-class="{selected: (deck.name === vm.currentRow)}"
+						<div class="innerRow row" ng-click="vm.selectRow(deck)"
+							ng-class="{selected: (deck === vm.currentRow)}"
 							ng-repeat="deck in vm.deckList track by $index">
 							<div class="innerCell">{{deck.name}}</div>
 							<div class="innerCell">

@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('freedomsworn').factory('pcBread', ['$rootScope', '$meteor', '$location', 'pcDefault', 'DeckUtils',
-	function($rootScope, $meteor, $location, pcDefault, DeckUtils){
+angular.module('freedomsworn').factory('pcBread',
+	function($rootScope, $meteor, $location, $timeout, pcDefault, DeckUtils){
+		'ngInject';
 		
 		var service = {};
 		
@@ -10,11 +11,7 @@ angular.module('freedomsworn').factory('pcBread', ['$rootScope', '$meteor', '$lo
 		};
 		
 		service.read = function(deckId){
-			if(deckId === 'new'){
-				return pcDefault;
-			} else {
-				return $meteor.object(PcDecks, deckId, false);
-			}
+			return $meteor.object(PcDecks, deckId, false);
 		};
 		
 		service.edit = function(deck){
@@ -30,17 +27,18 @@ angular.module('freedomsworn').factory('pcBread', ['$rootScope', '$meteor', '$lo
 		
 		service.add = function(){
 			var newDeck = pcDefault;
-			
-			newDeck._id = new Meteor.Collection.ObjectID().toString();
 			newDeck.owner = $rootScope.currentUser._id;
-			
 			DeckUtils.setCardList(newDeck.cardList);
-			PcDecks.insert(newDeck);
 			
-			console.log(newDeck);
-			
-			$location.path('/pcDecks/'+newDeck._id);
-			
+			PcDecks.insert(newDeck, function(error, result){
+				if(error){
+					console.log(error);
+				} else if(result) {
+					$timeout(function(){
+						$location.path('/pcDecks/'+result);
+					}, 0);
+				}
+			});
 		};
 		
 		service.delete = function(deckId){
@@ -49,4 +47,4 @@ angular.module('freedomsworn').factory('pcBread', ['$rootScope', '$meteor', '$lo
 		
 		return service;
 		
-	}]);
+	});

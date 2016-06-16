@@ -1,8 +1,8 @@
-'use strict';
-
 angular.module('freedomsworn')
-	.factory('featureBread', ['$rootScope', '$meteor', '$location', 'CoreVars', 'newFeatureDeck', 'DeckUtils',
+	.factory('featureBread',
 		function($rootScope, $meteor, $location, CoreVars, newFeatureDeck, DeckUtils){
+			'ngInject';
+			
 			
 			var service = {};
 			
@@ -27,6 +27,8 @@ angular.module('freedomsworn')
 			
 			service.add = function(name, size, type){
 				
+				console.log('um add');
+				
 				var newDeck = {
 					name: name,
 					deckSize: size,
@@ -35,7 +37,7 @@ angular.module('freedomsworn')
 				
 				for(var i = 0; i < size; i++){
 					newDeck.cardList.push({
-						_id: new Meteor.Collection.ObjectID().toString(),
+						_id: 'Panel '+i,
 						panelType: 'featureCard',
 						x_dim: 15,
 						y_dim: 21,
@@ -47,14 +49,19 @@ angular.module('freedomsworn')
 					});
 				}
 				
-				newDeck._id = new Meteor.Collection.ObjectID().toString();
 				newDeck.owner = $rootScope.currentUser._id;
 				
 				DeckUtils.setCardList(newDeck.cardList);
 				
-				FeatureDecks.insert(newDeck);
-				
-				$location.path('/featureDecks/'+newDeck._id);
+				FeatureDecks.insert(newDeck, function(error, result){
+					if(error){
+						console.log(error);
+					} else if(result) {
+						$timeout(function(){
+							$location.path('/featureDecks/'+result);
+						}, 0);
+					}
+				});
 				
 			};
 			
@@ -64,4 +71,4 @@ angular.module('freedomsworn')
 			
 			return service;
 			
-		}]);
+		});

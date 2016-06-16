@@ -14,7 +14,7 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         templateUrl: paths.pcModule.views+'pc-deck-list.ng.html'
       })
       .state('pcDeckDetails', {
-        url: '/pcDecks/:pcDeckId',
+        url: '/pcDecks/:deckId',
         templateUrl: paths.pcModule.views+'pc-deck-details.ng.html'
       })
       
@@ -22,15 +22,13 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         url: '/newFeatureDeck',
         templateUrl: paths.featureModule.views+'new-feature-options.ng.html'
       })
-      
       .state('featureDeckList', {
         url: '/featureDecks',
         templateUrl: paths.featureModule.views+'feature-deck-list.ng.html'
       })
-      
       .state('featureDeckDetails', {
-        url: '/featureDecks/:featureDeckId',
-        templateUrl: paths.featureModule.views+'feature-deck.ng.html'
+        url: '/featureDecks/:deckId',
+        templateUrl: paths.featureModule.views+'feature-deck-details.ng.html'
       })
       
       .state('npcDeck', {

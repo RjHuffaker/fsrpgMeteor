@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("FeatureDeckListCtrl",
-		function($scope, $rootScope, $reactive){
+		function($scope, $reactive){
 			'ngInject';
 			
 			$reactive(this).attach($scope);
@@ -17,6 +17,7 @@ angular.module("freedomsworn")
 			
 			this.selectRow = function(row){
 				this.currentRow = row;
+				console.log(row);
 			};
 			
 			this.deleteDeck = function(deck){

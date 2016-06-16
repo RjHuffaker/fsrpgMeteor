@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("PcDeckListCtrl", 
-		function($scope, $rootScope, $reactive, $location, pcDefault, DeckUtils){
+		function($scope, $rootScope, $reactive, pcBread){
 			'ngInject';
 			
 			$reactive(this).attach($scope);
@@ -11,31 +11,21 @@ angular.module("freedomsworn")
 			
 			this.helpers({
 				deckList(){
-					return PcDecks.find({});
+					return pcBread.browse();
 				}
 			});
 			
 			this.selectRow = function(row){
 				this.currentRow = row;
-			};
-			
-			this.deleteDeck = function(deck){
-				PcDecks.remove(deck._id);
+				console.log(row);
 			};
 			
 			this.addDeck = function(){
-				var newDeck = pcDefault;
+				pcBread.add();
+			};
 			
-				newDeck._id = new Meteor.Collection.ObjectID().toString();
-				newDeck.owner = $rootScope.currentUser._id;
-				
-				DeckUtils.setCardList(newDeck.cardList);
-				
-				PcDecks.insert(newDeck);
-				
-				console.log(newDeck);
-				
-				$location.path('/pcDecks/'+newDeck._id);
+			this.deleteDeck = function(deck){
+				pcBread.delete(deck._id);
 			};
 			
 		});

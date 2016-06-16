@@ -4,7 +4,9 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			templateUrl: paths.pcModule.views+'card-pc-1.ng.html',
 			link: function(scope, element, attrs) {
-				scope.pcBread = pcBread;
+				scope.editPc = function(deck){
+					pcBread.edit(deck);
+				};
 				
 				scope.exitPc = function(){
 					$location.path('/pcDecks');

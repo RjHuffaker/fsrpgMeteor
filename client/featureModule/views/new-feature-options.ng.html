@@ -1,39 +1,54 @@
-<div ngController="NewFeatureDeckCtrl">
-	New Feature Deck
-	<div>
-		<h4>Name</h4>
-		<input ng-model="deck.name">
-	</div>
-
-	<div>
-		<h4>Deck Size</h4>
-		<div fs-numpicker
-			numvalue="deck.size"
-			numvaluemin="0"
-			numvaluemax="64"
-			numdelay="200"></div>
-	</div>
-
-	<h4>Deck Type</h4>
-	<div fs-dropdown>
-		<div class="fs-dropdown-toggle" data-toggle="dropdown">
-			{{deck.type}}
-			<span class="caret"></span>
-			<span ng-hide="deck.type">Deck Type</span>
-		</div>
-		<div class="fs-dropdown-panel">
-			<ul>
-				<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
-					<a href="" ng-click="deck.type = deckType;">
-					{{deckType}}
-					</a>
-				</li>
-			</ul>
+<div class="outerTable" ng-controller="NewFeatureDeckCtrl as vm">
+	<div class="outerRow">
+		<div class="outerCell" style="height: 10%; padding: 1em">
+			<h3>New Feature Deck</h3>
 		</div>
 	</div>
 	
-	<div>
-		<button ng-click="featureBread.add(deck.name, deck.size, deck.type);">Create Deck</button>
+	<div class="outerRow">
+		<div class="outerCell" style="height: 10%; padding: 1em">
+			<h4>Name</h4>
+			<input ng-model="vm.deck.name">
+		</div>
+	</div>
+	
+	<div class="outerRow">
+		<div class="outerCell" style="height: 20%; padding: 1em">
+			<h4>Deck Size</h4>
+			<div fs-numpicker
+				numvalue="vm.deck.size"
+				numvaluemin="0"
+				numvaluemax="64"
+				numdelay="200"></div>
+		</div>
+	</div>
+	
+	<div class="outerRow">
+		<div class="outerCell" style="height: 20%; padding: 1em">
+			<h4>Deck Type</h4>
+			<div fs-dropdown>
+				<button class="fs-dropdown-toggle" data-toggle="dropdown">
+					{{vm.deck.type}}
+					<span class="caret"></span>
+					<span ng-hide="vm.deck.type">Deck Type</span>
+				</button>
+				<div class="fs-dropdown-panel">
+					<ul>
+						<li ng-repeat="deckType in ['Aspect', 'Trait', 'Feat', 'Augment', 'Item']">
+							<a href="" ng-click="vm.deck.type = deckType;">
+							{{deckType}}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="outerRow">
+		<div class="outerCell" style="height: 20%; padding: 1em">
+			<button ng-click="vm.addNewDeck(vm.deck.name, vm.deck.size, vm.deck.type);">Create Deck</button>
+		</div>
 	</div>
 	
 </div>
