@@ -1,5 +1,6 @@
 div[nav-bar] {
 	border: 2px solid black;
+	z-index: 10000;
 }
 
 div[nav-bar] > div > div[fs-dropdown] {

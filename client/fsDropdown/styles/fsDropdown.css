@@ -14,7 +14,7 @@
 
 .fs-dropdown-panel {
 	position: absolute;
-	z-index: 1000;
+	z-index: 7000;
 	background-color: darkgrey;
 	overflow: hidden;
 	height: 0;
@@ -32,12 +32,12 @@
 
 .fs-dropdown-panel.anchor-top > div {
 	position:absolute;
-  top:0;
+	top:0;
 }
 
 .fs-dropdown-panel.anchor-bottom > div {
 	position:absolute;
-  bottom:0;
+	bottom:0;
 }
 
 .fs-dropdown-panel ul {

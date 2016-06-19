@@ -60,9 +60,8 @@ angular.module('freedomsworn')
 				};
 				
 				var toggleHide = function(event){
-					console.log('toggleHide');
 					var l = exemptList.length;
-					for(elem = event.target; elem; elem = elem.parentNode) {
+					for(elem = event.target; elem; elem = elem.parentNode){
 						if(elem.id === attrs.id){
 							for(var i = 0; i < l; i++){
 								if(angular.element(event.target).hasClass(exemptList[i])) return;
