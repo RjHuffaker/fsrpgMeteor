@@ -1,11 +1,13 @@
 angular.module('freedomsworn')
-	.directive('stopEvent', ['CoreVars', function(CoreVars){
+	.directive('stopEvent', function(CoreVars){
+		'ngInject';
+		
 		return{
 			restrict: 'A',
 			link: function(scope, element, attrs){
 				var _pressEvents = 'touchstart mousedown';
 				element.on(_pressEvents, function(event){
-					if(!scope.panel.left.overlap && !scope.panel.below.overlap){
+					if(!scope.panel.below){
 						event.stopPropagation();
 					}
 				});
@@ -16,4 +18,4 @@ angular.module('freedomsworn')
 				
 			}
 		};
-	}]);
+	});

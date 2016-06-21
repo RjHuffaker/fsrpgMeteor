@@ -1,5 +1,7 @@
 angular.module('freedomsworn')
-	.directive('cardAction', ['dataSrvc', function(dataSrvc){
+	.directive('cardAction', function(dataSrvc){
+		'ngInject';
+
 		return {
 			restrict: 'A',
 			templateUrl: paths.cardAction.views+'card-action.ng.html',
@@ -10,7 +12,7 @@ angular.module('freedomsworn')
 				scope.dataSrvc = dataSrvc;
 			}
 		};
-	}])
+	})
 	.directive('cardActionIcon', function(){
 		return {
 			restrict: 'A',

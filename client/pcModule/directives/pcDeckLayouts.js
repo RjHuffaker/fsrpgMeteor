@@ -1,5 +1,7 @@
 angular.module('freedomsworn')
-	.directive('cardPc1', ['$location', 'pcBread', function($location, pcBread){
+	.directive('cardPc1', function($location, pcBread){
+		'ngInject';
+
 		return {
 			restrict: 'A',
 			templateUrl: paths.pcModule.views+'card-pc-1.ng.html',
@@ -13,7 +15,7 @@ angular.module('freedomsworn')
 				};
 			}
 		};
-	}])
+	})
 	.directive('cardPc2', function(){
 		return {
 			restrict: 'A',

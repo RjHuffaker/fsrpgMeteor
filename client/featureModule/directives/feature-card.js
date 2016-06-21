@@ -1,5 +1,7 @@
 angular.module('freedomsworn')
-	.directive('featureCard', ['dataSrvc', function(dataSrvc){
+	.directive('featureCard', function(dataSrvc){
+		'ngInject';
+
 		return {
 			restrict: 'A',
 			templateUrl: paths.featureModule.views+'feature-card.ng.html',
@@ -8,4 +10,4 @@ angular.module('freedomsworn')
 				scope.dataSrvc = dataSrvc;
 			}
 		};
-	}]);
+	});

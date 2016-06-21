@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('freedomsworn')
 	.factory('abilityDice', function($rootScope, modalSrvc, factorDefenses, factorStats) {
 		'ngInject';

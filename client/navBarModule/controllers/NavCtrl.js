@@ -1,7 +1,7 @@
 angular.module("freedomsworn")
-	.controller("NavCtrl", ['$scope', '$meteor', '$location', 'pcBread', 'featureBread', 'modalSrvc',
-	function($scope, $meteor, $location, pcBread, featureBread, modalSrvc){
-		
+	.controller("NavCtrl", function($scope, $meteor, $location, pcBread, featureBread, modalSrvc){
+		'ngInject';
+
     $scope.modalSrvc = modalSrvc;
     
     $scope.error = '';
@@ -53,4 +53,4 @@ angular.module("freedomsworn")
       featureBread.edit();
     };
     
-	}]);
+	});

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('freedomsworn')
-	.directive('ability', ['abilityDice', function(abilityDice){
+	.directive('ability', function(abilityDice){
+		'ngInject';
+
 		return {
 			restrict: 'A',
 			templateUrl: paths.diceModule.views+'ability.ng.html',
@@ -10,4 +12,4 @@ angular.module('freedomsworn')
 				scope.abilityDice = abilityDice;
 			}
 		};
-	}]);
+	});

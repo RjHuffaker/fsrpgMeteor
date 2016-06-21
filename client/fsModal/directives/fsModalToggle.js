@@ -1,9 +1,8 @@
-'use strict';
-
-// Directive for managing ability dice
 angular.module('freedomsworn')
-	.directive('fsModalToggle', ['$parse', '$rootScope', '$window', 'modalSrvc',
+	.directive('fsModalToggle', 
 		function($parse, $rootScope, $window, modalSrvc){
+			'ngInject';
+
 			return {
 				restrict: 'A',
 				scope: {
@@ -81,4 +80,4 @@ angular.module('freedomsworn')
 					initialize();
 				}
 			};
-		}]);
+		});

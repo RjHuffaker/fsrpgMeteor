@@ -1,7 +1,5 @@
-'use strict';
-
-angular.module('freedomsworn').factory('pcBread',
-	function($rootScope, $meteor, $location, $timeout, pcDefault, DeckUtils){
+angular.module('freedomsworn')
+	.factory('pcBread', function($rootScope, $meteor, $location, $timeout, pcDefault, DeckUtils){
 		'ngInject';
 		
 		var service = {};

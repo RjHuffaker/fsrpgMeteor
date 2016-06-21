@@ -1,5 +1,7 @@
 angular.module('freedomsworn')
-	.directive('fsDropdown', ['$document', '$parse', '$timeout', '$window', function($document, $parse, $timeout, $window){
+	.directive('fsDropdown', function($document, $parse, $timeout, $window){
+		'ngInject';
+
 		return {
 			restrict: 'A',
 			scope: {
@@ -127,4 +129,4 @@ angular.module('freedomsworn')
 				
 			}
 		};
-	}]);
+	});

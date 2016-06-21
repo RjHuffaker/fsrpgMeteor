@@ -1,9 +1,9 @@
-'use strict';
-
 // Directive for managing card decks.
 angular.module('freedomsworn')
-	.directive('fsDeck', ['$rootScope', '$window', 'PanelUtils', 'DeckUtils', 'movePanel',
+	.directive('fsDeck',
 		function($rootScope, $window, PanelUtils, DeckUtils, movePanel){
+			'ngInject';
+
 			return {
 				restrict: 'A',
 				scope: { deck: '=fsDeck' },
@@ -98,4 +98,4 @@ angular.module('freedomsworn')
 					initialize();
 				}
 			};
-		}]);
+		});

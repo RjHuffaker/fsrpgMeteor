@@ -1,9 +1,8 @@
-'use strict';
-
 angular.module('freedomsworn')
-	.factory('CoreVars', ['$rootScope',
+	.factory('CoreVars',
 		function($rootScope){
-			
+			'ngInject';
+
 			var service = {};
 			
 			service.windowHeight = 0;
@@ -25,10 +24,10 @@ angular.module('freedomsworn')
 			
 			service.nullPanel = {
 				_id: null, x_coord: 0, y_coord: 0,
-				above: { adjacent: null, overlap: null },
-				below: { adjacent: null, overlap: null },
-				left: { adjacent: null, overlap: null },
-				right: { adjacent: null, overlap: null }
+				above: null,
+				below: null,
+				left: null,
+				right: null
 			};
 			
 			service.cardMoving = false;
@@ -49,6 +48,11 @@ angular.module('freedomsworn')
 				}, 500);
 			};
 			
+			service.setCardStop = function(){
+				service.cardMoving = false;
+				service.cardMoved.length = 0;
+			};
+
 			return service;
 			
-		}]);
+		});

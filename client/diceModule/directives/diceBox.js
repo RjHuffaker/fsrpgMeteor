@@ -1,6 +1,8 @@
 angular.module('freedomsworn')
-	.directive('diceBox', ['$window', 'CoreVars', 'abilityDice', 
+	.directive('diceBox',
 		function($window, CoreVars, abilityDice) {
+			'ngInject';
+
 			return {
 				restrict: 'A',
 				templateUrl: paths.diceModule.views+'dice-box.ng.html',
@@ -12,4 +14,4 @@ angular.module('freedomsworn')
 					
 				}
 			};
-		}]);
+		});

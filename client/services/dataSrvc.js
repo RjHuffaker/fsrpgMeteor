@@ -1,8 +1,6 @@
-'use strict';
-
 // Factory-service for providing generic game data
-angular.module('freedomsworn').factory('dataSrvc', [
-	function(){
+angular.module('freedomsworn')
+	.factory('dataSrvc', function(){
 		var service = {};
 		
 		service.sexArray = [
@@ -160,4 +158,4 @@ angular.module('freedomsworn').factory('dataSrvc', [
 		];
 		
 		return service;
-	}]);
+	});
