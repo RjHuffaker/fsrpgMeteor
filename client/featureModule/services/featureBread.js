@@ -25,19 +25,23 @@ angular.module('freedomsworn')
 				}
 			};
 			
-			service.add = function(name, size, type){
-				
-				console.log('um add');
+			service.add = function(name, size, type, dependencies){
 				
 				var newDeck = {
 					name: name,
 					deckSize: size,
+					deckType: type,
+					dependencies: dependencies,
 					cardList: []
 				};
 				
+				newDeck._id = Random.id();
+				newDeck.owner = $rootScope.currentUser._id;
+
 				for(var i = 0; i < size; i++){
 					newDeck.cardList.push({
-						_id: 'Panel '+i,
+						_id: 'Panel '+(i+1),
+						deckId: newDeck._id,
 						panelType: 'featureCard',
 						x_dim: 15,
 						y_dim: 21,
@@ -49,14 +53,12 @@ angular.module('freedomsworn')
 					});
 				}
 				
-				newDeck.owner = $rootScope.currentUser._id;
-				
 				DeckUtils.setCardList(newDeck.cardList);
 				
 				FeatureDecks.insert(newDeck, function(error, result){
 					if(error){
 						console.log(error);
-					} else if(result) {
+					} else if(result){
 						$timeout(function(){
 							$location.path('/featureDecks/'+result);
 						}, 0);

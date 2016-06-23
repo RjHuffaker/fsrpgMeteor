@@ -1,4 +1,57 @@
 <div ng-controller="FeatureDeckDetailsCtrl as vm">
-	Feature Deck
+	
+	<div fs-dropdown id="featureDeckOptions" stop-event>
+		<div class="fs-dropdown-toggle">
+			<a href="#">{{vm.featureDeck.name}}</a>
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul class="text-9">
+					<li>
+						<a href="#" ng-click="vm.saveDeck(vm.featureDeck)">Save {{vm.featureDeck.name}}</a>
+					</li>
+				</ul>
+				<ul class="text-9" stop-click>
+					<li>
+						<input ng-model="vm.featureDeck.name">
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div fs-modal-toggle modalxalign="center" modalyalign="center"
+		modalxdim="24" modalydim="20" modal-callback="" modal-deck="vm.featureDeck">
+		
+		<a href="#">Options</a>
+		
+		<div class="fs-modal-content" deck="modalSrvc.current.modal_deck">
+			
+			<div class="outerTable" ng-controller="NewFeatureDeckCtrl as vm">
+				
+				<div class="outerRow">
+					<div class="outerCell">
+						<h3>Feature Deck Options</h3>
+					</div>
+				</div>
+				
+				<div class="outerRow">
+					<div class="outerCell">
+						<h4>Name</h4>
+						<input ng-model="modalSrvc.current.modal_deck.name">
+					</div>
+				</div>
+				
+				<div class="outerRow">
+					<div class="outerCell">
+						Save Button HERE. Really this whole thing probably needs to be wrapped into a directive, with the save function, dependencies, and everything else attached through the directive itself.
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
 	<div fs-deck="vm.featureDeck"></div>
 </div>

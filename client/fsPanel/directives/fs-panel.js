@@ -274,7 +274,7 @@ angular.module('freedomsworn')
 					CoreVars.setCardStop();
 					
 					for(var i = 0; i < _deck.cardList.length; i++){
-						_deck.cardList[i].dragging = false; // This seems excessive
+						_deck.cardList[i].dragging = false;
 					}
 				};
 				
@@ -287,9 +287,13 @@ angular.module('freedomsworn')
 					
 					clearTimeout(_moveTimer);
 					
+					for(var i = 0; i < _deck.cardList.length; i++){
+						_deck.cardList[i].dragging = false;
+					}
+					
 					_moveTimer = setTimeout(function(){
 						element.removeClass('card-moving');
-					}, 600);
+					}, 500);
 				};
 				
 				// Respond to 'onMouseLeave' event similar to onRelease, but without toggling overlap

@@ -9,11 +9,15 @@
 							<div class="innerCell" style="">
 								Feature Deck List
 							</div>
+							<div class="innerCell" style="">
+								Deck Type
+							</div>
 						</div>
 						<div class="innerRow row" ng-click="vm.selectRow(deck)"
 							ng-class="{selected: (deck === vm.currentRow)}"
 							ng-repeat="deck in vm.deckList track by $index">
 							<div class="innerCell">{{deck.name}}</div>
+							<div class="innerCell">{{deck.deckType}}</div>
 							<div class="innerCell">
 								<a href="/featureDecks/{{deck._id}}">
 									Edit

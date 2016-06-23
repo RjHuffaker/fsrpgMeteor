@@ -66,7 +66,12 @@ angular.module('freedomsworn')
 				
 				var setHeight = function(newVal, oldVal){
 					if(!newVal) return;
+					console.log('height: '+$window.innerHeight+'align: '+modalSrvc.current.modal_y_align);
+					
 					switch(modalSrvc.current.modal_y_align){
+						case "center":
+							scope.modal_y_coord = ($window.innerHeight - newVal)/2;
+							break;
 						case "bottom":
 							scope.modal_y_coord = modalSrvc.current.toggle_y_coord + modalSrvc.current.toggle_y_dim;
 							break;
@@ -78,7 +83,12 @@ angular.module('freedomsworn')
 				
 				var setWidth = function(newVal, oldVal){
 					if(!newVal) return;
+					console.log('width: '+$window.innerWidth);
+					
 					switch(modalSrvc.current.modal_x_align){
+						case "center":
+							scope.modal_x_coord = ($window.innerWidth - newVal)/2;
+							break;
 						case "left":
 							scope.modal_x_coord = modalSrvc.current.toggle_x_coord;
 							break;
@@ -95,8 +105,12 @@ angular.module('freedomsworn')
 				var setModal = function(newVal, oldVal){
 					if(!modalSrvc.current.show) return;
 					scope.card = modalSrvc.current.modal_card;
+					scope.deck = modalSrvc.current.modal_deck;
 					scope.modal_x_dim = modalSrvc.current.modal_x_dim;
 					scope.modal_y_dim = modalSrvc.current.modal_y_dim;
+					
+					setHeight(scope.modal_x_dim);
+					setWidth(scope.modal_y_dim);
 					
 					$compile(modalSrvc.current.modal_content)(scope);
 					
@@ -107,6 +121,7 @@ angular.module('freedomsworn')
 					angular.element(element.find('.fs-modal-content')[0])
 						.removeClass('fs-modal-content')
 						.addClass('fs-modal-slot');
+					
 				};
 				
 				initialize();

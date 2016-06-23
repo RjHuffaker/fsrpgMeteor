@@ -20,7 +20,7 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
       
       .state('newFeatureDeck', {
         url: '/newFeatureDeck',
-        templateUrl: paths.featureModule.views+'new-feature-options.ng.html'
+        templateUrl: paths.featureModule.views+'new-feature-deck.ng.html'
       })
       .state('featureDeckList', {
         url: '/featureDecks',

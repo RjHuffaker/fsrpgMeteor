@@ -7,7 +7,8 @@ angular.module('freedomsworn')
 				restrict: 'A',
 				scope: {
 					modalCallback: '&',
-					modalCard: '='
+					modalCard: '=',
+					modalDeck: '='
 				},
 				link: function(scope, element, attrs) {
 					
@@ -47,10 +48,12 @@ angular.module('freedomsworn')
 						var toggle_y_dim = element[0].offsetHeight;
 						var toggle_x_dim = element[0].offsetWidth;
 						var modal_x_align = attrs.modalxalign;
-						var modal_y_align = attrs.modalyalign || toggle_y_coord*2 < $window.innerHeight ? 'bottom' : 'top';
+						var modal_y_align = attrs.modalyalign ? attrs.modalyalign : toggle_y_coord*2 < $window.innerHeight ? 'bottom' : 'top';
 						var modal_x_dim = convertEm(attrs.modalxdim);
 						var modal_y_dim = convertEm(attrs.modalydim);
 						var modal_card = scope.modalCard;
+						var modal_deck = scope.modalDeck;
+						
 						var modal_content = angular.element(element.find('.fs-modal-content')[0]).clone(true);
 						
 						return {
@@ -63,6 +66,7 @@ angular.module('freedomsworn')
 							modal_x_dim: modal_x_dim,
 							modal_y_dim: modal_y_dim,
 							modal_card: modal_card,
+							modal_deck: modal_deck,
 							modal_content: modal_content,
 							show: true
 						};
@@ -75,6 +79,8 @@ angular.module('freedomsworn')
 						scope.modalCallback();
 						
 						event.stopPropagation();
+						
+						scope.$apply();
 					};
 					
 					initialize();

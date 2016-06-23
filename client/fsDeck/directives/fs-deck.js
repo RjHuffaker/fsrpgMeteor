@@ -25,9 +25,9 @@ angular.module('freedomsworn')
 						element.on('mouseleave', onMouseLeave);
 						scope.$on('screenSize:onHeightChange', onHeightChange);
 						scope.$on('DeckUtils:setDeckWidth', setDeckWidth);
-						scope.$on('cardPanel:onPressCard', onPress);
-						scope.$on('cardPanel:onReleaseCard', onRelease);
-						scope.$on('cardPanel:onMoveCard', onMoveCard);
+						scope.$on('fsPanel:onPressCard', onPress);
+						scope.$on('fsPanel:onReleaseCard', onRelease);
+						scope.$on('fsPanel:onMoveCard', onMoveCard);
 					};
 					
 					var onDestroy = function(enable){
@@ -75,10 +75,8 @@ angular.module('freedomsworn')
 						var _deck = scope.deck.cardList;
 						var _panel = object.panel;
 						
-						var _panelStart = PanelUtils.getClusterStart(_deck, _panel._id);
+						var _panelStart = PanelUtils.getStackStart(_deck, _panel._id);
 						var _panelStartPrev = PanelUtils.getPrev(_deck, _panelStart._id);
-						var _panelEnd = PanelUtils.getClusterEnd(_deck, _panel._id);
-						var _panelEndNext = PanelUtils.getNext(_deck, _panelEnd._id);
 						
 						if(object.mouseX <= _deckLeftEdge && PanelUtils.hasPrev(_panel)){
 							movePanel(_deck, _panelStartPrev, object.panel, 'right', object.moveX, object.moveY);

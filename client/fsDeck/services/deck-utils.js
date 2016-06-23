@@ -51,6 +51,14 @@ angular.module('freedomsworn').factory('DeckUtils',
 			$rootScope.$broadcast('cardPanel:onReleaseCard');
 		};
 		
+		service.setDeckId = function(deck){
+			for(var i = 0; i < deck.cardList.length; i++){
+				var _current = cardList[i];
+				_current.deckId = deck._id;
+			}
+			deck.save();
+		};
+
 		service.addToFront = function(deck, newPanel){
 			var firstPanel = PanelUtils.getFirst(deck.cardList);
 			deck.cardList.push(newPanel);

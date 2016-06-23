@@ -25,6 +25,22 @@
 	
 	<div class="outerRow">
 		<div class="outerCell" style="height: 20%; padding: 1em">
+			<h4>Dependencies</h4>
+			<label ng-repeat="deck in vm.deckList">
+				<input
+			    type="checkbox"
+			    name="selectedDecks[]"
+			    value="{{deck._id}}"
+			    ng-checked="deck.dependencies.indexOf(deck._id) > -1"
+			    ng-click="vm.toggleDependency(deck._id)">
+			  {{deck.name}}
+			  <br>
+			</label>
+		</div>
+	</div>
+
+	<div class="outerRow">
+		<div class="outerCell" style="height: 20%; padding: 1em">
 			<h4>Deck Type</h4>
 			<div fs-dropdown>
 				<button class="fs-dropdown-toggle" data-toggle="dropdown">
@@ -47,7 +63,7 @@
 	
 	<div class="outerRow">
 		<div class="outerCell" style="height: 20%; padding: 1em">
-			<button ng-click="vm.addNewDeck(vm.deck.name, vm.deck.size, vm.deck.type);">Create Deck</button>
+			<button ng-click="vm.addNewDeck(vm.deck.name, vm.deck.size, vm.deck.type, vm.deck.dependencies);">Create Deck</button>
 		</div>
 	</div>
 	

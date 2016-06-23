@@ -11,23 +11,27 @@
 		<div>
 			<ul class="text-9">
 				<li stop-click>Archetype</li>
-				<li ng-repeat="archetype in dataSrvc.archetypeList track by $index" stop-click><label>
-					<input type="radio" ng-checked="card.aspect.name === archetype.name"
-						ng-click="BuilderHub.changeAspect(card, archetype); featureCardForm.$setDirty();">
-					{{archetype.name}}
-				</label></li>
+				<li ng-repeat="archetype in deckDependencies.archetypes track by $index" stop-click>
+					<label>
+						<input type="radio" ng-checked="card.aspect.name === archetype.name"
+							ng-click="changeAspect(card, archetype)">
+						{{archetype.name}}
+					</label>
+				</li>
 				<li stop-click>Allegiance</li>
-				<li ng-repeat="allegiance in dataSrvc.allegianceList"
-					ng-if="allegiance.name !== 'Unaligned'" stop-click><label>
-					<input type="radio" ng-checked="card.aspect.name === allegiance.name"
-						ng-click="BuilderHub.changeAspect(card, allegiance); featureCardForm.$setDirty();">
-					{{allegiance.name}}
-				</label></li>
+				<li ng-repeat="allegiance in deckDependencies.allegiances"
+					ng-if="allegiance.name !== 'Unaligned'" stop-click>
+					<label>
+						<input type="radio" ng-checked="card.aspect.name === allegiance.name"
+							ng-click="changeAspect(card, allegiance)">
+						{{allegiance.name}}
+					</label>
+					</li>
 				<li stop-click>Race</li>
-				<li ng-repeat="race in dataSrvc.raceList" ng-if="race.name !== 'Weolda'" stop-click>
+				<li ng-repeat="race in deckDependencies.races" ng-if="race.name !== 'Weolda'" stop-click>
 					<label>
 						<input type="radio" ng-checked="card.aspect.name === race.name"
-							ng-click="BuilderHub.changeAspect(card, race); featureCardForm.$setDirty();">
+							ng-click="changeAspect(card, race)">
 						{{race.name}}
 					</label>
 				</li>
