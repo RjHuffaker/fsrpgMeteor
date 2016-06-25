@@ -28,7 +28,8 @@
 					</label>
 					</li>
 				<li stop-click>Race</li>
-				<li ng-repeat="race in deckDependencies.races" ng-if="race.name !== 'Weolda'" stop-click>
+				<li ng-repeat="race in deckDependencies.races"
+					ng-if="race.name !== 'Weolda'" stop-click>
 					<label>
 						<input type="radio" ng-checked="card.aspect.name === race.name"
 							ng-click="changeAspect(card, race)">

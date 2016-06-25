@@ -103,7 +103,6 @@ angular.module('freedomsworn')
 					dropdownPanel.height(contentHeight);
 					dropdownPanel.addClass('show-panel');
 					toggleHideListener(true);
-					
 				};
 				
 				var hidePanel = function(){

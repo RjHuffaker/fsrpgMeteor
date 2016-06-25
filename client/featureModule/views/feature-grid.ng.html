@@ -1,0 +1,148 @@
+<div class="outerTable" ng-controller="FeatureGridCtrl as vm">
+
+	<div class="outerRow">
+		<div class="outerCell" style="height: 25%; padding: 1em">
+			<div style="height: 100%; width: 100%; border: 2px solid black">
+				<div class="scrollDiv">
+					<div class="innerTable">
+					
+						<div class="innerRow">
+							<div class="innerCell" style="">
+								Deck Name: <input ng-model="vm.featureDeck.name">
+							</div>
+							<div class="innerCell" style="">
+								<a href="#" ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</a>
+							</div>
+						</div>
+						
+						<div class="innerRow">
+							<div class="innerCell" style="">
+								<b>Dependencies</b><br>
+								<label ng-repeat="dep in vm.depList">
+									<input
+								    type="checkbox"
+								    name="selectedDecks[]"
+								    value="{{dep._id}}"
+								    ng-checked="vm.featureDeck.dependencies.indexOf(dep._id) > -1"
+								    ng-click="vm.toggleDependency(vm.featureDeck, dep._id)">
+								  {{dep.name}}
+								  <br>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	<div class="outerRow">
+		<div class="outerCell" style="height: 50%; padding: 1em">
+			<div style="height: 100%; width: 100%; border: 2px solid black">
+				<div class="scrollDiv">
+					<div class="innerTable">
+						
+						<div class="innerRow">
+							<div class="innerCell" style="">
+								<b>Name</b>
+							</div>
+							<div class="innerCell" ng-if="vm.featureDeck.deckType !== 'Aspect'" style="">
+								<b>Aspect</b>
+							</div>
+							<div class="innerCell" ng-if="vm.featureDeck.deckType === 'Aspect'" style="">
+								<b>Aspect Type</b>
+							</div>
+							<div class="innerCell" style="">
+								<b>Description</b>
+							</div>
+						</div>
+						
+						<div class="innerRow" ng-repeat="card in vm.featureDeck.cardList" ng-init="card = card.cardData">
+							<div class="innerCell" style="padding: 0">
+								<input type="text" ng-model="card.name">
+							</div>
+							
+							<div class="innerCell" style="padding: 0" ng-if="vm.featureDeck.deckType !== 'Aspect'">
+								<div fs-dropdown id="cardAspect">
+									<div class="fs-dropdown-toggle">
+										<span class="text-capitalize">
+											{{card.aspect.name}}
+										</span>
+										<span ng-if="!card.aspect">
+											[Aspect]
+										</span>
+									</div>
+									<div class="fs-dropdown-panel">
+										<div>
+											<ul class="text-9">
+												<li>Archetype</li>
+												<li ng-repeat="archetype in vm.deckDependencies.archetypes">
+													<label>
+														<input type="radio" ng-checked="card.aspect.name === archetype.name"
+															ng-click="vm.changeAspect(card, archetype)">
+														{{archetype.name}}
+													</label>
+												</li>
+												<li>Allegiance</li>
+												<li ng-repeat="allegiance in vm.deckDependencies.allegiances"
+													ng-if="allegiance.name !== 'Unaligned'">
+													<label>
+														<input type="radio" ng-checked="card.aspect.name === allegiance.name"
+															ng-click="vm.changeAspect(card, allegiance)">
+														{{allegiance.name}}
+													</label>
+													</li>
+												<li>Race</li>
+												<li ng-repeat="race in vm.deckDependencies.races"
+													ng-if="race.name !== 'Weolda'">
+													<label>
+														<input type="radio" ng-checked="card.aspect.name === race.name"
+															ng-click="vm.changeAspect(card, race)">
+														{{race.name}}
+													</label>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="innerCell" style="padding: 0" ng-if="vm.featureDeck.deckType === 'Aspect'">
+								<div fs-dropdown id="cardAspectType">
+									<div class="fs-dropdown-toggle">
+										<span class="text-capitalize">
+											{{card.aspectType}}
+										</span>
+										<span ng-if="!card.aspectType">
+											[Aspect Type]
+										</span>
+									</div>
+									<div class="fs-dropdown-panel">
+										<div>
+											<ul class="text-9">
+												<li ng-repeat="aspectType in vm.dataSrvc.aspectTypes">
+													<label>
+														<input type="radio" ng-model="card.aspectType" value="{{aspectType}}">
+														{{aspectType}}
+													</label>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="innerCell" style="padding: 0">
+								<input type="checkbox" ng-model="card.description.show">
+								<input type="text" ng-model="card.description.content">
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

@@ -31,6 +31,11 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         templateUrl: paths.featureModule.views+'feature-deck-details.ng.html'
       })
       
+      .state('featureGrid', {
+        url: '/featureGrid/:deckId',
+        templateUrl: paths.featureModule.views+'feature-grid.ng.html'
+      })
+      
       .state('npcDeck', {
         url: '/npcDeck',
         templateUrl: paths.npcModule.views+'npc-deck.ng.html',
