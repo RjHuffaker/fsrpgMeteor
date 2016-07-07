@@ -4,7 +4,10 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			link: function(scope, element, attrs){
 				element.on('click', function(event){
-					event.stopPropagation();
+					console.log(attrs.stopClick);
+					if(attrs.stopClick){
+						event.stopPropagation();
+					}
 				});
 			}
 		};

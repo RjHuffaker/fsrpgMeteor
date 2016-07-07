@@ -26,7 +26,8 @@
 					</div>
 					
 					<div ng-if="card.cardType === 'Aspect'">
-						<div card-header-aspect-type></div>
+						<div fs-select selection="card.aspectType"
+							options="dataSrvc.aspectTypes" stop-event></div>
 					</div>
 					
 				</div>

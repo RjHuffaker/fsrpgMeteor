@@ -1,0 +1,36 @@
+<div fs-dropdown id="fs-select" class="open-down span-width">
+	<div class="fs-dropdown-toggle">
+		<span ng-if="toggleHeader">
+			{{toggleHeader}}
+		</span>
+		<span ng-if="(!selection && !toggleHeader)">
+			Select
+		</span>
+		<span ng-if="selection.name">
+			{{selection.name}}
+		</span>
+		<span ng-if="!selection.name">
+			{{selection}}
+		</span>
+	</div>
+	<div class="fs-dropdown-panel">
+		<div>
+			<ul ng-repeat="optionList in options" class="text-9">
+				<li ng-if="optionList.length" class="header" stop-click="1">
+					{{headers[$index]}}
+				</li>
+				<li ng-repeat="option in optionList"
+					ng-class="{current: showSelected(option)}"
+					ng-click="selectOption(option)"
+					stop-click={{selectionArray}}>
+					<span ng-if="option.name">
+						{{option.name}}
+					</span>
+					<span ng-if="!option.name">
+						{{option}}
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

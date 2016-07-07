@@ -10,7 +10,7 @@
 	<div class="fs-dropdown-panel">
 		<div>
 			<ul class="text-9">
-				<li stop-click>File Options</li>
+				<li stop-click="1">File Options</li>
 				<li ng-click="$parent.addCard($parent.Bakery.resource, card.cardType, card.cardNumber, true, false)"><label>
 					<i class="glyphicon glyphicon-chevron-left alert-primary"></i> Insert Before
 				</label></li>
@@ -20,47 +20,47 @@
 				<li data-ng-click="$parent.deleteCard(panel);"><label>
 					<i class="glyphicon glyphicon-trash alert-warning"></i> Delete Card
 				</label></li>
-				<li stop-click>Card Features</li>
-				<li stop-click><label>
+				<li stop-click="1">Card Features</li>
+				<li stop-click="1"><label>
 					<input type="checkbox" ng-model="card.description.show"> Description
 				</label></li>
-				<li stop-click><label>
+				<li stop-click="1"><label>
 					<input type="checkbox" ng-model="card.benefit.show"> Benefit
 				</label></li>
-				<li ng-if="card.benefit.show" stop-click><label>
+				<li ng-if="card.benefit.show" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.benefit.criticalSuccess.show"> Critical Success
 				</label></li>
-				<li stop-click><label>
+				<li stop-click="1"><label>
 					<input type="checkbox" ng-model="card.actions[0].show"> Action 1
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.actions[1].show"> Action 2
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.actions[2].show"> Action 3
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click>Modifiers</li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1">Modifiers</li>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.durability.show"> Durability
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.speed.show"> Speed
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.finesse.show"> Finesse
 				</label></li>
 				
-				<li ng-if="card.cardType === 'Item'" stop-click>Defenses</li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1">Defenses</li>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.defense.block.show"> Block
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.defense.dodge.show"> Dodge
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.defense.alertness.show"> Alertness
 				</label></li>
-				<li ng-if="card.cardType === 'Item'" stop-click><label>
+				<li ng-if="card.cardType === 'Item'" stop-click="1"><label>
 					<input type="checkbox" ng-model="card.defense.tenacity.show"> Tenacity
 				</label></li>
 			</ul>

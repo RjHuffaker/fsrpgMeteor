@@ -66,11 +66,12 @@ angular.module('freedomsworn')
 				
 				var setHeight = function(newVal, oldVal){
 					if(!newVal) return;
-					console.log('height: '+$window.innerHeight+'align: '+modalSrvc.current.modal_y_align);
+					console.log();
+					console.log('height: '+newVal+' align_y: '+modalSrvc.current.modal_y_align);
 					
 					switch(modalSrvc.current.modal_y_align){
 						case "center":
-							scope.modal_y_coord = ($window.innerHeight - newVal)/2;
+							scope.modal_y_coord = ($window.innerHeight - modalSrvc.current.modal_y_dim)/2;
 							break;
 						case "bottom":
 							scope.modal_y_coord = modalSrvc.current.toggle_y_coord + modalSrvc.current.toggle_y_dim;
@@ -83,11 +84,11 @@ angular.module('freedomsworn')
 				
 				var setWidth = function(newVal, oldVal){
 					if(!newVal) return;
-					console.log('width: '+$window.innerWidth);
+					console.log('width: '+newVal+' align_x: '+modalSrvc.current.modal_x_align);
 					
 					switch(modalSrvc.current.modal_x_align){
 						case "center":
-							scope.modal_x_coord = ($window.innerWidth - newVal)/2;
+							scope.modal_x_coord = ($window.innerWidth - modalSrvc.current.modal_x_dim)/2;
 							break;
 						case "left":
 							scope.modal_x_coord = modalSrvc.current.toggle_x_coord;

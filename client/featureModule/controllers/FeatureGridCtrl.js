@@ -11,6 +11,8 @@ angular.module("freedomsworn")
 			
 			$reactive(this).attach($scope);
 			
+			this.shownColumns = ['Name', 'Aspect', 'Description', 'Action 1'];
+			
 			this.subscribe('featureDecks');
 			
 			this.helpers({

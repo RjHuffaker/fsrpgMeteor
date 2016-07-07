@@ -8,7 +8,7 @@
 		</div>
 		<div class="fs-dropdown-panel">
 			<div>
-				<ul style="width: 30%" stop-click>
+				<ul style="width: 30%" stop-click="1">
 					<li role="presentation" class="dropdown-header"><strong>Fixed Die</Strong></li>
 					<li ng-repeat="dice in dataSrvc.dice"><label>
 						<input type="radio" value="{{dice}}"
@@ -16,7 +16,7 @@
 						{{dice}}
 					</label></li>
 				</ul>
-				<ul style="width: 30%" stop-click>
+				<ul style="width: 30%" stop-click="1">
 					<li role="presentation" class="dropdown-header"><strong>Physical</Strong></li>
 					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index < 4"><label>
 						<input type="radio" value="{{ability}}"
@@ -24,7 +24,7 @@
 						{{ability}}
 					</label></li>
 				</ul>
-				<ul style="width: 30%" stop-click>
+				<ul style="width: 30%" stop-click="1">
 					<li role="presentation" class="dropdown-header"><strong>Mental</Strong></li>
 					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index > 3"><label>
 						<input type="radio" value="{{ability}}"
@@ -43,7 +43,7 @@
 		</div>
 		<div class="fs-dropdown-panel">
 			<div>
-				<ul stop-click>
+				<ul stop-click="1">
 					<li role="presentation" class="dropdown-header"><strong>Fixed Die</Strong></li>
 					<li ng-repeat="dice in dataSrvc.dice"><label>
 						<input type="radio" value="{{dice}}"
@@ -51,7 +51,7 @@
 						{{dice}}
 					</label></li>
 				</ul>
-				<ul stop-click>
+				<ul stop-click="1">
 					<li role="presentation" class="dropdown-header"><strong>Physical</Strong></li>
 					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index < 4"><label>
 						<input type="radio" value="{{ability}}"
@@ -59,7 +59,7 @@
 						{{ability}}
 					</label></li>
 				</ul>
-				<ul stop-click>
+				<ul stop-click="1">
 					<li role="presentation" class="dropdown-header"><strong>Mental</Strong></li>
 					<li ng-repeat="ability in dataSrvc.abilities" ng-if="$index > 3"><label>
 						<input type="radio" value="{{ability}}"

@@ -10,26 +10,26 @@
 	<div class="fs-dropdown-panel">
 		<div>
 			<ul class="text-9">
-				<li stop-click>Archetype</li>
-				<li ng-repeat="archetype in deckDependencies.archetypes track by $index" stop-click>
+				<li stop-click="1">Archetype</li>
+				<li ng-repeat="archetype in deckDependencies.archetypes track by $index" stop-click="1">
 					<label>
 						<input type="radio" ng-checked="card.aspect.name === archetype.name"
 							ng-click="changeAspect(card, archetype)">
 						{{archetype.name}}
 					</label>
 				</li>
-				<li stop-click>Allegiance</li>
+				<li stop-click="1">Allegiance</li>
 				<li ng-repeat="allegiance in deckDependencies.allegiances"
-					ng-if="allegiance.name !== 'Unaligned'" stop-click>
+					ng-if="allegiance.name !== 'Unaligned'" stop-click="1">
 					<label>
 						<input type="radio" ng-checked="card.aspect.name === allegiance.name"
 							ng-click="changeAspect(card, allegiance)">
 						{{allegiance.name}}
 					</label>
 					</li>
-				<li stop-click>Race</li>
+				<li stop-click="1">Race</li>
 				<li ng-repeat="race in deckDependencies.races"
-					ng-if="race.name !== 'Weolda'" stop-click>
+					ng-if="race.name !== 'Weolda'" stop-click="1">
 					<label>
 						<input type="radio" ng-checked="card.aspect.name === race.name"
 							ng-click="changeAspect(card, race)">

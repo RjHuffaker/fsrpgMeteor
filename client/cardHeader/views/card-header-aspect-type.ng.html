@@ -10,8 +10,8 @@
 	<div class="fs-dropdown-panel">
 		<div>
 			<ul class="text-9">
-				<li stop-click>Aspect Type</li>
-				<li ng-repeat="aspectType in dataSrvc.aspectTypes" stop-click><label>
+				<li stop-click="1">Aspect Type</li>
+				<li ng-repeat="aspectType in dataSrvc.aspectTypes" stop-click="1"><label>
 					<input type="radio" ng-model="card.aspectType" value="{{aspectType}}">
 					{{aspectType}}
 				</label></li>

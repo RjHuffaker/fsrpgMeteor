@@ -10,8 +10,8 @@
 	<div class="fs-dropdown-panel">
 		<div>
 			<ul class="text-9">
-				<li stop-click>Weapon/Implement Type</li>
-				<li ng-repeat="itemType in dataSrvc.itemTypes" stop-click><label>
+				<li stop-click="1">Weapon/Implement Type</li>
+				<li ng-repeat="itemType in dataSrvc.itemTypes" stop-click="1"><label>
 					<input type="radio" ng-model="card.itemType" value="{{itemType}}">
 					{{itemType}}
 				</label></li>

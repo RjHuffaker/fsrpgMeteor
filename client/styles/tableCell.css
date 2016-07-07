@@ -34,7 +34,7 @@
 .scrollDiv {
 	position: relative;
 	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-y: scroll;
 	height: 100%;
 }
 

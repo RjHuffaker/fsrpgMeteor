@@ -30,6 +30,9 @@ paths = {
 	fsPanel: {
 		views: 'client/fsPanel/views/'
 	},
+	fsSelect: {
+		views: 'client/fsSelect/views/'
+	},
 	generalModule: {
 		views: 'client/generalModule/views/'
 	},

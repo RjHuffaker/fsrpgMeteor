@@ -12,19 +12,19 @@
 			<span ng-if="!centertext">{{defaultcenter}}</span><span>{{centertext}}</span>
 		</div>
 	</div>
-	<div class="fs-dropdown-panel" stop-click>
-		<div class="fill-width" stop-click>
+	<div class="fs-dropdown-panel" stop-click="1">
+		<div class="fill-width" stop-click="1">
 			<textarea ng-if="defaultblock" ng-model="blocktext"
         class="fill-width"
-        ng-change="onChangeBlock()" stop-click>
+        ng-change="onChangeBlock()" stop-click="1">
       </textarea>
       <textarea ng-if="defaultbullet" ng-model="bullettext"
         class="fill-width"
-        ng-change="onChangeBullet()" stop-click>
+        ng-change="onChangeBullet()" stop-click="1">
       </textarea>
     	<textarea ng-if="defaultcenter" ng-model="centertext"
         class="fill-width text-descriptive text-center"
-        ng-change="onChangeCenter()" stop-click>
+        ng-change="onChangeCenter()" stop-click="1">
       </textarea>
 		</div>
 	</div>
