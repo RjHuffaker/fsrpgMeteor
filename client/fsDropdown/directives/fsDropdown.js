@@ -17,8 +17,6 @@ angular.module('freedomsworn')
 				var opencallback;
 				var closecallback;
 				
-				var showHandler = null;
-				
 				var exemptList = ['keep-open', 'form', 'form-control', 'fs-dropdown-panel'];
 				
 				var toggleHideListener = function(enable){
@@ -99,6 +97,10 @@ angular.module('freedomsworn')
 						dropdownPanel.width(toggleWidth);
 					} else {
 						dropdownPanel.width(contentWidth);
+					}
+					
+					if(element.hasClass('anchor-right')){
+						dropdownPanel.css('margin-left', -(contentWidth-toggleWidth)+'px');
 					}
 					
 					if(angular.isFunction(scope.openCallback)) scope.openCallback();

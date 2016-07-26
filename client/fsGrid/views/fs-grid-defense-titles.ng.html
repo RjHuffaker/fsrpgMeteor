@@ -1,0 +1,34 @@
+<div class="inline-flex">
+	<div fs-drop-toggle options="shownColumns.defenses"></div>
+	<div class="row-header">Defenses</div>
+</div>
+
+<div class="section-underline"></div>
+
+<div class="inline-flex">
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.defenses['Block']">
+		<b>Block</b>
+		<div resize-handle="Width" id="Block"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.defenses['Dodge']">
+		<b>Dodge</b>
+		<div resize-handle="Width" id="Dodge"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.defenses['Alertness']">
+		<b>Alertness</b>
+		<div resize-handle="Width" id="Alertness"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.defenses['Tenacity']">
+		<b>Tenacity</b>
+		<div resize-handle="Width" id="Tenacity"></div>
+	</div>
+	
+</div>

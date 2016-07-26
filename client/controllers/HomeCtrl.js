@@ -1,9 +1,9 @@
 angular.module("freedomsworn")
-	.controller("HomeCtrl", ['$scope', '$meteor', '$stateParams', '$location', 'modalSrvc',
-		function($scope, $meteor, $stateParams, $location, modalSrvc){
+	.controller("HomeCtrl",
+		function($scope){
+			'ngInject';
 			
-			$scope.deckType = $stateParams.deckType;
+			$scope.testArray = [];
 			
-			$scope.modalSrvc = modalSrvc;
 			
-		}]);
+		});

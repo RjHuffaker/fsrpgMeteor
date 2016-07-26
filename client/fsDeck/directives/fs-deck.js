@@ -1,4 +1,3 @@
-// Directive for managing card decks.
 angular.module('freedomsworn')
 	.directive('fsDeck',
 		function($rootScope, $window, PanelUtils, DeckUtils, movePanel){

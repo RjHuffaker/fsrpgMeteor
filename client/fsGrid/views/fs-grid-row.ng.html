@@ -1,0 +1,92 @@
+<div class="inline-flex fill-height" style="height: 2em;">
+	<div class="inline-flex" style="width: 1.4em">
+		<div fs-dropdown class="open-down">
+			<div class="fs-dropdown-toggle">
+				<div class="{{gridCard.cardType}}"
+					style="height: 1.4em; width: 1em;
+						border: 1px solid black;
+						-moz-border-radius: .2em;
+						-webkit-border-radius: .2em;
+						border-radius: .2em;"></div>
+			</div>
+			<div class="fs-dropdown-panel">
+				<div style="height: 21em; width: 15em; border: none;" >
+					<div feature-card card="gridCard"
+						class="{{gridCard.cardType}} fill-parent content-panel" 
+						style="-moz-border-radius: .5em;
+							-webkit-border-radius: .5em;
+							border-radius: .5em;
+							border-top: 1px solid #222;
+							border-left: 1px solid #222;
+							border-right: 2px solid #111;
+							border-bottom: 2px solid #111;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.card['Name']">
+		<input type="text" ng-model="gridCard.name">
+		<div resize-handle="Width" id="Name"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.card['Aspect']">
+		<div fs-select selection="gridCard.aspect"
+			select-header="'Aspect'"
+			selection-headers="['Archetypes','Allegiances','Races']"
+			options="[deckDependencies.archetypes,
+				deckDependencies.allegiances,
+				deckDependencies.races]"></div>
+		<div resize-handle="Width" id="Aspect"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.card['Aspect Type']">
+		<div fs-select selection="gridCard.aspectType"
+			select-header="'Aspect Type'"
+			options="[dataSrvc.aspectTypes]"></div>
+		<div resize-handle="Width" id="Aspect Type"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 15em"
+		ng-if="shownColumns.card['Description']">
+		<textarea ng-model="gridCard.description" rows="2"></textarea>
+		<div resize-handle="Width" id="Description"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.card['Benefit']">
+		<textarea ng-model="gridCard.benefit" rows="2"></textarea>
+		<div resize-handle="Width" id="Benefit"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.card['Critical Success']">
+		<textarea ng-model="gridCard.benefitCritical" rows="2"></textarea>
+		<div resize-handle="Width" id="Critical Success"></div>
+	</div>
+	
+	<div class="inline-flex"
+		fs-grid-item-row="gridCard"
+		ng-if="shownColumns.card['Item']">
+	</div>
+	
+	<div class="inline-flex"
+		fs-grid-modifier-row="gridCard" 
+		ng-if="shownColumns.card['Modifiers']">
+	</div>
+	
+	<div class="inline-flex"
+		fs-grid-defense-row="gridCard"
+		ng-if="shownColumns.card['Defenses']">
+	</div>
+	
+	<div class="inline-flex" 
+		ng-repeat="action in gridCard.actions track by $index"
+		ng-if="shownColumns.card['Action '+($index+1)]"
+		fs-grid-action-row="action" action-id="$index" >
+	</div>
+	
+</div><div resize-handle="Height" id="Grid Row{{rowId}}"></div>

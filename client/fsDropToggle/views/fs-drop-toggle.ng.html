@@ -1,0 +1,17 @@
+<div fs-dropdown id="fs-select" class="open-down">
+	<div class="fs-dropdown-toggle">
+		+
+	</div>
+	<div class="fs-dropdown-panel">
+		<ul>
+			<li ng-repeat="(key, value) in options track by $index"
+				ng-class="{current: value}"
+				ng-click="toggleSelect(key)"
+				stop-click="1">
+				<span>
+					{{key}}
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<div class="inline-flex">
+	<div fs-drop-toggle options="shownColumns.item"></div>
+	<div class="row-header">Item Properties</div>
+</div>
+
+<div class="section-underline"></div>
+
+<div class="inline-flex">
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.item['Slot']">
+		<b>Slot</b>
+		<div resize-handle="Width" id="Item Slot"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.item['Type']">
+		<b>Type</b>
+		<div resize-handle="Width" id="Item Type"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.item['Weight']">
+		<b>Weight</b>
+		<div resize-handle="Width" id="Item Weight"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.item['Cost']">
+		<b>Cost</b>
+		<div resize-handle="Width" id="Item Cost"></div>
+	</div>
+	
+</div>

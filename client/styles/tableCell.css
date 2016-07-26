@@ -14,8 +14,6 @@
 .innerTable {
 	display: table;
 	position: absolute;
-	max-height: 100%;
-	width: 100%;
 }
 .innerRow {
 	display: table-row;
@@ -24,16 +22,21 @@
 }
 .innerCell {
 	display: table-cell;
-	height: 100%;
 	padding-top: .25em;
 	padding-bottom: .25em;
 	border: 1px solid darkgrey;
 	cursor: default;
+	vertical-align: top;
+}
+
+.innerCell input {
+	box-sizing: border-box;
+	padding: 0;
 }
 
 .scrollDiv {
 	position: relative;
-	overflow-x: hidden;
+	overflow-x: scroll;
 	overflow-y: scroll;
 	height: 100%;
 }

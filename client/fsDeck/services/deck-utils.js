@@ -6,14 +6,9 @@ angular.module('freedomsworn').factory('DeckUtils',
 		var service = {};
 		
 		service.getRefArray = function(cardList){
-			var _first = PanelUtils.getFirst(cardList);
-			var _index = _first.index;
-			var _panel = _first.panel;
+			var _panel = PanelUtils.getFirst(cardList);
+			var _index = PanelUtils.getPanelOrder(_panel);
 			var _refArray = [_index];
-			
-			if(!_panel){
-				console.log(_refArray);
-			}
 			
 			while(_panel.below || _panel.right){
 				if(_panel.below){

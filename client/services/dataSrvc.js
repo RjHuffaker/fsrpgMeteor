@@ -101,7 +101,9 @@ angular.module('freedomsworn')
 		
 		service.attackTypes = [
 			'Melee',
+			'Melee, Reflexive',
 			'Ranged',
+			'Ranged, Thrown',
 			'Evocation',
 			'Invocation'
 		];

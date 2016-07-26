@@ -1,0 +1,67 @@
+<div ng-if="cardAction.name">
+	<div class="title-row text-9">
+		<div class="title-block">
+			<strong class="pull-left">{{cardAction.name}}</strong>
+		</div>
+		
+		<div class="title-block">
+			<span class="pull-right">
+				{{cardAction.targetType}} {{cardAction.targetDetail}}
+			</span>
+		</div>
+	</div>
+	<hr class="black-line text-9">
+	
+	<div class="title-row text-9">
+		<div class="title-block">
+			<strong class="pull-left">
+				{{cardAction.usage}}<span ng-if="cardAction.attack.attackType">, {{cardAction.attack.attackType}}</span>
+			</strong>
+		</div>
+		<div class="title-block">
+			<div class="pull-right">
+				<strong>
+					{{cardAction.frequency}}
+				</strong>
+				<strong ng-if="!cardAction.frequency">
+					[Frequency]
+				</strong>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-if="cardAction.frequency === 'Free'
+		|| cardAction.frequency === 'Responsive'"
+		style="white-space: normal;" class="text-9">
+		<strong>Prompt: </strong>{{cardAction.prompt}}
+	</div>
+	
+	<div ng-if="cardAction.attack.attackType" class="text-9">
+		<strong>Attack: </strong>
+		{{cardAction.attack.dice_a}} + {{cardAction.attack.dice_b}} vs {{cardAction.attack.versus}}
+	</div>
+	
+	<div ng-if="cardAction.attack.success" class="text-9">
+		<strong>Success: </strong>{{cardAction.attack.success}}
+	</div>
+	<div ng-if="cardAction.attack.criticalSuccess" class="text-9">
+		<strong>Critical Success: </strong>{{cardAction.attack.criticalSuccess}}
+	</div>
+	
+	<div ng-if="cardAction.effect.content" class="text-9">
+		<div>
+			<strong>Effect: </strong>{{cardAction.effect.content}}
+		</div>
+		
+		<div ng-repeat="listItem in cardAction.effect.list track by $index">
+			<span ng-show="listItem.content">
+				<strong ng-show="listItem.leader">{{listItem.leader}}: </strong>
+				<span ng-hide="listItem.leader">&nbsp;&#8226; </span>
+				{{listItem.content}}
+			</span>
+		</div>
+		
+	</div>
+	
+	<br>
+</div>

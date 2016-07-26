@@ -84,6 +84,7 @@ angular.module('freedomsworn')
 						_dropdownHandler();
 						_panelXWatcher();
 						_panelYWatcher();
+						element.off(_pressEvents, onPress);
 					}
 				};
 				

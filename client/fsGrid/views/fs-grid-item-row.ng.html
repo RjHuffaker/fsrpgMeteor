@@ -1,0 +1,35 @@
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.item['Slot']">
+	<div fs-select select-header="'Slot'"
+		selection="gridItem.itemSlot"
+		options="[dataSrvc.itemSlots]"></div>
+	<div resize-handle="Width" id="Item Slot"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.item['Type']">
+	<div fs-select select-header="'Type'"
+		selection="gridItem.itemType"
+		options="[dataSrvc.itemTypes]"></div>
+	<div resize-handle="Width" id="Item Type"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.item['Weight']">
+	<div fs-numpicker
+		numvalue="gridItem.weight"
+		numvaluemin="0"
+		numvaluemax="20"
+		numdelay="200"></div>
+	<div resize-handle="Width" id="Item Weight"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.item['Cost']">
+	<div fs-numpicker
+		numvalue="gridItem.cost"
+		numvaluemin="0"
+		numvaluemax="100"
+		numdelay="200"></div>
+	<div resize-handle="Width" id="Item Cost"></div>
+</div>

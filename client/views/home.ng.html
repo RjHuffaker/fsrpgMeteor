@@ -1,17 +1,35 @@
 <div>
-	Home
-	<div fs-modal-toggle modalxalign="center" modalyalign="center"
-		modalxdim="12" modalydim="8" modal-callback="">
-		
-		<a href="#">Modal</a>
-		
-		<div class="fs-modal-content" card="">
-			<div>
-				Modal Content!!!!
+	<div>Home</div>
+	<br>
+	<div class="content-box">
+		<div fs-select style="width: 5em; height: 5em;"
+			selection-array="testArray"
+			options="[['1','2','3','3.1','3.2','3.2.1']]">
+		</div><div class="border-box" ng-if="testArray.indexOf('1') > -1"
+			style="width: 5em;">
+			1
+		</div><div class="border-box" ng-if="testArray.indexOf('2') > -1"
+			style="width: 5em; height: 5em;">
+			2
+		</div>
+	</div><div class="content-box" ng-if="testArray.indexOf('3') > -1">
+		<div class="border-box"
+			style="width: 5em; height: 5em;">
+			3
+		</div><div class="border-box" ng-if="testArray.indexOf('3.1') > -1"
+			style="width: 5em; height: 5em;">
+			3.1
+		</div><div class="content-box"  ng-if="testArray.indexOf('3.2') > -1">
+			<div class="border-box"
+				style="width: 5em; height: 5em;">
+				3.2
+			</div><div class="content-box" ng-if="testArray.indexOf('3.2.1') > -1">
+				<div class="border-box"
+					style="width: 5em; height: 5em;">
+					3.2.1
+				</div>
 			</div>
 		</div>
-		
 	</div>
-	
 	
 </div>

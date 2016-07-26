@@ -18,8 +18,17 @@ paths = {
 	fsBlockInput: {
 		views: 'client/fsBlockInput/views/'
 	},
+	fsCard: {
+		views: 'client/fsCard/views/'
+	},
 	fsDeck: {
 		views: 'client/fsDeck/views/'
+	},
+	fsDropToggle: {
+		views: 'client/fsDropToggle/views/'
+	},
+	fsGrid: {
+		views: 'client/fsGrid/views/'
 	},
 	fsModal: {
 		views: 'client/fsModal/views/',

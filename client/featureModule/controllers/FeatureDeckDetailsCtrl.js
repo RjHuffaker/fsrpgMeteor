@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("FeatureDeckDetailsCtrl",
-		function($scope, $reactive, $meteor, $stateParams, CoreVars, dataSrvc, deckDependencies){
+		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, deckDependencies, shuffleDeck){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
@@ -13,7 +13,7 @@ angular.module("freedomsworn")
 			
 			this.helpers({
 				featureDeck(){
-					var deck = $meteor.object(FeatureDecks, $stateParams.deckId, false);
+					var deck = featureBread.read($stateParams.deckId);
 					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
 					return deck;
 				}

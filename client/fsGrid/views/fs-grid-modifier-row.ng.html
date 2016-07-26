@@ -1,0 +1,29 @@
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.modifiers['Durability']">
+	<div fs-numpicker
+		numvalue="gridItem.durability"
+		numvaluemin="0"
+		numvaluemax="12"
+		numdelay="200"></div>
+	<div resize-handle="Width" id="Durability"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.modifiers['Finesse']">
+	<div fs-numpicker
+		numvalue="gridItem.finesse"
+		numvaluemin="-4"
+		numvaluemax="4"
+		numdelay="200"></div>
+	<div resize-handle="Width" id="Finesse"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.modifiers['Speed']">
+	<div fs-numpicker
+		numvalue="gridItem.speed"
+		numvaluemin="-2"
+		numvaluemax="2"
+		numdelay="200"></div>
+	<div resize-handle="Width" id="Speed"></div>
+</div>

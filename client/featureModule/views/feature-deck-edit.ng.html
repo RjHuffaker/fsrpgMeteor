@@ -1,0 +1,53 @@
+<div class="outerTable" ng-controller="FeatureEditCtrl as vm">
+	
+	<div class="outerRow">
+		<div class="outerCell" style="height: 15%; padding: 1em">
+			<div class="innerTable">
+				<div class="innerRow">
+				
+					<div class="innerCell">
+						Deck Name: <input ng-model="vm.featureDeck.name">
+					</div>
+					
+					<div class="innerCell">
+						<a href="#" ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</a>
+					</div>
+					
+				</div>
+				<div class="innerRow" ng-if="vm.featureDeck.deckType !== 'Aspect'">
+					
+					<div class="innerCell">
+						<div fs-select select-header="'Dependencies'"
+							selection-array="vm.featureDeck.dependencies"
+							options="[vm.depList]" 
+							callback="vm.deckDependencies.fetchDependencies(vm.featureDeck)"></div>
+					</div>
+					
+					<div class="innerCell">
+						Move Card <button>UP</button> <button>DOWN</button>
+					</div>
+					
+					<div class="innerCell">
+						<button>Add Card</button> <button>Remove Selected</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="outerRow">
+		<div class="outerCell" style="height: 85%; padding: 1em">
+			<div style="height: 100%; width: 100%; border: 2px solid black">
+				<div class="scrollDiv">
+					<div class="innerTable">
+						
+						<div fs-grid="vm.featureDeck.cardList" shown-columns="vm.shownColumns"></div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

@@ -1,0 +1,26 @@
+<div class="inline-flex">
+	<div fs-drop-toggle options="shownColumns.modifiers"></div>
+	<div>Modifiers</div>
+</div>
+
+<div class="inline-flex">
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Durability']">
+		<b>Durability</b>
+		<div resize-handle="Width" id="Durability"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Finesse']">
+		<b>Finesse</b>
+		<div resize-handle="Width" id="Finesse"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Speed']">
+		<b>Speed</b>
+		<div resize-handle="Width" id="Speed"></div>
+	</div>
+	
+</div>

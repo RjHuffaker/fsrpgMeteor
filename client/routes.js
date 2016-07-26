@@ -23,17 +23,17 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         templateUrl: paths.featureModule.views+'new-feature-deck.ng.html'
       })
       .state('featureDeckList', {
-        url: '/featureDecks',
+        url: '/featureDeckList',
         templateUrl: paths.featureModule.views+'feature-deck-list.ng.html'
       })
-      .state('featureDeckDetails', {
-        url: '/featureDecks/:deckId',
-        templateUrl: paths.featureModule.views+'feature-deck-details.ng.html'
+      .state('featureDeckView', {
+        url: '/featureDeckView/:deckId',
+        templateUrl: paths.featureModule.views+'feature-deck-view.ng.html'
       })
       
-      .state('featureGrid', {
-        url: '/featureGrid/:deckId',
-        templateUrl: paths.featureModule.views+'feature-grid.ng.html'
+      .state('featureDeckEdit', {
+        url: '/featureDeckEdit/:deckId',
+        templateUrl: paths.featureModule.views+'feature-deck-edit.ng.html'
       })
       
       .state('npcDeck', {

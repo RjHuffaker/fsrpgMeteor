@@ -1,0 +1,57 @@
+<table class="fill-parent" fit-content>
+	<tbody>
+		<tr>
+			<td style="vertical-align: top;">
+				<span class="text-argos text-18"
+					ng-class="{'text-14': card.cardType === 'Augment',
+						'text-16': card.cardType === 'Origin',
+						'text-narrow': card.cardType === 'Augment'}">
+					{{card.cardType}}&nbsp;
+				</span>
+			</td>
+			
+			<td class="fill-parent">
+				<div class="card-header fill-parent">
+					
+					<span>{{card.name}}</span>
+					
+					<hr class="black-line">
+					
+					<div ng-if="card.cardType !== 'Item' && card.cardType !== 'Aspect'">
+						{{card.aspect.name}}
+						<span ng-if="!card.aspect">
+							[Aspect]
+						</span>
+					</div>
+					
+					<div ng-if="card.cardType === 'Item'
+						&& (card.itemSlot === 'One-handed'
+						|| card.itemSlot === 'Two-handed'
+						|| card.itemSlot === 'One-handed or Paired'
+						|| card.itemSlot === 'One-handed or Two-handed')">
+						{{card.itemType}}
+						<span ng-if="!card.itemType">
+							[Item Type]
+						</span>
+					</div>
+					
+					<div ng-if="card.cardType === 'Aspect'">
+						{{card.aspectType}}
+						<span ng-if="!card.aspectType">
+							[Aspect Type]
+						</span>
+					</div>
+					
+				</div>
+			</td>
+		</tr>
+		<tr ng-if="card.description">
+			<td colspan="2" class="fill-width">
+				<br>
+				<div class="text-descriptive text-center">
+					{{card.description}}
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

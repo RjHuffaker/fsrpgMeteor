@@ -48,7 +48,12 @@ angular.module('freedomsworn')
 						cardData: {
 							name: 'Panel '+i,
 							cardType: type,
-							actions: []
+							actions: [
+								{ keywords: [] },
+								{ keywords: [] },
+								{ keywords: [] },
+								{ keywords: [] }
+							]
 						}
 					});
 				}
@@ -60,7 +65,7 @@ angular.module('freedomsworn')
 						console.log(error);
 					} else if(result){
 						$timeout(function(){
-							$location.path('/featureDecks/'+result);
+							$location.path('/featureDeckEdit/'+result);
 						}, 0);
 					}
 				});

@@ -1,23 +1,31 @@
 angular.module("freedomsworn")
-	.controller("FeatureGridCtrl",
-		function($scope, $reactive, $meteor, $stateParams, CoreVars, dataSrvc, deckDependencies){
+	.controller("FeatureEditCtrl",
+		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, shownColumns, deckDependencies){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
 			
 			this.dataSrvc = dataSrvc;
 			
+			this.shownColumns = shownColumns;
+			
 			this.deckDependencies = deckDependencies;
 			
 			$reactive(this).attach($scope);
 			
-			this.shownColumns = ['Name', 'Aspect', 'Description', 'Action 1'];
+			this.shownColumns = {
+				card: ['Name'],
+				item: ['Slot'],
+				modifiers: ['Durability', 'Finesse', 'Speed'],
+				defenses: ['Block', 'Dodge', 'Alertness', 'Tenacity'],
+				actions: [ ['Name'], ['Name'], ['Name'], ['Name'] ]
+			};
 			
 			this.subscribe('featureDecks');
 			
 			this.helpers({
 				featureDeck(){
-					var deck = $meteor.object(FeatureDecks, $stateParams.deckId, false);
+					var deck = featureBread.read($stateParams.deckId);
 					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
 					return deck;
 				},

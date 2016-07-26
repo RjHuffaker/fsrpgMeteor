@@ -1,0 +1,89 @@
+<div class="inline-flex">
+	<div fs-drop-toggle options="shownColumns.actions[actionId]"></div>
+	<div class="row-header">Action {{actionId+1}}</div>
+</div>
+
+<div class="section-underline"></div>
+
+<div class="inline-flex">
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Name']">
+		<b>Name</b>
+		<div resize-handle="Width" id="Name"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Target']">
+		<b>Target</b>
+		<div resize-handle="Width" id="Target"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Usage']">
+		<b>Usage</b>
+		<div resize-handle="Width" id="Usage"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['List 1']">
+		<b>Item 1</b>
+		<div resize-handle="Width" id="List 1"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['List 2']">
+		<b>item 2</b>
+		<div resize-handle="Width" id="List 2"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['List 3']">
+		<b>item 3</b>
+		<div resize-handle="Width" id="3"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['List 4']">
+		<b>item 4</b>
+		<div resize-handle="Width" id="List 4"></div>
+	</div>
+	
+	<!-- Action Attack -->
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Attack Type']">
+		<b>Attack Type</b>
+		<div resize-handle="Width" id="Attack Type"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Attack Die #1']">
+		<b>Dice #1</b>
+		<div resize-handle="Width" id="Attack Die #1"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Attack Die #2']">
+		<b>Dice #2</b>
+		<div resize-handle="Width" id="Attack Die #2"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Attack Versus']">
+		<b>Versus</b>
+		<div resize-handle="Width" id="Attack Versus"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Attack Success']">
+		<b>Success</b>
+		<div resize-handle="Width" id="Attack Success"></div>
+	</div>
+
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.actions[actionId]['Attack Critical Success']">
+		<b>Critical Success</b>
+		<div resize-handle="Width" id="Attack Critical Success"></div>
+	</div>
+</div>

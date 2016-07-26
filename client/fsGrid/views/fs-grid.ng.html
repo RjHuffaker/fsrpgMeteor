@@ -1,0 +1,6 @@
+<div class="flex-column">
+	<div class="inline-flex" fs-grid-titles deck-type="gridDeck.deckType"></div>
+	<div class="flex-column" ng-repeat="gridCard in gridDeck track by $index"
+		fs-grid-row="gridCard.cardData" deck-type="gridDeck.deckType"
+		row-id="$index" ng-click="selectRow(gridCard);"></div>
+</div>

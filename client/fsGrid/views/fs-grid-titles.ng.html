@@ -1,0 +1,70 @@
+<div class="flex-column">
+	<div class="inline-flex">
+		<div fs-drop-toggle options="shownColumns.card"></div>
+		<div class="row-header">Card Details</div>
+	</div>
+	
+	<div class="section-underline"></div>
+	
+	<div class="inline-flex">
+		<div class="inline-flex" style="width: 1.4em; height: 1.4em;">
+		</div>
+		
+		<div class="inline-flex" style="width: 10em"
+			ng-if="shownColumns.card['Name']">
+			<b>Name</b>
+			<div resize-handle="Width" id="Name"></div>
+		</div>
+		
+		<div class="inline-flex" style="width: 10em"
+			ng-if="shownColumns.card['Aspect']">
+			<b>Aspect</b>
+			<div resize-handle="Width" id="Aspect"></div>
+		</div>
+		
+		<div class="inline-flex" style="width: 10em"
+			ng-if="shownColumns.card['Aspect Type']">
+			<b>Aspect Type</b>
+			<div resize-handle="Width" id="Aspect Type"></div>
+		</div>
+		
+		<div class="inline-flex" style="width: 15em"
+			ng-if="shownColumns.card['Description']">
+			<b>Description</b>
+			<div resize-handle="Width" id="Description"></div>
+		</div>
+		
+		<div class="inline-flex" style="width: 10em"
+			ng-if="shownColumns.card['Benefit']">
+			<b>Benefit</b>
+			<div resize-handle="Width" id="Benefit"></div>
+		</div>
+		
+		<div class="inline-flex" style="width: 10em"
+			ng-if="shownColumns.card['Critical Success']">
+			<b>Critical Success</b>
+			<div resize-handle="Width" id="Critical Success"></div>
+		</div>
+	</div>
+</div>
+
+<div class="flex-column"
+	ng-if="shownColumns.card['Item']"
+	fs-grid-item-titles>
+</div>
+
+<div class="flex-column"
+	ng-if="shownColumns.card['Modifiers']"
+	fs-grid-modifier-titles>
+</div>
+
+<div class="flex-column"
+	ng-if="shownColumns.card['Defenses']"
+	fs-grid-defense-titles>
+</div>
+
+<div class="flex-column"
+	ng-if="shownColumns.card['Action '+($index+1)]"
+	ng-repeat="action in shownColumns.actions track by $index"
+	fs-grid-action-titles action-id="$index">
+</div>

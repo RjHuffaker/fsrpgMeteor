@@ -7,9 +7,10 @@ angular.module('freedomsworn')
 			scope: {
 				selection: '=',
 				options: '=',
-				headers: '=',
+				selectHeader: '=',
+				selectionHeaders: '=',
 				selectionArray: '=',
-				toggleHeader: '='
+				callback: '&'
 			},
 			templateUrl: paths.fsSelect.views+'fs-select.ng.html',
 			link: function(scope, element, attrs){
@@ -27,6 +28,9 @@ angular.module('freedomsworn')
 					} else {
 						scope.selection = option;
 					}
+					//scope.callback();
+					
+					scope.$eval(scope.callback());
 				};
 				
 				scope.showSelected = function(selection){

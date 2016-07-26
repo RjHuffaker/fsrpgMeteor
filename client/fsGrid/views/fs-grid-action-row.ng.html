@@ -1,0 +1,121 @@
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Name']">
+	<input type="text" ng-model="gridAction.name">
+	<div resize-handle="Width" id="Name"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Target']">
+	<div class="flex-column fill-parent">
+		<div fs-select selection="gridAction.targetType"
+			options="[dataSrvc.targetTypes]"></div>
+		<div fs-select ng-if="gridAction.targetType === 'Close'"
+			selection="gridAction.targetDetail"
+			options="[dataSrvc.closeDetails]"></div>
+		<div fs-select ng-if="gridAction.targetType === 'Close Area'"
+			selection="gridAction.targetDetail"
+			options="[dataSrvc.closeAreaDetails]"></div>
+		<div fs-select ng-if="gridAction.targetType === 'Distant'"
+			selection="gridAction.targetDetail"
+			options="[dataSrvc.distantDetails]"></div>
+		<div fs-select ng-if="gridAction.targetType === 'Distant Area'"
+			selection="gridAction.targetDetail"
+			options="[dataSrvc.distantAreaDetails]"></div>
+	</div>
+	<div resize-handle="Width" id="Target"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Usage']">
+	<div fs-select selection="gridAction.usage"
+		options="[['Default', 'Single-use']]"></div>
+	<div resize-handle="Width" id="Usage"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Effect']">
+	<input type="text" ng-model="gridAction.effect.content">
+	<div resize-handle="Width" id="Effect"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['List 1']">
+	<div>
+		<input type="text" ng-model="gridAction.effect.list[0].leader">
+		<textarea ng-model="gridAction.effect.list[0].content"></textarea>
+	</div>
+	<div resize-handle="Width" id="List 1"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['List 2']">
+	<div>
+		<input type="text" ng-model="gridAction.effect.list[1].leader">
+		<textarea ng-model="gridAction.effect.list[1].content"></textarea>
+	</div>
+	<div resize-handle="Width" id="List 2"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['List 3']">
+	<div>
+		<input type="text" ng-model="gridAction.effect.list[2].leader">
+		<textarea ng-model="gridAction.effect.list[2].content"></textarea>
+	</div>
+	<div resize-handle="Width" id="List 3"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['List 4']">
+	<div>
+		<input type="text" ng-model="gridAction.effect.list[3].leader">
+		<textarea ng-model="gridAction.effect.list[3].content"></textarea>
+	</div>
+	<div resize-handle="Width" id="List 4"></div>
+</div>
+
+<!-- Action Attack -->
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Attack Type']">
+	<div fs-select
+		selection="gridAction.attackType"
+		options="[dataSrvc.attackTypes]"></div>
+	<div resize-handle="Width" id="Type"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Attack Die #1']">
+	<div fs-select
+		selection="gridAction.dice_a"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+	<div resize-handle="Width" id="Attack Die #1"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Attack Die #2']">
+	<div fs-select
+		selection="gridAction.dice_b"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+	<div resize-handle="Width" id="Attack Die #2"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Attack Versus']">
+	<div fs-select
+		selection="gridAction.versus"
+		options="[dataSrvc.defenseTypes]"></div>
+	<div resize-handle="Width" id="Attack Versus"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Attack Success']">
+	<input type="text" ng-model="gridAction.success">
+	<div resize-handle="Width" id="Attack Success"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.actions[actionId]['Attack Critical Success']">
+	<input type="text" ng-model="gridAction.criticalSuccess">
+	<div resize-handle="Width" id="Attack Critical Success"></div>
+</div>

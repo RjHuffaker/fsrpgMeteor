@@ -9,32 +9,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="text-8" style="vertical-align: top;">
-					
-					<div card-description></div>
-					
-				</td>
-			</tr>
-			<tr>
 				<td class="text-8" colspan="2" style="vertical-align: bottom;">
 					
-					<div durability-modifier></div>
-					
-					<div speed-modifier></div>
-					
-					<div finesse-modifier></div>
-					
-					<div card-benefit></div>
-					
-					<div card-critical-success></div>
-					
-					<div block-defense></div>
-					
-					<div dodge-defense></div>
-					
-					<div alertness-defense></div>
-					
-					<div tenacity-defense></div>
+					<div card-properties></div>
 					
 					<div ng-repeat="action in card.actions" card-action="action" panel="panel"></div>
 					
@@ -44,11 +21,4 @@
 			</tr>
 		</tbody>
 	</table>
-</div>
-
-<div style="position: absolute; top: 20em; left: 14em; width: 1em;" class="text-center">
-	<a data-ng-click="$parent.panel.locked = !$parent.panel.locked;" stop-event>
-		<span ng-hide="$parent.panel.locked" class="grey-icon">U</span>
-		<span ng-show="$parent.panel.locked" class="blue-icon">L</span>
-	</a>
 </div>
