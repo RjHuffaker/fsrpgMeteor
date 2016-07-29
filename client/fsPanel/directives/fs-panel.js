@@ -1,5 +1,5 @@
 angular.module('freedomsworn')
-	.directive('fsPanel', function($document, $parse, $rootScope, $window, CoreVars, checkEdge, onCardMove, toggleOverlap, PanelUtils, DeckUtils){
+	.directive('fsPanel', function($document, $parse, $rootScope, $window, CoreVars, checkEdge, onCardMove){
 		'ng-inject';
 
 		return {
@@ -124,13 +124,6 @@ angular.module('freedomsworn')
 				};
 				
 				var onHeightChange = function(event, object){
-					CoreVars.x_dim_px = convertEm(15);
-					CoreVars.y_dim_px = convertEm(21);
-					CoreVars.x_tab_px = convertEm(3);
-					CoreVars.y_tab_px = convertEm(3);
-					CoreVars.x_cover_px = convertEm(12);
-					CoreVars.y_cover_px = convertEm(18);
-					
 					setPosition();
 				};
 				
@@ -190,7 +183,7 @@ angular.module('freedomsworn')
 					
 					element.removeClass('card-moving');
 					
-					PanelUtils.getStack(_deck.cardList, _panel,
+					_deck.getStack(_panel,
 						function(stackArray){
 							for(var i = 0; i < stackArray.length; i++){
 								stackArray[i].dragging = true;
@@ -253,7 +246,7 @@ angular.module('freedomsworn')
 							top: object.moveY + _startRow + 'px'
 						});
 					} else {
-						onCardMove(_deck.cardList, object);
+						onCardMove(_deck, object);
 					}
 				};
 				
@@ -269,10 +262,10 @@ angular.module('freedomsworn')
 					if(Math.abs(_moveX) <= convertEm(1) && Math.abs(_moveY) <= convertEm(1)){
 						var _offset = element.offset();
 						var _nearest = checkEdge.crossing(_panel, _offset.left, _offset.top, _startX, _startY, convertEm(1));
-						toggleOverlap(_deck.cardList, _panel._id, _nearest);
+						_deck.toggleOverlap(_panel._id, _nearest);
 					}
 					
-					CoreVars.setCardStop();
+					_deck.setCardStop();
 					
 					for(var i = 0; i < _deck.cardList.length; i++){
 						_deck.cardList[i].dragging = false;

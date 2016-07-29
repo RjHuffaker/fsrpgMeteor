@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("PcDeckDetailsCtrl", 
-		function($scope, $meteor, $reactive, $stateParams, CoreVars, pcBread, abilityDice, PcFeature, factorStats){
+		function($scope, $meteor, $reactive, $stateParams, CoreVars, pcBread){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
@@ -24,7 +24,7 @@ angular.module("freedomsworn")
 			
 			$scope.$watch('vm.pcDeck.experience', function(newVal, oldVal){
 				if(newVal !== oldVal){
-					factorStats.factorExperience($scope.vm.pcDeck);
+					$scope.vm.pcDeck.factorExperience();
 					if(newVal !== CoreVars.EXP){
 						CoreVars.EXP = newVal;
 					}
@@ -33,11 +33,11 @@ angular.module("freedomsworn")
 			
 			$scope.$watch('vm.pcDeck.level', function(newVal, oldVal){
 				if(newVal !== oldVal){
-					factorStats.factorHealth($scope.vm.pcDeck);
-					factorStats.factorStamina($scope.vm.pcDeck);
-					PcFeature.factorTraitLimit($scope.vm.pcDeck);
-					PcFeature.factorFeatLimit($scope.vm.pcDeck);
-					PcFeature.factorAugmentLimit($scope.vm.pcDeck);
+					$scope.vm.pcDeck.factorHealth();
+					$scope.vm.pcDeck.factorStamina();
+					$scope.vm.pcDeck.factorTraits();
+					$scope.vm.pcDeck.factorFeats();
+					$scope.vm.pcDeck.factorAugments();
 				}
 			});
 			

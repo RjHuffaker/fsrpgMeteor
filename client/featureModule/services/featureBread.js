@@ -1,6 +1,6 @@
 angular.module('freedomsworn')
 	.factory('featureBread',
-		function($rootScope, $meteor, $location, $timeout, CoreVars, newFeatureDeck, DeckUtils){
+		function($rootScope, $meteor, $location, $timeout, newFeatureDeck){
 			'ngInject';
 			
 			

@@ -1,6 +1,6 @@
 // Service to calculate card edges
 angular.module('freedomsworn').factory('checkEdge',
-	function(PanelUtils){
+	function(){
 		'ngInject';
 
 		var service = {};

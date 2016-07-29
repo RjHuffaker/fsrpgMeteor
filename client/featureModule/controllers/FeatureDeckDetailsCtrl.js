@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("FeatureDeckDetailsCtrl",
-		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, deckDependencies, shuffleDeck){
+		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, deckDependencies){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;

@@ -1,11 +1,11 @@
 // Gateway to move-panel function
 angular.module('freedomsworn').factory('onCardMove',
-	function(CoreVars, checkEdge, movePanel){
+	function(CoreVars, checkEdge){
 		'ngInject'
 
-		return function(cardList, object){
+		return function(deck, object){
 			
-			if(CoreVars.cardMoving) return;
+			if(deck.cardMoving) return;
 			
 			var slot = object.slot;
 			var slot_x = slot.x_coord + slot.x_dim;
@@ -21,7 +21,7 @@ angular.module('freedomsworn').factory('onCardMove',
 			var crossingResult = checkEdge.crossing(slot, object.offset.left, object.offset.top, object.mouseX, object.mouseY, object.emPx);
 			
 			if(crossingResult && (changeX !== 0 || changeY !== 0)){
-				movePanel(cardList, slot, panel, crossingResult, object.moveX, object.moveY);
+				deck.movePanel(slot, panel, crossingResult, object.moveX, object.moveY);
 			}
 		};
 	});

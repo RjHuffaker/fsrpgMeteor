@@ -1,6 +1,6 @@
 angular.module('freedomsworn')
 	.directive('fsDeck',
-		function($rootScope, $window, PanelUtils, DeckUtils, movePanel){
+		function($rootScope, $window){
 			'ngInject';
 
 			return {
@@ -23,7 +23,7 @@ angular.module('freedomsworn')
 						scope.$on('$destroy', onDestroy);
 						element.on('mouseleave', onMouseLeave);
 						scope.$on('screenSize:onHeightChange', onHeightChange);
-						scope.$on('DeckUtils:setDeckWidth', setDeckWidth);
+						scope.$on('fsPanel:setDeckWidth', setDeckWidth);
 						scope.$on('fsPanel:onPressCard', onPress);
 						scope.$on('fsPanel:onReleaseCard', onRelease);
 						scope.$on('fsPanel:onMoveCard', onMoveCard);
@@ -41,7 +41,7 @@ angular.module('freedomsworn')
 					};
 					
 					var setDeckWidth = function(){
-						var deckWidth = DeckUtils.getDeckWidth(scope.deck.cardList);
+						var deckWidth = scope.deck.getDeckWidth();
 						element.css({
 							'width': deckWidth+'em'
 						});
@@ -68,20 +68,18 @@ angular.module('freedomsworn')
 					var onMoveCard = function(event, object){
 						
 						var _deckOffset = element.offset();
-						var _deckWidth = DeckUtils.getDeckWidth(scope.deck.cardList);
+						var _deckWidth = scope.deck.getDeckWidth();
 						var _deckLeftEdge = _deckOffset.left;
 						var _deckRightEdge = convertEm(_deckWidth + 3);
-						var _deck = scope.deck.cardList;
 						var _panel = object.panel;
 						
-						var _panelStart = PanelUtils.getStackStart(_deck, _panel._id);
-						var _panelStartPrev = PanelUtils.getPrev(_deck, _panelStart._id);
+						var _panelStart = scope.deck.getStackStart(_panel._id);
+						var _panelStartPrev = scope.deck.getPrev(_panelStart._id);
 						
-						if(object.mouseX <= _deckLeftEdge && PanelUtils.hasPrev(_panel)){
-							movePanel(_deck, _panelStartPrev, object.panel, 'right', object.moveX, object.moveY);
-						} else if(object.mouseX >= _deckRightEdge && PanelUtils.hasPrev(_panel)){
-							var _slot = PanelUtils.getPrev(_deck);
-							movePanel(_deck, _panelStartPrev, object.panel, 'left', object.moveX, object.moveY);
+						if(object.mouseX <= _deckLeftEdge && (_panel.above || _panel.left)){
+							scope.deck.movePanel(_panelStartPrev, object.panel, 'right', object.moveX, object.moveY);
+						} else if(object.mouseX >= _deckRightEdge && (_panel.above || _panel.left)){
+							scope.deck.movePanel(_panelStartPrev, object.panel, 'left', object.moveX, object.moveY);
 						}
 						
 					};

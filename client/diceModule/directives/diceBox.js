@@ -1,16 +1,20 @@
 angular.module('freedomsworn')
 	.directive('diceBox',
-		function($window, CoreVars, abilityDice) {
+		function(modalSrvc) {
 			'ngInject';
 
 			return {
 				restrict: 'A',
 				templateUrl: paths.diceModule.views+'dice-box.ng.html',
+				scope: {
+					deck: '='
+				},
 				link: function(scope, element, attrs){
 					
-					scope.CoreVars = CoreVars;
-					
-					scope.abilityDice = abilityDice;
+					scope.chooseDie = function(order){
+						modalSrvc.current.show = false;
+						this.deck.chooseDie(order);
+					};
 					
 				}
 			};

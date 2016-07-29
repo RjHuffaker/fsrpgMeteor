@@ -1,6 +1,6 @@
 FeatureDecks = new Mongo.Collection("featureDecks", {
-  transform: function(featureDeck){
-    return featureDeck;
+  transform: function(doc){
+    return new deckObject(doc);
   }
 });
 

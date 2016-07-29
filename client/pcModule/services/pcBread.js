@@ -1,5 +1,5 @@
 angular.module('freedomsworn')
-	.factory('pcBread', function($rootScope, $meteor, $location, $timeout, pcDefault, DeckUtils){
+	.factory('pcBread', function($rootScope, $meteor, $location, $timeout, pcDefault){
 		'ngInject';
 		
 		var service = {};
@@ -26,7 +26,6 @@ angular.module('freedomsworn')
 		service.add = function(){
 			var newDeck = pcDefault;
 			newDeck.owner = $rootScope.currentUser._id;
-			DeckUtils.setCardList(newDeck.cardList);
 			
 			PcDecks.insert(newDeck, function(error, result){
 				if(error){
