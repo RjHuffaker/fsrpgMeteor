@@ -50,27 +50,59 @@ div.inline-flex > b {
 	width: 100%;
 }
 
+[faux-handle],
 [resize-handle] {
 	z-index: 10;
 	box-sizing: border-box;
-}
-
-[resize-handle~=Width] {
-	height: 100%;
-	width: 6px;
-	border-left: 2px groove;
-	border-right: 2px ridge;
-	cursor: ew-resize;
-}
-
-[resize-handle~=Height] {
-	height: 6px;
-	width: 100%;
 	border-top: 2px groove;
 	border-bottom: 2px ridge;
 	border-left: 2px groove;
 	border-right: 2px ridge;
+}
+
+[faux-handle~=Width],
+[resize-handle~=Width] {
+	height: 100%;
+	width: 6px;
+	cursor: ew-resize;
+}
+
+[faux-handle~=Height],
+[resize-handle~=Height] {
+	height: 6px;
+	width: 100%;
 	cursor: ns-resize;
+}
+
+.grid-card {
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	border-radius: .5em;
+	border-top: 1px solid #222;
+	border-left: 1px solid #222;
+	border-right: 2px solid #111;
+	border-bottom: 2px solid #111;
+}
+
+.grid-card-icon {
+	height: 1.4em; width: 1em;
+	border: 1px solid black;
+	-moz-border-radius: .2em;
+	-webkit-border-radius: .2em;
+	border-radius: .2em;
+}
+
+.selectrow .grid-card-icon {
+	border: 2px solid black;
+}
+
+.selectrow textarea,
+.selectrow input {
+	background-color: lightcyan;
+}
+
+.selectrow [fs-select] [fs-dropdown] .fs-dropdown-toggle {
+	background-color: darkseagreen;
 }
 
 .row-header {
@@ -81,5 +113,6 @@ div.inline-flex > b {
 
 .section-underline { 
   border-bottom: 3px double #777;
-  width: 99%;
+  margin-left: -5px;
+  margin-right: -5px;
 }

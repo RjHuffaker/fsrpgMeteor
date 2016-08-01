@@ -1,28 +1,17 @@
 <div class="inline-flex fill-height" style="height: 2em;">
 	<div class="inline-flex" style="width: 1.4em">
 		<div fs-dropdown class="open-down">
-			<div class="fs-dropdown-toggle">
-				<div class="{{gridCard.cardType}}"
-					style="height: 1.4em; width: 1em;
-						border: 1px solid black;
-						-moz-border-radius: .2em;
-						-webkit-border-radius: .2em;
-						border-radius: .2em;"></div>
+			<div class="fs-dropdown-toggle {{gridCard.cardType}}">
+				<div class="grid-card-icon">{{gridCard.cardNumber}}</div>
 			</div>
 			<div class="fs-dropdown-panel">
-				<div style="height: 21em; width: 15em; border: none;" >
-					<div feature-card card="gridCard"
-						class="{{gridCard.cardType}} fill-parent content-panel" 
-						style="-moz-border-radius: .5em;
-							-webkit-border-radius: .5em;
-							border-radius: .5em;
-							border-top: 1px solid #222;
-							border-left: 1px solid #222;
-							border-right: 2px solid #111;
-							border-bottom: 2px solid #111;"></div>
+				<div class="{{gridCard.cardType}}" style="height: 21em; width: 15em; border: none;" >
+					<div feature-card="gridCard"
+						class="fill-parent content-panel grid-card"></div>
 				</div>
 			</div>
 		</div>
+		<div faux-handle="Width"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
@@ -89,4 +78,4 @@
 		fs-grid-action-row="action" action-id="$index" >
 	</div>
 	
-</div><div resize-handle="Height" id="Grid Row{{rowId}}"></div>
+</div><div resize-handle="Height" id="{{gridCard._id}}"></div>

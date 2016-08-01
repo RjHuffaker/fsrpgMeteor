@@ -1,4 +1,4 @@
-<div class="outerTable" ng-controller="FeatureEditCtrl as vm">
+<div class="outerTable" ng-controller="FeatureDeckEditCtrl as vm" id="fs-grid">
 	
 	<div class="outerRow">
 		<div class="outerCell" style="height: 15%; padding: 1em">
@@ -10,7 +10,7 @@
 					</div>
 					
 					<div class="innerCell">
-						<a href="#" ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</a>
+						<button ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</button>
 					</div>
 					
 				</div>
@@ -23,14 +23,24 @@
 							callback="vm.deckDependencies.fetchDependencies(vm.featureDeck)"></div>
 					</div>
 					
+				</div>
+				<div class="innerRow">
+				
 					<div class="innerCell">
-						Move Card <button>UP</button> <button>DOWN</button>
+						<button ng-click="vm.setCardList()">Set Card List</button>
 					</div>
 					
 					<div class="innerCell">
-						<button>Add Card</button> <button>Remove Selected</button>
+						Move Card
+						<button ng-click="vm.moveUp()">UP</button>
+						<button ng-click="vm.moveDown()">DOWN</button>
 					</div>
 					
+					<div class="innerCell">
+						<button ng-click="vm.addCard()">Add Card</button>
+						<button ng-click="vm.removeCard()">Remove Selected</button>
+					</div>
+				
 				</div>
 			</div>
 		</div>
@@ -42,7 +52,7 @@
 				<div class="scrollDiv">
 					<div class="innerTable">
 						
-						<div fs-grid="vm.featureDeck.cardList" shown-columns="vm.shownColumns"></div>
+						<div fs-grid="vm.featureDeck" shown-columns="vm.shownColumns"></div>
 						
 					</div>
 				</div>

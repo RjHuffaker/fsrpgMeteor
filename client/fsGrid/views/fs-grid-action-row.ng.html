@@ -1,7 +1,7 @@
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.actions[actionId]['Name']">
 	<input type="text" ng-model="gridAction.name">
-	<div resize-handle="Width" id="Name"></div>
+	<div resize-handle="Width" id="Name {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -22,20 +22,20 @@
 			selection="gridAction.targetDetail"
 			options="[dataSrvc.distantAreaDetails]"></div>
 	</div>
-	<div resize-handle="Width" id="Target"></div>
+	<div resize-handle="Width" id="Target {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.actions[actionId]['Usage']">
 	<div fs-select selection="gridAction.usage"
 		options="[['Default', 'Single-use']]"></div>
-	<div resize-handle="Width" id="Usage"></div>
+	<div resize-handle="Width" id="Usage {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.actions[actionId]['Effect']">
 	<input type="text" ng-model="gridAction.effect.content">
-	<div resize-handle="Width" id="Effect"></div>
+	<div resize-handle="Width" id="Effect {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -44,7 +44,7 @@
 		<input type="text" ng-model="gridAction.effect.list[0].leader">
 		<textarea ng-model="gridAction.effect.list[0].content"></textarea>
 	</div>
-	<div resize-handle="Width" id="List 1"></div>
+	<div resize-handle="Width" id="List 1 {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -53,7 +53,7 @@
 		<input type="text" ng-model="gridAction.effect.list[1].leader">
 		<textarea ng-model="gridAction.effect.list[1].content"></textarea>
 	</div>
-	<div resize-handle="Width" id="List 2"></div>
+	<div resize-handle="Width" id="List 2 {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -62,7 +62,7 @@
 		<input type="text" ng-model="gridAction.effect.list[2].leader">
 		<textarea ng-model="gridAction.effect.list[2].content"></textarea>
 	</div>
-	<div resize-handle="Width" id="List 3"></div>
+	<div resize-handle="Width" id="List 3 {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -71,7 +71,7 @@
 		<input type="text" ng-model="gridAction.effect.list[3].leader">
 		<textarea ng-model="gridAction.effect.list[3].content"></textarea>
 	</div>
-	<div resize-handle="Width" id="List 4"></div>
+	<div resize-handle="Width" id="List 4 {{actionId}}"></div>
 </div>
 
 <!-- Action Attack -->
@@ -81,7 +81,7 @@
 	<div fs-select
 		selection="gridAction.attackType"
 		options="[dataSrvc.attackTypes]"></div>
-	<div resize-handle="Width" id="Type"></div>
+	<div resize-handle="Width" id="Type {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -89,7 +89,7 @@
 	<div fs-select
 		selection="gridAction.dice_a"
 		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	<div resize-handle="Width" id="Attack Die #1"></div>
+	<div resize-handle="Width" id="Attack Die #1 {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -97,7 +97,7 @@
 	<div fs-select
 		selection="gridAction.dice_b"
 		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	<div resize-handle="Width" id="Attack Die #2"></div>
+	<div resize-handle="Width" id="Attack Die #2 {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -105,17 +105,17 @@
 	<div fs-select
 		selection="gridAction.versus"
 		options="[dataSrvc.defenseTypes]"></div>
-	<div resize-handle="Width" id="Attack Versus"></div>
+	<div resize-handle="Width" id="Attack Versus {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.actions[actionId]['Attack Success']">
 	<input type="text" ng-model="gridAction.success">
-	<div resize-handle="Width" id="Attack Success"></div>
+	<div resize-handle="Width" id="Attack Success {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.actions[actionId]['Attack Critical Success']">
 	<input type="text" ng-model="gridAction.criticalSuccess">
-	<div resize-handle="Width" id="Attack Critical Success"></div>
+	<div resize-handle="Width" id="Attack Critical Success {{actionId}}"></div>
 </div>

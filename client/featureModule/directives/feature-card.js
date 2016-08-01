@@ -5,7 +5,7 @@ angular.module('freedomsworn')
 		return {
 			restrict: 'A',
 			templateUrl: paths.featureModule.views+'feature-card.ng.html',
-			scope: { card: '=', panel: '=' },
+			scope: { card: '=featureCard' },
 			link: function(scope, element, attrs){
 				scope.dataSrvc = dataSrvc;
 			}

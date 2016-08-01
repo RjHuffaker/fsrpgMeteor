@@ -11,8 +11,8 @@ angular.module('freedomsworn')
 			link: function(scope, element, attrs) {
 				
 				scope.selectRow = function(row){
-					scope.currentRow = row;
 					console.log(row);
+					scope.gridDeck.currentRow = row;
 				};
 				
 			}
@@ -25,8 +25,7 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			scope: {
 				gridCard: '=fsGridRow',
-				deckType: '=',
-				rowId: '='
+				deckType: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid-row.ng.html',
 			link: function(scope, element, attrs) {

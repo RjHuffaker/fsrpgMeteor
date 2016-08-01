@@ -1,34 +1,13 @@
 deckObject = function (doc) {
-	
 	_.extend(this, doc);
-	
 };
 
 _.extend(deckObject.prototype, {
 	
 	cardMoved: [],
 	
-	setCardList: function(){
-		for(var i = 0; i < this.cardList.length; i++){
-			var _previous = this.cardList[i-1] || null;
-			var _current = this.cardList[i];
-			var _next = this.cardList[i+1] || null;
-			
-			_current.dragging = false;
-			_current.locked = false;
-			_current.above = null;
-			_current.below = null;
-			_current.left = null;
-			_current.right = null;
-			
-			if(_previous) _current.left = _previous._id;
-			if(_next) _current.right = _next._id;
-		}
-		
-		this.setPanelPosition();
-	},
-	
 	addToFront: function(newPanel){
+		newPanel.deckId = this._id;
 		var firstPanel = this.getFirst();
 		this.cardList.push(newPanel);
 		this.deckSize = this.cardList.length;
@@ -38,6 +17,7 @@ _.extend(deckObject.prototype, {
 	},
 	
 	addToDeck: function(newPanel, previousPanel){
+		newPanel.deckId = this._id;
 		var prevPanel;
 		if(previousPanel){
 			prevPanel = previousPanel;
@@ -70,11 +50,34 @@ _.extend(deckObject.prototype, {
 		this.setPanelPosition();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 	},
 	
+	setCardList: function(){
+		var _length = this.cardList.length;
+		for(var i = 0; i < _length; i++){
+			var _previous = this.cardList[i-1] || null;
+			var _current = this.cardList[i];
+			var _next = this.cardList[i+1] || null;
+			
+			_current.dragging = false;
+			_current.locked = false;
+			_current.above = null;
+			_current.below = null;
+			_current.left = null;
+			_current.right = null;
+			_current.cardNumber = i+1;
+			_current.deckSize = _length;
+			
+			if(_previous) _current.left = _previous._id;
+			if(_next) _current.right = _next._id;
+		}
+		
+		this.setPanelPosition();
+	},
+	
 	setDeckSize: function(){
 		var _length = this.cardList.length;
 		this.deckSize = _length;
 		for(var i = 0; i < _length; i++){
-			this.cardList[i].cardData.decksize = _length
+			this.cardList[i].decksize = _length
 		}
 	},
 	
@@ -128,13 +131,10 @@ _.extend(deckObject.prototype, {
 			above: null, below: null,
 			left: null, right: null
 		};
-		var _prevIndex = -1;
 		if(_panel.above){
 			_prevPanel = this.getPanel(_panel.above);
-			_prevIndex = this.getPanelIndex(_panel.above);
 		} else if(_panel.left){
 			_prevPanel = this.getPanel(_panel.left);
-			_prevIndex = this.getPanelIndex(_panel.left);
 		}
 		return _prevPanel;
 	},
@@ -146,13 +146,10 @@ _.extend(deckObject.prototype, {
 			above: null, below: null,
 			left: null, right: null
 		};
-		var _nextIndex = -1;
 		if(_panel.below){
 			_nextPanel = this.getPanel(_panel.below);
-			_nextIndex = this.getPanelIndex(_panel.below);
 		} else if(_panel.right){
 			_nextPanel = this.getPanel(_panel.right);
-			_nextIndex = this.getPanelIndex(_panel.right);
 		}
 		return _nextPanel;
 	},
@@ -247,6 +244,7 @@ _.extend(deckObject.prototype, {
 		this.cardMoved.push(direction);
 		this.moveTimer = setTimeout(function(){
 			this.cardMoving = false;
+			clearTimeout(this.moveTimer);
 		}, 500);
 	},
 	

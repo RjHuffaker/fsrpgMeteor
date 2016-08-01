@@ -40,25 +40,25 @@ angular.module('freedomsworn')
 
 				for(var i = 0; i < size; i++){
 					newDeck.cardList.push({
-						_id: 'Panel '+(i+1),
+						_id: Random.id(),
 						deckId: newDeck._id,
-						panelType: 'featureCard',
 						x_dim: 15,
 						y_dim: 21,
-						cardData: {
-							name: 'Panel '+i,
-							cardType: type,
-							actions: [
-								{ keywords: [] },
-								{ keywords: [] },
-								{ keywords: [] },
-								{ keywords: [] }
-							]
-						}
+						name: 'Card '+(i+1),
+						cardType: type,
+						cardNumber: i+1,
+						actions: [
+							{ keywords: [] },
+							{ keywords: [] },
+							{ keywords: [] },
+							{ keywords: [] }
+						]
 					});
 				}
 				
-				DeckUtils.setCardList(newDeck.cardList);
+				newDeck = new deckObject(newDeck);
+				
+				newDeck.setCardList();
 				
 				FeatureDecks.insert(newDeck, function(error, result){
 					if(error){

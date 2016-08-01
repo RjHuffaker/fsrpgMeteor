@@ -52,8 +52,7 @@ angular.module('freedomsworn')
 			cardList: [
 				{
 					_id: 'pc1',
-					panelType: 'pc1',
-					deckType: 'pc',
+					cardType: 'pc1',
 					deckSize: 4,
 					above: null,
 					below: null,
@@ -66,8 +65,7 @@ angular.module('freedomsworn')
 				},
 				{
 					_id: 'pc2',
-					panelType: 'pc2',
-					deckType: 'pc',
+					cardType: 'pc2',
 					deckSize: 4,
 					above: null,
 					below: null,
@@ -80,8 +78,7 @@ angular.module('freedomsworn')
 				},
 				{
 					_id: 'pc3',
-					panelType: 'pc3',
-					deckType: 'pc',
+					cardType: 'pc3',
 					deckSize: 4,
 					above: null,
 					below: null,
@@ -94,8 +91,7 @@ angular.module('freedomsworn')
 				},
 				{
 					_id: 'trait1',
-					panelType: 'featureCard',
-					deckType: 'pc',
+					cardType: 'featureCard',
 					deckSize: 4,
 					above: null,
 					below: null,
@@ -105,10 +101,8 @@ angular.module('freedomsworn')
 					y_coord: 0,
 					x_dim: 15,
 					y_dim: 21,
-					cardData: {
-						name: 'Super Card!!!',
-						cardType: 'Trait'
-					}
+					name: 'Super Card!!!',
+					cardType: 'Trait'
 				}
 			]
 		};

@@ -1,6 +1,7 @@
 PcDecks = new Mongo.Collection("pcDecks", {
 	transform: function(doc){
 		var deck = new deckObject(doc);
+		
 		return new pcObject(deck);
 	}
 });

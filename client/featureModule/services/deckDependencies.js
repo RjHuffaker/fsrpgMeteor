@@ -18,15 +18,15 @@ angular.module('freedomsworn')
 					.forEach(function(deck){
 						for(var ii = 0; ii < deck.cardList.length; ii++){
 							var card = deck.cardList[ii];
-							if(card.cardData.aspectType === 'Archetype'){
-								console.log(card.cardData.name);
-								service.archetypes.push(card.cardData);
-							} else if(card.cardData.aspectType === 'Allegiance'){
-								console.log(card.cardData.name);
-								service.allegiances.push(card.cardData);
-							} else if(card.cardData.aspectType === 'Race'){
-								console.log(card.cardData.name);
-								service.races.push(card.cardData);
+							if(card.aspectType === 'Archetype'){
+								console.log(card.name);
+								service.archetypes.push(card);
+							} else if(card.aspectType === 'Allegiance'){
+								console.log(card.name);
+								service.allegiances.push(card);
+							} else if(card.aspectType === 'Race'){
+								console.log(card.name);
+								service.races.push(card);
 							}
 						}
 					});	

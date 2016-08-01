@@ -25,7 +25,13 @@ angular.module('freedomsworn')
 		
 		service.add = function(){
 			var newDeck = pcDefault;
+			
+			newDeck._id = Random.id();
 			newDeck.owner = $rootScope.currentUser._id;
+			
+			newDeck = new pcObject(newDeck);
+				
+			newDeck.setCardList();
 			
 			PcDecks.insert(newDeck, function(error, result){
 				if(error){

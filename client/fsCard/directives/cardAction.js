@@ -6,7 +6,7 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			templateUrl: paths.fsCard.views+'card-action.ng.html',
 			scope: {
-				cardAction: '=', panel: '='
+				cardAction: '='
 			},
 			link: function(scope, element, attrs){
 				scope.dataSrvc = dataSrvc;

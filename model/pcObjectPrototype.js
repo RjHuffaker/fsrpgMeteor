@@ -156,8 +156,8 @@ _.extend(pcObject.prototype, {
 	getCardCount: function(cardType){
 		var count = 0;
 		for(var i = 0; i < this.cardList.length; i++){
-			if(this.cardList[i].cardData)
-			if(this.cardList[i].cardData.cardType === cardType) count++;
+			if(this.cardList[i])
+			if(this.cardList[i].cardType === cardType) count++;
 		}
 		return count;
 	}
