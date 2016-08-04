@@ -6,46 +6,56 @@ _.extend(deckObject.prototype, {
 	
 	cardMoved: [],
 	
-	addToFront: function(newPanel){
-		newPanel.deckId = this._id;
-		var firstPanel = this.getFirst();
-		this.cardList.push(newPanel);
-		this.deckSize = this.cardList.length;
-		this.setAdjacent(newPanel, firstPanel);
+	addToDeck: function(newPanel){
+		var _prev;
+		var _next;
 		
-		this.setPanelPosition();
-	},
-	
-	addToDeck: function(newPanel, previousPanel){
+		var _last;
+		
 		newPanel.deckId = this._id;
-		var prevPanel;
-		if(previousPanel){
-			prevPanel = previousPanel;
-			if(previousPanel.below || previousPanel.right){
-				var nextPanel = this.getNext(previousPanel);
-				nextPanel.left = newPanel._id;
+		
+		_last = this.getLast();
+		
+		this.cardList.push(newPanel);
+		this.setAdjacent(_last, newPanel);
+		this.deckSize = this.cardList.length;
+		
+		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+			
+			for(var i = 0; i < this.deckSize; i++){
+				this.cardList[i].deckSize = this.deckSize;
 			}
-		} else {
-			prevPanel = this.getLast();
+			
+			newPanel.cardNumber = this.deckSize;
+			
 		}
-		
-		newPanel.left = prevPanel._id;
-		prevPanel.right = newPanel._id;
-		
-		this.cardList.push(newPanel);
-		this.deckSize = this.cardList.length;
 		
 		this.setPanelPosition();
 	},
 	
 	removeFromDeck: function(panel){
-		var _panel = this.cardList.indexOf(panel);
+		var _index = this.cardList.indexOf(panel);
+		var _prev = this.getPrev(panel._id);
+		var _next = this.getNext(panel._id);
 		
-		var prev = this.getPrev(panel._id);
-		var next = this.getNext(panel._id);
-		this.cardList.splice(_panel, 1);
+		this.cardList.splice(_index, 1);
+		this.setAdjacent(_prev, _next);
 		this.deckSize = this.cardList.length;
-		this.mergeGap(prev, next);
+		
+		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+			
+			for(var i = 0; i < this.deckSize; i++){
+				this.cardList[i].deckSize = this.deckSize;
+			}
+			
+			var _test = _next;
+			_test.cardNumber--;
+			while(_test.below || _test.right){
+				_test = this.getNext(_test._id);
+				_test.cardNumber--;
+			}
+			
+		}
 		
 		this.setPanelPosition();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 	},
@@ -127,7 +137,7 @@ _.extend(deckObject.prototype, {
 	getPrev: function(panelId){
 		var _panel = this.getPanel(panelId);
 		var _prevPanel = {
-			_id: null, x_coord: 0, y_coord: 0,
+			_id: null, x_coord: 0, y_coord: 0, cardNumber: 0,
 			above: null, below: null,
 			left: null, right: null
 		};
@@ -142,7 +152,7 @@ _.extend(deckObject.prototype, {
 	getNext: function(panelId){
 		var _panel = this.getPanel(panelId);
 		var _nextPanel = {
-			_id: null, x_coord: 0, y_coord: 0,
+			_id: null, x_coord: 0, y_coord: 0, cardNumber: 0,
 			above: null, below: null,
 			left: null, right: null
 		};

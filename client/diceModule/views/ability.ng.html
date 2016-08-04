@@ -1,11 +1,11 @@
-<div fs-modal-toggle modal-card="card" modal-deck="deck"
+<div fs-modal-toggle toggle-card="card" toggle-deck="deck"
 	modalxalign="left" modalxdim="8" modalydim="8"
-	modal-callback="deck.chooseAbility(ability)">
+	toggle-callback="deck.chooseAbility(ability)">
 	
 	<img ng-src={{ability.dice.image}} />
 	
-	<div class="fs-modal-content" card="modalSrvc.current.modal_card">
-		<div dice-box deck="modalSrvc.current.modal_deck"></div>
+	<div class="fs-modal-content" card="modalSrvc.current.toggle_card">
+		<div dice-box deck="modalSrvc.current.toggle_deck"></div>
 	</div>
 	
 </div>

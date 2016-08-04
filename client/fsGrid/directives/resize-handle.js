@@ -142,7 +142,7 @@ angular.module('freedomsworn')
 				
 				var cancelPress = function(){
 					clearTimeout(_pressTimer);
-					_onMove();
+					if(_onMove) _onMove();
 					$document.off(_moveEvents, cancelPress);
 					$document.off(_releaseEvents, cancelPress);
 					_parent = null;

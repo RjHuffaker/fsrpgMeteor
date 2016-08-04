@@ -6,14 +6,15 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			templateUrl: paths.fsModal.views+'fs-modal.ng.html',
 			link: function(scope, element, attrs){
+				
 				scope.modalSrvc = modalSrvc;
 				
 				scope.dataSrvc = dataSrvc;
 				
 				scope.overlayToggle = function(){
-					
+					console.log('toggle');
 					if (!angular.element(element.find('.modal-overlay')[0]).hasClass('ng-animate')){
-						modalSrvc.current.show = !modalSrvc.current.show;
+						modalSrvc.current = {};
 					}
 				};
 				
@@ -36,9 +37,9 @@ angular.module('freedomsworn')
 						modalWidthHandler = scope.$watch(getWidth, setWidth);
 						
 					} else {
-						fsModalHandler();
-						modalHeightHandler();
-						modalWidthHandler();
+						if(fsModalHandler) fsModalHandler();
+						if(modalHeightHandler) modalHeightHandler();
+						if(modalWidthHandler) modalWidthHandler();
 					}
 				};
 				
@@ -105,23 +106,32 @@ angular.module('freedomsworn')
 				
 				var setModal = function(newVal, oldVal){
 					if(!modalSrvc.current.show) return;
-					scope.card = modalSrvc.current.modal_card;
-					scope.deck = modalSrvc.current.modal_deck;
-					scope.modal_x_dim = modalSrvc.current.modal_x_dim;
-					scope.modal_y_dim = modalSrvc.current.modal_y_dim;
+					if(modalSrvc.current.show === 'modal'){
+						scope.toggle_card = modalSrvc.current.toggle_card;
+						scope.toggle_deck = modalSrvc.current.toggle_deck;
+						scope.modal_x_dim = modalSrvc.current.modal_x_dim;
+						scope.modal_y_dim = modalSrvc.current.modal_y_dim;
+						
+						setHeight(scope.modal_x_dim);
+						setWidth(scope.modal_y_dim);
+						
+						$compile(modalSrvc.current.modal_content)(scope);
+						
+						angular.element(element[0].querySelector('.fs-modal'))
+							.empty()
+							.append(modalSrvc.current.modal_content);
+						
+						angular.element(element.find('.fs-modal-content')[0])
+							.removeClass('fs-modal-content')
+							.addClass('fs-modal-slot');
+					} else if(modalSrvc.current.show === 'deck'){
+						scope.toggle_card = modalSrvc.current.toggle_card;
+						scope.toggle_deck = modalSrvc.current.toggle_deck;
+						scope.modal_deck = modalSrvc.current.modal_deck;
+						
+					}
 					
-					setHeight(scope.modal_x_dim);
-					setWidth(scope.modal_y_dim);
 					
-					$compile(modalSrvc.current.modal_content)(scope);
-					
-					angular.element(element[0].querySelector('.fs-modal'))
-						.empty()
-						.append(modalSrvc.current.modal_content);
-					
-					angular.element(element.find('.fs-modal-content')[0])
-						.removeClass('fs-modal-content')
-						.addClass('fs-modal-slot');
 					
 				};
 				

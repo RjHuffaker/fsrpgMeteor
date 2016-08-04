@@ -91,7 +91,7 @@ angular.module('freedomsworn')
 				},
 				{
 					_id: 'trait1',
-					cardType: 'featureCard',
+					cardType: 'Choose Trait',
 					deckSize: 4,
 					above: null,
 					below: null,
@@ -101,8 +101,7 @@ angular.module('freedomsworn')
 					y_coord: 0,
 					x_dim: 15,
 					y_dim: 21,
-					name: 'Super Card!!!',
-					cardType: 'Trait'
+					name: 'Super Card!!!'
 				}
 			]
 		};

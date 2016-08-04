@@ -35,6 +35,7 @@ angular.module("freedomsworn")
 			});
 			
 			this.saveDeck = function(deck){
+				delete deck.currentRow;
 				deck.save();
 			};
 			
@@ -89,17 +90,15 @@ angular.module("freedomsworn")
 			};
 			
 			this.addCard = function(){
-				this.featureDeck.deckSize++;
 				var deckSize = this.featureDeck.deckSize;
 				var deckType = this.featureDeck.deckType;
 				
-				this.featureDeck.addToFront({
+				this.featureDeck.addToDeck({
 					_id: Random.id(),
 					x_dim: 15,
 					y_dim: 21,
-					name: 'Card '+deckSize,
+					name: deckType+' '+(deckSize+1),
 					cardType: deckType,
-					cardNumber: 0,
 					actions: [
 						{ keywords: [] },
 						{ keywords: [] },
@@ -108,16 +107,10 @@ angular.module("freedomsworn")
 					]
 				});
 				
-				_.each(this.featureDeck.cardList, function(element, index, list){
-					console.log(element);
-					element.cardNumber++;
-					element.deckSize = deckSize;
-				});
-				
 			};
 			
 			this.removeCard = function(){
-				console.log('removeCard');
+				this.featureDeck.removeFromDeck(this.featureDeck.currentRow);
 			};
 			
 		});

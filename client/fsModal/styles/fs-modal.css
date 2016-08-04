@@ -1,3 +1,8 @@
+[fs-modal] [fs-deck] {
+	z-index: 9000;
+	top: 12.5%;
+}
+
 .fs-modal {
 	z-index: 9000;
 	position: fixed;

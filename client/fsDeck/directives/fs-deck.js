@@ -66,6 +66,7 @@ angular.module('freedomsworn')
 					};
 					
 					var onMoveCard = function(event, object){
+						if(!scope.deck) return; 
 						
 						var _deckOffset = element.offset();
 						var _deckWidth = scope.deck.getDeckWidth();

@@ -6,3 +6,6 @@
 
 <div ng-if="['Aspect', 'Trait', 'Feat', 'Augment', 'Item'].indexOf(panel.cardType) > -1"
 	feature-card="panel" class="{{panel.cardType}} fill-parent"></div>
+	
+<div ng-if="['Choose Aspect', 'Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'].indexOf(panel.cardType) > -1" deck="deck"
+	choose-feature-card="panel" class="{{panel.cardType}} fill-parent"></div>

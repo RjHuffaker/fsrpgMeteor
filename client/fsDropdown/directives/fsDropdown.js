@@ -64,12 +64,12 @@ angular.module('freedomsworn')
 					for(elem = event.target; elem; elem = elem.parentNode){
 						if(elem.id === attrs.id){
 							for(var i = 0; i < l; i++){
-								if(angular.element(event.target).hasClass(exemptList[i])) return;
+								if(angular.element(elem).hasClass(exemptList[i])) return;
 							}
 						}
 					}
 					
-					hidePanel()
+					hidePanel();
 				};
 				
 				var showPanel = function(){

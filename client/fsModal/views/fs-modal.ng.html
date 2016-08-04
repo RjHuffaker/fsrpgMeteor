@@ -3,10 +3,12 @@
 	ng-click="overlayToggle()"></div>
 
 <div class="fs-modal show-hide"
-	ng-show="modalSrvc.current.show" ng-animate="show-hide"
+	ng-show="modalSrvc.current.show === 'modal'" ng-animate="show-hide"
 	ng-style="{'top': modal_y_coord+'px', 'left': modal_x_coord+'px',
 		'height': modal_y_dim+'px', 'width': modal_x_dim+'px'}">
 	
 	<div class="fs-modal-slot"></div>
 	
 </div>
+
+<div ng-if="modalSrvc.current.show === 'deck'" fs-deck="modal_deck"></div>

@@ -1,0 +1,27 @@
+<div class="content-panel">
+	<table class="fill-parent" fit-content>
+		<tbody>
+			<tr>
+				<td style="vertical-align: top;">
+					
+					<span class="text-argos text-18"
+						ng-class="{'text-14': card.cardType === 'Augment',
+							'text-16': card.cardType === 'Origin',
+							'text-narrow': card.cardType === 'Augment'}">
+						{{card.cardType}}&nbsp;
+					</span>
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="text-8" colspan="2" style="vertical-align: bottom;">
+					
+					<div fs-modal-toggle toggle-card="card" toggle-deck="deck" modal-deck="deck">
+						Choose... but choose wisely!
+					</div>
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
