@@ -5,7 +5,7 @@
 	-
 	<a href="/featureDeckList" class="text-14">Cards</a>
 	-
-	<div fs-dropdown id="userDropdown" ng-show="$root.currentUser" stop-click="1">
+	<div fs-dropdown id="userDropdown" ng-show="$root.currentUser" stop-event="1">
 		<div class="fs-dropdown-toggle text-12">
 			<span>{{ $root.currentUser.username }}</span>
 		</div>
@@ -23,7 +23,7 @@
 		<div class="fs-dropdown-toggle text-12">
 			<span>Login</span>
 		</div>
-		<div class="fs-dropdown-panel" stop-click="1">
+		<div class="fs-dropdown-panel" stop-event="1">
 			<div>
 				<form class="form login-register">
 					<input class="form-control" type="text"

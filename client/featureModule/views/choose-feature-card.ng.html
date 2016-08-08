@@ -1,4 +1,4 @@
-<div class="content-panel">
+<div class="content-panel" id="choose-feature-card">
 	<table class="fill-parent" fit-content>
 		<tbody>
 			<tr>
@@ -15,11 +15,13 @@
 			</tr>
 			<tr>
 				<td class="text-8" colspan="2" style="vertical-align: bottom;">
-					
-					<div fs-modal-toggle toggle-card="card" toggle-deck="deck" modal-deck="deck">
-						Choose... but choose wisely!
+					<div>
+						<div fs-modal-toggle stop-event="1"
+							toggle-callback="modalSrvc.fetchCards(card, deck)"
+							toggle-card="card" toggle-deck="deck" modal-deck="modalSrvc.modalDeck">
+							{{card.cardType}} Level {{card.cardLevel}}
+						</div>
 					</div>
-					
 				</td>
 			</tr>
 		</tbody>

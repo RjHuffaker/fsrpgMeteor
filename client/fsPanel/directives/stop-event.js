@@ -1,5 +1,5 @@
 angular.module('freedomsworn')
-	.directive('stopEvent', function(CoreVars){
+	.directive('stopEvent', function(){
 		'ngInject';
 		
 		return{
@@ -7,15 +7,10 @@ angular.module('freedomsworn')
 			link: function(scope, element, attrs){
 				var _pressEvents = 'touchstart mousedown';
 				element.on(_pressEvents, function(event){
-					if(!scope.panel.below){
+					if(!attrs.stopEvent){
 						event.stopPropagation();
 					}
 				});
-				
-				scope.$watch(function(){ return element.hasClass('open'); }, function(newVal, oldVal){
-					CoreVars.dropdownOpen = newVal;
-				});
-				
 			}
 		};
 	});

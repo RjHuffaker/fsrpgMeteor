@@ -121,34 +121,66 @@ _.extend(pcObject.prototype, {
 	
 	factorTraits: function(){
 		this.traitLimit = Math.floor((this.level || 0) / 4 + 1);
+		var _traitCount = this.getCardCount('Trait')
 		
-		if(this.traitLimit > this.getCardCount('Trait')){
-			console.log('Add Traits');
-		} else if(this.traitLimit < this.getCardCount('Trait')){
-			console.log('Remove Traits');
+		if(this.traitLimit - _traitCount > 0){
+			for(var i = _traitCount; i < this.traitLimit; i++){
+				var newCard = {
+					_id: Random.id(),
+					cardType: 'Choose Trait',
+					cardLevel: i * 4,
+					x_dim: 15,
+					y_dim: 21,
+					name: 'Choose Trait'
+				}
+				this.addToDeck(newCard);
+				
+				this.setPanelPosition();
+			}
 		}
-		
 	},
 	
 	factorFeats: function(){
-		this.featLimit = Math.ceil((this.level) / 4) || 0;
+		this.featLimit = Math.ceil((this.level || 0) / 4);
 		this.featDeck = this.level;
 		
-		if(this.featLimit > this.getCardCount('Feat')){
-			console.log('Add Feats');
-		} else if(this.featLimit < this.getCardCount('Feat')){
-			console.log('Remove Feats');
-		}
+		var _featCount = this.getCardCount('Feat')
 		
+		if(this.featDeck - _featCount > 0){
+			for(var i = _featCount; i < this.featDeck; i++){
+				var newCard = {
+					_id: Random.id(),
+					cardType: 'Choose Feat',
+					cardLevel: i + 1,
+					x_dim: 15,
+					y_dim: 21,
+					name: 'Choose Feat'
+				}
+				this.addToDeck(newCard);
+				
+				this.setPanelPosition();
+			}
+		}
 	},
 	
 	factorAugments: function(){
 		this.augmentLimit = Math.round((this.level || 0) / 4);
+		var _augmentCount = this.getCardCount('Augment')
 		
-		if(this.augmentLimit > this.getCardCount('Augment')){
-			console.log('Add Augments');
-		} else if(this.augmentLimit < this.getCardCount('Augment')){
-			console.log('Remove Augments');
+		if(this.augmentLimit - _augmentCount > 0){
+			for(var i = _augmentCount; i < this.augmentLimit; i++){
+				var newCard = {
+					_id: Random.id(),
+					cardType: 'Choose Augment',
+					cardLevel: (i * 4) + 2,
+					x_dim: 15,
+					y_dim: 21,
+					name: 'Choose Augment'
+				}
+				this.addToDeck(newCard);
+				
+				this.setPanelPosition();
+			}
 		}
 		
 	},
@@ -157,8 +189,21 @@ _.extend(pcObject.prototype, {
 		var count = 0;
 		for(var i = 0; i < this.cardList.length; i++){
 			if(this.cardList[i])
-			if(this.cardList[i].cardType === cardType) count++;
+			if(this.cardList[i].cardType.includes(cardType)){
+				count++;
+			}
 		}
 		return count;
+	},
+	
+	pruneDeck: function(){
+		for(var i = 0; i < this.cardList.length; i++){
+			_test = this.cardList[i];
+			if(this.level < _test.cardLevel){
+				this.removeFromDeck(_test);
+			}
+		}
+		this.setPanelPosition();  
 	}
+	
 });

@@ -38,6 +38,7 @@ angular.module("freedomsworn")
 					$scope.vm.pcDeck.factorTraits();
 					$scope.vm.pcDeck.factorFeats();
 					$scope.vm.pcDeck.factorAugments();
+					$scope.vm.pcDeck.pruneDeck();
 				}
 			});
 			

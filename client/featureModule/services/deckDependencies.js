@@ -29,7 +29,7 @@ angular.module('freedomsworn')
 								service.races.push(card);
 							}
 						}
-					});	
+					});
 			}
 		};
 		

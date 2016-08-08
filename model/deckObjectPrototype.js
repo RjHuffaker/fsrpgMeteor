@@ -21,16 +21,15 @@ _.extend(deckObject.prototype, {
 		this.deckSize = this.cardList.length;
 		
 		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
-			
 			for(var i = 0; i < this.deckSize; i++){
 				this.cardList[i].deckSize = this.deckSize;
 			}
-			
 			newPanel.cardNumber = this.deckSize;
-			
+		} else if(this.deckType === 'pcDeck'){
+			newPanel.cardRole = 'pcDeck';
 		}
 		
-		this.setPanelPosition();
+		
 	},
 	
 	removeFromDeck: function(panel){
@@ -56,11 +55,39 @@ _.extend(deckObject.prototype, {
 			}
 			
 		}
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+	},
+	
+	replaceCard: function(oldCard, newCard){
 		
-		this.setPanelPosition();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+		var _index = this.getPanelIndex(oldCard._id);
+		var _prev = this.getPrev(oldCard._id);
+		var _next = this.getNext(oldCard._id);
+		var _newCard = Object.assign({}, newCard);
+		
+		_newCard.above = null;
+		_newCard.below = null;
+		_newCard.left = null;
+		_newCard.right = null;
+		_newCard.cardRole = this.deckType;
+		
+		this.setAdjacent(_prev, _newCard);
+		this.setAdjacent(_newCard, _next);
+		
+		this.cardList[_index] = _newCard;
+		
+		this.setPanelPosition();
 	},
 	
 	setCardList: function(){
+		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+			this.cardList.sort(function(a, b){
+				console.log(a.cardNumber, b.cardNumber);
+				console.log(a.name, b.name);
+				return a.cardNumber - b.cardNumber;
+			});
+		}
+		
 		var _length = this.cardList.length;
 		for(var i = 0; i < _length; i++){
 			var _previous = this.cardList[i-1] || null;
@@ -73,8 +100,10 @@ _.extend(deckObject.prototype, {
 			_current.below = null;
 			_current.left = null;
 			_current.right = null;
-			_current.cardNumber = i+1;
-			_current.deckSize = _length;
+			if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+				_current.cardNumber = i+1;
+				_current.deckSize = _length;
+			}
 			
 			if(_previous) _current.left = _previous._id;
 			if(_next) _current.right = _next._id;
@@ -263,11 +292,10 @@ _.extend(deckObject.prototype, {
 		this.cardMoved.length = 0;
 	},
 	
-	toggleOverlap: function(panelId, nearest){
+	toggleOverlap: function(panelId){
 		
 		if(this.dropdownOpen) return;
 		
-		if(nearest === 'higher' || nearest === 'lower') return;
 		if(this.cardMoving || this.cardMoved.length) return;
 		
 		var _curr = this.getPanel(panelId);
@@ -286,7 +314,7 @@ _.extend(deckObject.prototype, {
 		this.cardMoved.length = 0;
 	},
 	
-	movePanel: function(slot, panel, nearest, moveX, moveY){
+	movePanel: function(slot, panel){
 		
 		if(this.cardMoving) return;
 		
@@ -333,7 +361,6 @@ _.extend(deckObject.prototype, {
 	},
 	
 	setPanelPosition: function(){
-		
 		if(this.cardList.length === 0) return;
 		
 		var _curr = this.getFirst();
@@ -349,42 +376,123 @@ _.extend(deckObject.prototype, {
 		var _z_next = _length * 100;
 		
 		while( _continue ){
-			if((_curr.below || _curr.right) && _count < _length){
-				
-				_curr.x_coord = _x_next;
-				_curr.y_coord = _y_next;
-				_curr.z_coord = _z_next;
-				
-				if(_curr.below){
-					_next = this.getPanel(_curr.below);
-					_y_next += 3;
-					_x_next += _curr.x_dim;
-					_x_next -= _next.x_dim;
-					_z_next++;
-				} else if(_curr.right){
-					_next = this.getPanel(_curr.right);
-					_x_next += _curr.x_dim;
-					_y_next = 0;
-					_z_next++;
+			if(_curr.below || _curr.right){
+				if(_count < _length){
+					_curr.x_coord = _x_next;
+					_curr.y_coord = _y_next;
+					_curr.z_coord = _z_next;
+					
+					if(_curr.below){
+						_next = this.getPanel(_curr.below);
+						_y_next += 3;
+						_x_next += _curr.x_dim;
+						_x_next -= _next.x_dim;
+						_z_next++;
+					} else if(_curr.right){
+						_next = this.getPanel(_curr.right);
+						_x_next += _curr.x_dim;
+						_y_next = 0;
+						_z_next++;
+					}
+					
+					_curr = _next;
+					_count++;
+				} else if(_count > _length){
+					_continue = false;
+					console.log('Error: Loop count greater than cardList length');
 				}
-				
-				_curr = _next;
-				_count++;
-				
-			} else if(!_curr.below && !_curr.right && _count === _length-1 ){
-				_continue = false;
-				_last.x_coord = _x_next;
-				_last.y_coord = _y_next;
-				_last.z_coord = _z_next;
-			} else {
-				_continue = false;
-				
-				console.log('Error: setPanelPosition');
-				console.log('current: ', _curr);
-				console.log('last: ', _last);
-				
+			} else if(!_curr.below && !_curr.right){
+				if(_count === _length-1){
+					_continue = false;
+					_last.x_coord = _x_next;
+					_last.y_coord = _y_next;
+					_last.z_coord = _z_next;
+				} else {
+					_continue = false;
+					console.log('Error: Loop count less than cardList length');
+				}
 			}
 		}
+	},
+	
+	testPanelIds: function(){
+		var results = [];
+		var refArray = [];
+		
+		if(this.cardList.length === 0) return;
+		
+		var _curr = this.getFirst();
+		var _index = this.getPanelIndex(_curr._id);
+		var _next;
+		var _last = this.getLast();
+		
+		var _continue = true;
+		var _count = 0;
+		var _length = this.cardList.length;
+		
+		while( _continue ){
+			
+			if(_curr.below || _curr.right){
+				if(_count < _length){
+					if(_curr.below){
+						_next = this.getPanel(_curr.below);
+					} else if(_curr.right){
+						_next = this.getPanel(_curr.right);
+					}
+					
+					refArray.push(this.getPanelIndex(_curr._id));
+					
+					_curr = _next;
+					_count++;
+				} else if(_count > _length){
+					_continue = false;
+					results.push('FAIL: Loop count greater than cardList length');
+				}
+			} else if(!_curr.below && !_curr.right){
+				if(_count === _length - 1){
+					_continue = false;
+					refArray.push(this.getPanelIndex(_last._id));
+					results.push('PASS: _count + 1 === _length');
+				} else {
+					_continue = false;
+					results.push('FAIL: Loop count less than cardList length');
+				}
+			}
+		}
+		
+		for(var i = 0; i < _length; i++){
+			
+			var _index = this.getPanelIndex(this.cardList[i]._id);
+			var _order = this.getPanelOrder(this.cardList[i]._id);
+			
+			console.log(_index+' / '+refArray[i]+' / '+_order);
+			
+			if(refArray.indexOf(_index) < 0){
+				results.push('FAIL: Unused reference id - '+this.cardList[i]._id);
+			}
+			
+		}
+		
+		console.log('--- testPanelIds ---');
+		for(var i = 0; i < results.length; i++){
+			console.log(results[i]);
+		}
+		
+	},
+	
+	testCollision: function(that){
+		var result = 'pass';
+		for(var i = 0; i < this.cardList.length; i++){
+			_thisCard = this.cardList[i];
+			for(var ii = 0; ii < that.cardList.length; ii++){
+				_thatCard = that.cardList[ii];
+				if(_thisCard._id === _thatCard._id){
+					console.log('Error: card _id collision: '+_thisCard._id+' === '+_thatCard._id);
+					result = 'fail';
+				}
+			}
+		}
+		console.log('Collision Test: '+ this.name+' / '+that.name+' ==> Result: '+result);
 	}
 	
 });

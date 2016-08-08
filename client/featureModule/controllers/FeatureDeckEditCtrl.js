@@ -107,6 +107,8 @@ angular.module("freedomsworn")
 					]
 				});
 				
+				this.featureDeck.setPanelPosition();
+				
 			};
 			
 			this.removeCard = function(){

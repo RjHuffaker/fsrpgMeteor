@@ -7,7 +7,7 @@
 			<li ng-repeat="(key, value) in options track by $index"
 				ng-class="{current: value}"
 				ng-click="toggleSelect(key)"
-				stop-click="1">
+				stop-event="1">
 				<span>
 					{{key}}
 				</span>

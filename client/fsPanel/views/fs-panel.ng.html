@@ -1,11 +1,11 @@
-<div ng-if="panel.cardType === 'pc1'" card-pc-1 class="{{panel.cardType}} fill-parent"></div>
+<div ng-if="panel.cardType === 'pc1'" card-pc-1="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
 
-<div ng-if="panel.cardType === 'pc2'" card-pc-2 class="{{panel.cardType}} fill-parent"></div>
+<div ng-if="panel.cardType === 'pc2'" card-pc-2="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
 
-<div ng-if="panel.cardType === 'pc3'" card-pc-3 class="{{panel.cardType}} fill-parent"></div>
+<div ng-if="panel.cardType === 'pc3'" card-pc-3="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
 
 <div ng-if="['Aspect', 'Trait', 'Feat', 'Augment', 'Item'].indexOf(panel.cardType) > -1"
-	feature-card="panel" class="{{panel.cardType}} fill-parent"></div>
+	feature-card="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
 	
-<div ng-if="['Choose Aspect', 'Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'].indexOf(panel.cardType) > -1" deck="deck"
-	choose-feature-card="panel" class="{{panel.cardType}} fill-parent"></div>
+<div ng-if="['Choose Aspect', 'Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'].indexOf(panel.cardType) > -1" 
+	choose-feature-card="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>

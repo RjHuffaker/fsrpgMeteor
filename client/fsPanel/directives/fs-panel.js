@@ -191,6 +191,7 @@ angular.module('freedomsworn')
 					});
 					
 					$rootScope.$broadcast('fsPanel:onPressCard', {
+						deckId: _deck._id,
 						startX: _startX,
 						startY: _startY,
 						panel: _panel
@@ -198,12 +199,13 @@ angular.module('freedomsworn')
 				};
 				
 				var onPressCard = function(event, object){
-					
-					_startCol = convertEm(_panel.x_coord);
-					_startRow = convertEm(_panel.y_coord);
-					
-					if(!_panel.dragging){
-						element.addClass('card-moving');
+					if(object.deckId === _deck._id){
+						_startCol = convertEm(_panel.x_coord);
+						_startRow = convertEm(_panel.y_coord);
+						
+						if(!_panel.dragging){
+							element.addClass('card-moving');
+						}
 					}
 				};
 				
@@ -225,6 +227,7 @@ angular.module('freedomsworn')
 					_panelY = _moveY + _startRow - (_startRow - _mouseRow);
 					
 					$rootScope.$broadcast('fsPanel:onMoveCard', {
+						deckId: _deck._id,
 						mouseX: _mouseX,
 						mouseY: _mouseY,
 						moveX: _moveX,
@@ -237,16 +240,18 @@ angular.module('freedomsworn')
 				
 				// Function to move a single card or each card in a vertical stack
 				var onMoveCard = function(event, object){
-					object.slot = _panel;
-					object.offset = element.offset();
-					object.emPx = convertEm(1);
-					if(_panel.dragging){
-						element.css({
-							left: object.moveX + _startCol + 'px',
-							top: object.moveY + _startRow + 'px'
-						});
-					} else {
-						onCardMove(_deck, object);
+					if(object.deckId === _deck._id){
+						object.slot = _panel;
+						object.offset = element.offset();
+						object.emPx = convertEm(1);
+						if(_panel.dragging){
+							element.css({
+								left: object.moveX + _startCol + 'px',
+								top: object.moveY + _startRow + 'px'
+							});
+						} else {
+							onCardMove(_deck, object);
+						}
 					}
 				};
 				
@@ -256,13 +261,12 @@ angular.module('freedomsworn')
 					$document.off(_moveEvents, onMove);
 					$document.off(_releaseEvents, onRelease);
 					$rootScope.$broadcast('fsPanel:onReleaseCard', {
+						deckId: _deck._id,
 						panel: _panel
 					});
 					
 					if(Math.abs(_moveX) <= convertEm(1) && Math.abs(_moveY) <= convertEm(1)){
-						var _offset = element.offset();
-						var _nearest = checkEdge.crossing(_panel, _offset.left, _offset.top, _startX, _startY, convertEm(1));
-						_deck.toggleOverlap(_panel._id, _nearest);
+						_deck.toggleOverlap(_panel._id);
 					}
 					
 					_deck.setCardStop();
@@ -274,20 +278,22 @@ angular.module('freedomsworn')
 				
 				// General response to "release" event
 				var onReleaseCard = function(event, object){
-					element.addClass('card-moving');
-					setTimeout(function(){
-						setPosition();
-					}, 0);
-					
-					clearTimeout(_moveTimer);
-					
-					for(var i = 0; i < _deck.cardList.length; i++){
-						_deck.cardList[i].dragging = false;
+					if(object.deckId === _deck._id){
+						element.addClass('card-moving');
+						setTimeout(function(){
+							setPosition();
+						}, 0);
+						
+						clearTimeout(_moveTimer);
+						
+						for(var i = 0; i < _deck.cardList.length; i++){
+							_deck.cardList[i].dragging = false;
+						}
+						
+						_moveTimer = setTimeout(function(){
+							element.removeClass('card-moving');
+						}, 500);
 					}
-					
-					_moveTimer = setTimeout(function(){
-						element.removeClass('card-moving');
-					}, 500);
 				};
 				
 				// Respond to 'onMouseLeave' event similar to onRelease, but without toggling overlap
@@ -295,6 +301,7 @@ angular.module('freedomsworn')
 					$document.off(_moveEvents, onMove);
 					$document.off(_releaseEvents, onRelease);
 					$rootScope.$broadcast('fsPanel:onReleaseCard', {
+						deckId: _deck._id,
 						panel: _panel
 					});
 				};

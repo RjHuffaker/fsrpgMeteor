@@ -18,6 +18,9 @@ angular.module("freedomsworn")
 			this.selectRow = function(row){
 				this.currentRow = row;
 				console.log(row);
+				
+				row.testPanelIds();
+				
 			};
 			
 			this.deleteDeck = function(deck){

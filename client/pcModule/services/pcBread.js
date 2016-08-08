@@ -33,6 +33,8 @@ angular.module('freedomsworn')
 			
 			newDeck.setCardList();
 			
+			newDeck.setPanelPosition();
+			
 			PcDecks.insert(newDeck, function(error, result){
 				if(error){
 					console.log(error);

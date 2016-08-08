@@ -1,5 +1,5 @@
 angular.module('freedomsworn')
-	.directive('chooseFeatureCard', function(dataSrvc){
+	.directive('chooseFeatureCard', function(modalSrvc){
 		'ngInject';
 
 		return {
@@ -7,8 +7,8 @@ angular.module('freedomsworn')
 			templateUrl: paths.featureModule.views+'choose-feature-card.ng.html',
 			scope: { card: '=chooseFeatureCard', deck: '=' },
 			link: function(scope, element, attrs){
-				scope.dataSrvc = dataSrvc;
 				
+				scope.modalSrvc = modalSrvc;
 				
 			}
 		};
