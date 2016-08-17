@@ -4,7 +4,7 @@ angular.module('freedomsworn')
 
 		return {
 			restrict: 'A',
-			templateUrl: paths.fsCard.views+'card-action.ng.html',
+			templateUrl: paths.cardModule.views+'card-action.ng.html',
 			scope: {
 				cardAction: '='
 			},

@@ -1,3 +1,37 @@
 <div ng-controller="PcDeckDetailsCtrl as vm">
+	
+	<div fs-dropdown>
+		<div class="fs-dropdown-toggle">
+			Options
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul class="card-menu-list">
+					<li ng-click="vm.editPc(vm.pcDeck);"><label>
+						Save Character
+					</label></li>
+					<li ng-click="vm.editPc(vm.pcDeck); vm.exitPc();"><label>
+						Save & Exit
+					</label></li>
+					<li ng-click="vm.exitPc();"><label>
+						Exit Without Saving
+					</label></li>
+					<li>
+						<div fs-modal-toggle toggle-deck="vm.pcDeck"
+							modalxalign="center" modalyalign="center"
+							modalxdim="15" modalYdim="20">
+							PC Dependencies
+							<div class="fs-modal-content">
+								<div>
+									<div pc-deck-dependencies deck="toggle_deck"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+	 		</div>
+		</div>
+	</div>
+	
 	<div fs-deck="vm.pcDeck"></div>
 </div>

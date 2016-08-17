@@ -89,6 +89,10 @@ angular.module('freedomsworn')
 						modalSrvc.current = getModal();
 					}
 					
+					console.log(modalSrvc.current);
+					
+					
+					
 					scope.toggleCallback();
 					
 					event.stopPropagation();

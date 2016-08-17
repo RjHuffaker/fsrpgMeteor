@@ -12,8 +12,6 @@ _.extend(deckObject.prototype, {
 		
 		var _last;
 		
-		newPanel.deckId = this._id;
-		
 		_last = this.getLast();
 		
 		this.cardList.push(newPanel);
@@ -24,12 +22,9 @@ _.extend(deckObject.prototype, {
 			for(var i = 0; i < this.deckSize; i++){
 				this.cardList[i].deckSize = this.deckSize;
 			}
+			newPanel.deckId = this._id;
 			newPanel.cardNumber = this.deckSize;
-		} else if(this.deckType === 'pcDeck'){
-			newPanel.cardRole = 'pcDeck';
 		}
-		
-		
 	},
 	
 	removeFromDeck: function(panel){
@@ -38,7 +33,7 @@ _.extend(deckObject.prototype, {
 		var _next = this.getNext(panel._id);
 		
 		this.cardList.splice(_index, 1);
-		this.setAdjacent(_prev, _next);
+		this.mergeGap(_prev, _next);
 		this.deckSize = this.cardList.length;
 		
 		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
@@ -53,9 +48,7 @@ _.extend(deckObject.prototype, {
 				_test = this.getNext(_test._id);
 				_test.cardNumber--;
 			}
-			
 		}
-		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 	},
 	
 	replaceCard: function(oldCard, newCard){
@@ -69,10 +62,13 @@ _.extend(deckObject.prototype, {
 		_newCard.below = null;
 		_newCard.left = null;
 		_newCard.right = null;
-		_newCard.cardRole = this.deckType;
 		
-		this.setAdjacent(_prev, _newCard);
-		this.setAdjacent(_newCard, _next);
+		if(oldCard.cardType !== 'Item'){
+			_newCard.cardLevel = oldCard.cardLevel;
+		}
+		
+		this.mergeGap(_prev, _newCard);
+		this.mergeGap(_newCard, _next);
 		
 		this.cardList[_index] = _newCard;
 		
@@ -123,6 +119,20 @@ _.extend(deckObject.prototype, {
 	getDeckWidth: function(){
 		var _lastPanel = this.getLast();
 		return _lastPanel.x_coord + _lastPanel.x_dim;
+	},
+	
+	mergeGap: function(panel_a, panel_b){
+		if(panel_a.right || panel_b.left){
+			panel_a.below = null;
+			panel_a.right = panel_b._id;
+			panel_b.above = null;
+			panel_b.left = panel_a._id;
+		} else if(panel_a.below || panel_b.above){
+			panel_a.below = panel_b._id;
+			panel_a.right = null;
+			panel_b.above = panel_a._id;
+			panel_b.left = null;
+		}
 	},
 	
 	setAdjacent: function(leftPanel, rightPanel){

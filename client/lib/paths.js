@@ -1,13 +1,7 @@
 paths = {
 	views: 'client/views/',
-	cardAction: {
-		views: 'client/cardAction/views/'
-	},
-	cardFooter: {
-		views: 'client/cardFooter/views/'
-	},
-	cardHeader: {
-		views: 'client/cardHeader/views/'
+	cardModule: {
+		views: 'client/cardModule/views/'
 	},
 	diceModule: {
 		views: 'client/diceModule/views/'
@@ -18,14 +12,8 @@ paths = {
 	fsBlockInput: {
 		views: 'client/fsBlockInput/views/'
 	},
-	fsCard: {
-		views: 'client/fsCard/views/'
-	},
 	fsDeck: {
 		views: 'client/fsDeck/views/'
-	},
-	fsDropToggle: {
-		views: 'client/fsDropToggle/views/'
 	},
 	fsGrid: {
 		views: 'client/fsGrid/views/'
@@ -51,11 +39,11 @@ paths = {
 	navBarModule: {
 		views: 'client/navBarModule/views/'
 	},
-	pcModule: {
-		views: 'client/pcModule/views/'
-	},
 	npcModule: {
 		views: 'client/npcModule/views/'
+	},
+	pcModule: {
+		views: 'client/pcModule/views/'
 	},
 	originModule: {
 		views: 'client/originModule/views/'

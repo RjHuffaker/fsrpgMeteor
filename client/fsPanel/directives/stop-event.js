@@ -7,9 +7,10 @@ angular.module('freedomsworn')
 			link: function(scope, element, attrs){
 				var _pressEvents = 'touchstart mousedown';
 				element.on(_pressEvents, function(event){
-					if(!attrs.stopEvent){
-						event.stopPropagation();
-					}
+					
+					if(attrs.stopEvent.length) return;
+					
+					event.stopPropagation();
 				});
 			}
 		};

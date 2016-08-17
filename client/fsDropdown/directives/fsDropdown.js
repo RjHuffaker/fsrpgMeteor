@@ -15,9 +15,8 @@ angular.module('freedomsworn')
 				var dropdownPanel;
 				
 				var opencallback;
-				var closecallback;
 				
-				var exemptList = ['keep-open', 'form', 'form-control', 'fs-dropdown-panel'];
+				var closecallback;
 				
 				var toggleHideListener = function(enable){
 					if(enable){
@@ -60,12 +59,10 @@ angular.module('freedomsworn')
 				};
 				
 				var toggleHide = function(event){
-					var l = exemptList.length;
-					for(elem = event.target; elem; elem = elem.parentNode){
+					var elem = event.target;
+					for(elem; elem; elem = elem.parentNode){
 						if(elem.id === attrs.id){
-							for(var i = 0; i < l; i++){
-								if(angular.element(elem).hasClass(exemptList[i])) return;
-							}
+							if(angular.element(elem).hasClass('keep-open')) return;
 						}
 					}
 					
@@ -79,6 +76,8 @@ angular.module('freedomsworn')
 					
 					var toggleHeight = dropdownToggle[0].offsetHeight;
 					var toggleWidth = dropdownToggle[0].offsetWidth;
+					
+					//attrs.id = Random.id();
 					
 					dropdownToggle.addClass('panel-shown');
 					

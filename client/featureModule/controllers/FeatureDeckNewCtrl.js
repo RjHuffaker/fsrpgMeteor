@@ -1,5 +1,5 @@
 angular.module("freedomsworn")
-	.controller("NewFeatureDeckCtrl",
+	.controller("FeatureDeckNewCtrl",
 		function($scope, $reactive, $meteor, $stateParams, $location, featureBread){
 			'ngInject';
 			

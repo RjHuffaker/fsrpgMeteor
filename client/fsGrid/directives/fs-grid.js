@@ -5,7 +5,8 @@ angular.module('freedomsworn')
 		return {
 			restrict: 'A',
 			scope: { 
-				gridDeck: '=fsGrid'
+				gridDeck: '=fsGrid',
+				shownColumns: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid.ng.html',
 			link: function(scope, element, attrs) {
@@ -38,34 +39,32 @@ angular.module('freedomsworn')
 			}
 		};
 	})
-	.directive('fsGridRow', function(dataSrvc, shownColumns, deckDependencies){
+	.directive('fsGridRow', function(dataSrvc, deckDependencies){
 		'ngInject';
 		
 		return {
 			restrict: 'A',
 			scope: {
 				gridCard: '=fsGridRow',
-				deckType: '='
+				deckType: '=',
+				shownColumns: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid-row.ng.html',
 			link: function(scope, element, attrs) {
 				scope.dataSrvc = dataSrvc;
-				scope.shownColumns = shownColumns;
 				scope.deckDependencies = deckDependencies;
 			}
 		};
 	})
-	.directive('fsGridTitles', function(shownColumns){
+	.directive('fsGridTitles', function(){
 		'ngInject';
 		
 		return {
 			restrict: 'A',
 			scope: {
-				deckType: '='
+				deckType: '=',
+				shownColumns: '='
 			},
-			templateUrl: paths.fsGrid.views+'fs-grid-titles.ng.html',
-			link: function(scope, element, attrs) {
-				scope.shownColumns = shownColumns;
-			}
+			templateUrl: paths.fsGrid.views+'fs-grid-titles.ng.html'
 		};
 	});

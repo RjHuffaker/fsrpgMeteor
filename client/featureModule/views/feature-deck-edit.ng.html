@@ -17,9 +17,9 @@
 				<div class="innerRow" ng-if="vm.featureDeck.deckType !== 'Aspect'">
 					
 					<div class="innerCell">
-						<div fs-select select-header="'Dependencies'"
-							selection-array="vm.featureDeck.dependencies"
-							options="[vm.depList]" 
+						<div fs-select="'id'" toggle-header="'Dependencies'"
+							selection="vm.featureDeck.dependencies"
+							options="[vm.depList]"
 							callback="vm.deckDependencies.fetchDependencies(vm.featureDeck)"></div>
 					</div>
 					
@@ -51,7 +51,6 @@
 			<div style="height: 100%; width: 100%; border: 2px solid black">
 				<div class="scrollDiv">
 					<div class="innerTable">
-						
 						<div fs-grid="vm.featureDeck" shown-columns="vm.shownColumns"></div>
 						
 					</div>

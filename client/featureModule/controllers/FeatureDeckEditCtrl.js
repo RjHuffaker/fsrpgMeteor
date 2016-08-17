@@ -7,19 +7,9 @@ angular.module("freedomsworn")
 			
 			this.dataSrvc = dataSrvc;
 			
-			this.shownColumns = shownColumns;
-			
 			this.deckDependencies = deckDependencies;
 			
 			$reactive(this).attach($scope);
-			
-			this.shownColumns = {
-				card: ['Name'],
-				item: ['Slot'],
-				modifiers: ['Durability', 'Finesse', 'Speed'],
-				defenses: ['Block', 'Dodge', 'Alertness', 'Tenacity'],
-				actions: [ ['Name'], ['Name'], ['Name'], ['Name'] ]
-			};
 			
 			this.subscribe('featureDecks');
 			
@@ -27,6 +17,24 @@ angular.module("freedomsworn")
 				featureDeck(){
 					var deck = featureBread.read($stateParams.deckId);
 					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
+					switch(deck.deckType){
+						case 'Aspect':
+							this.shownColumns = shownColumns.aspect;
+							break;
+						case 'Trait':
+							this.shownColumns = shownColumns.trait;
+							break;
+						case 'Feat':
+							this.shownColumns = shownColumns.feat;
+							break;
+						case 'Augment':
+							this.shownColumns = shownColumns.augment;
+							break;
+						case 'Item':
+							this.shownColumns = shownColumns.Item;
+							break;
+					}
+					
 					return deck;
 				},
 				depList(){

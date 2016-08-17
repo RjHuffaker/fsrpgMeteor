@@ -5,16 +5,7 @@ angular.module('freedomsworn')
 		return {
 			restrict: 'A',
 			scope: { card: '=cardPc1', deck: '=' },
-			templateUrl: paths.pcModule.views+'card-pc-1.ng.html',
-			link: function(scope, element, attrs) {
-				scope.editPc = function(deck){
-					pcBread.edit(deck);
-				};
-				
-				scope.exitPc = function(){
-					$location.path('/pcDecks');
-				};
-			}
+			templateUrl: paths.pcModule.views+'card-pc-1.ng.html'
 		};
 	})
 	.directive('cardPc2', function(CoreVars){

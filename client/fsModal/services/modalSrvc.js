@@ -28,7 +28,7 @@ angular.module('freedomsworn')
 			
 			var cardType = card.cardType.replace('Choose ', '');
 			
-			FeatureDecks.find({'deckType': cardType})
+			FeatureDecks.find({"deckType": cardType, "_id": { $in: deck.dependencies }})
 				.forEach(function(deck){
 					for(var i = 0; i < deck.cardList.length; i++){
 						var _card = deck.cardList[i];
@@ -40,7 +40,14 @@ angular.module('freedomsworn')
 		};
 		
 		service.replaceCard = function(card){
+			
 			service.toggleDeck.replaceCard(service.toggleCard, card);
+			
+			if(card.cardType === "Trait"){
+				if(card.aspect.aspectType){
+					service.toggleDeck.factorAspects();
+				}
+			}
 			service.current = {};
 			service.toggleCard = {};
 			service.toggleDeck = {};

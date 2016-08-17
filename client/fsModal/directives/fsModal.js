@@ -67,7 +67,7 @@ angular.module('freedomsworn')
 				
 				var setHeight = function(newVal, oldVal){
 					if(!newVal) return;
-					console.log();
+					console.log(modalSrvc.current.modal_y_align);
 					console.log('height: '+newVal+' align_y: '+modalSrvc.current.modal_y_align);
 					
 					switch(modalSrvc.current.modal_y_align){
@@ -80,7 +80,9 @@ angular.module('freedomsworn')
 						case "top":
 							scope.modal_y_coord = modalSrvc.current.toggle_y_coord - newVal;
 							break;
-						}
+					}
+						
+					console.log(scope.modal_y_coord);
 				};
 				
 				var setWidth = function(newVal, oldVal){
@@ -112,8 +114,8 @@ angular.module('freedomsworn')
 						scope.modal_x_dim = modalSrvc.current.modal_x_dim;
 						scope.modal_y_dim = modalSrvc.current.modal_y_dim;
 						
-						setHeight(scope.modal_x_dim);
-						setWidth(scope.modal_y_dim);
+						setHeight(scope.modal_y_dim);
+						setWidth(scope.modal_x_dim);
 						
 						$compile(modalSrvc.current.modal_content)(scope);
 						

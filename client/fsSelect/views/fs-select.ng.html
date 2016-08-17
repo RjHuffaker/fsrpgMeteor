@@ -1,28 +1,46 @@
-<div fs-dropdown id="fs-select" class="open-down">
+<div fs-dropdown id="{{dropdownId}}" class="open-down {{fsSelect}}"
+	ng-class="{'keep-open': (fsSelect === 'boolean' || fsSelect === 'id')}">
 	<div class="fs-dropdown-toggle">
-		<span ng-if="!selection">
-			{{selectHeader}}
-			<span ng-if="(!selectHeader)">
+		
+		<span ng-if="!fsSelect">
+			<span ng-if="!selection">
+				{{toggleHeader}}
+			</span>
+			<span ng-show="selection.name">
+				{{selection.name}}
+			</span>
+			<span ng-show="!selection.name">
+				{{selection}}
+			</span>
+			<span ng-if="!toggleHeader && !selection">
 				Select
 			</span>
 		</span>
-		<span ng-show="selection.name">
-			{{selection.name}}
+		
+		<span ng-if="fsSelect === 'id'">
+			{{toggleHeader}}
+			<span ng-if="!toggleHeader">
+				Select
+			</span>
 		</span>
-		<span ng-show="!selection.name">
-			{{selection}}
+		
+		<span ng-if="fsSelect === 'boolean'">
+			(+)
 		</span>
+		
 	</div>
 	<div class="fs-dropdown-panel">
 		<div>
-			<ul ng-repeat="optionList in options track by $index" class="text-9">
-				<li ng-show="optionList.length" class="header" stop-event="1">
-					{{selectionHeaders[$index]}}
+			
+			<ul ng-if="fsSelect === 'id' || !fsSelect"
+				ng-repeat="optionList in options track by $index" class="text-9">
+				<li ng-show="optionHeaders.length" class="header" stop-event>
+					{{optionHeaders[$index]}}
 				</li>
 				<li ng-repeat="option in optionList track by $index"
 					ng-class="{current: showSelected(option)}"
 					ng-click="selectOption(option)"
-					stop-event={{selectionArray}}>
+					stop-event="">
 					<span ng-show="option.name">
 						{{option.name}}
 					</span>
@@ -32,11 +50,11 @@
 				</li>
 			</ul>
 			
-			<ul>
-				<li ng-repeat="(key, value) in toggleList"
+			<ul ng-if="fsSelect === 'boolean'" class="text-9">
+				<li ng-repeat="(key, value) in options"
 					ng-class="{current: value}"
-					ng-click="toggleOption(key)"
-					stop-event="1">
+					ng-click="selectOption(key)"
+					stop-event>
 					<span>
 						{{key}}
 					</span>

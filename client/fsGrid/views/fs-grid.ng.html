@@ -1,9 +1,14 @@
 <div class="flex-column">
-	<div class="inline-flex" fs-grid-titles deck-type="gridDeck.deckType"></div>
+	<div class="inline-flex" fs-grid-titles 
+		deck-type="gridDeck.deckType" 
+		shown-columns="shownColumns"></div>
 	<div faux-handle="Height"></div>
 	<div class="flex-column remain-selected"
 		ng-repeat="gridCard in gridDeck.cardList | orderBy: 'cardNumber'"
 		ng-class="{selectrow: (gridCard === gridDeck.currentRow)}"
-		fs-grid-row="gridCard" deck-type="gridDeck.deckType"
-		ng-click="selectRow(gridCard);"></div>
+		fs-grid-row="gridCard"
+		deck-type="gridDeck.deckType"
+		ng-click="selectRow(gridCard);"
+		shown-columns="shownColumns"></div>
+	
 </div>

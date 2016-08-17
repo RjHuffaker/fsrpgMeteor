@@ -1,27 +1,5 @@
 <div class="content-panel">
 	
-	<div fs-dropdown id="pcOptions" class="card-icon-top-left text-8" stop-event="{{card.below}}">
-		<div class="fs-dropdown-toggle">
-			<b>(+)</b>
-		</div>
-		<div class="fs-dropdown-panel">
-			<div>
-				<ul class="card-menu-list">
-					<li ng-click="editPc(deck);"><label>
-						Save Character
-					</label></li>
-					<li ng-click="editPc(deck); exitPc();"><label>
-						Save & Exit
-					</label></li>
-					<li ng-click="exitPc();"><label>
-						Exit Without Saving
-					</label></li>
-				</ul>
-	 		</div>
-	  </div>
-	</div>
-	
-	
 	<table width="100%" height="16%">
 		<tbody>
 			<tr height="55%" class="text-10">
@@ -40,15 +18,14 @@
 				</td>
 				<td width="30%">
 					<div id="race">
-						{{deck.race}}
+						{{deck.race.name}}
 					</div>
 				</td>
 				<td width="15%">
 					<label for="sex"><strong>Sex: </strong></label>
 				</td>
 				<td width="30%">
-					<div id="race">
-						{{deck.sex}}
+					<div fs-select selection="deck.sex" options="[[' ','Male','Female']]" stop-event>
 					</div>
 				</td>
 			</tr>

@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("PcDeckDetailsCtrl", 
-		function($scope, $meteor, $reactive, $stateParams, CoreVars, pcBread){
+		function($rootScope, $scope, $meteor, $reactive, $stateParams, $location, CoreVars, pcBread){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
@@ -14,6 +14,15 @@ angular.module("freedomsworn")
 					return pcBread.read($stateParams.deckId);
 				}
 			});
+			
+			this.editPc = function(deck){
+				pcBread.edit(deck);
+			};
+			
+			this.exitPc = function(){
+				$location.path('/pcDecks');
+			};
+			
 			
 			$scope.$watch('CoreVars.EXP', function(newVal, oldVal){
 				if(newVal !== oldVal){
@@ -39,6 +48,8 @@ angular.module("freedomsworn")
 					$scope.vm.pcDeck.factorFeats();
 					$scope.vm.pcDeck.factorAugments();
 					$scope.vm.pcDeck.pruneDeck();
+					
+					$rootScope.$broadcast('fsDeck:onMouseLeave');
 				}
 			});
 			

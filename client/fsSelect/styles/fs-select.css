@@ -49,3 +49,7 @@
 [fs-select] .fs-dropdown-panel li.current {
 	font-weight: bold;
 }
+
+[fs-select="'boolean'"]{
+	width: 1.5em !important;
+}

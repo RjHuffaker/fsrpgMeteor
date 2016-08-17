@@ -185,6 +185,60 @@ _.extend(pcObject.prototype, {
 		
 	},
 	
+	factorAspects: function(){
+		this.factorArchetype();
+		this.factorAllegiance();
+		this.factorRace();
+	},
+	
+	factorArchetype: function(){
+		var _archetypeList = [];
+		for(var i = 0; i < this.cardList.length; i++){
+			var _test = this.cardList[i];
+			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Archetype'){
+				_archetypeList.push(_test.aspect);
+			}
+		}
+		this.archetype = _archetypeList;
+	},
+	
+	factorAllegiance: function(){
+		var _allegianceList = [];
+		for(var i = 0; i < this.cardList.length; i++){
+			var _test = this.cardList[i];
+			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Allegiance'){
+				_allegianceList.push(_test.aspect);
+			}
+		}
+		this.allegiance = _allegianceList;
+	},
+	
+	factorRace: function(){
+		var _raceList = [];
+		var _startingRace = {
+			name: 'Weolda'
+		};
+		for(var i = 0; i < this.cardList.length; i++){
+			var _test = this.cardList[i];
+			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Race'){
+				_raceList.push(_test);
+				if(_test.cardLevel === 0){
+					_startingRace = _test.aspect;
+				}
+			}
+		}
+		
+		for(var i = 0; i < _raceList.length; i++){
+			var _test = _raceList[i];
+			if(_test.aspect !== _startingRace){
+				console.log('race error');
+				this.removeFromDeck(_test);
+			}
+		}
+		
+		this.race = _startingRace;
+	},
+	
 	getCardCount: function(cardType){
 		var count = 0;
 		for(var i = 0; i < this.cardList.length; i++){
@@ -197,12 +251,20 @@ _.extend(pcObject.prototype, {
 	},
 	
 	pruneDeck: function(){
+		var toBeRemoved = [];
+		
 		for(var i = 0; i < this.cardList.length; i++){
 			_test = this.cardList[i];
+			console.log('prune?', _test.name, _test.cardType, _test.cardLevel, this.level);
 			if(this.level < _test.cardLevel){
-				this.removeFromDeck(_test);
+				toBeRemoved.push(_test);
 			}
 		}
+		
+		for(var i = 0; i < toBeRemoved.length; i++){
+			this.removeFromDeck(toBeRemoved[i]);
+		}
+		
 		this.setPanelPosition();  
 	}
 	

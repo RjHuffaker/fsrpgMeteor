@@ -31,17 +31,22 @@
 	<table width="100%" height="12%">
 		<tbody>
 			<tr class="text-8">
-				<td width="15%">
-					<strong>EXP:</strong>
+				<td width="43%">
+					<div fs-dropdown id="xp-clicker" class="keep-open fill-width span-width" stop-event>
+						<div class="fs-dropdown-toggle">
+							<strong style="display: inline-block; width: 35%">EXP:</strong> <span style="display: inline-block; width: 65%" class="text-center">{{deck.experience}}</span>
+						</div>
+						<div class="fs-dropdown-panel">
+							<div fs-numpicker
+								numvalue="deck.experience"
+								numvaluemin="0"
+								numvaluemax="1100"
+								numdelay="200"></div>
+						</div>
+					</div>
+					
 				</td>
-				<td width="28%">
-					<input
-						type="number" min="0" max="1100"
-						class="text-center" style="width: 90%; height: 90%; margin-right: 10%"
-						ng-model="CoreVars.EXP"
-						stop-event
-					/>
-				</td>
+				
 				<td width="30%">
 					<strong>Stamina:</strong>
 				</td>
@@ -76,7 +81,9 @@
 				</td>
 				<td width="26%">
 					<div class="text-center">
-						{{deck.archetype}}
+						<span ng-repeat="archetype in deck.archetype">
+							{{archetype.name}}
+						</span>
 					</div>
 				</td>
 			</tr>
@@ -99,7 +106,9 @@
 				</td>
 				<td width="25%">
 					<div class="text-center">
-						{{deck.allegiance}}
+						<span ng-repeat="allegiance in deck.allegiance">
+							{{allegiance.name}}
+						</span>
 					</div>
 				</td>
 			</tr>

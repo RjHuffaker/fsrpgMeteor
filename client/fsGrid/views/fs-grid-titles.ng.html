@@ -1,13 +1,13 @@
 <div class="flex-column">
 	<div class="inline-flex">
-		<div fs-drop-toggle options="shownColumns.card"></div>
+		<div fs-select="'boolean'" options="shownColumns.card"></div>
 		<div class="row-header">Card Details</div>
 	</div>
 	
 	<div class="section-underline"></div>
 	
 	<div class="inline-flex">
-		<div class="inline-flex" style="width: 1.4em; height: 1.4em;">
+		<div class="inline-flex" style="width: 1.4em;">
 		</div>
 		
 		<div class="inline-flex" style="width: 10em"
@@ -50,21 +50,25 @@
 
 <div class="flex-column"
 	ng-if="shownColumns.card['Item']"
-	fs-grid-item-titles>
+	fs-grid-item-titles
+	shown-columns="shownColumns">
 </div>
 
-<div class="flex-column"
+<div class="flex-column fill-height"
 	ng-if="shownColumns.card['Modifiers']"
-	fs-grid-modifier-titles>
+	fs-grid-modifier-titles
+	shown-columns="shownColumns">
 </div>
 
 <div class="flex-column"
 	ng-if="shownColumns.card['Defenses']"
-	fs-grid-defense-titles>
+	fs-grid-defense-titles
+	shown-columns="shownColumns">
 </div>
 
 <div class="flex-column"
 	ng-if="shownColumns.card['Action '+($index+1)]"
 	ng-repeat="action in shownColumns.actions track by $index"
-	fs-grid-action-titles action-id="$index">
+	fs-grid-action-titles action-id="$index"
+	shown-columns="shownColumns">
 </div>

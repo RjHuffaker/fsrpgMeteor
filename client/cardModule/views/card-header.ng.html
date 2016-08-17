@@ -22,6 +22,9 @@
 						<span ng-if="!card.aspect">
 							[Aspect]
 						</span>
+						<span ng-if="card.cardLevel > -1">
+							Level {{card.cardLevel}}
+						</span>
 					</div>
 					
 					<div ng-if="card.cardType === 'Item'

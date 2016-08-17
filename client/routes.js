@@ -18,10 +18,6 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         templateUrl: paths.pcModule.views+'pc-deck-details.ng.html'
       })
       
-      .state('newFeatureDeck', {
-        url: '/newFeatureDeck',
-        templateUrl: paths.featureModule.views+'new-feature-deck.ng.html'
-      })
       .state('featureDeckList', {
         url: '/featureDeckList',
         templateUrl: paths.featureModule.views+'feature-deck-list.ng.html'
@@ -30,10 +26,13 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         url: '/featureDeckView/:deckId',
         templateUrl: paths.featureModule.views+'feature-deck-view.ng.html'
       })
-      
       .state('featureDeckEdit', {
         url: '/featureDeckEdit/:deckId',
         templateUrl: paths.featureModule.views+'feature-deck-edit.ng.html'
+      })
+      .state('featureDeckNew', {
+        url: '/featureDeckNew',
+        templateUrl: paths.featureModule.views+'feature-deck-new.ng.html'
       })
       
       .state('npcDeck', {

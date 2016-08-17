@@ -1,27 +1,27 @@
 angular.module('freedomsworn')
-	.directive('fsGridItemRow', function(dataSrvc, shownColumns){
+	.directive('fsGridItemRow', function(dataSrvc){
 		'ngInject';
 		
 		return {
 			restrict: 'A',
 			scope: {
-				gridItem: '=fsGridItemRow'
+				gridItem: '=fsGridItemRow',
+				shownColumns: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid-item-row.ng.html',
 			link: function(scope, element, attrs) {
 				scope.dataSrvc = dataSrvc;
-				scope.shownColumns = shownColumns;
 			}
 		};
 	})
-	.directive('fsGridItemTitles', function(shownColumns){
+	.directive('fsGridItemTitles', function(){
 		'ngInject';
 		
 		return {
 			restrict: 'A',
-			templateUrl: paths.fsGrid.views+'fs-grid-item-titles.ng.html',
-			link: function(scope, element, attrs) {
-				scope.shownColumns = shownColumns;
-			}
+			scope: {
+				shownColumns: '='
+			},
+			templateUrl: paths.fsGrid.views+'fs-grid-item-titles.ng.html'
 		};
 	});

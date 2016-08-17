@@ -19,13 +19,10 @@ angular.module('freedomsworn')
 						for(var ii = 0; ii < deck.cardList.length; ii++){
 							var card = deck.cardList[ii];
 							if(card.aspectType === 'Archetype'){
-								console.log(card.name);
 								service.archetypes.push(card);
 							} else if(card.aspectType === 'Allegiance'){
-								console.log(card.name);
 								service.allegiances.push(card);
 							} else if(card.aspectType === 'Race'){
-								console.log(card.name);
 								service.races.push(card);
 							}
 						}
