@@ -1,13 +1,29 @@
-<div ng-if="card.durability.show" class="fill-width">
-	<strong>Durability Modifier: </strong> {{card.durability.modifier}}
+<div ng-if="isNumber(card.damageModifier)" class="fill-width">
+	<strong>Damage Modifier: </strong> {{card.damageModifier}}
 </div>
 
-<div ng-if="card.speed.show" class="fill-width">
-	<strong>Speed Modifier: </strong> {{card.speed.modifier}}
+<div ng-if="isNumber(card.durabilityModifier)" class="fill-width">
+	<strong>Durability Modifier: </strong> {{card.durabilityModifier}}
 </div>
 
-<div ng-if="card.finesse.show" class="fill-width">
-	<strong>Finesse Modifier: </strong> {{card.finesse.modifier}}
+<div ng-if="isNumber(card.baseDurability)" class="fill-width">
+	<strong>Base Durability: </strong> {{card.baseDurability}}
+</div>
+
+<div ng-if="isNumber(card.defenseModifier)" class="fill-width">
+	<strong>Defense Modifier: </strong> {{card.defenseModifier}}
+</div>
+
+<div ng-if="isNumber(card.speedModifier)" class="fill-width">
+	<strong>Speed Modifier: </strong> {{card.speedModifier}}
+</div>
+
+<div ng-if="isNumber(card.finesseModifier)" class="fill-width">
+	<strong>Finesse Modifier: </strong> {{card.finesseModifier}}
+</div>
+
+<div ng-if="isNumber(card.carryingCapacityModifier)" class="fill-width">
+	<strong>Carrying Capacity Modifier: </strong> {{card.carryingCapacityModifier}}
 </div>
 
 <div ng-if="card.defense.block.show" class="fill-width">

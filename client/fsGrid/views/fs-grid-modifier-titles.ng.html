@@ -8,9 +8,33 @@
 <div class="inline-flex">
 	
 	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Damage']">
+		<b>Damage</b>
+		<div resize-handle="Width" id="Damage"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
 		ng-if="shownColumns.modifiers['Durability']">
 		<b>Durability</b>
 		<div resize-handle="Width" id="Durability"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Base Durability']">
+		<b>Base Durability</b>
+		<div resize-handle="Width" id="Base Durability"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Defense']">
+		<b>Defense</b>
+		<div resize-handle="Width" id="Defense"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.modifiers['Speed']">
+		<b>Speed</b>
+		<div resize-handle="Width" id="Speed"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
@@ -20,9 +44,9 @@
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Speed']">
-		<b>Speed</b>
-		<div resize-handle="Width" id="Speed"></div>
+		ng-if="shownColumns.modifiers['Carrying Capacity']">
+		<b>Carrying Capacity</b>
+		<div resize-handle="Width" id="Carrying Capacity"></div>
 	</div>
 	
 </div>

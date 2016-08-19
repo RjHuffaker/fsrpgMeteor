@@ -8,6 +8,7 @@ angular.module('freedomsworn')
 				numvalue: '=',
 				numvaluemin: '=',
 				numvaluemax: '=',
+				numdefault: '=',
 				numdelay: '=',
 				callback: '='
 			},
@@ -21,7 +22,7 @@ angular.module('freedomsworn')
 				var intervalDelay = scope.numdelay;
 				
 				scope.decreaseDown = function(){
-					if(!scope.numvalue) scope.numvalue = scope.numvaluemin;
+					if(isNaN(scope.numvalue)) scope.numvalue = scope.numdefault;
 					// if(scope.numvaluemin)
 					if(scope.numvalue <= scope.numvaluemin) return;
 					scope.numvalue--;
@@ -29,7 +30,7 @@ angular.module('freedomsworn')
 				};
 				
 				scope.increaseDown = function(){
-					if(!scope.numvalue) scope.numvalue = scope.numvaluemin;
+					if(isNaN(scope.numvalue)) scope.numvalue = scope.numdefault;
 					if(scope.numvaluemax)
 					if(scope.numvalue >= scope.numvaluemax) return;
 					scope.numvalue++;

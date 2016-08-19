@@ -3,7 +3,7 @@ angular.module('freedomsworn')
 		return {
 			name: 'Randolph',
 			sex: '',
-			race: { name: 'Weolda' },
+			race: { name: 'Weolda', baseDurability: 4 },
 			abilities: [
 				{ name: 'Strength', order: 0, dice: { name: 'd__', image: 'img/dice/d___.png', sides: '0', order: 0 } },
 				{ name: 'Physique', order: 1, dice: { name: 'd__', image: 'img/dice/d___.png', sides: '0', order: 0 } },

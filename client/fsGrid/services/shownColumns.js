@@ -14,9 +14,13 @@ angular.module('freedomsworn')
 					'Action 2': false
 				},
 				modifiers: {
+					'Damage': true,
 					'Durability': true,
+					'Base Durability': true,
+					'Defense': true,
 					'Finesse': true,
-					'Speed': true
+					'Speed': true,
+					'Carrying Capacity': true
 				},
 				actions: [
 					{
@@ -68,9 +72,12 @@ angular.module('freedomsworn')
 					'Prerequisites': false
 				},
 				modifiers: {
+					'Damage': true,
 					'Durability': true,
+					'Defense': true,
 					'Finesse': true,
-					'Speed': true
+					'Speed': true,
+					'Carrying Capacity': true
 				},
 				defenses: {
 					'Block': false,
@@ -186,9 +193,12 @@ angular.module('freedomsworn')
 					'Prerequisites': false
 				},
 				modifiers: {
+					'Damage': true,
 					'Durability': true,
+					'Defense': true,
 					'Finesse': true,
-					'Speed': true
+					'Speed': true,
+					'Carrying Capacity': true
 				},
 				defenses: {
 					'Block': true,
@@ -259,9 +269,12 @@ angular.module('freedomsworn')
 					'Cost': false
 				},
 				modifiers: {
+					'Damage': true,
 					'Durability': true,
+					'Defense': true,
 					'Finesse': true,
-					'Speed': true
+					'Speed': true,
+					'Carrying Capacity': true
 				},
 				defenses: {
 					'Block': true,
@@ -336,10 +349,6 @@ angular.module('freedomsworn')
 					}
 				]
 			}
-			
-			
-			
-			
 			
 		};
 		return service;

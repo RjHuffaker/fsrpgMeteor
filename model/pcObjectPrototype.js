@@ -189,6 +189,7 @@ _.extend(pcObject.prototype, {
 		this.factorArchetype();
 		this.factorAllegiance();
 		this.factorRace();
+		this.factorDurability();
 	},
 	
 	factorArchetype: function(){
@@ -216,7 +217,8 @@ _.extend(pcObject.prototype, {
 	factorRace: function(){
 		var _raceList = [];
 		var _startingRace = {
-			name: 'Weolda'
+			name: 'Weolda',
+			baseDurability: 4
 		};
 		for(var i = 0; i < this.cardList.length; i++){
 			var _test = this.cardList[i];
@@ -239,10 +241,42 @@ _.extend(pcObject.prototype, {
 		this.race = _startingRace;
 	},
 	
+	factorDurability: function(){
+		var _baseModifiers = [];
+		var _totalModifiers = [];
+		
+		this.baseDurability = this.race.baseDurability;
+		
+		for(var i = 0; i < this.cardList.length; i++){
+			var _test = this.cardList[i]
+			var _modifier = _test.durabilityModifier;
+			if(!isNaN(parseFloat(_modifier)) && isFinite(_modifier)){
+				if(_test.cardType === 'Trait'){
+					_baseModifiers.push(_modifier);
+				} else {
+					_totalModifiers.push(_modifier);
+				}
+			}
+		}
+		
+		for(var i = 0; i < _baseModifiers.length; i++){
+			this.baseDurability += _baseModifiers[i];
+		}
+		
+		this.totalDurability = this.baseDurability;
+		
+		for(var i = 0; i < _totalModifiers.length; i++){
+			this.totalDurability += _totalModifiers[i];
+		}
+		
+		console.log(_baseModifiers);
+		console.log(_totalModifiers);
+		
+	},
+	
 	getCardCount: function(cardType){
 		var count = 0;
 		for(var i = 0; i < this.cardList.length; i++){
-			if(this.cardList[i])
 			if(this.cardList[i].cardType.includes(cardType)){
 				count++;
 			}
