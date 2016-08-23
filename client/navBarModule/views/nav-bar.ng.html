@@ -19,11 +19,11 @@
 		</div>
 	</div>
 	-
-	<div fs-dropdown id="loginDropdown" ng-hide="$root.currentUser">
+	<div fs-dropdown id="loginDropdown" class="keep-open" ng-hide="$root.currentUser">
 		<div class="fs-dropdown-toggle text-12">
 			<span>Login</span>
 		</div>
-		<div class="fs-dropdown-panel" stop-event="1">
+		<div class="fs-dropdown-panel" stop-event>
 			<div>
 				<form class="form login-register">
 					<input class="form-control" type="text"
@@ -41,11 +41,11 @@
 		</div>
 	</div>
 	-
-	<div fs-dropdown id="registerDropdown" ng-hide="$root.currentUser">
+	<div fs-dropdown id="registerDropdown" class="keep-open" ng-hide="$root.currentUser">
 		<div class="fs-dropdown-toggle text-12">
 			<span>Register</span>
 		</div>
-		<div class="fs-dropdown-panel">
+		<div class="fs-dropdown-panel" stop-event>
 			<div>
 				<form class="form login-register">
 					<input class="form-control" type="text"

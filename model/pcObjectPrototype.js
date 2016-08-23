@@ -182,7 +182,6 @@ _.extend(pcObject.prototype, {
 				this.setPanelPosition();
 			}
 		}
-		
 	},
 	
 	factorAspects: function(){
@@ -190,6 +189,8 @@ _.extend(pcObject.prototype, {
 		this.factorAllegiance();
 		this.factorRace();
 		this.factorDurability();
+		this.factorSpeed();
+		this.factorDamageModifier();
 	},
 	
 	factorArchetype: function(){
@@ -269,9 +270,26 @@ _.extend(pcObject.prototype, {
 			this.totalDurability += _totalModifiers[i];
 		}
 		
-		console.log(_baseModifiers);
-		console.log(_totalModifiers);
-		
+	},
+	
+	factorSpeed: function(){
+		this.speed = this.race.baseSpeed;
+		for(var i = 0; i < this.cardList.length; i++){
+			var _modifier = this.cardList[i].speedModifier;
+			if(!isNaN(parseFloat(_modifier)) && isFinite(_modifier)){
+				this.speed += _modifier;
+			}
+		}
+	},
+	
+	factorDamageModifier: function(){
+		this.damageModifier = this.race.damageModifier;
+		for(var i = 0; i < this.cardList.length; i++){
+			var _modifier = this.cardList[i].damageModifier;
+			if(!isNaN(parseFloat(_modifier)) && isFinite(_modifier)){
+				this.damageModifier += _modifier;
+			}
+		}
 	},
 	
 	getCardCount: function(cardType){

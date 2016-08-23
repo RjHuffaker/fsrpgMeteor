@@ -8,6 +8,7 @@ angular.module('freedomsworn')
 				numvalue: '=',
 				numvaluemin: '=',
 				numvaluemax: '=',
+				numincrement: '=',
 				numdefault: '=',
 				numdelay: '=',
 				callback: '='
@@ -23,17 +24,23 @@ angular.module('freedomsworn')
 				
 				scope.decreaseDown = function(){
 					if(isNaN(scope.numvalue)) scope.numvalue = scope.numdefault;
-					// if(scope.numvaluemin)
 					if(scope.numvalue <= scope.numvaluemin) return;
-					scope.numvalue--;
+					
+					scope.numvalue -= scope.numincrement ? scope.numincrement : 1;
+					
+					scope.numvalue = round(scope.numvalue, 1);
+
 					mouseCounter = $timeout(decreaseValue, intervalDelay);
 				};
 				
 				scope.increaseDown = function(){
 					if(isNaN(scope.numvalue)) scope.numvalue = scope.numdefault;
-					if(scope.numvaluemax)
 					if(scope.numvalue >= scope.numvaluemax) return;
-					scope.numvalue++;
+					
+					scope.numvalue += scope.numincrement ? scope.numincrement : 1;
+					
+					scope.numvalue = round(scope.numvalue, 1);
+					
 					mouseCounter = $timeout(increaseValue, intervalDelay);
 				};
 				
@@ -42,7 +49,6 @@ angular.module('freedomsworn')
 				};
 				
 				var decreaseValue = function(){
-					// if(scope.numvaluemin)
 					if(scope.numvalue <= scope.numvaluemin) return;
 					if(intervalDelay > 10){
 						intervalDelay = intervalDelay * 0.9;
@@ -53,7 +59,6 @@ angular.module('freedomsworn')
 				};
 				
 				var increaseValue = function(){
-					if(scope.numvaluemax)
 					if(scope.numvalue >= scope.numvaluemax) return;
 					if(intervalDelay > 20){
 						intervalDelay -= 20;
@@ -63,6 +68,10 @@ angular.module('freedomsworn')
 					mouseCounter = $timeout(increaseValue, intervalDelay);
 				};
 				
+				var round = function(value, decimals) {
+					return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+				};
+
 				scope.mouseUp = function(){
 					intervalDelay = scope.numdelay;
 					increment = 1;

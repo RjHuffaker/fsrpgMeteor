@@ -3,7 +3,7 @@ angular.module('freedomsworn')
 		return {
 			name: 'Randolph',
 			sex: '',
-			race: { name: 'Weolda', baseDurability: 4 },
+			race: { name: 'Weolda', baseDurability: 4, speed: 3},
 			abilities: [
 				{ name: 'Strength', order: 0, dice: { name: 'd__', image: 'img/dice/d___.png', sides: '0', order: 0 } },
 				{ name: 'Physique', order: 1, dice: { name: 'd__', image: 'img/dice/d___.png', sides: '0', order: 0 } },
@@ -38,7 +38,7 @@ angular.module('freedomsworn')
 			staminaCurrent: 0,
 			fatigue: 0,
 			size: 'Medium',
-			speed: 6,
+			speed: 3,
 			archetype: [{name: 'General'}],
 			allegiance: [{name: 'Unaligned'}],
 			traitLimit: 0,

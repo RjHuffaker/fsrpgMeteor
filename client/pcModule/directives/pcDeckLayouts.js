@@ -26,4 +26,11 @@ angular.module('freedomsworn')
 			scope: { card: '=cardPc3', deck: '=' },
 			templateUrl: paths.pcModule.views+'card-pc-3.ng.html'
 		};
+	})
+	.directive('cardPc4', function(){
+		return {
+			restrict: 'A',
+			scope: { card: '=cardPc4', deck: '=' },
+			templateUrl: paths.pcModule.views+'card-pc-4.ng.html'
+		};
 	});

@@ -5,7 +5,7 @@
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
-		numdelay="200"></div>
+		numdelay="500"></div>
 	<div resize-handle="Width" id="Damage"></div>
 </div>
 
@@ -16,7 +16,7 @@
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
-		numdelay="200"></div>
+		numdelay="500"></div>
 	<div resize-handle="Width" id="Durability"></div>
 </div>
 
@@ -27,7 +27,7 @@
 		numvaluemin="2"
 		numvaluemax="6"
 		numdefault="4"
-		numdelay="200"></div>
+		numdelay="500"></div>
 	<div resize-handle="Width" id="Base Durability"></div>
 </div>
 
@@ -38,8 +38,32 @@
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
-		numdelay="200"></div>
+		numdelay="500"></div>
 	<div resize-handle="Width" id="Defense"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.modifiers['Speed']">
+	<div fs-numpicker
+		numvalue="gridModifier.speedModifier"
+		numvaluemin="-1"
+		numvaluemax="1"
+		numdefault="0"
+		numincrement="0.1"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Speed"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.modifiers['Base Speed']">
+	<div fs-numpicker
+		numvalue="gridModifier.baseSpeed"
+		numvaluemin="2"
+		numvaluemax="4"
+		numdefault="3"
+		numincrement="0.1"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Base Speed"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -49,19 +73,8 @@
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
-		numdelay="200"></div>
+		numdelay="500"></div>
 	<div resize-handle="Width" id="Finesse"></div>
-</div>
-
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Speed']">
-	<div fs-numpicker
-		numvalue="gridModifier.speedModifier"
-		numvaluemin="-4"
-		numvaluemax="4"
-		numdefault="0"
-		numdelay="200"></div>
-	<div resize-handle="Width" id="Speed"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
@@ -71,6 +84,6 @@
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
-		numdelay="200"></div>
+		numdelay="500"></div>
 	<div resize-handle="Width" id="Speed"></div>
 </div>

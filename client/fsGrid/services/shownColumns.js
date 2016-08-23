@@ -18,8 +18,9 @@ angular.module('freedomsworn')
 					'Durability': true,
 					'Base Durability': true,
 					'Defense': true,
-					'Finesse': true,
 					'Speed': true,
+					'Base Speed': true,
+					'Finesse': true,
 					'Carrying Capacity': true
 				},
 				actions: [
