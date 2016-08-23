@@ -122,8 +122,8 @@ angular.module('freedomsworn')
 				],
 				prerequisites: {
 					'Attribute': false,
-					'Archetype': false,
-					'Allegiance': false,
+					'Class': false,
+					'Faction': false,
 					'Race': false
 				}	
 			},
@@ -174,8 +174,8 @@ angular.module('freedomsworn')
 				],
 				prerequisites: {
 					'Attribute': false,
-					'Archetype': false,
-					'Allegiance': false,
+					'Class': false,
+					'Faction': false,
 					'Race': false
 				}	
 			},
@@ -243,8 +243,8 @@ angular.module('freedomsworn')
 				],
 				prerequisites: {
 					'Attribute': false,
-					'Archetype': false,
-					'Allegiance': false,
+					'Class': false,
+					'Faction': false,
 					'Race': false
 				}	
 			},

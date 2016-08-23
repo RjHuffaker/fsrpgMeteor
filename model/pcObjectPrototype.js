@@ -185,34 +185,34 @@ _.extend(pcObject.prototype, {
 	},
 	
 	factorAspects: function(){
-		this.factorArchetype();
-		this.factorAllegiance();
+		this.factorClass();
+		this.factorFaction();
 		this.factorRace();
 		this.factorDurability();
 		this.factorSpeed();
 		this.factorDamageModifier();
 	},
 	
-	factorArchetype: function(){
-		var _archetypeList = [];
+	factorClass: function(){
+		var _classList = [];
 		for(var i = 0; i < this.cardList.length; i++){
 			var _test = this.cardList[i];
-			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Archetype'){
-				_archetypeList.push(_test.aspect);
+			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Class'){
+				_classList.push(_test.aspect);
 			}
 		}
-		this.archetype = _archetypeList;
+		this.class = _classList;
 	},
 	
-	factorAllegiance: function(){
-		var _allegianceList = [];
+	factorFaction: function(){
+		var _factionList = [];
 		for(var i = 0; i < this.cardList.length; i++){
 			var _test = this.cardList[i];
-			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Allegiance'){
-				_allegianceList.push(_test.aspect);
+			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Faction'){
+				_factionList.push(_test.aspect);
 			}
 		}
-		this.allegiance = _allegianceList;
+		this.faction = _factionList;
 	},
 	
 	factorRace: function(){

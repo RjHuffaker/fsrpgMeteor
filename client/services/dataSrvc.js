@@ -22,8 +22,8 @@ angular.module('freedomsworn')
 		];
 		
 		service.aspectTypes = [
-			'Archetype',
-			'Allegiance',
+			'Class',
+			'Faction',
 			'Race'
 		];
 		

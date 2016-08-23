@@ -3,14 +3,14 @@ angular.module('freedomsworn')
 		'ngInject';
 		
 		var service = {
-			archetypes: [],
-			allegiances: [],
+			classes: [],
+			factions: [],
 			races: []
 		};
 		
 		service.fetchDependencies = function(deck){
-			service.archetypes.length = 0;
-			service.allegiances.length = 0;
+			service.classes.length = 0;
+			service.factions.length = 0;
 			service.races.length = 0;
 			
 			if(deck.deckType !== 'Aspect'){
@@ -18,10 +18,10 @@ angular.module('freedomsworn')
 					.forEach(function(deck){
 						for(var ii = 0; ii < deck.cardList.length; ii++){
 							var card = deck.cardList[ii];
-							if(card.aspectType === 'Archetype'){
-								service.archetypes.push(card);
-							} else if(card.aspectType === 'Allegiance'){
-								service.allegiances.push(card);
+							if(card.aspectType === 'Class'){
+								service.classes.push(card);
+							} else if(card.aspectType === 'Faction'){
+								service.factions.push(card);
 							} else if(card.aspectType === 'Race'){
 								service.races.push(card);
 							}
