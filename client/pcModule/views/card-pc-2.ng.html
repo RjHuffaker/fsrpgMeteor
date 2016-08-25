@@ -1,216 +1,159 @@
-<div class="content-panel">
-	<table width="100%" height="12%">
-		<tbody>
-			<tr class="text-8">
-				<td width="16%">
-					<strong>Level:</strong>
-				</td>
-				<td width="27%">
-					<div class="text-center">
-						{{deck.level}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Health:</strong>
-				</td>
-				<td width="27%">
-					<div class="text-center">
-						<span>
-							{{deck.healthCurrent}}
-						</span>
-						/
-						<span>
-							{{deck.healthLimit}}
-						</span>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="12%">
-		<tbody>
-			<tr class="text-8">
-				<td width="43%">
-					<div fs-dropdown id="xp-clicker" class="keep-open fill-width span-width" stop-event>
-						<div class="fs-dropdown-toggle">
-							<strong style="display: inline-block; width: 35%">EXP:</strong> <span style="display: inline-block; width: 65%" class="text-center">{{deck.experience}}</span>
-						</div>
-						<div class="fs-dropdown-panel">
-							<div fs-numpicker
-								numvalue="deck.experience"
-								numvaluemin="0"
-								numvaluemax="1100"
-								numdefault="0"
-								numdelay="200"></div>
-						</div>
-					</div>
-					
-				</td>
-				
-				<td width="30%">
-					<strong>Stamina:</strong>
-				</td>
-				<td width="27%">
-					<div class="text-center">
-						<span>
-							{{deck.staminaCurrent}}
-						</span>
-						/
-						<span>
-							{{deck.staminaLimit}}
-						</span>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="12%">
-		<tbody>
-			<tr class="text-8">
-				<td width="13%">
-					<strong>Size:</strong>
-				</td>
-				<td width="31%">
-					<div class="text-center">
-						{{deck.size}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Class:</strong>
-				</td>
-				<td width="26%">
-					<div class="text-center">
-						<span ng-repeat="class in deck.class">
-							{{class.name}}
-						</span>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="12%">
-		<tbody>
-			<tr class="text-8">
-				<td width="18%">
-					<strong>Speed:</strong>
-				</td>
-				<td width="27%">
-					<div class="text-center">
-						{{deck.speed}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Faction:</strong>
-				</td>
-				<td width="25%">
-					<div class="text-center">
-						<span ng-repeat="faction in deck.faction">
-							{{faction.name}}
-						</span>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="13%">
-		<tbody>
-			<tr class="text-8">
-				<td width="19%">
-					<strong>Trait<br>Cards:</strong>
-				</td>
-				<td width="27%">
-					<div class="text-center">
-						{{deck.traitLimit}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Carrying<br>Capacity:</strong>
-				</td>
-				<td width="24%">
-					<div class="text-center">
-						<span>
-							{{deck.carryCurrent}}
-						</span>
-						/
-						<span>
-							{{deck.carryLimit}}
-						</span>
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="13%">
-		<tbody>
-			<tr class="text-8">
-				<td width="20%">
-					<strong>Feat<br>Limit:</strong>
-				</td>
-				<td width="27%">
-					<div class="text-center">
-						{{deck.featLimit}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Augment<br>Limit:</strong>
-				</td>
-				<td width="23%">
-					<div class="text-center">
-						{{deck.augmentLimit}}
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="13%">
-		<tbody>
-			<tr class="text-8">
-				<td width="21%">
-					<strong>Defense<br>Modifier:</strong>
-				</td>
-				<td width="26%">
-					<div class="text-center">
-						{{deck.defenseModifier}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Base<br>Durability:</strong>
-				</td>
-				<td width="23%">
-					<div class="text-center">
-						{{deck.baseDurability}}
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table width="100%" height="13%">
-		<tbody>
-			<tr class="text-8">
-				<td width="23%">
-					<strong>Damage<br>Modifier:</strong>
-				</td>
-				<td width="25%">
-					<div class="text-center">
-						{{deck.damageModifier}}
-					</div>
-				</td>
-				<td width="30%">
-					<strong>Total<br>Durability:</strong>
-				</td>
-				<td width="22%">
-					<div class="text-center">
-						{{deck.totalDurability}}
-					</div>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+<div class="content-panel flex-column" style="padding: 5px">
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>EXP: </b>
+		</div>
+		<div style="flex: 5;">
+			<div fs-numpicker-hover
+				numvalue="deck.experience"
+				numvaluemin="0"
+				numvaluemax="1100"
+				numdefault="0"
+				numdelay="200"
+				numcallback="deck.factorExperience()"></div>
+		</div>
+		
+		<div style="flex: 6;">
+			<b>Health: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span>
+				{{deck.healthCurrent}}
+			</span>
+			/
+			<span>
+				{{deck.healthLimit}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Level: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.level}}
+		</div>
+		
+		<div style="flex: 6;">
+			<b>Stamina: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span>
+				{{deck.staminaCurrent}}
+			</span>
+			/
+			<span>
+				{{deck.staminaLimit}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Size: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.size}}
+		</div>
+		<div class="" style="flex: 6;">
+			<b>Class: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span ng-repeat="class in deck.class">
+				{{class.name}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Speed: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.speed}}
+		</div>
+		<div class="" style="flex: 6;">
+			<b>Faction: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span ng-repeat="faction in deck.faction">
+				{{faction.name}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Trait<br>Cards:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.traitLimit}}
+		</div>
+		<div class="" style="flex: 6;">
+			<b>Carrying<br>Capacity: </b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span>
+				{{deck.carryCurrent}}
+			</span>
+			/
+			<span>
+				{{deck.carryLimit}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Feat<br>Limit:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.featLimit}}
+		</div>
+		<div class="" style="flex: 6;">
+			<b>Augment<br>Limit:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span>
+				{{deck.augmentLimit}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Defense<br>Modifier:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.defenseModifier}}
+		</div>
+		<div class="" style="flex: 6;">
+			<b>Base<br>Durability:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span>
+				{{deck.baseDurability}}
+			</span>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-8" style="flex: 2;">
+		<div style="flex: 4;">
+			<b>Damage<br>Modifier:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			{{deck.damageModifier}}
+		</div>
+		<div class="" style="flex: 6;">
+			<b>Total<br>Durability:</b>
+		</div>
+		<div class="text-center" style="flex: 5;">
+			<span>
+				{{deck.totalDurability}}
+			</span>
+		</div>
+	</div>
+	
 </div>

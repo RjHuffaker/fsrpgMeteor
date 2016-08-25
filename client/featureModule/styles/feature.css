@@ -1,5 +1,9 @@
-.Aspect .content-panel,
-.Aspect .grid-card-icon {
+.Class .content-panel,
+.Class .grid-card-icon,
+.Faction .content-panel,
+.Faction .grid-card-icon,
+.Race .content-panel,
+.Race .grid-card-icon {
 	background-color: navajoWhite !important;
 }
 

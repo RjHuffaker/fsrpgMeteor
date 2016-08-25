@@ -1,48 +1,3 @@
-div.flex-column {
-	display: flex;
-	flex-direction: column;
-}
-
-div.flex-wrap {
-	display: flex;
-	flex-flow: row wrap;
-}
-
-div.inline-flex {
-	display: inline-flex;
-	flex-wrap: nowrap;
-	overflow: hidden;
-}
-
-div.inline-flex > textarea {
-	box-sizing: border-box;
-	font-size: .8em;
-	width: 100%;
-	min-width: 4em !important;
-	height: 100%;
-	min-height: 2em !important;
-	padding: 0 !important;
-	border: 0 !important;
-	margin: 0 !important;
-	resize: none;
-}
-
-div.inline-flex > input {
-	box-sizing: border-box;
-	font-size: .8em;
-	width: 100%;
-	min-width: 4em !important;
-	height: 100%;
-	min-height: 2em !important;
-	padding: 0 !important;
-	border: 0 !important;
-	margin: 0 !important;
-}
-
-div.inline-flex > b {
-	width: 100%;
-}
-
 [fs-grid] [fs-select],
 [fs-grid] [fs-select] [fs-dropdown],
 [fs-grid] [fs-select] [fs-dropdown] .fs-dropdown-toggle {
@@ -115,4 +70,29 @@ div.inline-flex > b {
   border-bottom: 3px double #777;
   margin-left: -5px;
   margin-right: -5px;
+}
+
+[fs-grid] div.inline-flex > textarea {
+	box-sizing: border-box;
+	font-size: inherit;
+	width: 100%;
+	min-width: 4em !important;
+	height: 100%;
+	min-height: 2em !important;
+	padding: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+	resize: none;
+}
+
+[fs-grid] div.inline-flex > input {
+	box-sizing: border-box;
+	font-size: inherit;
+	width: 100%;
+	min-width: 4em !important;
+	height: 100%;
+	min-height: 2em !important;
+	padding: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
 }

@@ -1,0 +1,25 @@
+div.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+div.flex-wrap {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+div.inline-flex {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	overflow: hidden;
+}
+
+div.inline-flex-center {
+	display: inline-flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+div.inline-flex > b {
+	width: 100%;
+}

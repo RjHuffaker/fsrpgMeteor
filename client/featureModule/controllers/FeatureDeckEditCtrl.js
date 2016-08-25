@@ -18,8 +18,14 @@ angular.module("freedomsworn")
 					var deck = featureBread.read($stateParams.deckId);
 					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
 					switch(deck.deckType){
-						case 'Aspect':
-							this.shownColumns = shownColumns.aspect;
+						case 'Class':
+							this.shownColumns = shownColumns.class;
+							break;
+						case 'Faction':
+							this.shownColumns = shownColumns.faction;
+							break;
+						case 'Race':
+							this.shownColumns = shownColumns.race;
 							break;
 						case 'Trait':
 							this.shownColumns = shownColumns.trait;
@@ -38,7 +44,7 @@ angular.module("freedomsworn")
 					return deck;
 				},
 				depList(){
-					return FeatureDecks.find({"deckType": "Aspect"});
+					return FeatureDecks.find({"deckType": { $in: ["Class", "Faction", "Race"] }});
 				}
 			});
 			
@@ -49,12 +55,6 @@ angular.module("freedomsworn")
 			
 			this.toggleDependency = function(deck, deckId){
 				deckDependencies.toggleDependency(deck, deckId);
-			};
-			
-			this.changeAspect = function(card, aspect){
-				if (card.aspect !== aspect){
-					card.aspect = aspect;
-				}
 			};
 			
 			this.setCardList = function(){

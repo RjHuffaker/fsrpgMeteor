@@ -9,13 +9,13 @@ angular.module("freedomsworn")
 
 			this.helpers({
 				deckList(){
-					return FeatureDecks.find({"deckType": "Aspect"});
+					return FeatureDecks.find({"deckType": { $in: ["Class", "Faction", "Race"] }});
 				}
 			});
 
 			this.deck = {
 				name: 'New Deck',
-				type: 'Aspect',
+				type: 'Class',
 				size: 5,
 				dependencies: []
 			};

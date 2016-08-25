@@ -29,6 +29,10 @@ a.text-argos {
 	transform:scale(1,1.5); /* W3C */
 }
 
+.text-error {
+	color: red;
+}
+
 .text-center {
 	text-align: center;
 }

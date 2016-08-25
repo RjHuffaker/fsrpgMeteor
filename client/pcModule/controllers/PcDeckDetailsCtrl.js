@@ -23,27 +23,11 @@ angular.module("freedomsworn")
 				$location.path('/pcDecks');
 			};
 			
-			
-			$scope.$watch('CoreVars.EXP', function(newVal, oldVal){
-				if(newVal !== oldVal){
-					CoreVars.EXP = parseInt(newVal);
-					$scope.vm.pcDeck.experience = parseInt(newVal);
-				}
-			});
-			
-			$scope.$watch('vm.pcDeck.experience', function(newVal, oldVal){
-				if(newVal !== oldVal){
-					$scope.vm.pcDeck.factorExperience();
-					if(newVal !== CoreVars.EXP){
-						CoreVars.EXP = newVal;
-					}
-				}
-			});
-			
 			$scope.$watch('vm.pcDeck.level', function(newVal, oldVal){
 				if(newVal !== oldVal){
 					$scope.vm.pcDeck.factorHealth();
 					$scope.vm.pcDeck.factorStamina();
+					$scope.vm.pcDeck.factorSkills();
 					$scope.vm.pcDeck.factorTraits();
 					$scope.vm.pcDeck.factorFeats();
 					$scope.vm.pcDeck.factorAugments();

@@ -46,7 +46,9 @@ angular.module('freedomsworn')
 			defenseModifier: 0,
 			baseDurability: 0,
 			totalDurability: 0,
-			skills: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			skills: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+			skillPoints: 0,
+			skillMax: 0,
 			deckType: 'pcDeck',
 			deckSize: 4,
 			dependencies: [],
@@ -66,6 +68,12 @@ angular.module('freedomsworn')
 				{
 					_id: Random.id(),
 					cardType: 'pc3',
+					x_dim: 15,
+					y_dim: 21
+				},
+				{
+					_id: Random.id(),
+					cardType: 'pc4',
 					x_dim: 15,
 					y_dim: 21
 				},

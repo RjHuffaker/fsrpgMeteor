@@ -31,14 +31,6 @@
 		<div resize-handle="Width" id="Aspect"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.card['Aspect Type']">
-		<div fs-select selection="gridCard.aspectType"
-			toggle-header="'Aspect Type'"
-			options="[dataSrvc.aspectTypes]"></div>
-		<div resize-handle="Width" id="Aspect Type"></div>
-	</div>
-	
 	<div class="inline-flex" style="width: 15em"
 		ng-if="shownColumns.card['Description']">
 		<textarea ng-model="gridCard.description" rows="2"></textarea>

@@ -3,7 +3,7 @@ angular.module('freedomsworn')
 		return {
 			name: 'Feature Deck',
 			panelType: 'featureSummary',
-			deckType: 'Aspect',
+			deckType: 'Class',
 			deckSize: 8,
 			above: null,
 			below: null,

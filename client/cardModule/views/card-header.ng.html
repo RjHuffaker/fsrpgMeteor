@@ -17,9 +17,9 @@
 					
 					<hr class="black-line">
 					
-					<div ng-if="card.cardType !== 'Item' && card.cardType !== 'Aspect'">
+					<div ng-if="card.aspect">
 						{{card.aspect.name}}
-						<span ng-if="!card.aspect">
+						<span ng-if="!card.aspect.name">
 							[Aspect]
 						</span>
 						<span ng-if="card.cardLevel > -1">
@@ -38,11 +38,8 @@
 						</span>
 					</div>
 					
-					<div ng-if="card.cardType === 'Aspect'">
-						{{card.aspectType}}
-						<span ng-if="!card.aspectType">
-							[Aspect Type]
-						</span>
+					<div ng-if="['Class','Faction','Race'].indexOf(card.cardType) > -1">
+						{{card.cardType}}
 					</div>
 					
 				</div>

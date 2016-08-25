@@ -112,11 +112,29 @@ _.extend(pcObject.prototype, {
 			Number(this.healthLimit - this.injury);
 	},
 	
+	factorSkills: function(){
+		this.skillMax = Math.ceil(this.level/4);
+		this.skillPoints = this.level;
+		
+		console.log('factorSkills');
+		
+		for(var i = 0; i < this.skills.length; i++){
+			var skill = this.skills[i];
+			this.skillPoints -= skill;
+		}
+		
+		if(this.skillPoints < 0){
+			console.log('Error: negative skillPoints');
+		}
+		
+	},
+	
 	factorCarryingCapacity: function(){
 		this.carryCurrent = 0;
 		this.carryLimit =
 			Number(this.abilities[0].dice.sides) +
 			Number(this.abilities[1].dice.sides);
+		//+ this.carryModifier;
 	},
 	
 	factorTraits: function(){
@@ -184,7 +202,7 @@ _.extend(pcObject.prototype, {
 		}
 	},
 	
-	factorAspects: function(){
+	factorFeatureCards: function(){
 		this.factorClass();
 		this.factorFaction();
 		this.factorRace();
@@ -197,7 +215,7 @@ _.extend(pcObject.prototype, {
 		var _classList = [];
 		for(var i = 0; i < this.cardList.length; i++){
 			var _test = this.cardList[i];
-			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Class'){
+			if(_test.cardType === 'Trait' && _test.aspect.cardType === 'Class'){
 				_classList.push(_test.aspect);
 			}
 		}
@@ -208,7 +226,7 @@ _.extend(pcObject.prototype, {
 		var _factionList = [];
 		for(var i = 0; i < this.cardList.length; i++){
 			var _test = this.cardList[i];
-			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Faction'){
+			if(_test.cardType === 'Trait' && _test.aspect.cardType === 'Faction'){
 				_factionList.push(_test.aspect);
 			}
 		}
@@ -223,7 +241,7 @@ _.extend(pcObject.prototype, {
 		};
 		for(var i = 0; i < this.cardList.length; i++){
 			var _test = this.cardList[i];
-			if(_test.cardType === 'Trait' && _test.aspect.aspectType === 'Race'){
+			if(_test.cardType === 'Trait' && _test.aspect.cardType === 'Race'){
 				_raceList.push(_test);
 				if(_test.cardLevel === 0){
 					_startingRace = _test.aspect;
@@ -307,7 +325,7 @@ _.extend(pcObject.prototype, {
 		
 		for(var i = 0; i < this.cardList.length; i++){
 			_test = this.cardList[i];
-			console.log('prune?', _test.name, _test.cardType, _test.cardLevel, this.level);
+			//console.log('prune?', _test.name, _test.cardType, _test.cardLevel, this.level);
 			if(this.level < _test.cardLevel){
 				toBeRemoved.push(_test);
 			}

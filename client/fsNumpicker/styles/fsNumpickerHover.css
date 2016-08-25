@@ -1,0 +1,23 @@
+div[fs-numpicker-hover] {
+	width: 100%;
+	position: relative;
+}
+
+[fs-numpicker-hover] button {
+	height: 1.5em;
+	width: 100%;
+	position: absolute;
+}
+
+button.top-button {
+	margin-top: -1.5em;
+}
+
+button.bottom-button {
+	margin-bottom: -1.5em%;
+}
+
+[fs-numpicker-hover] div.expanded {
+	border: 1px solid grey;
+	background-color: white;
+}

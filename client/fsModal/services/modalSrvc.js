@@ -44,8 +44,8 @@ angular.module('freedomsworn')
 			service.toggleDeck.replaceCard(service.toggleCard, card);
 			
 			if(card.cardType === "Trait"){
-				if(card.aspect.aspectType){
-					service.toggleDeck.factorAspects();
+				if(card.aspect){
+					service.toggleDeck.factorFeatureCards();
 				}
 			}
 			service.current = {};

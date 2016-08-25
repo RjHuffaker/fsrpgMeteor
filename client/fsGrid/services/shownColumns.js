@@ -2,10 +2,9 @@ angular.module('freedomsworn')
 	.factory('shownColumns', function(){
 		var service = {
 			
-			aspect: {
+			class: {
 				card: {
 					'Name': true,
-					'Aspect Type': true,
 					'Description': false,
 					'Benefit': false,
 					'Critical Success': false,
@@ -58,7 +57,119 @@ angular.module('freedomsworn')
 					}
 				]
 			},
-			
+
+			faction: {
+				card: {
+					'Name': true,
+					'Description': false,
+					'Benefit': false,
+					'Critical Success': false,
+					'Modifiers': false,
+					'Action 1': false,
+					'Action 2': false
+				},
+				modifiers: {
+					'Damage': true,
+					'Durability': true,
+					'Base Durability': true,
+					'Defense': true,
+					'Speed': true,
+					'Base Speed': true,
+					'Finesse': true,
+					'Carrying Capacity': true
+				},
+				actions: [
+					{
+						'Name': true,
+						'Target': false,
+						'Usage': false,
+						'Effect': false,
+						'List 1': false,
+						'List 2': false,
+						'List 3': false,
+						'List 4': false,
+						'Attack Type': false,
+						'Attack Die #1': false,
+						'Attack Die #2': false,
+						'Attack Versus': false,
+						'Attack Success': false,
+						'Attack Critical Success': false
+					},
+					{
+						'Name': true,
+						'Target': false,
+						'Usage': false,
+						'Effect': false,
+						'List 1': false,
+						'List 2': false,
+						'List 3': false,
+						'List 4': false,
+						'Attack Type': false,
+						'Attack Die #1': false,
+						'Attack Die #2': false,
+						'Attack Versus': false,
+						'Attack Success': false,
+						'Attack Critical Success': false
+					}
+				]
+			},
+
+			race: {
+				card: {
+					'Name': true,
+					'Description': false,
+					'Benefit': false,
+					'Critical Success': false,
+					'Modifiers': false,
+					'Action 1': false,
+					'Action 2': false
+				},
+				modifiers: {
+					'Damage': true,
+					'Durability': true,
+					'Base Durability': true,
+					'Defense': true,
+					'Speed': true,
+					'Base Speed': true,
+					'Finesse': true,
+					'Carrying Capacity': true
+				},
+				actions: [
+					{
+						'Name': true,
+						'Target': false,
+						'Usage': false,
+						'Effect': false,
+						'List 1': false,
+						'List 2': false,
+						'List 3': false,
+						'List 4': false,
+						'Attack Type': false,
+						'Attack Die #1': false,
+						'Attack Die #2': false,
+						'Attack Versus': false,
+						'Attack Success': false,
+						'Attack Critical Success': false
+					},
+					{
+						'Name': true,
+						'Target': false,
+						'Usage': false,
+						'Effect': false,
+						'List 1': false,
+						'List 2': false,
+						'List 3': false,
+						'List 4': false,
+						'Attack Type': false,
+						'Attack Die #1': false,
+						'Attack Die #2': false,
+						'Attack Versus': false,
+						'Attack Success': false,
+						'Attack Critical Success': false
+					}
+				]
+			},
+
 			trait: {
 				card: {
 					'Name': true,

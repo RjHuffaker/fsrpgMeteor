@@ -21,12 +21,6 @@ angular.module('freedomsworn')
 			{order: 9, name: 'd12', sides: 12, image: 'modules/core/img/d_12.png'}
 		];
 		
-		service.aspectTypes = [
-			'Class',
-			'Faction',
-			'Race'
-		];
-		
 		service.targetTypes = [
 			'Utility',
 			'Close',

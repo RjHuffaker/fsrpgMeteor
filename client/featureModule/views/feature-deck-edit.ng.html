@@ -14,7 +14,7 @@
 					</div>
 					
 				</div>
-				<div class="innerRow" ng-if="vm.featureDeck.deckType !== 'Aspect'">
+				<div class="innerRow" ng-if="['Trait','Feat','Augment','Item'].indexOf(vm.featureDeck.deckType) > -1">
 					
 					<div class="innerCell">
 						<div fs-select="'id'" toggle-header="'Dependencies'"

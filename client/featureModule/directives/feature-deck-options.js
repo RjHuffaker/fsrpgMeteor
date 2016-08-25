@@ -8,7 +8,7 @@ angular.module('freedomsworn')
 			scope: { deck: '=' },
 			link: function(scope, element, attrs){
 				
-				scope.depList = FeatureDecks.find({"deckType": "Aspect"}).fetch();
+				scope.depList = FeatureDecks.find({"deckType": { $in: ["Class", "Faction", "Race"] }}).fetch();
 				
 				scope.saveDeck = function(deck){
 					deck.save();

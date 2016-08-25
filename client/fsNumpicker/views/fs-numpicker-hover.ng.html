@@ -1,0 +1,24 @@
+<div ng-mouseover="onMouseOver()" ng-mouseleave="onMouseLeave()">
+
+	<button stop-event ng-show="numpickerShown"
+		class="text-center top-button"
+		ng-mousedown="increaseDown()"
+		ng-mouseup="mouseUp()"
+		ng-mouseleave="mouseUp()">
+		+
+	</button>
+	
+	<div stop-event ng-click="onMouseOver()" 
+		class="text-center" ng-class="{'expanded': numpickerShown}">
+		{{numvalue}}
+	</div>
+	
+	<button stop-event ng-show="numpickerShown"
+		class="text-center bottom-button"
+		ng-mousedown="decreaseDown()"
+		ng-mouseup="mouseUp()"
+		ng-mouseleave="mouseUp()">
+		-
+	</button>
+
+</div>

@@ -18,7 +18,7 @@ _.extend(deckObject.prototype, {
 		this.setAdjacent(_last, newPanel);
 		this.deckSize = this.cardList.length;
 		
-		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+		if(['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
 			for(var i = 0; i < this.deckSize; i++){
 				this.cardList[i].deckSize = this.deckSize;
 			}
@@ -36,7 +36,7 @@ _.extend(deckObject.prototype, {
 		this.mergeGap(_prev, _next);
 		this.deckSize = this.cardList.length;
 		
-		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+		if(['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
 			
 			for(var i = 0; i < this.deckSize; i++){
 				this.cardList[i].deckSize = this.deckSize;
@@ -76,7 +76,7 @@ _.extend(deckObject.prototype, {
 	},
 	
 	setCardList: function(){
-		if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+		if(['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
 			this.cardList.sort(function(a, b){
 				console.log(a.cardNumber, b.cardNumber);
 				console.log(a.name, b.name);
@@ -96,7 +96,7 @@ _.extend(deckObject.prototype, {
 			_current.below = null;
 			_current.left = null;
 			_current.right = null;
-			if(['Aspect','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
+			if(['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
 				_current.cardNumber = i+1;
 				_current.deckSize = _length;
 			}

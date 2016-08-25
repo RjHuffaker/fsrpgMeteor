@@ -13,17 +13,20 @@ angular.module('freedomsworn')
 			service.factions.length = 0;
 			service.races.length = 0;
 			
-			if(deck.deckType !== 'Aspect'){
+			if(['Trait','Feat','Augment','Item'].indexOf(deck.deckType) > -1){
 				FeatureDecks.find({"_id": { $in: deck.dependencies }})
 					.forEach(function(deck){
-						for(var ii = 0; ii < deck.cardList.length; ii++){
-							var card = deck.cardList[ii];
-							if(card.aspectType === 'Class'){
-								service.classes.push(card);
-							} else if(card.aspectType === 'Faction'){
-								service.factions.push(card);
-							} else if(card.aspectType === 'Race'){
-								service.races.push(card);
+						if(deck.deckType === 'Class'){
+							for(var i = 0; i < deck.cardList.length; i++){
+								service.classes.push(deck.cardList[i]);
+							}
+						} else if(deck.deckType === 'Faction'){
+							for(var i = 0; i < deck.cardList.length; i++){
+								service.factions.push(deck.cardList[i]);
+							}
+						} else if(deck.deckType === 'Race'){
+							for(var i = 0; i < deck.cardList.length; i++){
+								service.races.push(deck.cardList[i]);
 							}
 						}
 					});

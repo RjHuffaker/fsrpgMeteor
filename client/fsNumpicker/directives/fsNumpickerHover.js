@@ -1,7 +1,7 @@
 angular.module('freedomsworn')
-	.directive('fsNumpicker', function($timeout, $interval){
+	.directive('fsNumpickerHover', function($timeout, $interval){
 		'ngInject';
-
+		
 		return {
 			restrict: 'A',
 			scope: {
@@ -11,14 +11,26 @@ angular.module('freedomsworn')
 				numincrement: '=',
 				numdefault: '=',
 				numdelay: '=',
-				callback: '='
+				numcallback: '&'
 			},
-			templateUrl: paths.fsNumpicker.views+'fs-numpicker.ng.html',
+			templateUrl: paths.fsNumpicker.views+'fs-numpicker-hover.ng.html',
 			link: function(scope, element, attrs){
 				
 				var mouseCounter = {};
 				
+				var increment = 1;
+				
 				var intervalDelay = scope.numdelay;
+				
+				scope.numpickerShown = false;
+				
+				scope.onMouseOver = function(){
+					scope.numpickerShown = true;
+				};
+				
+				scope.onMouseLeave = function(){
+					scope.numpickerShown = false;
+				};
 				
 				scope.decreaseDown = function(){
 					if(isNaN(scope.numvalue)) scope.numvalue = scope.numdefault;
@@ -27,7 +39,6 @@ angular.module('freedomsworn')
 					scope.numvalue -= scope.numincrement ? scope.numincrement : 1;
 					
 					scope.numvalue = round(scope.numvalue, 1);
-
 					mouseCounter = $timeout(decreaseValue, intervalDelay);
 				};
 				
@@ -38,12 +49,16 @@ angular.module('freedomsworn')
 					scope.numvalue += scope.numincrement ? scope.numincrement : 1;
 					
 					scope.numvalue = round(scope.numvalue, 1);
-					
 					mouseCounter = $timeout(increaseValue, intervalDelay);
 				};
 				
-				scope.onChange = function(value){
-					if(scope.callback) scope.callback(value);
+				scope.mouseUp = function(){
+					intervalDelay = scope.numdelay;
+					increment = 1;
+					if(mouseCounter){
+						$timeout.cancel(mouseCounter);
+					}
+					if(scope.numcallback) scope.numcallback();
 				};
 				
 				var decreaseValue = function(){
@@ -54,6 +69,7 @@ angular.module('freedomsworn')
 					
 					scope.numvalue -= scope.numincrement ? scope.numincrement : 1;
 					mouseCounter = $timeout(decreaseValue, intervalDelay);
+					if(scope.numcallback) scope.numcallback();
 				};
 				
 				var increaseValue = function(){
@@ -64,18 +80,13 @@ angular.module('freedomsworn')
 					
 					scope.numvalue += scope.numincrement ? scope.numincrement : 1;
 					mouseCounter = $timeout(increaseValue, intervalDelay);
+					if(scope.numcallback) scope.numcallback();
 				};
 				
 				var round = function(value, decimals) {
 					return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 				};
-
-				scope.mouseUp = function(){
-					intervalDelay = scope.numdelay;
-					if(mouseCounter){
-						$timeout.cancel(mouseCounter);
-					}
-				};
+				
 			}
 		};
 	});
