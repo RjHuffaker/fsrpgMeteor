@@ -13,11 +13,11 @@
 			<td class="fill-parent">
 				<div class="card-header fill-parent">
 					
-					<span>{{card.name}}</span>
+					<span class="text-9">{{card.name}}</span>
 					
 					<hr class="black-line">
 					
-					<div ng-if="card.aspect">
+					<div class="text-9" ng-if="card.aspect">
 						{{card.aspect.name}}
 						<span ng-if="!card.aspect.name">
 							[Aspect]
@@ -27,18 +27,21 @@
 						</span>
 					</div>
 					
-					<div ng-if="card.cardType === 'Item'
-						&& (card.itemSlot === 'One-handed'
-						|| card.itemSlot === 'Two-handed'
-						|| card.itemSlot === 'One-handed or Paired'
-						|| card.itemSlot === 'One-handed or Two-handed')">
-						{{card.itemType}}
-						<span ng-if="!card.itemType">
+					<div class="text-9" ng-if="card.cardType === 'Item'">
+						<span ng-if="dataSrvc.weaponSlots.indexOf(card.itemSlot) > -1">
+							{{card.itemType}}
+						</span>
+						
+						<span ng-if="!dataSrvc.weaponSlots.indexOf(card.itemSlot) > -1">
+							{{card.itemSlot}}
+						</span>
+						
+						<span ng-if="!card.itemType && !card.itemSlot">
 							[Item Type]
 						</span>
 					</div>
 					
-					<div ng-if="['Class','Faction','Race'].indexOf(card.cardType) > -1">
+					<div class="text-9" ng-if="['Class','Faction','Race'].indexOf(card.cardType) > -1">
 						{{card.cardType}}
 					</div>
 					
@@ -48,7 +51,7 @@
 		<tr ng-if="card.description">
 			<td colspan="2" class="fill-width">
 				<br>
-				<div class="text-descriptive text-center">
+				<div class="text-descriptive text-center text-8">
 					{{card.description}}
 				</div>
 			</td>

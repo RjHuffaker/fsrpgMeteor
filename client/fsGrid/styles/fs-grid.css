@@ -8,6 +8,8 @@
 [faux-handle],
 [resize-handle] {
 	z-index: 10;
+	flex-grow: 0;
+	flex-shrink: 0;
 	box-sizing: border-box;
 	border-top: 2px groove;
 	border-bottom: 2px ridge;
@@ -40,7 +42,7 @@
 }
 
 .grid-card-icon {
-	height: 1.4em; width: 1em;
+	height: 2em; width: 2em;
 	border: 1px solid black;
 	-moz-border-radius: .2em;
 	-webkit-border-radius: .2em;
@@ -74,11 +76,11 @@
 
 [fs-grid] div.inline-flex > textarea {
 	box-sizing: border-box;
-	font-size: inherit;
+	font: inherit;
 	width: 100%;
 	min-width: 4em !important;
 	height: 100%;
-	min-height: 2em !important;
+	min-height: 1.4em !important;
 	padding: 0 !important;
 	border: 0 !important;
 	margin: 0 !important;
@@ -87,11 +89,11 @@
 
 [fs-grid] div.inline-flex > input {
 	box-sizing: border-box;
-	font-size: inherit;
+	font: inherit;
 	width: 100%;
 	min-width: 4em !important;
 	height: 100%;
-	min-height: 2em !important;
+	min-height: 1.4em !important;
 	padding: 0 !important;
 	border: 0 !important;
 	margin: 0 !important;

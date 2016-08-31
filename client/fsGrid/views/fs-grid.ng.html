@@ -1,14 +1,23 @@
-<div class="flex-column">
-	<div class="inline-flex" fs-grid-titles 
-		deck-type="gridDeck.deckType" 
-		shown-columns="shownColumns"></div>
-	<div faux-handle="Height"></div>
-	<div class="flex-column remain-selected"
-		ng-repeat="gridCard in gridDeck.cardList | orderBy: 'cardNumber'"
-		ng-class="{selectrow: (gridCard === gridDeck.currentRow)}"
-		fs-grid-row="gridCard"
-		deck-type="gridDeck.deckType"
-		ng-click="selectRow(gridCard);"
-		shown-columns="shownColumns"></div>
+<div class="flex-column" fs-grid-titles style="flex-shrink: 0;"
+	deck-type="gridDeck.deckType" 
+	shown-columns="shownColumns"></div>
 	
+<div class="remain-selected flex-column"
+	ng-repeat="gridCard in gridDeck.cardList | orderBy: 'cardNumber' | startFrom:currentPage*pageSize | limitTo:pageSize"
+	ng-class="{selectrow: (gridCard === gridDeck.currentRow)}"
+	fs-grid-row="gridCard"
+	deck-type="gridDeck.deckType"
+	ng-click="selectRow(gridCard);"
+	shown-columns="shownColumns"></div>
+	
+<div>
+	<div style="width: 3em; display: inline-block">
+		<button ng-show="currentPage > 0" style="width: 100%"
+			ng-click="currentPage = currentPage-1;">Prev</button>
+	</div>
+		{{currentPage * pageSize + 1}} - {{(currentPage+1) * pageSize}} of {{gridDeck.cardList.length}}
+	<div style="width: 3em; display: inline-block">
+		<button ng-show="currentPage < numberOfPages()-1" style="width: 100%"
+			ng-click="currentPage = currentPage+1;">Next</button>
+	</div>
 </div>

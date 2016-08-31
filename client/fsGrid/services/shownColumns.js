@@ -27,15 +27,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -43,17 +38,24 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists: [
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				]
 			},
@@ -83,15 +85,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -99,17 +96,24 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists: [
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				]
 			},
@@ -139,15 +143,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -155,17 +154,24 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists: [
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				]
 			},
@@ -197,20 +203,27 @@ angular.module('freedomsworn')
 					'Alertness': false,
 					'Tenacity': false
 				},
+				effectLists:[
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					}
+				],
 				actions: [
 					{
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -218,17 +231,24 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists: [
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				],
 				prerequisites: {
@@ -254,15 +274,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': true,
 						'Usage': true,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -270,17 +285,24 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': true,
 						'Usage': true,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists: [
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				],
 				prerequisites: {
@@ -323,15 +345,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -339,17 +356,24 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists: [
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				],
 				prerequisites: {
@@ -366,13 +390,12 @@ angular.module('freedomsworn')
 					'Description': false,
 					'Benefit': false,
 					'Critical Success': false,
-					'Item': true,
+					'Item Properties': true,
 					'Modifiers': false,
 					'Defenses': false,
 					'Action 1': true,
 					'Action 2': false,
-					'Action 3': false,
-					'Action 4': false
+					'Action 3': false
 				},
 				item: {
 					'Slot': true,
@@ -399,15 +422,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -415,15 +433,10 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
 					},
@@ -431,33 +444,29 @@ angular.module('freedomsworn')
 						'Name': true,
 						'Target': false,
 						'Usage': false,
+						'Frequency': false,
 						'Effect': false,
-						'List 1': false,
-						'List 2': false,
-						'List 3': false,
-						'List 4': false,
 						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
+						'Attack Roll': false,
 						'Attack Success': false,
 						'Attack Critical Success': false
+					}
+				],
+				effectLists:[
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					},
 					{
-						'Name': true,
-						'Target': false,
-						'Usage': false,
-						'Effect': false,
 						'List 1': false,
 						'List 2': false,
-						'List 3': false,
-						'List 4': false,
-						'Attack Type': false,
-						'Attack Die #1': false,
-						'Attack Die #2': false,
-						'Attack Versus': false,
-						'Attack Success': false,
-						'Attack Critical Success': false
+						'List 3': false
+					},
+					{
+						'List 1': false,
+						'List 2': false,
+						'List 3': false
 					}
 				]
 			}

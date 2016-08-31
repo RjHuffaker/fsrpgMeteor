@@ -3,6 +3,19 @@ div.flex-column {
 	flex-direction: column;
 }
 
+div.flex-column > input,
+div.flex-column > textarea {
+	box-sizing: border-box;
+	font: inherit;
+	width: 100%;
+	min-width: 4em !important;
+	min-height: 1.4em !important;
+	padding: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+	resize: none;
+}
+
 div.flex-wrap {
 	display: flex;
 	flex-flow: row wrap;

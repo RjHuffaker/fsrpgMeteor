@@ -30,10 +30,10 @@ angular.module('freedomsworn')
 		];
 		
 		service.closeDetails = [
-			'1/1', '1/2', '1/3', '1/4',
-			'2/1', '2/2', '2/3', '2/4',
-			'3/1', '3/2', '3/3', '3/4',
-			'4/1', '4/2', '4/3'
+			'1/1', '2/1', '3/1', '4/1',
+			'1/2', '2/2', '3/2', '4/2',
+			'1/3', '2/3', '3/3', '4/3',
+			'1/4', '2/4', '3/4', '4/4'
 		];
 		
 		service.closeAreaDetails = [
@@ -80,6 +80,26 @@ angular.module('freedomsworn')
 			'1d8',
 			'1d10',
 			'1d12'
+		];
+		
+		service.dualDice = [
+			'1d4',
+			'1d4 or 1d6*',
+			'1d6',
+			'1d6 or 1d8*',
+			'1d8',
+			'1d8 or 1d10*',
+			'1d10',
+			'1d10 or 1d12*',
+			'1d12'
+		];
+		
+		service.damageDice = [
+			'+1d4 damage',
+			'+1d6 damage',
+			'+1d8 damage',
+			'+1d10 damage',
+			'+1d12 damage'
 		];
 		
 		service.abilities = [
@@ -136,10 +156,10 @@ angular.module('freedomsworn')
 		];
 		
 		service.itemSlots = [
+			'One-handed or Paired*',
 			'One-handed',
+			'One-handed or Two-handed*',
 			'Two-handed',
-			'One-handed or Paired',
-			'One-handed or Two-handed',
 			'Armor',
 			'Shield',
 			'Gloves',
@@ -151,6 +171,99 @@ angular.module('freedomsworn')
 			'Helmet',
 			'Consumable',
 			'Provision'
+		];
+		
+		service.weaponSlots = [
+			'One-handed or Paired*',
+			'One-handed',
+			'One-handed or Two-handed*',
+			'Two-handed'
+		];
+		
+		service.dualItemSlots = [
+			'One-handed or Two-handed*',
+			'One-handed or Paired*'
+		];
+		
+		service.nonDualItemSlots = [
+			'One-handed',
+			'Two-handed',
+			'Armor',
+			'Shield',
+			'Gloves',
+			'Boots',
+			'Cloak',
+			'Amulet',
+			'Ring',
+			'Belt',
+			'Helmet',
+			'Consumable',
+			'Provision'
+		];
+		
+		service.dualItemCount = [
+			'Free',
+			'Count: 1',
+			'Count: 2 or 1*',
+			'Count: 2',
+			'Count: 3 or 2*',
+			'Count: 3',
+			'Count: 4 or 3*',
+			'Count: 4',
+			'Count: 5 or 4*',
+			'Count: 5',
+			'Responsive',
+			'Disruptive'
+		];
+		
+		service.actionCount = [
+			'Free',
+			'Count: 1',
+			'Count: 2',
+			'Count: 3',
+			'Count: 4',
+			'Count: 5',
+			'Responsive',
+			'Disruptive'
+		];
+		
+		service.dualItemDamage = [
+			'+2 damage',
+			'+2 or +4* damage',
+			'+4 damage',
+			'+4 or +6* damage',
+			'+6 damage',
+			'+6 or +8* damage',
+			'+8 damage',
+			'+8 or +10* damage',
+			'+10 damage',
+			'+10 or +12* damage',
+			'+12 damage'
+		];
+		
+		service.nonDualItemDamage = [
+			'+2 damage',
+			'+4 damage',
+			'+6 damage',
+			'+8 damage',
+			'+10 damage',
+			'+12 damage'
+		];
+		
+		service.nonItemDamage = [
+			'[D]-4 damage',
+			'[D]-2 damage',
+			'[D] damage',
+			'[D]+2 damage',
+			'[D]+4 damage',
+			'+2 damage',
+			'+4 damage',
+			'+6 damage',
+			'+8 damage',
+			'+10 damage',
+			'+12 damage',
+			'+14 damage',
+			'+16 damage'
 		];
 		
 		return service;

@@ -18,24 +18,28 @@ angular.module('freedomsworn')
 				scope.dropdownId = Random.id();
 				
 				scope.selectOption = function(selection){
-					if(scope.fsSelect === 'array'){
-						var _index = scope.selection.indexOf(selection);
-						if(_index > -1) {
-							var newarray = scope.selection.splice(_index, 1);
+					if(selection){
+						if(scope.fsSelect === 'array'){
+							var _index = scope.selection.indexOf(selection);
+							if(_index > -1) {
+								var newarray = scope.selection.splice(_index, 1);
+							} else {
+								scope.selection.push(selection);
+							}
+						} else if(scope.fsSelect === 'id'){
+							var _index = scope.selection.indexOf(selection._id);
+							if(_index > -1) {
+								var newarray = scope.selection.splice(_index, 1);
+							} else {
+								scope.selection.push(selection._id);
+							}
+						} else if(scope.fsSelect === 'boolean'){
+							scope.options[selection] = !scope.options[selection];
 						} else {
-							scope.selection.push(selection);
+							scope.selection = selection;
 						}
-					} else if(scope.fsSelect === 'id'){
-						var _index = scope.selection.indexOf(selection._id);
-						if(_index > -1) {
-							var newarray = scope.selection.splice(_index, 1);
-						} else {
-							scope.selection.push(selection._id);
-						}
-					} else if(scope.fsSelect === 'boolean'){
-						scope.options[selection] = !scope.options[selection];
-					} else {
-						scope.selection = selection;
+					} else if(scope.fsSelect === undefined){
+						scope.selection = '';
 					}
 					
 					if(scope.callback) scope.callback();

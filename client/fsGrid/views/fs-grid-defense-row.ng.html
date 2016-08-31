@@ -1,51 +1,53 @@
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.defenses['Block']">
-	<div class="flex-column" style="width: 10em">
-		<div fs-select
-			selection="gridDefense.block.dice_a"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-		<div fs-select
-			selection="gridDefense.block.dice_b"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	</div>
+	<div fs-select
+		selection="gridDefense.block.dice_a"
+		options="[dataSrvc.abilities]"></div>
+	
+	<div fs-select ng-if="!gridDefense.itemSlot"
+		selection="gridDefense.block.dice_b"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+	
+	<div fs-select ng-if="dataSrvc.nonDualItemSlots.indexOf(gridDefense.itemSlot) > -1"
+		selection="gridDefense.block.dice_b"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+	
+	<div fs-select ng-if="dataSrvc.dualItemSlots.indexOf(gridDefense.itemSlot) > -1"
+		selection="gridDefense.block.dice_b"
+		options="[dataSrvc.dualDice, dataSrvc.abilities]"></div>
+	
 	<div resize-handle="Width" id="Block"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.defenses['Dodge']">
-	<div class="flex-column" style="width: 10em">
-		<div fs-select
-			selection="gridDefense.dodge.dice_a"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-		<div fs-select
-			selection="gridDefense.dodge.dice_b"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	</div>
+	<div fs-select
+		selection="gridDefense.dodge.dice_a"
+		options="[dataSrvc.abilities]"></div>
+	<div fs-select
+		selection="gridDefense.dodge.dice_b"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
 	<div resize-handle="Width" id="Dodge"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.defenses['Alertness']">
-	<div class="flex-column" style="width: 10em">
-		<div fs-select
-			selection="gridDefense.alertness.dice_a"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-		<div fs-select
-			selection="gridDefense.alertness.dice_b"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	</div>
+	<div fs-select
+		selection="gridDefense.alertness.dice_a"
+		options="[dataSrvc.abilities]"></div>
+	<div fs-select
+		selection="gridDefense.alertness.dice_b"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
 	<div resize-handle="Width" id="Alertness"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
 	ng-if="shownColumns.defenses['Tenacity']">
-	<div class="flex-column" style="width: 10em">
-		<div fs-select
-			selection="gridDefense.tenacity.dice_a"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-		<div fs-select
-			selection="gridDefense.tenacity.dice_b"
-			options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	</div>
+	<div fs-select
+		selection="gridDefense.tenacity.dice_a"
+		options="[dataSrvc.abilities]"></div>
+	<div fs-select
+		selection="gridDefense.tenacity.dice_b"
+		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
 	<div resize-handle="Width" id="Tenacity"></div>
 </div>

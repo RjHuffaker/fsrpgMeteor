@@ -20,6 +20,7 @@ angular.module('freedomsworn')
 		return {
 			restrict: 'A',
 			scope: {
+				gridDeck: '=',
 				shownColumns: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid-item-titles.ng.html'

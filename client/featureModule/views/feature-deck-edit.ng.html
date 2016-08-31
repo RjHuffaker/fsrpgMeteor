@@ -1,62 +1,45 @@
-<div class="outerTable" ng-controller="FeatureDeckEditCtrl as vm" id="fs-grid">
+<div class="flex-column fill-height" ng-controller="FeatureDeckEditCtrl as vm" id="fs-grid">
 	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 15%; padding: 1em">
-			<div class="innerTable">
-				<div class="innerRow">
-				
-					<div class="innerCell">
-						Deck Name: <input ng-model="vm.featureDeck.name">
-					</div>
-					
-					<div class="innerCell">
-						<button ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</button>
-					</div>
-					
-				</div>
-				<div class="innerRow" ng-if="['Trait','Feat','Augment','Item'].indexOf(vm.featureDeck.deckType) > -1">
-					
-					<div class="innerCell">
-						<div fs-select="'id'" toggle-header="'Dependencies'"
-							selection="vm.featureDeck.dependencies"
-							options="[vm.depList]"
-							callback="vm.deckDependencies.fetchDependencies(vm.featureDeck)"></div>
-					</div>
-					
-				</div>
-				<div class="innerRow">
-				
-					<div class="innerCell">
-						<button ng-click="vm.setCardList()">Set Card List</button>
-					</div>
-					
-					<div class="innerCell">
-						Move Card
-						<button class="remain-selected" ng-click="vm.moveUp()">UP</button>
-						<button class="remain-selected" ng-click="vm.moveDown()">DOWN</button>
-					</div>
-					
-					<div class="innerCell">
-						<button class="remain-selected" ng-click="vm.addCard()">Add Card</button>
-						<button class="remain-selected" ng-click="vm.removeCard()">Remove Selected</button>
-					</div>
-				
-				</div>
+	<div class="inline-flex" style="flex-shrink: 0;">
+		
+		<div style="flex: 2">
+			Deck Name: <input ng-model="vm.featureDeck.name">
+		</div>
+		
+		<div style="flex: 1">
+			<button ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</button>
+		</div>
+		
+		<div style="flex: 1">
+			<div fs-select="'id'" ng-if="['Trait','Feat','Augment','Item'].indexOf(vm.featureDeck.deckType) > -1"
+				toggle-header="'Dependencies'"
+				selection="vm.featureDeck.dependencies"
+				options="[vm.depList]"
+				callback="vm.deckDependencies.fetchDependencies(vm.featureDeck)"></div>
+		</div>
+
+		<div style="flex: 1">
+			<button ng-click="vm.setCardList()">Set Card List</button>
+		</div>
+		
+		<div class="flex-column" style="flex: 1">
+			Move Card
+			<div class="inline-flex" style="flex: 1; padding: 1em">
+				<button class="remain-selected" ng-click="vm.moveUp()">UP</button>
+				<button class="remain-selected" ng-click="vm.moveDown()">DOWN</button>
 			</div>
 		</div>
+		
+		<div style="flex: 1">
+			<button class="remain-selected" ng-click="vm.addCard()">Add Card</button>
+		</div>
+		
+		<div style="flex: 1">
+			<button class="remain-selected" ng-click="vm.removeCard()">Remove Selected</button>
+		</div>
+		
 	</div>
 	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 85%; padding: 1em">
-			<div style="height: 100%; width: 100%; border: 2px solid black">
-				<div class="scrollDiv">
-					<div class="innerTable">
-						<div fs-grid="vm.featureDeck" shown-columns="vm.shownColumns"></div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div fs-grid="vm.featureDeck" shown-columns="vm.shownColumns" class="fill-height" style="flex: 5"></div>
 	
 </div>

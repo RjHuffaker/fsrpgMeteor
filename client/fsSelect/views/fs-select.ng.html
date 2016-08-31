@@ -37,6 +37,7 @@
 				<li ng-show="optionHeaders.length" class="header" stop-event>
 					{{optionHeaders[$index]}}
 				</li>
+				<li ng-click="selectOption('')">&nbsp;</li>
 				<li ng-repeat="option in optionList track by $index"
 					ng-class="{current: showSelected(option)}"
 					ng-click="selectOption(option)"

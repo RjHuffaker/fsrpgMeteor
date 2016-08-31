@@ -1,8 +1,8 @@
-<div class="inline-flex fill-height" style="height: 2em;">
-	<div class="inline-flex" style="width: 1.4em">
+<div class="inline-flex" style="flex: 1">
+	<div class="inline-flex" style="width: 2.5em">
 		<div fs-dropdown id="gridCard.id" class="open-down">
 			<div class="fs-dropdown-toggle {{gridCard.cardType}}">
-				<div class="grid-card-icon">{{gridCard.cardNumber}}</div>
+				<div class="grid-card-icon text-center">{{gridCard.cardNumber}}</div>
 			</div>
 			<div class="fs-dropdown-panel">
 				<div class="{{gridCard.cardType}}" style="height: 21em; width: 15em; border: none;" >
@@ -51,7 +51,7 @@
 	
 	<div class="inline-flex"
 		fs-grid-item-row="gridCard"
-		ng-if="shownColumns.card['Item']"
+		ng-if="shownColumns.card['Item Properties']"
 		shown-columns="shownColumns">
 	</div>
 	
@@ -70,8 +70,10 @@
 	<div class="inline-flex" 
 		ng-repeat="action in gridCard.actions track by $index"
 		ng-if="shownColumns.card['Action '+($index+1)]"
-		fs-grid-action-row="action" action-id="$index"
+		fs-grid-action-row="action" grid-card="gridCard" action-id="$index"
 		shown-columns="shownColumns">
 	</div>
 	
-</div><div resize-handle="Height" id="{{gridCard._id}}"></div>
+</div>
+
+<div resize-handle="Height" id="{{gridCard._id}}"></div>

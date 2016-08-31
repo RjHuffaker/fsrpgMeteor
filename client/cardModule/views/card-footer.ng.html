@@ -1,11 +1,11 @@
 <hr class="black-line">
-<div class="title-row">
+<div class="title-row text-9">
 	<div ng-if="card.cardType !== 'Item'" class="title-block pull-left">
-		{{card.keyword}} {{card.prerequisite}}
+		<strong>{{card.keyword}} {{card.prerequisite}}</strong>
 	</div>
 	
 	<div ng-if="card.cardType === 'Item'" class="title-block pull-left">
-		{{card.itemSlot}}
+		<strong>{{card.itemSlot}}</strong>
 	</div>
 	
 	<div ng-if="card.cardType === 'Item'" class="title-block pull-right">

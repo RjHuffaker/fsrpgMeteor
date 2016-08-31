@@ -30,24 +30,24 @@
 	<strong>Carrying Capacity Modifier: </strong> {{card.carryingCapacityModifier}}
 </div>
 
-<div ng-if="card.defense.block.show" class="fill-width">
+<div ng-if="card.block.dice_a" class="fill-width">
 	<strong>Block Defense: </strong>
-	{{card.defense.block.dice_a}} +	{{card.defense.block.dice_b}}
+	{{card.block.dice_a}} +	{{card.block.dice_b}}
 </div>
 
-<div ng-if="card.defense.dodge.show" class="fill-width">
+<div ng-if="card.dodge.dice_a" class="fill-width">
 	<strong>Dodge Defense: </strong>
-	{{card.defense.dodge.dice_a}} +	{{card.defense.dodge.dice_b}}
+	{{card.dodge.dice_a}} +	{{card.dodge.dice_b}}
 </div>
 
-<div ng-if="card.defense.alertness.show" class="fill-width">
+<div ng-if="card.alertness.dice_a" class="fill-width">
 	<strong>Alertness Defense: </strong>
-	{{card.defense.alertness.dice_a}} +	{{card.defense.alertness.dice_b}}
+	{{card.alertness.dice_a}} +	{{card.alertness.dice_b}}
 </div>
 
-<div ng-if="card.defense.tenacity.show" class="fill-width">
+<div ng-if="card.tenacity.dice_a" class="fill-width">
 	<strong>Tenacity Defense: </strong>
-	{{card.defense.tenacity.dice_a}} +	{{card.defense.tenacity.dice_b}}
+	{{card.tenacity.dice_a}} +	{{card.tenacity.dice_b}}
 </div>
 
 <br>

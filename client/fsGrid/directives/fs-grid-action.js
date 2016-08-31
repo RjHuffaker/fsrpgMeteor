@@ -6,6 +6,7 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			scope: {
 				gridAction: '=fsGridActionRow',
+				gridCard: '=',
 				actionId: '=',
 				shownColumns: '='
 			},
@@ -22,6 +23,7 @@ angular.module('freedomsworn')
 			restrict: 'A',
 			scope: {
 				actionId: '=',
+				gridDeck: '=',
 				shownColumns: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid-action-titles.ng.html'

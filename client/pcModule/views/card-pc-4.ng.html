@@ -1,18 +1,112 @@
 <div class="content-panel flex-column" style="padding: 5px">
 	
+	<div class="text-center text 12">
+		<b>Inventory</b>
+	</div>
+	
 	<div class="inline-flex-center" style="flex: 2;">
 		<div class="text-8" style="flex: 2;">
-			<b>title:</b>
+			<b>Main Hand:</b>
 		</div>
-		<div class="text-center text-9" style="flex: 5;">
-			data
-		</div>
-		<div class="text-8" style="flex: 2;">
-			<b>title:</b>
-		</div>
-		<div class="text-center text-9" style="flex: 5;">
-			data
+		<div class="text-center text-9" style="flex: 3;">
+			<div fs-select="array" stop-event class="fill-width span-width"
+				selection="deck.inventory.mainHand"
+				toggle-header="'- empty -'"
+				options="[[{name: 'Long Sword'}, {name: 'Short Sword'}, {name: 'Dagger'}, {name: 'bow'}]]"></div>
 		</div>
 	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Off Hand:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.offHand}}
+		</div>
+	</div>
+	
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Head:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.head}}
+		</div>
+	</div>
+	
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Armor:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.armor}}
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Back:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.back}}
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Neck:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.neck}}
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Hands:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.hands}}
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Feet:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.feet}}
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Ring #1:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.ring1}}
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 2;">
+		<div class="text-8" style="flex: 2;">
+			<b>Ring #2:</b>
+		</div>
+		<div class="text-center text-9" style="flex: 3;">
+			{{deck.inventory.ring2}}
+		</div>
+	</div>
+	
+	<button fs-modal-toggle stop-event
+		toggle-callback="modalSrvc.fetchCards(card, deck)"
+		toggle-card="card" toggle-deck="deck" modal-deck="modalSrvc.modalDeck">
+		Add Item
+	</button>
+	
+	<button ng-click="addItem()" stop-event>Add Item</button>
+	
+	
 	
 </div>

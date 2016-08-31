@@ -37,7 +37,7 @@ angular.module("freedomsworn")
 							this.shownColumns = shownColumns.augment;
 							break;
 						case 'Item':
-							this.shownColumns = shownColumns.Item;
+							this.shownColumns = shownColumns.item;
 							break;
 					}
 					

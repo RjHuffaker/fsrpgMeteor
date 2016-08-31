@@ -11,6 +11,15 @@ angular.module('freedomsworn')
 			templateUrl: paths.fsGrid.views+'fs-grid.ng.html',
 			link: function(scope, element, attrs) {
 				
+				scope.currentPage = 0;
+				
+				scope.pageSize = 8;
+				
+				scope.numberOfPages = function(){
+					if(scope.gridDeck.cardList)
+					return Math.ceil(scope.gridDeck.cardList.length / scope.pageSize);
+				};
+				
 				var initialize = function(){
 					scope.$on('$destroy', onDestroy);
 					$document.on('click', deselect);

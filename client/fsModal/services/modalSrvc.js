@@ -18,7 +18,6 @@ angular.module('freedomsworn')
 		};
 		
 		service.fetchCards = function(card, deck){
-			console.log(card);
 			service.toggleCard = card;
 			service.toggleDeck = deck;
 			
@@ -27,6 +26,23 @@ angular.module('freedomsworn')
 			service.modalDeck.cardList.length = 0;
 			
 			var cardType = card.cardType.replace('Choose ', '');
+			
+			FeatureDecks.find({"deckType": cardType, "_id": { $in: deck.dependencies }})
+				.forEach(function(deck){
+					for(var i = 0; i < deck.cardList.length; i++){
+						var _card = deck.cardList[i];
+						service.modalDeck.addToDeck(_card);
+					}
+					service.modalDeck.setCardList();
+					console.log(service.modalDeck);
+				});
+		};
+		
+		service.fetchItems = function(){
+			
+			service.modalDeck.deckType  = 'Choose '+card.cardType;
+			service.modalDeck.deckSize = 0;
+			service.modalDeck.cardList.length = 0;
 			
 			FeatureDecks.find({"deckType": cardType, "_id": { $in: deck.dependencies }})
 				.forEach(function(deck){

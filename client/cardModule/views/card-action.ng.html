@@ -15,14 +15,19 @@
 	<div class="title-row text-9">
 		<div class="title-block">
 			<strong class="pull-left">
-				{{cardAction.usage}}<span ng-if="cardAction.attack.attackType">, {{cardAction.attack.attackType}}</span>
+				{{cardAction.usage}}<span ng-if="cardAction.attackType">, {{cardAction.attackType}}</span>
 			</strong>
 		</div>
 		<div class="title-block">
 			<div class="pull-right">
-				<strong>
+				<strong ng-if="!cardAction.frequency.includes('Count')">
 					{{cardAction.frequency}}
 				</strong>
+				
+				<span ng-if="cardAction.frequency.includes('Count:')">
+					<strong>Count: </strong>{{cardAction.frequency.replace('Count: ', '')}}
+				</span>
+				
 				<strong ng-if="!cardAction.frequency">
 					[Frequency]
 				</strong>
@@ -36,16 +41,17 @@
 		<strong>Prompt: </strong>{{cardAction.prompt}}
 	</div>
 	
-	<div ng-if="cardAction.attack.attackType" class="text-9">
+	<div ng-if="cardAction.attackType" class="text-9">
 		<strong>Attack: </strong>
-		{{cardAction.attack.dice_a}} + {{cardAction.attack.dice_b}} vs {{cardAction.attack.versus}}
+		{{cardAction.dice_a}} + {{cardAction.dice_b}}{{cardAction.attackModifier}} vs {{cardAction.versus}}
 	</div>
 	
-	<div ng-if="cardAction.attack.success" class="text-9">
-		<strong>Success: </strong>{{cardAction.attack.success}}
+	<div ng-if="cardAction.success.damage || cardAction.success.effect" class="text-9">
+		<strong>Success: </strong>{{cardAction.success.damage}} {{cardAction.success.effect}}
 	</div>
-	<div ng-if="cardAction.attack.criticalSuccess" class="text-9">
-		<strong>Critical Success: </strong>{{cardAction.attack.criticalSuccess}}
+	
+	<div ng-if="cardAction.criticalSuccess.damage || cardAction.criticalSuccess.effect" class="text-9">
+		<strong>Critical Success: </strong>{{cardAction.criticalSuccess.damage}} {{cardAction.criticalSuccess.effect}}
 	</div>
 	
 	<div ng-if="cardAction.effect.content" class="text-9">
