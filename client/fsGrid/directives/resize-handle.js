@@ -3,6 +3,9 @@ angular.module('freedomsworn')
 		'ngInject';
 		return {
 			restrict: 'A',
+			scope: {
+				resizeWidth: '='
+			},
 			link: function(scope, element, attrs) {
 				
 				var _pressTimer, _onDestroy, _onMove;
@@ -126,6 +129,8 @@ angular.module('freedomsworn')
 						if(attrs.resizeHandle === 'Height'){
 							angular.element(_parent).css('height', object.height+'px');
 						} else if(attrs.resizeHandle === 'Width'){
+							scope.resizeWidth = object.width;
+							
 							angular.element(_parent).css('width', object.width+'px');
 						}
 					}

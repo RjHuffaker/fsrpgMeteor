@@ -1,89 +1,73 @@
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.damage.shown">
+<div class="inline-flex" ng-style="{'width': shownColumns.damageModifier.width}"
+	ng-if="shownColumns.damageModifier.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.damageModifier"
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Damage"></div>
+	<div resize-handle="Width" id="Damage"
+		resize-width="shownColumns.damageModifier.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.durability.shown">
+<div class="inline-flex" ng-style="{'width': shownColumns.durabilityModifier.width}"
+	ng-if="shownColumns.durabilityModifier.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.durabilityModifier"
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Durability"></div>
+	<div resize-handle="Width" id="Durability Modifier"
+		resize-width="shownColumns.durabilityModifier.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.baseDurability.shown">
-	<div fs-numpicker
-		numvalue="gridModifier.baseDurability"
-		numvaluemin="2"
-		numvaluemax="6"
-		numdefault="4"
-		numdelay="500"></div>
-	<div resize-handle="Width" id="Base Durability"></div>
-</div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.defense.shown">
+<div class="inline-flex" ng-style="{'width': shownColumns.defenseModifier.width}"
+	ng-if="shownColumns.defenseModifier.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.defenseModifier"
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Defense"></div>
+	<div resize-handle="Width" id="Defense Modifier"
+		resize-width="shownColumns.defenseModifier.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.speed.shown">
+<div class="inline-flex" ng-style="{'width': shownColumns.moveSpeedModifier.width}"
+	ng-if="shownColumns.moveSpeedModifier.shown">
 	<div fs-numpicker
-		numvalue="gridModifier.speedModifier"
+		numvalue="gridModifier.moveSpeedModifier"
 		numvaluemin="-1"
 		numvaluemax="1"
 		numdefault="0"
 		numincrement="0.1"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Speed"></div>
+	<div resize-handle="Width" id="Move Speed Modifier"
+		resize-width="shownColumns.moveSpeedModifier.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.baseSpeed.shown">
-	<div fs-numpicker
-		numvalue="gridModifier.baseSpeed"
-		numvaluemin="2"
-		numvaluemax="4"
-		numdefault="3"
-		numincrement="0.1"
-		numdelay="500"></div>
-	<div resize-handle="Width" id="Base Speed"></div>
-</div>
-
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.finesse.shown">
+<div class="inline-flex" ng-style="{'width': shownColumns.finesseModifier.width}"
+	ng-if="shownColumns.finesseModifier.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.finesseModifier"
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Finesse"></div>
+	<div resize-handle="Width" id="Finesse Modifier"
+		resize-width="shownColumns.finesseModifier.width"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.carryingCapacity.shown">
+	ng-if="shownColumns.carryingCapacityModifier.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.carryingCapacityModifier"
 		numvaluemin="-4"
 		numvaluemax="4"
 		numdefault="0"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Speed"></div>
+	<div resize-handle="Width" id="Carrying Capacity Modifier"
+		resize-width="shownColumns.carryingCapacityModifier.width"></div>
 </div>

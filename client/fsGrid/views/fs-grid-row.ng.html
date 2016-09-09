@@ -21,13 +21,14 @@
 		<div faux-handle="Width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.name.width}"
 		ng-if="shownColumns.name.shown">
 		<input type="text" ng-model="gridCard.name">
-		<div resize-handle="Width" id="Name"></div>
+		<div resize-handle="Width" id="Name"
+			resize-width="shownColumns.name.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.aspect.width}"
 		ng-if="shownColumns.aspect.shown">
 		<div fs-select selection="gridCard.aspect"
 			toggle-header="'Aspect'"
@@ -35,43 +36,53 @@
 			options="[deckDependencies.classes,
 				deckDependencies.factions,
 				deckDependencies.races]"></div>
-		<div resize-handle="Width" id="Aspect"></div>
+		<div resize-handle="Width" id="Aspect"
+			resize-width="shownColumns.aspect.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 15em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.description.width}"
 		ng-if="shownColumns.description.shown">
 		<textarea ng-model="gridCard.description" rows="2"></textarea>
-		<div resize-handle="Width" id="Description"></div>
+		<div resize-handle="Width" id="Description"
+			resize-width="shownColumns.description.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.benefit.width}"
 		ng-if="shownColumns.benefit.shown">
 		<textarea ng-model="gridCard.benefit" rows="2"></textarea>
-		<div resize-handle="Width" id="Benefit"></div>
+		<div resize-handle="Width" id="Benefit"
+			resize-width="shownColumns.benefit.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.benefit.nodes.criticalSuccess.width}"
 		ng-if="shownColumns.benefit.nodes.criticalSuccess.shown">
 		<textarea ng-model="gridCard.benefitCritical" rows="2"></textarea>
-		<div resize-handle="Width" id="Critical Success"></div>
+		<div resize-handle="Width" id="Critical Success"
+			resize-width="shownColumns.benefit.nodes.criticalSuccess.width"></div>
 	</div>
 	
 	<div class="inline-flex"
 		fs-grid-item-row="gridCard"
-		ng-if="shownColumns.itemProperties.shown"
-		shown-columns="shownColumns.itemProperties.nodes">
+		ng-if="shownColumns.item.shown"
+		shown-columns="shownColumns.item.nodes">
+	</div>
+	
+	<div class="inline-flex"
+		fs-grid-statistic-row="gridCard" 
+		ng-if="shownColumns.statistic.shown"
+		shown-columns="shownColumns.statistic.nodes">
 	</div>
 	
 	<div class="inline-flex"
 		fs-grid-modifier-row="gridCard" 
-		ng-if="shownColumns.modifiers.shown"
-		shown-columns="shownColumns.modifiers.nodes">
+		ng-if="shownColumns.modifier.shown"
+		shown-columns="shownColumns.modifier.nodes">
 	</div>
 	
 	<div class="inline-flex"
 		fs-grid-defense-row="gridCard"
-		ng-if="shownColumns.defenses.shown"
-		shown-columns="shownColumns.defenses.nodes">
+		ng-if="shownColumns.defense.shown"
+		shown-columns="shownColumns.defense.nodes">
 	</div>
 	
 	<div class="inline-flex" 

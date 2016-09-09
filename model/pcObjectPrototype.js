@@ -291,11 +291,11 @@ _.extend(pcObject.prototype, {
 	},
 	
 	factorSpeed: function(){
-		this.speed = this.race.baseSpeed;
+		this.moveSpeed = this.race.baseMoveSpeed;
 		for(var i = 0; i < this.cardList.length; i++){
-			var _modifier = this.cardList[i].speedModifier;
+			var _modifier = this.cardList[i].moveSpeedModifier;
 			if(!isNaN(parseFloat(_modifier)) && isFinite(_modifier)){
-				this.speed += _modifier;
+				this.moveSpeed += _modifier;
 			}
 		}
 	},

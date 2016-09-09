@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("FeatureDeckEditCtrl",
-		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, shownColumnsNested, deckDependencies){
+		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, shownColumns, deckDependencies){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
@@ -19,25 +19,25 @@ angular.module("freedomsworn")
 					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
 					switch(deck.deckType){
 						case 'Class':
-							this.shownColumns = shownColumnsNested.class;
+							this.shownColumns = shownColumns.class;
 							break;
 						case 'Faction':
-							this.shownColumns = shownColumnsNested.faction;
+							this.shownColumns = shownColumns.faction;
 							break;
 						case 'Race':
-							this.shownColumns = shownColumnsNested.race;
+							this.shownColumns = shownColumns.race;
 							break;
 						case 'Trait':
-							this.shownColumns = shownColumnsNested.trait;
+							this.shownColumns = shownColumns.trait;
 							break;
 						case 'Feat':
-							this.shownColumns = shownColumnsNested.feat;
+							this.shownColumns = shownColumns.feat;
 							break;
 						case 'Augment':
-							this.shownColumns = shownColumnsNested.augment;
+							this.shownColumns = shownColumns.augment;
 							break;
 						case 'Item':
-							this.shownColumns = shownColumnsNested.item;
+							this.shownColumns = shownColumns.item;
 							break;
 					}
 					

@@ -35,6 +35,10 @@ angular.module('freedomsworn')
 							action.success.trapCurse
 						];
 						
+						if(action.effect){
+							if(action.effect.moveEffect) benefit += Math.ceil(action.effect.moveEffect/4);
+						}
+						
 						for(var i = 0; i < benefitArray.length; i++){
 							if(benefitArray[i])
 							benefit += benefitArray[i];

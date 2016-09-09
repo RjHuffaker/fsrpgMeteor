@@ -7,28 +7,32 @@
 
 <div class="inline-flex" >
 	
-	<div class="inline-flex" style="width: 10em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.slot.width}"
 		ng-if="shownColumns.slot.shown">
 		<b>Slot</b>
-		<div resize-handle="Width" id="Item Slot"></div>
+		<div resize-handle="Width" id="Item Slot"
+			resize-width="shownColumns.slot.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.type.width}"
 		ng-if="shownColumns.type.shown">
 		<b>Type</b>
-		<div resize-handle="Width" id="Item Type"></div>
+		<div resize-handle="Width" id="Item Type"
+			resize-width="shownColumns.type.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 6em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.weight.width}"
 		ng-if="shownColumns.weight.shown">
 		<b>Weight</b>
-		<div resize-handle="Width" id="Item Weight"></div>
+		<div resize-handle="Width" id="Item Weight"
+			resize-width="shownColumns.weight.width"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 6em"
+	<div class="inline-flex" ng-style="{'width': shownColumns.cost.width}"
 		ng-if="shownColumns.cost.shown">
 		<b>Cost</b>
-		<div resize-handle="Width" id="Item Cost"></div>
+		<div resize-handle="Width" id="Item Cost"
+			resize-width="shownColumns.cost.width"></div>
 	</div>
 	
 </div>

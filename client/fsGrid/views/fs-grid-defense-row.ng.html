@@ -1,4 +1,4 @@
-<div class="inline-flex" style="width: 10em"
+<div class="inline-flex" ng-style="{'width': shownColumns.block.width}"
 	ng-if="shownColumns.block.shown">
 	<div fs-select
 		selection="gridDefense.block.dice_a"
@@ -16,10 +16,11 @@
 		selection="gridDefense.block.dice_b"
 		options="[dataSrvc.dualDice, dataSrvc.abilities]"></div>
 	
-	<div resize-handle="Width" id="Block"></div>
+	<div resize-handle="Width" id="Block"
+		resize-width="shownColumns.block.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
+<div class="inline-flex" ng-style="{'width': shownColumns.dodge.width}"
 	ng-if="shownColumns.dodge.shown">
 	<div fs-select
 		selection="gridDefense.dodge.dice_a"
@@ -27,10 +28,11 @@
 	<div fs-select
 		selection="gridDefense.dodge.dice_b"
 		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	<div resize-handle="Width" id="Dodge"></div>
+	<div resize-handle="Width" id="Dodge"
+		resize-width="shownColumns.dodge.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
+<div class="inline-flex" ng-style="{'width': shownColumns.alertness.width}"
 	ng-if="shownColumns.alertness.shown">
 	<div fs-select
 		selection="gridDefense.alertness.dice_a"
@@ -38,10 +40,11 @@
 	<div fs-select
 		selection="gridDefense.alertness.dice_b"
 		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	<div resize-handle="Width" id="Alertness"></div>
+	<div resize-handle="Width" id="Alertness"
+		resize-width="shownColumns.alertness.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
+<div class="inline-flex" ng-style="{'width': shownColumns.tenacity.width}"
 	ng-if="shownColumns.tenacity.shown">
 	<div fs-select
 		selection="gridDefense.tenacity.dice_a"
@@ -49,5 +52,6 @@
 	<div fs-select
 		selection="gridDefense.tenacity.dice_b"
 		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
-	<div resize-handle="Width" id="Tenacity"></div>
+	<div resize-handle="Width" id="Tenacity"
+		resize-width="shownColumns.tenacity.width"></div>
 </div>

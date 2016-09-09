@@ -1,0 +1,24 @@
+<div class="inline-flex" ng-style="{'width': shownColumns.baseDurability.width}"
+	ng-if="shownColumns.baseDurability.shown">
+	<div fs-numpicker
+		numvalue="gridStatistic.baseDurability"
+		numvaluemin="2"
+		numvaluemax="6"
+		numdefault="4"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Base Durability"
+		resize-width="shownColumns.baseDurability.width"></div>
+</div>
+
+<div class="inline-flex" ng-style="{'width': shownColumns.baseMoveSpeed.width}"
+	ng-if="shownColumns.baseMoveSpeed.shown">
+	<div fs-numpicker
+		numvalue="gridStatistic.baseMoveSpeed"
+		numvaluemin="2"
+		numvaluemax="4"
+		numdefault="3"
+		numincrement="0.1"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Base Move Speed"
+		resize-width="shownColumns.baseMoveSpeed.width"></div>
+</div>
