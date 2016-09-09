@@ -1,5 +1,5 @@
 <div class="inline-flex">
-	<div fs-select="'boolean'" options="shownColumns.actions[actionId]"></div>
+	<div fs-select="'nested'" options="shownColumns"></div>
 	<div class="row-header">Action {{actionId+1}}</div>
 </div>
 
@@ -8,76 +8,151 @@
 <div class="inline-flex">
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.actions[actionId]['Name']">
+		ng-if="shownColumns.name.shown">
 		<b>Name</b>
 		<div resize-handle="Width" id="Name {{actionId}}"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.actions[actionId]['Target']">
+		ng-if="shownColumns.target.shown">
 		<b>Target</b>
 		<div resize-handle="Width" id="Target {{actionId}}"></div>
 	</div>
 
-	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.actions[actionId]['Usage']">
+	<div class="inline-flex" style="width: 5em"
+		ng-if="shownColumns.usage.shown">
 		<b>Usage</b>
 		<div resize-handle="Width" id="Usage {{actionId}}"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.actions[actionId]['Frequency']">
+	<div class="inline-flex" style="width: 5em"
+		ng-if="shownColumns.frequency.shown">
 		<b>Frequency</b>
 		<div resize-handle="Width" id="Frequency {{actionId}}"></div>
 	</div>
 	
-	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.actions[actionId]['Effect']">
-		<div fs-select="'boolean'" options="shownColumns.effectLists[actionId]"></div>
-		<b>Effect</b>
-		<div resize-handle="Width" id="Effect {{actionId}}"></div>
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.count.shown">
+		<b>Count</b>
+		<div resize-handle="Width" id="Count {{actionId}}"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.effectLists[actionId]['List 1']">
-		<b>Item 1</b>
-		<div resize-handle="Width" id="List 1 {{actionId}}"></div>
+		ng-if="shownColumns.effect.shown &&
+			shownColumns.effect.nodes.customEffect.shown">
+		<div fs-select="'boolean'" options="shownColumns.effectLists[actionId]"></div>
+		<b>Custom Effect</b>
+		<div resize-handle="Width" id="Custom Effect {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.effect.shown &&
+			shownColumns.effect.nodes.moveEffect.shown">
+		<div fs-select="'boolean'" options="shownColumns.effectLists[actionId]"></div>
+		<b>Move Effect</b>
+		<div resize-handle="Width" id="Move Effect {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 10em"
+		ng-if="shownColumns.effect.nodes.listItem1.shown">
+		<b>List Item 1</b>
+		<button ng-click="shownColumns.effect.nodes.listItem1.shown = !shownColumns.effect.nodes.listItem1.shown">(-)</button>
+		<div resize-handle="Width" id="List Item 1 {{actionId}}"></div>
 	</div>
 
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.effectLists[actionId]['List 2']">
-		<b>item 2</b>
-		<div resize-handle="Width" id="List 2 {{actionId}}"></div>
+		ng-if="shownColumns.effect.nodes.listItem2.shown">
+		<b>List item 2</b>
+		<button ng-click="shownColumns.effect.nodes.listItem2.shown = !shownColumns.effect.nodes.listItem2.shown">(-)</button>
+		<div resize-handle="Width" id="List Item 2 {{actionId}}"></div>
 	</div>
 
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.effectLists[actionId]['List 3']">
-		<b>item 3</b>
-		<div resize-handle="Width" id="List 3 {{actionId}}"></div>
+		ng-if="shownColumns.effect.nodes.listItem3.shown">
+		<b>List item 3</b>
+		<button ng-click="shownColumns.effect.nodes.listItem3.shown = !shownColumns.effect.nodes.listItem3.shown">(-)</button>
+		<div resize-handle="Width" id="List Item 3 {{actionId}}"></div>
 	</div>
 	
 	<!-- Action Attack -->
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.actions[actionId]['Attack Type']">
+		ng-if="shownColumns.attackType.shown">
 		<b>Attack Type</b>
 		<div resize-handle="Width" id="Attack Type {{actionId}}"></div>
 	</div>
 
 	<div class="inline-flex" style="width: 20em"
-		ng-if="shownColumns.actions[actionId]['Attack Roll']">
+		ng-if="shownColumns.attackRoll.shown">
 		<b>Attack Roll</b>
 		<div resize-handle="Width" id="Attack Roll {{actionId}}"></div>
 	</div>
 
-	<div class="inline-flex" style="width: 20em"
-		ng-if="shownColumns.actions[actionId]['Attack Success']">
-		<b>Success</b>
-		<div resize-handle="Width" id="Attack Success {{actionId}}"></div>
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.damage.shown">
+			<b>Damage</b>
+		<div resize-handle="Width" id="Damage {{actionId}}"></div>
 	</div>
-
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.enableMove.shown">
+			<b>Enable Move</b>
+		<div resize-handle="Width" id="Enable Move {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.forceMove.shown">
+			<b>Force Move</b>
+		<div resize-handle="Width" id="Force Move {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.enableAction.shown">
+			<b>Enable Action</b>
+		<div resize-handle="Width" id="Enable Action {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.negateInjury.shown">
+			<b>Negate Injury</b>
+		<div resize-handle="Width" id="Negate Injury {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.forceAction.shown">
+			<b>Force Action</b>
+		<div resize-handle="Width" id="Force Action {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.attackCurse.shown">
+			<b>Attack Curse</b>
+		<div resize-handle="Width" id="Attack Curse {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.expelCurse.shown">
+			<b>Expel Curse</b>
+		<div resize-handle="Width" id="Expel Curse {{actionId}}"></div>
+	</div>
+	
+	<div class="inline-flex" style="width: 6em"
+		ng-if="shownColumns.attackSuccess.shown && 
+			shownColumns.attackSuccess.nodes.trapCurse.shown">
+			<b>Trap Curse</b>
+		<div resize-handle="Width" id="Trap Curse {{actionId}}"></div>
+	</div>
+	
 	<div class="inline-flex" style="width: 20em"
-		ng-if="shownColumns.actions[actionId]['Attack Critical Success']">
+		ng-if="shownColumns.attackCriticalSuccess.shown">
 		<b>Critical Success</b>
 		<div resize-handle="Width" id="Attack Critical Success {{actionId}}"></div>
 	</div>

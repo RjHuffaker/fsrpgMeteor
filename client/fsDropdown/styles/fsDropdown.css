@@ -23,16 +23,21 @@
 	transition: all .5s ease-out;
 }
 
-.fs-dropdown-panel > div {
-	background-color: darkgrey;
+.fs-dropdown-panel.show-panel {
+	background-color: tan;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
 	border: 1px solid black;
 }
 
-.fs-dropdown-panel.slideup > div {
-	margin-top: 0;
+.fs-dropdown-panel:not(.show-panel) {
+	height: 0;
+	width: 0;
+}
+
+.fs-dropdown-panel.show-panel ul {
+	background-color: tan;
 }
 
 .fs-dropdown-panel.anchor-top > div {
@@ -45,17 +50,42 @@
 	bottom:0;
 }
 
+
+.fs-dropdown-panel ul.ng-enter {
+	max-height: 0;
+	opacity: 0;
+}
+
+.fs-dropdown-panel ul.ng-enter-active {
+	max-height: 150px;
+	opacity: 1;
+}
+
+.fs-dropdown-panel ul.ng-leave {
+	max-height: 150px;
+}
+
+.fs-dropdown-panel ul.ng-leave-active {
+	max-height: 0;
+}
+
 .fs-dropdown-panel ul {
 	list-style-type: none;
 	padding: 0.1em;
 	margin: 0;
+	overflow: hidden;
+	
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	transition: all .25s ease-in-out;
 }
 
 .fs-dropdown-panel li {
 	cursor: pointer;
 	list-style-type: none;
 	white-space: nowrap;
-	
 }
 
 .fs-dropdown-panel li > a {

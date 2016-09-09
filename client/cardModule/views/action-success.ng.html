@@ -1,0 +1,4 @@
+<div ng-if="actionSuccess.damage || actionSuccess.effect" class="text-9">
+	<strong>Success: </strong><span ng-if="actionSuccess.damage">+</span>{{actionSuccess.damage}}
+	<span ng-if="actionSuccess.damage">damage</span>{{effectData.enableMove[actionSuccess.enableMove]}}{{effectData.forceMove[actionSuccess.forceMove]}}{{effectData.enableAction[actionSuccess.enableAction]}}{{effectData.negateInjury[actionSuccess.negateInjury]}}{{effectData.forceAction[actionSuccess.forceAction]}}{{effectData.attackCurse[actionSuccess.attackCurse]}}{{effectData.expelCurse[actionSuccess.expelCurse]}}{{effectData.trapCurse[actionSuccess.trapCurse]}}.
+</div>

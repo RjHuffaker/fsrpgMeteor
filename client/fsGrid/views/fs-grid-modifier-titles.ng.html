@@ -1,5 +1,5 @@
 <div class="inline-flex">
-	<div fs-select="'boolean'" options="shownColumns.modifiers"></div>
+	<div fs-select="'nested'" options="shownColumns"></div>
 	<div class="row-header">Modifiers</div>
 </div>
 
@@ -8,49 +8,49 @@
 <div class="inline-flex">
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Damage']">
+		ng-if="shownColumns.damage.shown">
 		<b>Damage</b>
 		<div resize-handle="Width" id="Damage"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Durability']">
+		ng-if="shownColumns.durability.shown">
 		<b>Durability</b>
 		<div resize-handle="Width" id="Durability"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Base Durability']">
+		ng-if="shownColumns.baseDurability.shown">
 		<b>Base Durability</b>
 		<div resize-handle="Width" id="Base Durability"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Defense']">
+		ng-if="shownColumns.defense.shown">
 		<b>Defense</b>
 		<div resize-handle="Width" id="Defense"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Speed']">
+		ng-if="shownColumns.speed.shown">
 		<b>Speed</b>
 		<div resize-handle="Width" id="Speed"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Base Speed']">
+		ng-if="shownColumns.baseSpeed.shown">
 		<b>Base Speed</b>
 		<div resize-handle="Width" id="Base Speed"></div>
 	</div>
 
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Finesse']">
+		ng-if="shownColumns.finesse.shown">
 		<b>Finesse</b>
 		<div resize-handle="Width" id="Finesse"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.modifiers['Carrying Capacity']">
+		ng-if="shownColumns.carryingCapacity.shown">
 		<b>Carrying Capacity</b>
 		<div resize-handle="Width" id="Carrying Capacity"></div>
 	</div>

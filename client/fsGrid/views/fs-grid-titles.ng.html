@@ -3,7 +3,7 @@
 	<div class="flex-column">
 		
 		<div class="inline-flex">
-			<div fs-select="'boolean'" options="shownColumns.card"></div>
+			<div fs-select="'nested'" options="shownColumns"></div>
 			<div class="row-header">Card Details</div>
 		</div>
 		
@@ -11,37 +11,37 @@
 		
 		<div class="inline-flex">
 			
-			<div class="inline-flex" style="width: 2.5em;">
-				<div style="width: 2em"></div>
+			<div class="inline-flex">
+				<div style="width: 3em"></div>
 				<div faux-handle="Width"></div>
 			</div>
 			
 			<div class="inline-flex" style="width: 10em"
-				ng-if="shownColumns.card['Name']">
+				ng-if="shownColumns.name.shown">
 				<b>Name</b>
 				<div resize-handle="Width" id="Name"></div>
 			</div>
 			
 			<div class="inline-flex" style="width: 10em"
-				ng-if="shownColumns.card['Aspect']">
+				ng-if="shownColumns.aspect.shown">
 				<b>Aspect</b>
 				<div resize-handle="Width" id="Aspect"></div>
 			</div>
 			
 			<div class="inline-flex" style="width: 15em"
-				ng-if="shownColumns.card['Description']">
+				ng-if="shownColumns.description.shown">
 				<b>Description</b>
 				<div resize-handle="Width" id="Description"></div>
 			</div>
 			
 			<div class="inline-flex" style="width: 10em"
-				ng-if="shownColumns.card['Benefit']">
+				ng-if="shownColumns.benefit.shown">
 				<b>Benefit</b>
 				<div resize-handle="Width" id="Benefit"></div>
 			</div>
 			
 			<div class="inline-flex" style="width: 10em"
-				ng-if="shownColumns.card['Critical Success']">
+				ng-if="shownColumns.benefit.nodes.criticalSuccess.shown">
 				<b>Critical Success</b>
 				<div resize-handle="Width" id="Critical Success"></div>
 			</div>
@@ -51,29 +51,35 @@
 	</div>
 
 	<div class="flex-column"
-		ng-if="shownColumns.card['Item Properties']"
+		ng-if="shownColumns.itemProperties.shown"
 		fs-grid-item-titles grid-deck="gridDeck"
-		shown-columns="shownColumns">
+		shown-columns="shownColumns.itemProperties.nodes">
 	</div>
 
 	<div class="flex-column fill-height"
-		ng-if="shownColumns.card['Modifiers']"
+		ng-if="shownColumns.modifiers.shown"
 		fs-grid-modifier-titles grid-deck="gridDeck"
-		shown-columns="shownColumns">
+		shown-columns="shownColumns.modifiers.nodes">
 	</div>
 
 	<div class="flex-column"
-		ng-if="shownColumns.card['Defenses']"
+		ng-if="shownColumns.defenses.shown"
 		fs-grid-defense-titles grid-deck="gridDeck"
-		shown-columns="shownColumns">
+		shown-columns="shownColumns.defenses.nodes">
 	</div>
 
 	<div class="flex-column"
-		ng-if="shownColumns.card['Action '+($index+1)]"
-		ng-repeat="action in shownColumns.actions track by $index"
-		fs-grid-action-titles grid-deck="gridDeck" action-id="$index"
-		shown-columns="shownColumns">
+		ng-if="shownColumns.action1.shown"
+		fs-grid-action-titles grid-deck="gridDeck" action-id="0"
+		shown-columns="shownColumns.action1.nodes">
 	</div>
+	
+	<div class="flex-column"
+		ng-if="shownColumns.action2.shown"
+		fs-grid-action-titles grid-deck="gridDeck" action-id="1"
+		shown-columns="shownColumns.action2.nodes">
+	</div>
+	
 </div>
 
 <div faux-handle="Height"></div>

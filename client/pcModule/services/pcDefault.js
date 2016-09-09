@@ -51,7 +51,13 @@ angular.module('freedomsworn')
 			skillMax: 0,
 			deckType: 'pcDeck',
 			deckSize: 4,
-			dependencies: [],
+			dependencies: [
+				'RJuhMum5v9r6v5N5w',
+				'up7kQPiv29f4Dvc59',
+				'TFb6brdQzr8pJBmRk',
+				'mkWocd8FSeQv3a2Et',
+				'SN7RMi6Rqn2zJqS9B'
+			],
 			cardList: [
 				{
 					_id: Random.id(),
@@ -82,8 +88,7 @@ angular.module('freedomsworn')
 					cardType: 'Choose Trait',
 					cardLevel: 0,
 					x_dim: 15,
-					y_dim: 21,
-					name: 'Super Card!!!'
+					y_dim: 21
 				}
 			]
 		};

@@ -99,6 +99,7 @@ _.extend(deckObject.prototype, {
 			if(['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(this.deckType) > -1){
 				_current.cardNumber = i+1;
 				_current.deckSize = _length;
+				_current.deckId = this._id;
 			}
 			
 			if(_previous) _current.left = _previous._id;
@@ -475,7 +476,7 @@ _.extend(deckObject.prototype, {
 			var _index = this.getPanelIndex(this.cardList[i]._id);
 			var _order = this.getPanelOrder(this.cardList[i]._id);
 			
-			console.log(_index+' / '+refArray[i]+' / '+_order);
+			//console.log(_index+' / '+refArray[i]+' / '+_order);
 			
 			if(refArray.indexOf(_index) < 0){
 				results.push('FAIL: Unused reference id - '+this.cardList[i]._id);

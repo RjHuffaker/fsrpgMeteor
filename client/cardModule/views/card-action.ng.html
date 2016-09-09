@@ -20,17 +20,10 @@
 		</div>
 		<div class="title-block">
 			<div class="pull-right">
-				<strong ng-if="!cardAction.frequency.includes('Count')">
-					{{cardAction.frequency}}
-				</strong>
-				
-				<span ng-if="cardAction.frequency.includes('Count:')">
-					<strong>Count: </strong>{{cardAction.frequency.replace('Count: ', '')}}
+				<span ng-if="cardAction.count">
+					<strong>Count: </strong>{{cardAction.count}}
+					<span ng-if="dataSrvc.dualItemSlots.indexOf(card.itemSlot) > -1">or {{cardAction.count-1}}*</span>
 				</span>
-				
-				<strong ng-if="!cardAction.frequency">
-					[Frequency]
-				</strong>
 			</div>
 		</div>
 	</div>
@@ -41,22 +34,9 @@
 		<strong>Prompt: </strong>{{cardAction.prompt}}
 	</div>
 	
-	<div ng-if="cardAction.attackType" class="text-9">
-		<strong>Attack: </strong>
-		{{cardAction.dice_a}} + {{cardAction.dice_b}}{{cardAction.attackModifier}} vs {{cardAction.versus}}
-	</div>
-	
-	<div ng-if="cardAction.success.damage || cardAction.success.effect" class="text-9">
-		<strong>Success: </strong>{{cardAction.success.damage}} {{cardAction.success.effect}}
-	</div>
-	
-	<div ng-if="cardAction.criticalSuccess.damage || cardAction.criticalSuccess.effect" class="text-9">
-		<strong>Critical Success: </strong>{{cardAction.criticalSuccess.damage}} {{cardAction.criticalSuccess.effect}}
-	</div>
-	
-	<div ng-if="cardAction.effect.content" class="text-9">
+	<div ng-if="cardAction.effect.customEffect || cardAction.effect.moveEffect" class="text-9">
 		<div>
-			<strong>Effect: </strong>{{cardAction.effect.content}}
+			<strong>Effect: </strong>{{cardAction.effect.customEffect}}{{effectData.moveEffect[cardAction.effect.moveEffect]}}
 		</div>
 		
 		<div ng-repeat="listItem in cardAction.effect.list track by $index">
@@ -68,6 +48,19 @@
 		</div>
 		
 	</div>
+	
+	<div ng-if="cardAction.attackType" class="text-9">
+		<strong>Attack: </strong>
+		{{cardAction.dice_a}} + {{cardAction.dice_b}}{{cardAction.attackModifier}} vs {{cardAction.versus}}
+	</div>
+	
+	<div action-success="cardAction.success"></div>
+	
+	<div ng-if="cardAction.criticalSuccess.damage || cardAction.criticalSuccess.effect" class="text-9">
+		<strong>Critical Success: </strong>{{cardAction.criticalSuccess.damage}} {{cardAction.criticalSuccess.effect}}
+	</div>
+	
+	
 	
 	<br>
 </div>

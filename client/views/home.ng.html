@@ -1,54 +1,38 @@
 <div class="flex-column fill-height">
 	
-	<div style="flex: 1; border: 2px dotted white;">Home</div>
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Class'" options="shownColumns.class"></div>
+		<div class="text-6">{{shownColumns.class}}</div>
+	</div>
 	
-	<div class="flex-column fill-height"
-		style="flex: 4; background-color: darkgrey;">
-		
-			<div style="position: relative; overflow: auto;">
-			
-				<div style="height: 100px; border: 1px solid red">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 1
-				</div>
-				<div style="height: 120px; border: 1px solid purple">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 2
-				</div>
-				<div style="height: 140px; border: 1px solid blue">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 3
-				</div>
-				<div style="height: 160px; border: 1px solid green">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 4
-				</div>
-				<div style="height: 180px; border: 1px solid yellow">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 5
-				</div>
-				<div style="height: 200px; border: 1px solid orange">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 6
-				</div>
-				<div style="height: 220px; border: 1px solid red">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 7
-				</div>
-				<div style="height: 240px; border: 1px solid purple">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 8
-				</div>
-				<div style="height: 260px; border: 1px solid blue">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 9
-				</div>
-				<div style="height: 280px; border: 1px solid blue">
-					<div fs-select="'boolean'" options="{'Value 1': true, 'Value 2': false}"></div>
-					Inner Section 10
-				</div>
-			</div>
-			
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Race'" options="shownColumns.race"></div>
+		<div class="text-6">{{shownColumns.race}}</div>
+	</div>
+	
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Faction'" options="shownColumns.faction"></div>
+		<div class="text-6">{{shownColumns.faction}}</div>
+	</div>
+	
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Trait'" options="shownColumns.trait"></div>
+		<div class="text-6">{{shownColumns.race}}</div>
+	</div>
+	
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Feat'" options="shownColumns.feat"></div>
+		<div class="text-6">{{shownColumns.feat}}</div>
+	</div>
+	
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Augment'" options="shownColumns.augment"></div>
+		<div class="text-6">{{shownColumns.augment}}</div>
+	</div>
+	
+	<div style="flex: 1">
+		<div fs-select="'nested'" toggle-header="'Item'" options="shownColumns.item"></div>
+		<div class="text-6">{{shownColumns.item}}</div>
 	</div>
 	
 </div>

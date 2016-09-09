@@ -1,5 +1,5 @@
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.defenses['Block']">
+	ng-if="shownColumns.block.shown">
 	<div fs-select
 		selection="gridDefense.block.dice_a"
 		options="[dataSrvc.abilities]"></div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.defenses['Dodge']">
+	ng-if="shownColumns.dodge.shown">
 	<div fs-select
 		selection="gridDefense.dodge.dice_a"
 		options="[dataSrvc.abilities]"></div>
@@ -31,7 +31,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.defenses['Alertness']">
+	ng-if="shownColumns.alertness.shown">
 	<div fs-select
 		selection="gridDefense.alertness.dice_a"
 		options="[dataSrvc.abilities]"></div>
@@ -42,7 +42,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.defenses['Tenacity']">
+	ng-if="shownColumns.tenacity.shown">
 	<div fs-select
 		selection="gridDefense.tenacity.dice_a"
 		options="[dataSrvc.abilities]"></div>

@@ -1,17 +1,13 @@
 angular.module('freedomsworn')
-	.directive('cardAction', function(dataSrvc, effectData){
-		'ngInject';
-
+	.directive('actionSuccess', function(dataSrvc, effectData){
 		return {
 			restrict: 'A',
 			scope: {
-				cardAction: '=',
-				card: '='
+				actionSuccess: '='
 			},
-			templateUrl: paths.cardModule.views+'card-action.ng.html',
+			templateUrl: paths.cardModule.views+'action-success.ng.html',
 			link: function(scope, element, attrs){
 				scope.dataSrvc = dataSrvc;
-				
 				scope.effectData = effectData;
 				
 			}

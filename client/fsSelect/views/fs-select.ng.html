@@ -1,5 +1,5 @@
 <div fs-dropdown id="{{dropdownId}}" class="open-down {{fsSelect}}"
-	ng-class="{'keep-open': (fsSelect === 'boolean' || fsSelect === 'id')}">
+	ng-class="{'keep-open': (fsSelect === 'boolean' || fsSelect === 'id' || fsSelect === 'nested')}">
 	<div class="fs-dropdown-toggle">
 		
 		<span ng-if="!fsSelect">
@@ -26,6 +26,13 @@
 		
 		<span ng-if="fsSelect === 'boolean'">
 			(+)
+		</span>
+		
+		<span ng-if="fsSelect === 'nested'">
+			{{toggleHeader}}
+			<span ng-if="!toggleHeader">
+				(x)
+			</span>
 		</span>
 		
 	</div>
@@ -55,12 +62,15 @@
 				<li ng-repeat="(key, value) in options"
 					ng-class="{current: value}"
 					ng-click="selectOption(key)"
-					stop-event>
+					stop-event="">
 					<span>
 						{{key}}
 					</span>
 				</li>
 			</ul>
+			
+			<ul ng-if="fsSelect === 'nested'" recursive-list="options"></ul>
+			
 			
 		</div>
 	</div>

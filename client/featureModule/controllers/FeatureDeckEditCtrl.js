@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("FeatureDeckEditCtrl",
-		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, shownColumns, deckDependencies){
+		function($scope, $reactive, $meteor, $stateParams, featureBread, CoreVars, dataSrvc, shownColumnsNested, deckDependencies){
 			'ngInject';
 			
 			$scope.CoreVars = CoreVars;
@@ -19,25 +19,25 @@ angular.module("freedomsworn")
 					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
 					switch(deck.deckType){
 						case 'Class':
-							this.shownColumns = shownColumns.class;
+							this.shownColumns = shownColumnsNested.class;
 							break;
 						case 'Faction':
-							this.shownColumns = shownColumns.faction;
+							this.shownColumns = shownColumnsNested.faction;
 							break;
 						case 'Race':
-							this.shownColumns = shownColumns.race;
+							this.shownColumns = shownColumnsNested.race;
 							break;
 						case 'Trait':
-							this.shownColumns = shownColumns.trait;
+							this.shownColumns = shownColumnsNested.trait;
 							break;
 						case 'Feat':
-							this.shownColumns = shownColumns.feat;
+							this.shownColumns = shownColumnsNested.feat;
 							break;
 						case 'Augment':
-							this.shownColumns = shownColumns.augment;
+							this.shownColumns = shownColumnsNested.augment;
 							break;
 						case 'Item':
-							this.shownColumns = shownColumns.item;
+							this.shownColumns = shownColumnsNested.item;
 							break;
 					}
 					
@@ -107,12 +107,8 @@ angular.module("freedomsworn")
 					y_dim: 21,
 					name: deckType+' '+(deckSize+1),
 					cardType: deckType,
-					actions: [
-						{ keywords: [] },
-						{ keywords: [] },
-						{ keywords: [] },
-						{ keywords: [] }
-					]
+					action1: {},
+					action2: {}
 				});
 				
 				this.featureDeck.setPanelPosition();
@@ -122,5 +118,69 @@ angular.module("freedomsworn")
 			this.removeCard = function(){
 				this.featureDeck.removeFromDeck(this.featureDeck.currentRow);
 			};
+			
+			this.fixStuff = function(){
+				
+				var extractNumber = function(test){
+					if(test.includes('1')){
+						return 1;
+					} else if(test.includes('2')){
+						return 2;
+					} else if(test.includes('3')){
+						return 3;
+					} else if(test.includes('4')){
+						return 4;
+					} else if(test.includes('5')){
+						return 5;
+					}
+				};
+				
+				var extractDie = function(test){
+					if(test.includes('1d4')){
+						return 1;
+					} else if(test.includes('1d6')){
+						return 2;
+					} else if(test.includes('1d8')){
+						return 3;
+					} else if(test.includes('1d10')){
+						return 4;
+					} else if(test.includes('1d12')){
+						return 5;
+					}
+				};
+				
+				var fixEffects = function(action){
+					if(!action.success) return;
+					if(!action.success.effect) return;
+					
+					if(action.success.effect.includes('may use')){
+						action.success.enableAction = extractNumber(action.success.effect);
+					} else if(action.success.effect.includes('may negate')){
+						action.success.negateInjury = extractDie(action.success.effect);
+					} else if(action.success.effect.includes('must use')){
+						action.success.forceAction = extractNumber(action.success.effect);
+					} else if(action.success.effect.includes('choose one creature')){
+						action.success.attackCurse = extractDie(action.success.effect);
+					} else if(action.success.effect.includes('occupies')){
+						action.success.expelCurse = extractDie(action.success.effect);
+					} else if(action.success.effect.includes('leaves')){
+						action.success.trapCurse = extractDie(action.success.effect);
+					} else {
+						console.log('unidentified effect: ', action.success.effect);
+						return;
+					}
+					
+					delete action.success.effect;
+				};
+				
+				for(var i = 0; i < this.featureDeck.cardList.length; i++){
+					var _card = this.featureDeck.cardList[i];
+					
+					fixEffects(_card.action1);
+					fixEffects(_card.action2);
+					
+				}
+			};
+			
 			
 		});

@@ -1,5 +1,5 @@
 <div class="inline-flex">
-	<div fs-select="'boolean'" options="shownColumns.defenses"></div>
+	<div fs-select="'nested'" options="shownColumns"></div>
 	<div class="row-header">Defenses</div>
 </div>
 
@@ -8,25 +8,25 @@
 <div class="inline-flex">
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.defenses['Block']">
+		ng-if="shownColumns.block.shown">
 		<b>Block</b>
 		<div resize-handle="Width" id="Block"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.defenses['Dodge']">
+		ng-if="shownColumns.dodge.shown">
 		<b>Dodge</b>
 		<div resize-handle="Width" id="Dodge"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.defenses['Alertness']">
+		ng-if="shownColumns.alertness.shown">
 		<b>Alertness</b>
 		<div resize-handle="Width" id="Alertness"></div>
 	</div>
 	
 	<div class="inline-flex" style="width: 10em"
-		ng-if="shownColumns.defenses['Tenacity']">
+		ng-if="shownColumns.tenacity.shown">
 		<b>Tenacity</b>
 		<div resize-handle="Width" id="Tenacity"></div>
 	</div>

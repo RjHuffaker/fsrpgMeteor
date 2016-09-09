@@ -18,6 +18,7 @@ angular.module('freedomsworn')
 				scope.dropdownId = Random.id();
 				
 				scope.selectOption = function(selection){
+					console.log('select option', selection);
 					if(selection){
 						if(scope.fsSelect === 'array'){
 							var _index = scope.selection.indexOf(selection);
@@ -35,6 +36,8 @@ angular.module('freedomsworn')
 							}
 						} else if(scope.fsSelect === 'boolean'){
 							scope.options[selection] = !scope.options[selection];
+						} else if(scope.fsSelect === 'nested'){
+							selection.shown = !selection.shown;
 						} else {
 							scope.selection = selection;
 						}

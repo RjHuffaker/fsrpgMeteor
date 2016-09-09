@@ -1,11 +1,11 @@
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.actions[actionId]['Name']">
+	ng-if="shownColumns.name.shown">
 	<input type="text" ng-model="gridAction.name">
 	<div resize-handle="Width" id="Name {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.actions[actionId]['Target']">
+	ng-if="shownColumns.target.shown">
 		<div fs-select style="flex: 2"
 			selection="gridAction.targetType"
 			options="[dataSrvc.targetTypes]"></div>
@@ -28,15 +28,15 @@
 	<div resize-handle="Width" id="Target {{actionId}}"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.actions[actionId]['Usage']">
+<div class="inline-flex" style="width: 5em"
+	ng-if="shownColumns.usage.shown">
 	<div fs-select selection="gridAction.usage"
 		options="[['Default', 'Single-use']]"></div>
 	<div resize-handle="Width" id="Usage {{actionId}}"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.actions[actionId]['Frequency']">
+<div class="inline-flex" style="width: 5em"
+	ng-if="shownColumns.frequency.shown">
 	<div fs-select ng-if="!gridCard.itemSlot"
 		selection="gridAction.frequency"
 		options="[dataSrvc.actionCount]"></div>
@@ -51,14 +51,39 @@
 	<div resize-handle="Width" id="Frequency {{actionId}}"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.actions[actionId]['Effect']">
-	<textarea ng-model="gridAction.effect.content" style="flex: 1"></textarea>
-	<div resize-handle="Width" id="Effect {{actionId}}"></div>
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.count.shown">
+	<div fs-numpicker
+		numvalue="gridAction.count"
+		numvaluemin="2"
+		numvaluemax="6"
+		numdefault="4"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Count {{actionId}}"></div>
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.effectLists[actionId]['List 1']">
+	ng-if="shownColumns.effect.shown &&
+		shownColumns.effect.nodes.customEffect.shown">
+	<textarea ng-model="gridAction.effect.customEffect" style="flex: 1"></textarea>
+	<div resize-handle="Width" id="Custom Effect {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.effect.shown &&
+		shownColumns.effect.nodes.moveEffect.shown">
+	<div fs-numpicker
+		numvalue="gridAction.effect.moveEffect"
+		numvaluemin="0"
+		numvaluemax="3"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Move Effect {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.effect.shown &&
+		shownColumns.effect.nodes.listItem1.shown">
 	<div class="flex-column fill-width">
 		<input type="text" ng-model="gridAction.effect.list[0].leader" style="flex: 0;">
 		<textarea ng-model="gridAction.effect.list[0].content" style="flex: 1"></textarea>
@@ -67,7 +92,18 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.effectLists[actionId]['List 2']">
+	ng-if="shownColumns.effect.shown &&
+		shownColumns.effect.nodes.listItem1.shown">
+	<div class="flex-column fill-width">
+		<input type="text" ng-model="gridAction.effect.list[0].leader" style="flex: 0;">
+		<textarea ng-model="gridAction.effect.list[0].content" style="flex: 1"></textarea>
+	</div>
+	<div resize-handle="Width" id="List 1 {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 10em"
+	ng-if="shownColumns.effect.shown &&
+		shownColumns.effect.nodes.listItem2.shown">
 	<div class="flex-column fill-width">
 		<input type="text" ng-model="gridAction.effect.list[1].leader" style="flex: 0;">
 		<textarea ng-model="gridAction.effect.list[1].content" style="flex: 1"></textarea>
@@ -76,7 +112,8 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.effectLists[actionId]['List 3']">
+	ng-if="shownColumns.effect.shown &&
+		shownColumns.effect.nodes.listItem3.shown">
 	<div class="flex-column fill-width">
 		<input type="text" ng-model="gridAction.effect.list[2].leader" style="flex: 0;">
 		<textarea ng-model="gridAction.effect.list[2].content" style="flex: 1"></textarea>
@@ -87,7 +124,7 @@
 <!-- Action Attack -->
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.actions[actionId]['Attack Type']">
+	ng-if="shownColumns.attackType.shown">
 	<div fs-select
 		selection="gridAction.attackType"
 		options="[dataSrvc.attackTypes]"></div>
@@ -95,14 +132,14 @@
 </div>
 
 <div class="inline-flex" style="width: 20em"
-	ng-if="shownColumns.actions[actionId]['Attack Roll']">
+	ng-if="shownColumns.attackRoll.shown">
 	<div fs-select style="flex: 4"
 		selection="gridAction.dice_a"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.abilities]"></div>
 	<div class="text-center" style="flex: 1">+</div>
 	<div fs-select style="flex: 4"
 		selection="gridAction.dice_b"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.abilities]"></div>
 	<div fs-select style="flex: 2"
 		selection="gridAction.attackModifier"
 		toggle-header="'+ / -'"
@@ -114,29 +151,121 @@
 	<div resize-handle="Width" id="Attack Roll {{actionId}}"></div>
 </div>
 
-<div class="inline-flex" style="width: 20em"
-	ng-if="shownColumns.actions[actionId]['Attack Success']">
-	
-	<div fs-select ng-if="!gridCard.itemSlot"
-		selection="gridAction.success.damage" style="flex: 1"
-		options="[dataSrvc.nonItemDamage]"></div>
-	
-	<div fs-select ng-if="dataSrvc.nonDualItemSlots.indexOf(gridCard.itemSlot) > -1"
-		selection="gridAction.success.damage" style="flex: 1"
-		options="[dataSrvc.nonDualItemDamage]"></div>
-		
-	<div fs-select ng-if="dataSrvc.dualItemSlots.indexOf(gridCard.itemSlot) > -1"
-		selection="gridAction.success.damage" style="flex: 1"
-		options="[dataSrvc.dualItemDamage]"></div>
-	<textarea ng-model="gridAction.success.effect" style="flex: 2"></textarea>
-	<div resize-handle="Width" id="Attack Success {{actionId}}"></div>
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown &&
+		shownColumns.attackSuccess.nodes.damage.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.damage"
+		numvaluemin="2"
+		numvaluemax="14"
+		numdefault="8"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Damage {{actionId}}"></div>
 </div>
 
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown &&
+		shownColumns.attackSuccess.nodes.enableMove.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.enableMove"
+		numvaluemin="0"
+		numvaluemax="3"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Enable Move {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown &&
+		shownColumns.attackSuccess.nodes.forceMove.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.forceMove"
+		numvaluemin="0"
+		numvaluemax="3"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Force Move {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown && 
+		shownColumns.attackSuccess.nodes.enableAction.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.enableAction"
+		numvaluemin="0"
+		numvaluemax="5"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Enable Action {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown && 
+		shownColumns.attackSuccess.nodes.negateInjury.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.negateInjury"
+		numvaluemin="0"
+		numvaluemax="5"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Negate Injury {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown && 
+		shownColumns.attackSuccess.nodes.forceAction.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.forceAction"
+		numvaluemin="0"
+		numvaluemax="5"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Force Action {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown && 
+		shownColumns.attackSuccess.nodes.attackCurse.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.attackCurse"
+		numvaluemin="0"
+		numvaluemax="5"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Attack Curse {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown && 
+		shownColumns.attackSuccess.nodes.expelCurse.shown">
+	<div fs-numpicker
+		numvalue="gridAction.success.expelCurse"
+		numvaluemin="0"
+		numvaluemax="5"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Expel Curse {{actionId}}"></div>
+</div>
+
+<div class="inline-flex" style="width: 6em"
+	ng-if="shownColumns.attackSuccess.shown && 
+		shownColumns.attackSuccess.nodes.trapCurse.shown">
+	<div fs-numpicker style="flex: 1"
+		numvalue="gridAction.success.trapCurse"
+		numvaluemin="0"
+		numvaluemax="5"
+		numdefault="0"
+		numdelay="500"></div>
+	<div resize-handle="Width" id="Trap Curse {{actionId}}"></div>
+</div>
+
+
 <div class="inline-flex" style="width: 20em"
-	ng-if="shownColumns.actions[actionId]['Attack Critical Success']">
+	ng-if="shownColumns.attackCriticalSuccess.shown">
 	<div fs-select
 		selection="gridAction.criticalSuccess.damage" style="flex: 1"
 		options="[dataSrvc.damageDice]"></div>
-	<textarea ng-model="gridAction.criticalSuccess.effect" style="flex: 2"></textarea>
+	<textarea ng-model="gridAction.criticalSuccess.effect"
+		style="flex: 2"></textarea>
 	<div resize-handle="Width" id="Attack Critical Success {{actionId}}"></div>
 </div>

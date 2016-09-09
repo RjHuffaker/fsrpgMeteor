@@ -42,7 +42,7 @@
 }
 
 .grid-card-icon {
-	height: 2em; width: 2em;
+	height: 3em; width: 3em;
 	border: 1px solid black;
 	-moz-border-radius: .2em;
 	-webkit-border-radius: .2em;
@@ -76,7 +76,7 @@
 
 [fs-grid] div.inline-flex > textarea {
 	box-sizing: border-box;
-	font: inherit;
+	font: 0.9em Arial;
 	width: 100%;
 	min-width: 4em !important;
 	height: 100%;
@@ -89,7 +89,7 @@
 
 [fs-grid] div.inline-flex > input {
 	box-sizing: border-box;
-	font: inherit;
+	font: 0.9em Arial;
 	width: 100%;
 	min-width: 4em !important;
 	height: 100%;

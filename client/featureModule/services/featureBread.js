@@ -47,12 +47,8 @@ angular.module('freedomsworn')
 						name: 'Card '+(i+1),
 						cardType: type,
 						cardNumber: i+1,
-						actions: [
-							{ keywords: [] },
-							{ keywords: [] },
-							{ keywords: [] },
-							{ keywords: [] }
-						]
+						action1: {},
+						action2: {}
 					});
 				}
 				

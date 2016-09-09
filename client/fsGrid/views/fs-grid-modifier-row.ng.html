@@ -1,5 +1,5 @@
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Damage']">
+	ng-if="shownColumns.damage.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.damageModifier"
 		numvaluemin="-4"
@@ -10,7 +10,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Durability']">
+	ng-if="shownColumns.durability.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.durabilityModifier"
 		numvaluemin="-4"
@@ -21,7 +21,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Base Durability']">
+	ng-if="shownColumns.baseDurability.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.baseDurability"
 		numvaluemin="2"
@@ -32,7 +32,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Defense']">
+	ng-if="shownColumns.defense.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.defenseModifier"
 		numvaluemin="-4"
@@ -43,7 +43,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Speed']">
+	ng-if="shownColumns.speed.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.speedModifier"
 		numvaluemin="-1"
@@ -55,7 +55,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Base Speed']">
+	ng-if="shownColumns.baseSpeed.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.baseSpeed"
 		numvaluemin="2"
@@ -67,7 +67,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Finesse']">
+	ng-if="shownColumns.finesse.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.finesseModifier"
 		numvaluemin="-4"
@@ -78,7 +78,7 @@
 </div>
 
 <div class="inline-flex" style="width: 10em"
-	ng-if="shownColumns.modifiers['Carrying Capacity']">
+	ng-if="shownColumns.carryingCapacity.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.carryingCapacityModifier"
 		numvaluemin="-4"
