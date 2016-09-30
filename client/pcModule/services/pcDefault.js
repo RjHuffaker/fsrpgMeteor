@@ -2,6 +2,8 @@ angular.module('freedomsworn')
 	.factory('pcDefault', function(){
 		return {
 			name: 'Randolph',
+			createdOn: new Date(),
+			lastModified: new Date(),
 			sex: '',
 			race: { name: 'Weolda', baseDurability: 4, speed: 3},
 			abilities: [

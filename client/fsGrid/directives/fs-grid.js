@@ -62,18 +62,28 @@ angular.module('freedomsworn')
 			link: function(scope, element, attrs) {
 				scope.dataSrvc = dataSrvc;
 				scope.deckDependencies = deckDependencies;
+				
+				scope.totalWidth = function(shownColumns){
+					var _total = 54;
+					
+					var recursiveCheck = function(obj){
+						for(var key in obj.nodes){
+							if(obj.nodes.hasOwnProperty(key)){
+								var node = obj.nodes[key];
+								if(node.shown){
+									if(node.width){
+										_total += node.width;
+									}
+									recursiveCheck(node);
+								}
+							}
+						}
+					};
+					
+					recursiveCheck(shownColumns);
+					
+					return _total;
+				};
 			}
-		};
-	})
-	.directive('fsGridTitles', function(){
-		'ngInject';
-		
-		return {
-			restrict: 'A',
-			scope: {
-				deckType: '=',
-				shownColumns: '='
-			},
-			templateUrl: paths.fsGrid.views+'fs-grid-titles.ng.html'
 		};
 	});

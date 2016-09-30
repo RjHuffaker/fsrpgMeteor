@@ -50,6 +50,7 @@ angular.module("freedomsworn")
 			
 			this.saveDeck = function(deck){
 				delete deck.currentRow;
+				deck.lastModified = new Date();
 				deck.save();
 			};
 			
@@ -118,6 +119,8 @@ angular.module("freedomsworn")
 			this.removeCard = function(){
 				this.featureDeck.removeFromDeck(this.featureDeck.currentRow);
 			};
+			
+			this.currentDate = new Date();
 			
 			this.fixStuff = function(){
 				

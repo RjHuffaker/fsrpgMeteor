@@ -1,9 +1,15 @@
-<div class="flex-column" 
-	fs-grid-titles style="flex-shrink: 0;"
-	deck-type="gridDeck.deckType" 
-	shown-columns="shownColumns"></div>
-	
-<div class="remain-selected flex-column"
+<div class="flex-column fill-width">
+	<div class="inline-flex fill-height">
+		<div class="inline-flex">
+			<div style="height: 3em; width: 3em"></div>
+			<div faux-handle="Width"></div>
+		</div>
+		<div class="inline-flex" fs-grid-header="shownColumns"></div>
+	</div>
+	<div resize-handle="Height" id="title-row"></div>
+</div>
+
+<div class="remain-selected flex-column fill-width"
 	ng-repeat="gridCard in gridDeck.cardList | orderBy: 'cardNumber' | startFrom:currentPage*pageSize | limitTo:pageSize"
 	ng-class="{selectrow: (gridCard === gridDeck.currentRow)}"
 	fs-grid-row="gridCard"

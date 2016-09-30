@@ -9,6 +9,12 @@
 		</div>
 		
 		<div style="flex: 1">
+			Created On:
+			<input ng-model="vm.featureDeck.createdOn">
+			{{vm.featureDeck.createdOn | date:'short'}}
+		</div>
+		
+		<div style="flex: 1">
 			<button ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</button>
 		</div>
 		

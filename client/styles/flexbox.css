@@ -24,7 +24,6 @@ div.flex-wrap {
 div.inline-flex {
 	display: inline-flex;
 	flex-wrap: nowrap;
-	overflow: hidden;
 }
 
 div.inline-flex-center {
@@ -34,5 +33,6 @@ div.inline-flex-center {
 }
 
 div.inline-flex > b {
+	height: 100%;
 	width: 100%;
 }

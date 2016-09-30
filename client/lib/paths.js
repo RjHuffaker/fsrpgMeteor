@@ -3,6 +3,10 @@ paths = {
 	cardModule: {
 		views: 'client/cardModule/views/'
 	},
+	chronicleModule: {
+		views: 'client/chronicleModule/views/'
+	},
+	
 	diceModule: {
 		views: 'client/diceModule/views/'
 	},

@@ -1,6 +1,6 @@
 angular.module('freedomsworn')
 	.factory('featureBread',
-		function($rootScope, $meteor, $location, $timeout, newFeatureDeck){
+		function($rootScope, $meteor, $location, $timeout){
 			'ngInject';
 			
 			
@@ -16,6 +16,7 @@ angular.module('freedomsworn')
 			
 			service.edit = function(deck){
 				if(deck._id){
+					deck.lastModified = new Date();
 					deck.save();
 				} else if($rootScope.currentUser){
 					deck.owner = $rootScope.currentUser._id;
@@ -29,6 +30,8 @@ angular.module('freedomsworn')
 				
 				var newDeck = {
 					name: name,
+					createdOn: new Date(),
+					lastModified: new Date(),
 					deckSize: size,
 					deckType: type,
 					dependencies: dependencies,

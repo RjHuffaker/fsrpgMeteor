@@ -14,6 +14,7 @@ angular.module('freedomsworn')
 		
 		service.edit = function(deck){
 			if(deck._id){
+				deck.lastModified = new Date();
 				deck.save();
 			} else if($rootScope.currentUser){
 				deck.owner = $rootScope.currentUser._id;
@@ -28,6 +29,8 @@ angular.module('freedomsworn')
 			
 			newDeck._id = Random.id();
 			newDeck.owner = $rootScope.currentUser._id;
+			newDeck.createdOn = new Date();
+			newDeck.lastModified = new Date();
 			
 			newDeck = new pcObject(new deckObject(newDeck));
 			

@@ -13,16 +13,4 @@ angular.module('freedomsworn')
 				scope.dataSrvc = dataSrvc;
 			}
 		};
-	})
-	.directive('fsGridStatisticTitles', function(){
-		'ngInject';
-		
-		return {
-			restrict: 'A',
-			scope: {
-				gridDeck: '=',
-				shownColumns: '='
-			},
-			templateUrl: paths.fsGrid.views+'fs-grid-statistic-titles.ng.html'
-		};
 	});

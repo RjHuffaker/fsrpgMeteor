@@ -102,8 +102,8 @@ angular.module('freedomsworn')
 				};
 				
 				var onMove = function(event){
-					_mouseX = (event.pageX || event.touches[0].pageX);
-					_mouseY = (event.pageY || event.touches[0].pageY);
+					_mouseX = event.pageX || event.touches[0].pageX;
+					_mouseY = event.pageY || event.touches[0].pageY;
 					
 					_moveX = _mouseX - _startX;
 					_moveY = _mouseY - _startY;
@@ -138,7 +138,7 @@ angular.module('freedomsworn')
 				
 				var onRelease = function(){
 					clearTimeout(_pressTimer);
-					_onMove();
+					if(_onMove) _onMove();
 					$document.off(_moveEvents, cancelPress);
 					$document.off(_releaseEvents, cancelPress);
 					_parent = null;

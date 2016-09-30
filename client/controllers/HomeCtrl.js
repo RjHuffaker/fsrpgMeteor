@@ -1,9 +1,5 @@
 angular.module("freedomsworn")
-	.controller("HomeCtrl", function($scope, shownColumns){
+	.controller("HomeCtrl", function($scope){
 			'ngInject';
-			
-			$scope.testArray = [];
-			
-			$scope.shownColumns = shownColumns;
 			
 		});

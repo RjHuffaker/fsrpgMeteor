@@ -3,37 +3,47 @@ angular.module('freedomsworn')
 		
 		function name(){
 			return {
-				content: 'Name',
-				width: 100,
+				id: 'Card Name',
+				columnTitle: 'Name',
+				width: 200,
 				shown: true
 			};
 		};
 		
 		function aspect(){
 			return {
-				content: 'Aspect',
+				id: 'Aspect',
+				columnTitle: 'Aspect',
 				width: 100,
-				shown: false
+				shown: true
 			};
 		};
 		
 		function description(){
 			return {
-				content: 'Description',
-				width: 100,
-				shown: false
+				id: 'Description',
+				columnTitle: 'Description',
+				width: 250,
+				shown: true
 			};
 		};
 		
 		function benefit(){
 			return {
-				content: 'Benefit',
-				width: 100,
+				id: 'Benefit',
+				sectionTitle: 'Benefit',
 				shown: false,
 				nodes: {
+					benefit: {
+						id: 'Benefit',
+						columnTitle: 'Benefit',
+						width: 200,
+						shown: true
+					},
 					criticalSuccess: {
-						content: 'Critical Success',
-						width: 100,
+						id: 'Benefit Critical Success',
+						columnTitle: 'Critical Success',
+						width: 200,
 						shown: false
 					}
 				}
@@ -42,18 +52,21 @@ angular.module('freedomsworn')
 		
 		function statistic(){
 			return {
-				content: 'Core Statistics',
-				shown: false,
+				id: 'Core Statistics',
+				sectionTitle: 'Core Statistics',
+				shown: true,
 				nodes: {
 					baseDurability: {
-						content: 'Base Durability',
-						width: 100,
-						shown: false
+						id: 'Base Durability',
+						columnTitle: 'Base Durability',
+						width: 96,
+						shown: true
 					},
 					baseMoveSpeed: {
-						content: 'Base Move Speed',
-						width: 100,
-						shown: false
+						id: 'Base Move Speed',
+						columnTitle: 'Base Move Speed',
+						width: 96,
+						shown: true
 					}
 				}
 			};
@@ -61,38 +74,45 @@ angular.module('freedomsworn')
 		
 		function modifier(){
 			return {
-				content: 'Modifiers',
+				id: 'Modifiers',
+				sectionTitle: 'Modifiers',
 				shown: false,
 				nodes: {
 					damageModifier: {
-						content: 'Damage',
-						width: 100,
-						shown: false
+						id: 'Damage Modifier',
+						columnTitle: 'Damage',
+						width: 96,
+						shown: true
 					},
 					durabilityModifier: {
-						content: 'Durability',
-						width: 100,
-						shown: false
+						id: 'Durability Modifier',
+						columnTitle: 'Durability',
+						width: 96,
+						shown: true
 					},
 					defenseModifier: {
-						content: 'Defense',
-						width: 100,
-						shown: false
+						id: 'Defense Modifier',
+						columnTitle: 'Defense',
+						width: 96,
+						shown: true
 					},
 					moveSpeedModifier: {
-						content: 'Move Speed',
-						width: 100,
-						shown: false
+						id: 'Move Speed Modifier',
+						columnTitle: 'Move Speed',
+						width: 96,
+						shown: true
 					},
 					finesseModifier: {
-						content: 'Finesse',
-						width: 100,
-						shown: false
+						id: 'Finesse Modifier',
+						columnTitle: 'Finesse',
+						width: 96,
+						shown: true
 					},
 					carryingCapacityModifier: {
-						content: 'Carrying Capacity',
-						width: 100,
-						shown: false
+						id: 'Carrying Capacity Modifier',
+						columnTitle: 'Carrying Capacity',
+						width: 96,
+						shown: true
 					}
 				}
 			};
@@ -100,28 +120,33 @@ angular.module('freedomsworn')
 		
 		function item(){
 			return {
-				content: 'Item Properties',
+				id: 'Item Properties',
+				sectionTitle: 'Item Properties',
 				shown: false,
 				nodes: {
 					slot: {
-						content: 'Slot',
-						width: 100,
-						shown: false
+						id: 'Item Slot',
+						columnTitle: 'Slot',
+						width: 120,
+						shown: true
 					},
 					type: {
-						content: 'Type',
-						width: 100,
-						shown: false
+						id: 'Item Type',
+						columnTitle: 'Type',
+						width: 120,
+						shown: true
 					},
 					weight: {
-						content: 'Weight',
-						width: 100,
-						shown: false
+						id: 'Item Weight',
+						columnTitle: 'Weight',
+						width: 81,
+						shown: true
 					},
 					cost: {
-						content: 'Cost',
-						width: 100,
-						shown: false
+						id: 'Item Cost',
+						columnTitle: 'Cost',
+						width: 81,
+						shown: true
 					}
 				}
 			};
@@ -129,26 +154,31 @@ angular.module('freedomsworn')
 		
 		function defense(){
 			return {
-				content: 'Defenses',
+				id: 'Defenses',
+				sectionTitle: 'Defenses',
 				shown: false,
 				nodes: {
 					block: {
-						content: 'Block',
+						id: 'Block',
+						columnTitle: 'Block',
 						width: 100,
-						shown: false
+						shown: true
 					},
 					dodge: {
-						content: 'Dodge',
+						id: 'Dodge',
+						columnTitle: 'Dodge',
 						width: 100,
 						shown: false
 					},
 					alertness: {
-						content: 'Alertness',
+						id: 'Alertness',
+						columnTitle: 'Alertness',
 						width: 100,
 						shown: false
 					},
 					tenacity: {
-						content: 'Tenacity',
+						id: 'Tenacity',
+						columnTitle: 'Tenacity',
 						width: 100,
 						shown: false
 					}
@@ -158,130 +188,152 @@ angular.module('freedomsworn')
 		
 		function action(num){
 			return {
-				content: 'Action '+num,
+				id: 'Action '+num,
+				sectionTitle: 'Action '+num,
 				shown: false,
 				nodes: {
 					name: {
-						content: 'Name',
-						width: 200,
-						shown: false
+						id: 'Name '+num,
+						columnTitle: 'Name',
+						width: 150,
+						shown: true
 					},
 					target: {
-						content: 'Target',
-						width: 200,
+						id: 'Target '+num,
+						columnTitle: 'Target',
+						width: 81,
 						shown: false
 					},
 					usage: {
-						content: 'Usage',
-						width: 200,
+						id: 'Usage '+num,
+						columnTitle: 'Usage',
+						width: 81,
 						shown: false
 					},
 					frequency: {
-						content: 'Frequency',
-						width: 200,
+						id: 'Frequency '+num,
+						columnTitle: 'Frequency',
+						width: 81,
 						shown: false
 					},
 					count: {
-						content: 'Count',
-						width: 200,
+						id: 'Count '+num,
+						columnTitle: 'Count',
+						width: 81,
 						shown: true
 					},
 					effect: {
-						content: 'Effect',
-						width: 200,
+						id: 'Effect '+num,
+						sectionTitle: 'Effect',
 						shown: false,
 						nodes: {
 							moveEffect: {
-								content: 'Move Effect',
-								width: 100,
-								shown: false
+								id: 'Move Effect '+num,
+								columnTitle: 'Move Effect',
+								width: 81,
+								shown: true
 							},
 							customEffect: {
-								content: 'Custom Effect',
-								width: 100,
-								shown: false
+								id: 'Custom Effect '+num,
+								columnTitle: 'Custom Effect',
+								width: 81,
+								shown: true
 							},
 							listItem1: {
-								content: 'List Item 1',
-								width: 100,
-								shown: false
+								id: 'List Item 1 '+num,
+								columnTitle: 'List Item 1',
+								width: 81,
+								shown: true
 							},
 							listItem2: {
-								content: 'List Item 2',
-								width: 100,
-								shown: false
+								id: 'List Item 2 '+num,
+								columnTitle: 'List Item 2',
+								width: 81,
+								shown: true
 							},
 							listItem3: {
-								content: 'List Item 3',
-								width: 100,
-								shown: false
+								id: 'List Item 3 '+num,
+								columnTitle: 'List Item 3',
+								width: 81,
+								shown: true
 							}
 						}
 					},
 					attackType: {
-						content: 'Attack Type',
+						id: 'Attack Type '+num,
+						columnTitle: 'Attack Type',
 						width: 100,
 						shown: false
 					},
 					attackRoll: {
-						content: 'Attack Roll',
+						id: 'Attack Roll '+num,
+						columnTitle: 'Attack Roll',
 						width: 100,
 						shown: false
 					},
 					attackSuccess: {
-						content: 'Attack Success',
-						width: 100,
-						shown: true,
+						id: 'Attack Success '+num,
+						sectionTitle: 'Attack Success',
+						shown: false,
 						nodes: {
 							damage: {
-								content: 'Damage',
-								width: 100,
+								id: 'Damage '+num,
+								columnTitle: 'Damage',
+								width: 81,
 								shown: true
 							},
 							enableMove: {
-								content: 'Enable Move',
-								width: 100,
-								shown: false
+								id: 'Enable Move '+num,
+								columnTitle: 'Enable Move',
+								width: 81,
+								shown: true
 							},
 							forceMove: {
-								content: 'Force Move',
-								width: 100,
-								shown: false
+								id: 'Force Move '+num,
+								columnTitle: 'Force Move',
+								width: 81,
+								shown: true
 							},
 							enableAction: {
-								content: 'Enable Action',
-								width: 100,
-								shown: false
+								id: 'Enable Action '+num,
+								columnTitle: 'Enable Action',
+								width: 81,
+								shown: true
 							},
 							negateInjury: {
-								content: 'Negate Injury',
-								width: 100,
-								shown: false
+								id: 'Negate Injury '+num,
+								columnTitle: 'Negate Injury',
+								width: 81,
+								shown: true
 							},
 							forceAction: {
-								content: 'Force Action',
-								width: 100,
+								id: 'Force Action '+num,
+								columnTitle: 'Force Action',
+								width: 81,
 								shown: true
 							},
 							attackCurse: {
-								content: 'Attack Curse',
-								width: 100,
+								id: 'Attack Curse '+num,
+								columnTitle: 'Attack Curse',
+								width: 81,
 								shown: true
 							},
 							expelCurse: {
-								content: 'Expel Curse',
-								width: 100,
+								id: 'Expel Curse '+num,
+								columnTitle: 'Expel Curse',
+								width: 81,
 								shown: true
 							},
 							trapCurse: {
-								content: 'Trap Curse',
-								width: 100,
+								id: 'Trap Curse '+num,
+								columnTitle: 'Trap Curse',
+								width: 81,
 								shown: true
 							}
 						}
 					},
 					attackCriticalSuccess: {
-						content: 'Attack Critical Success',
+						columnTitle: 'Attack Critical Success',
 						width: 100,
 						shown: false
 					}
@@ -290,70 +342,96 @@ angular.module('freedomsworn')
 			};
 		};
 		
-		
 		var service = {
 			
 			class: {
-				name: name(),
-				description: description(),
-				benefit: benefit(),
-				modifier: modifier(),
-				action1: action(1)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					modifier: modifier(),
+					action1: action(1)
+				}
 			},
 			
-			
 			race: {
-				name: name(),
-				description: description(),
-				benefit: benefit(),
-				statistic: statistic(),
-				modifier: modifier(),
-				action1: action(1)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					statistic: statistic(),
+					modifier: modifier(),
+					action1: action(1)
+				}
 			},
 			
 			faction: {
-				name: name(),
-				description: description(),
-				benefit: benefit(),
-				action1: action(1)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					action1: action(1)
+				}
 			},
 			
 			trait: {
-				name: name(),
-				aspect: aspect(),
-				description: description(),
-				benefit: benefit(),
-				modifier: modifier(),
-				defense: defense(),
-				action1: action(1)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					aspect: aspect(),
+					description: description(),
+					benefit: benefit(),
+					modifier: modifier(),
+					defense: defense(),
+					action1: action(1)
+				}
 			},
 			
 			feat: {
-				name: name(),
-				aspect: aspect(),
-				description: description(),
-				action1: action(1)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					aspect: aspect(),
+					description: description(),
+					action1: action(1)
+				}
 			},
 			
 			augment: {
-				name: name(),
-				aspect: aspect(),
-				description: description(),
-				benefit: benefit(),
-				modifier: modifier(),
-				defense: defense(),
-				action1: action(1)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					aspect: aspect(),
+					description: description(),
+					benefit: benefit(),
+					modifier: modifier(),
+					defense: defense(),
+					action1: action(1)
+				}
 			},
 			
 			item: {
-				name: name(),
-				description: description(),
-				item: item(),
-				benefit: benefit(),
-				modifier: modifier(),
-				defense: defense(),
-				action1: action(1),
-				action2: action(2)
+				sectionTitle: 'Card Details',
+				shown: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					item: item(),
+					benefit: benefit(),
+					modifier: modifier(),
+					defense: defense(),
+					action1: action(1),
+					action2: action(2)
+				}
 			}
 			
 		};

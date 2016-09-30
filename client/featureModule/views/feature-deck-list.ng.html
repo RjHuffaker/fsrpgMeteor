@@ -12,26 +12,42 @@
 							<div class="innerCell" style="">
 								Deck Type
 							</div>
+							<div class="innerCell" style="">
+								Options
+							</div>
+							<div class="innerCell" style="">
+								Last Modified
+							</div>
+							<div class="innerCell" style="">
+								Created On
+							</div>
 						</div>
 						<div class="innerRow row" ng-click="vm.selectRow(deck)"
 							ng-class="{selected: (deck === vm.currentRow)}"
-							ng-repeat="deck in vm.deckList track by $index">
+							ng-repeat="deck in vm.deckList | orderBy: 'createdOn'">
 							<div class="innerCell">{{deck.name}}</div>
 							<div class="innerCell">{{deck.deckType}}</div>
+							
 							<div class="innerCell">
+								&nbsp; &nbsp;
 								<a href="/featureDeckView/{{deck._id}}">
 									View
 								</a>
-							</div>
-							<div class="innerCell">
+								&nbsp; &nbsp;
 								<a href="/featureDeckEdit/{{deck._id}}">
 									Edit
 								</a>
-							</div>
-							<div class="innerCell">
+								&nbsp; &nbsp;
 								<a href="#" data-ng-click="vm.deleteDeck(deck);">
 									Delete
 								</a>
+								&nbsp; &nbsp;
+							</div>
+							<div class="innerCell" style="">
+								{{deck.lastModified | date:'short'}}
+							</div>
+							<div class="innerCell" style="">
+								{{deck.createdOn | date:'short'}}
 							</div>
 						</div>
 					</div>

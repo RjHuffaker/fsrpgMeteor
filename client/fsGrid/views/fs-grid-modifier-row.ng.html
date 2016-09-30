@@ -6,7 +6,7 @@
 		numvaluemax="4"
 		numdefault="0"
 		numdelay="500"></div>
-	<div resize-handle="Width" id="Damage"
+	<div resize-handle="Width" id="Damage Modifier"
 		resize-width="shownColumns.damageModifier.width"></div>
 </div>
 
@@ -60,7 +60,7 @@
 		resize-width="shownColumns.finesseModifier.width"></div>
 </div>
 
-<div class="inline-flex" style="width: 10em"
+<div class="inline-flex" ng-style="{'width': shownColumns.carryingCapacityModifier.width}"
 	ng-if="shownColumns.carryingCapacityModifier.shown">
 	<div fs-numpicker
 		numvalue="gridModifier.carryingCapacityModifier"

@@ -19,7 +19,6 @@
 
 [faux-handle~=Width],
 [resize-handle~=Width] {
-	height: 100%;
 	width: 6px;
 	cursor: ew-resize;
 }
@@ -27,7 +26,6 @@
 [faux-handle~=Height],
 [resize-handle~=Height] {
 	height: 6px;
-	width: 100%;
 	cursor: ns-resize;
 }
 
@@ -80,8 +78,8 @@
 	width: 100%;
 	min-width: 4em !important;
 	height: 100%;
-	min-height: 1.4em !important;
-	padding: 0 !important;
+	min-height: 1em !important;
+	padding: 0.2em !important;
 	border: 0 !important;
 	margin: 0 !important;
 	resize: none;
@@ -93,8 +91,12 @@
 	width: 100%;
 	min-width: 4em !important;
 	height: 100%;
-	min-height: 1.4em !important;
-	padding: 0 !important;
+	min-height: 1em !important;
+	padding: 0.2em !important;
 	border: 0 !important;
 	margin: 0 !important;
+}
+
+[fs-grid] .hide-link {
+	cursor: pointer;
 }

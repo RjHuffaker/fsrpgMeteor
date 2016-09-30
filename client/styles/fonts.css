@@ -45,6 +45,10 @@ a.text-argos {
   text-transform: lowercase;
 }
 
+.text-success {
+	color: green;
+}
+
 .text-error {
 	color: red;
 }

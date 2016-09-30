@@ -35,6 +35,15 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
         templateUrl: paths.featureModule.views+'feature-deck-new.ng.html'
       })
       
+      .state('chronicleList', {
+        url: '/chronicles',
+        templateUrl: paths.chronicleModule.views+'chronicle-list.ng.html'
+      })
+      .state('chronicleDetails', {
+        url: '/chronicles/:chronicleId',
+        templateUrl: paths.chronicleModule.views+'chronicle-details.ng.html'
+      })
+      
       .state('npcDeck', {
         url: '/npcDeck',
         templateUrl: paths.npcModule.views+'npc-deck.ng.html',

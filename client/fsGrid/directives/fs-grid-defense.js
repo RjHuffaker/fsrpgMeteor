@@ -9,20 +9,8 @@ angular.module('freedomsworn')
 				shownColumns: '='
 			},
 			templateUrl: paths.fsGrid.views+'fs-grid-defense-row.ng.html',
-			link: function(scope, element, attrs) {
+			link: function(scope, element, attrs){
 				scope.dataSrvc = dataSrvc;
 			}
-		};
-	})
-	.directive('fsGridDefenseTitles', function(){
-		'ngInject';
-		
-		return {
-			restrict: 'A',
-			scope: {
-				gridDeck: '=',
-				shownColumns: '='
-			},
-			templateUrl: paths.fsGrid.views+'fs-grid-defense-titles.ng.html'
 		};
 	});
