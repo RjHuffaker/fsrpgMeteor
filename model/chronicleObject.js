@@ -4,11 +4,10 @@ chronicleObject = function (doc) {
 
 _.extend(chronicleObject.prototype, {
 	
-	pause: true,
-	
 	takeAction: function(player, action){
 		console.log(player, action);
 		if(player.count >= action.count && !this.paused()){
+			action.timestamp = new Date().getTime();
 			player.actions.push(action);
 			if(this.pauseOnAction){
 				this.timeline[this.timeline.length-1].stopTime = action.timestamp;
@@ -19,11 +18,13 @@ _.extend(chronicleObject.prototype, {
 	setPlayerCount: function(){
 		for(var i = 0; i < this.players.length; i++){
 			var player = this.players[i];
-			var lastAction = player.actions[player.actions.length - 1]
+			var lastAction = player.actions[player.actions.length - 1];
+			var timestamp = new Date().getTime();
+			
 			if(lastAction){
-				player.count = this.getTimeElapsed(lastAction.timestamp, this.timer);
+				player.count = this.getTimeElapsed(lastAction.timestamp, timestamp);
 			} else {
-				player.count = this.getTimeElapsed(0, this.timer);
+				player.count = this.getTimeElapsed(this.startTime, timestamp);
 			}
 			
 		}
@@ -59,7 +60,7 @@ _.extend(chronicleObject.prototype, {
 				_stopTime = incrementStop;
 			}
 			
-			return _stopTime - _startTime;
+			return Math.round(increment.timerSpeed/100 * (_stopTime - _startTime));
 		}
 	},
 	
@@ -67,13 +68,12 @@ _.extend(chronicleObject.prototype, {
 		if(this.timeline.length === 0){
 			return true;
 		} else {
-			return this.timeline[this.timeline.length-1].stopTime;
+			if(this.timeline[this.timeline.length-1].stopTime){
+				return true;
+			} else {
+				return false;
+			}
 		}
-	},
-	
-	clock: function(){
-		return Math.round((new Date() - this.startTime)/this.clockSpeed);
 	}
-	
 	
 });

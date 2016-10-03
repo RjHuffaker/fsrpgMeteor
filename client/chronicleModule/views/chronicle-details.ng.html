@@ -4,27 +4,26 @@
 	
 	<hr>
 	<div>
-		<button ng-click="vm.togglePause(vm.chronicle, vm.clock)">
+		<button ng-click="vm.togglePause(vm.chronicle, vm.timer)">
 			<span ng-show="vm.chronicle.paused()">Start</span>
 			<span ng-hide="vm.chronicle.paused()">Stop</span>
 		</button>
 		
 		<button ng-click="vm.resetTimer(vm.chronicle)">Reset</button>
 		
-		<input type="number" ng-model="vm.chronicle.clockSpeed">
+		<input type="number" ng-show="vm.chronicle.paused()"
+			ng-model="vm.chronicle.timerSpeed">
 		
 		Pause on Action: <input type="checkbox" ng-model="vm.chronicle.pauseOnAction">
+		
+		{{vm.chronicle.paused()}}
 		
 	</div>
 	
 	<div>
 		<hr>
 		
-		Scope Timer: {{vm.timer}}
-		
-		<hr>
-		
-		Chronicle Timer: {{vm.chronicle.timer}}
+		Time Elapsed: {{vm.timer}}
 		
 		<hr>
 		
@@ -40,15 +39,15 @@
 		
 		<div>
 			<button ng-class="{'text-error': player.count < 1000, 'text-success': player.count > 1000}"
-				ng-click="vm.chronicle.takeAction(player, {count: 1000, timestamp: vm.clock})"><b>1</b></button>
+				ng-click="vm.chronicle.takeAction(player, {count: 1000, timestamp: vm.timer})"><b>1</b></button>
 			<button ng-class="{'text-error': player.count < 2000, 'text-success': player.count > 2000}"
-				ng-click="vm.chronicle.takeAction(player, {count: 2000, timestamp: vm.clock})"><b>2</b></button>
+				ng-click="vm.chronicle.takeAction(player, {count: 2000, timestamp: vm.timer})"><b>2</b></button>
 			<button ng-class="{'text-error': player.count < 3000, 'text-success': player.count > 3000}"
-				ng-click="vm.chronicle.takeAction(player, {count: 3000, timestamp: vm.clock})"><b>3</b></button>
+				ng-click="vm.chronicle.takeAction(player, {count: 3000, timestamp: vm.timer})"><b>3</b></button>
 			<button ng-class="{'text-error': player.count < 4000, 'text-success': player.count > 4000}"
-				ng-click="vm.chronicle.takeAction(player, {count: 4000, timestamp: vm.clock})"><b>4</b></button>
+				ng-click="vm.chronicle.takeAction(player, {count: 4000, timestamp: vm.timer})"><b>4</b></button>
 			<button ng-class="{'text-error': player.count < 5000, 'text-success': player.count > 5000}"
-				ng-click="vm.chronicle.takeAction(player, {count: 5000, timestamp: vm.clock})"><b>5</b></button>
+				ng-click="vm.chronicle.takeAction(player, {count: 5000, timestamp: vm.timer})"><b>5</b></button>
 		</div>
 		
 		<div>

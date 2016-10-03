@@ -27,8 +27,7 @@ angular.module('freedomsworn')
 		service.add = function(){
 			var newChronicle = {
 				name: 'A New Chronicle',
-				timer: 0,
-				clockSpeed: 100,
+				timerSpeed: 25,
 				startTime: new Date().getTime(),
 				pauseOnAction: true,
 				timeline: [],

@@ -1,6 +1,6 @@
 angular.module("freedomsworn")
 	.controller("ChronicleDetailsCtrl", 
-		function($rootScope, $scope, $reactive, $stateParams, $location, $interval, chronicleBread){
+		function($rootScope, $scope, $reactive, $stateParams, $location, chronicleBread){
 			'ngInject';
 			
 			$reactive(this).attach($scope);
@@ -15,25 +15,29 @@ angular.module("freedomsworn")
 				}
 			});
 			
-			this.togglePause = function(chronicle, timeStamp){
-				console.log(chronicle);
-				if(chronicle.timeline.length === 0){
-					console.log('start clock', $scope.vm.clock);
-					chronicle.timeline.push({ startTime: timeStamp });
-				} else if(chronicle.paused()){
-					console.log('unpause');
-					chronicle.timeline.push({ startTime: timeStamp });
+			this.timer = 100;
+			
+			var timerInterval;
+			
+			this.togglePause = function(chronicle){
+				
+				var timestamp = new Date().getTime();
+				
+				if(chronicle.paused()){
+					chronicle.timeline.push({ startTime: timestamp, timerSpeed: chronicle.timerSpeed });
 				} else {
-					console.log('pause');
-					chronicle.timeline[chronicle.timeline.length-1].stopTime = timeStamp;
+					chronicle.timeline[chronicle.timeline.length-1].stopTime = timestamp;
 				}
+				
 			};
 			
 			this.resetTimer = function(chronicle){
 				console.log('resetTimer');
 				chronicle.timeline.length = 0;
 				
-				$scope.vm.timer = $scope.vm.chronicle.timer ? $scope.vm.chronicle.timer : 0;
+				chronicle.startTime = new Date().getTime();
+				
+				this.timer = this.chronicle.timer ? this.chronicle.timer : 0;
 				
 				for(var i = 0; i < chronicle.players.length; i++){
 					var player = chronicle.players[i];
@@ -42,37 +46,36 @@ angular.module("freedomsworn")
 				}
 			};
 			
-			var timer;
-			
 			var getAverage = function(num1, num2){
 				return Math.round((num1+num2)/2);
 			};
 			
 			var setTimer = function(){
-				if(timer) $interval.cancel(timer);
+				
+				timerInterval = Meteor.setInterval(function(){
+					
+					$scope.vm.timer = $scope.vm.chronicle.getTimeElapsed($scope.vm.chronicle.startTime, new Date().getTime());
+					
+					
+					
+					$scope.vm.chronicle.setPlayerCount();
+					
+					$scope.$apply();
+					
+				}, 25);
 				
 				if($scope.vm.chronicle){
-					$scope.vm.timer = $scope.vm.chronicle.timer;
-					
-					
+					$scope.vm.chronicle.startTime = new Date().getTime();
 				}
 				
-				timer = $interval(function(){
-					if($scope.vm.chronicle){
-						
-						$scope.vm.timer += $scope.vm.chronicle.clockSpeed;
-						
-						$scope.vm.chronicle.timer = getAverage($scope.vm.chronicle.timer, $scope.vm.timer);
-						
-						$scope.vm.chronicle.setPlayerCount();
-					}
-				}, 100);
 			};
 			
-			setTimer();
+			if($scope.vm.chronicle){
+				setTimer();
+			}
 			
 			$scope.$on('$destroy', function(){
-				$interval.cancel(timer);
+				Meteor.clearInterval(timerInterval);
 			});
 			
 		});
