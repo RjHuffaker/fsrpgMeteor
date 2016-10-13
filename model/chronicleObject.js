@@ -10,6 +10,8 @@ _.extend(chronicleObject.prototype, {
 			action.timestamp = new Date().getTime();
 			player.actions.push(action);
 			if(this.pauseOnAction){
+				console.log('pauseOnAction');
+				this.pause = true;
 				this.timeline[this.timeline.length-1].stopTime = action.timestamp;
 			}
 		}
@@ -31,12 +33,13 @@ _.extend(chronicleObject.prototype, {
 	},
 	
 	getTimeElapsed: function(startTime, stopTime){
-		var timePassed = 0;
+		var timeElapsed = 0;
+		var stopTime = stopTime ? stopTime : new Date().getTime();
 		for(var i = 0; i < this.timeline.length; i++){
 			var increment = this.getIncrement(this.timeline[i], startTime, stopTime);
-			timePassed += increment;
+			timeElapsed += increment;
 		}
-		return timePassed;
+		return timeElapsed;
 	},
 	
 	getIncrement: function(increment, startTime, stopTime){
@@ -60,7 +63,7 @@ _.extend(chronicleObject.prototype, {
 				_stopTime = incrementStop;
 			}
 			
-			return Math.round(increment.timerSpeed/100 * (_stopTime - _startTime));
+			return Math.round(increment.timerSpeed * Math.round(_stopTime - _startTime) / 100);
 		}
 	},
 	

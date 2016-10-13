@@ -16,18 +16,23 @@
 		
 		Pause on Action: <input type="checkbox" ng-model="vm.chronicle.pauseOnAction">
 		
-		{{vm.chronicle.paused()}}
+		<br>
+		<br>
+		
+		{{vm.pause}}
 		
 	</div>
 	
 	<div>
 		<hr>
 		
-		Time Elapsed: {{vm.timer}}
+		Chronicle.timer: {{vm.chronicle.timer}}
+		<br>
+		Clock: {{vm.clock}}
 		
 		<hr>
 		
-		<span ng-repeat="increment in vm.chronicle.timeline">| {{increment.startTime}} - {{increment.stopTime}} |</span>
+		<span ng-repeat="increment in vm.chronicle.timeline track by $index"> | {{increment.startTime}} - {{increment.stopTime}} | </span>
 		
 	</div>
 		
@@ -53,7 +58,7 @@
 		<div>
 			Actions Taken:
 			<div class="flex-wrap">
-				<div style="border: 1px dotted blue" ng-repeat="action in player.actions">
+				<div style="border: 1px dotted blue" ng-repeat="action in player.actions track by $index">
 					Count: {{action.count}} <br> Time: {{action.timestamp}}
 				</div>
 			</div>

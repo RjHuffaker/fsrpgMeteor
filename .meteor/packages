@@ -22,3 +22,5 @@ ejson@1.0.12
 check@1.2.3
 random@1.0.10
 shell-server@0.2.1
+remcoder:chronos
+momentjs:moment

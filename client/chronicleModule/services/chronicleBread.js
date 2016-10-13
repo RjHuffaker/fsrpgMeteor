@@ -31,6 +31,7 @@ angular.module('freedomsworn')
 				startTime: new Date().getTime(),
 				pauseOnAction: true,
 				timeline: [],
+				pause: true,
 				players: [
 					{count: 0, timer: undefined, actions: []},
 					{count: 0, timer: undefined, actions: []},

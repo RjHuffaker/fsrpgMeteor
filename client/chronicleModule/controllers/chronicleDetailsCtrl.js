@@ -5,29 +5,90 @@ angular.module("freedomsworn")
 			
 			$reactive(this).attach($scope);
 			
-			this.subscribe('chronicles');
-			
 			this.chronicleId = $stateParams.chronicleId;
 			
-			this.helpers({
-				chronicle(){
-					return chronicleBread.read($stateParams.chronicleId);
+			this.subscribe('chronicles', 
+				() => [this.chronicleId],
+				{
+					onStart: function(){
+						console.log('onStart');
+					},
+					onReady: function(){
+						console.log('onReady');
+					},
+					onStop: function(){
+						console.log('onStop');
+					}
+				}
+			);
+			
+			this.autorun(() => {
+				
+				this.getReactively('clock');
+				
+				if(this.chronicle){
+					
+					if(this.chronicle.timeline.length){
+						stopTime = this.chronicle.timeline[this.chronicle.timeline.length-1].stopTime
+					} else {
+						stopTime = 0;
+					}
+					
+					this.chronicle.timer = this.chronicle.getTimeElapsed(this.chronicle.startTime, stopTime);
+					
+					this.chronicle.setPlayerCount();
+				}
+				
+				
+			});
+			
+			this.autorun(() => {
+				
+				this.getReactively('chronicle.timeline', true);
+				
+				if(this.chronicle){
+					
+					Chronicles.update({
+						_id: this.chronicle._id
+					}, { $set: 
+						{
+							name: this.chronicle.name,
+							timerSpeed: this.chronicle.timerSpeed,
+							timer: this.chronicle.timer,
+							pause: this.chronicle.pause,
+							timeline: this.chronicle.timeline,
+							players: this.chronicle.players
+						}
+					});
 				}
 			});
 			
-			this.timer = 100;
+			this.helpers({
+				chronicle(){
+					return Chronicles.findOne({_id: $stateParams.chronicleId});
+				},
+				clock(){
+					return Chronos.now(100);
+				}
+			});
 			
-			var timerInterval;
-			
-			this.togglePause = function(chronicle){
+			this.togglePause = function(){
 				
-				var timestamp = new Date().getTime();
+				var timestamp = this.clock;
 				
-				if(chronicle.paused()){
+				var chronicle = this.getReactively('chronicle');
+				
+				console.log(chronicle);
+				
+				if(chronicle.pause){
+					chronicle.pause = false;
 					chronicle.timeline.push({ startTime: timestamp, timerSpeed: chronicle.timerSpeed });
+					
 				} else {
+					chronicle.pause = true;
 					chronicle.timeline[chronicle.timeline.length-1].stopTime = timestamp;
 				}
+				
 				
 			};
 			
@@ -45,37 +106,5 @@ angular.module("freedomsworn")
 					player.count = 0;
 				}
 			};
-			
-			var getAverage = function(num1, num2){
-				return Math.round((num1+num2)/2);
-			};
-			
-			var setTimer = function(){
-				
-				timerInterval = Meteor.setInterval(function(){
-					
-					$scope.vm.timer = $scope.vm.chronicle.getTimeElapsed($scope.vm.chronicle.startTime, new Date().getTime());
-					
-					
-					
-					$scope.vm.chronicle.setPlayerCount();
-					
-					$scope.$apply();
-					
-				}, 25);
-				
-				if($scope.vm.chronicle){
-					$scope.vm.chronicle.startTime = new Date().getTime();
-				}
-				
-			};
-			
-			if($scope.vm.chronicle){
-				setTimer();
-			}
-			
-			$scope.$on('$destroy', function(){
-				Meteor.clearInterval(timerInterval);
-			});
 			
 		});
