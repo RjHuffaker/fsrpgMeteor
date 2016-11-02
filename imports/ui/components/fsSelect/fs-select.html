@@ -1,0 +1,76 @@
+<fs-dropdown dropdown-id="selectId" class="open-down {{vm.selectType}}"
+	ng-class="{'keep-open': (vm.selectType === 'boolean' || vm.selectType === 'id' || vm.selectType === 'nested')}">
+	<div class="fs-dropdown-toggle">
+		
+		<span ng-if="!vm.selectType">
+			<span ng-if="!vm.selection">
+				{{vm.toggleHeader}}
+			</span>
+			<span ng-show="vm.selection.name">
+				{{vm.selection.name}}
+			</span>
+			<span ng-show="!vm.selection.name">
+				{{vm.selection}}
+			</span>
+			<span ng-if="!vm.toggleHeader && !vm.selection">
+				Select
+			</span>
+		</span>
+		
+		<span ng-if="vm.selectType === 'id'">
+			{{vm.toggleHeader}}
+			<span ng-if="!vm.toggleHeader">
+				Select
+			</span>
+		</span>
+		
+		<span ng-if="vm.selectType === 'boolean'">
+			(+)
+		</span>
+		
+		<span ng-if="vm.selectType === 'nested'">
+			{{vm.toggleHeader}}
+			<span ng-if="!vm.toggleHeader">
+				(+)
+			</span>
+		</span>
+		
+	</div>
+	<div class="fs-dropdown-panel">
+		<div>
+			
+			<ul ng-if="vm.selectType === 'id' || !vm.selectType"
+				ng-repeat="optionList in vm.options track by $index" class="text-9">
+				<li ng-show="vm.optionHeaders.length" class="header" stop-event>
+					{{vm.optionHeaders[$index]}}
+				</li>
+				<li ng-click="vm.selectOption('')">&nbsp;</li>
+				<li ng-repeat="option in optionList track by $index"
+					ng-class="{current: showSelected(option)}"
+					ng-click="vm.selectOption(option)"
+					stop-event="">
+					<span ng-show="option.name">
+						{{option.name}}
+					</span>
+					<span ng-show="!option.name">
+						{{option}}
+					</span>
+				</li>
+			</ul>
+			
+			<ul ng-if="vm.selectType === 'boolean'" class="text-9">
+				<li ng-repeat="(key, value) in vm.options"
+					ng-class="{current: value}"
+					ng-click="vm.selectOption(key)"
+					stop-event="">
+					<span>
+						{{key}}
+					</span>
+				</li>
+			</ul>
+			
+			<recursive-list ng-if="vm.selectType === 'nested'" options="vm.options"></recursive-list>
+			
+		</div>
+	</div>
+</fs-dropdown>

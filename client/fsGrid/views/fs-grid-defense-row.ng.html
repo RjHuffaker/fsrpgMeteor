@@ -1,20 +1,20 @@
 <div class="inline-flex" ng-style="{'width': shownColumns.block.width}"
 	ng-if="shownColumns.block.shown">
-	<div fs-select
+	<fs-select
 		selection="gridDefense.block.dice_a"
-		options="[dataSrvc.abilities]"></div>
+		options="[dataSrvc.abilities]"></fs-select>
 	
-	<div fs-select ng-if="!gridDefense.itemSlot"
+	<fs-select ng-if="!gridDefense.itemSlot"
 		selection="gridDefense.block.dice_b"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.dice, dataSrvc.abilities]"></fs-select>
 	
-	<div fs-select ng-if="dataSrvc.nonDualItemSlots.indexOf(gridDefense.itemSlot) > -1"
+	<fs-select ng-if="dataSrvc.nonDualItemSlots.indexOf(gridDefense.itemSlot) > -1"
 		selection="gridDefense.block.dice_b"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.dice, dataSrvc.abilities]"></fs-select>
 	
-	<div fs-select ng-if="dataSrvc.dualItemSlots.indexOf(gridDefense.itemSlot) > -1"
+	<fs-select ng-if="dataSrvc.dualItemSlots.indexOf(gridDefense.itemSlot) > -1"
 		selection="gridDefense.block.dice_b"
-		options="[dataSrvc.dualDice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.dualDice, dataSrvc.abilities]"></fs-select>
 	
 	<div resize-handle="Width" id="Block"
 		resize-width="shownColumns.block.width"></div>
@@ -22,36 +22,36 @@
 
 <div class="inline-flex" ng-style="{'width': shownColumns.dodge.width}"
 	ng-if="shownColumns.dodge.shown">
-	<div fs-select
+	<fs-select
 		selection="gridDefense.dodge.dice_a"
-		options="[dataSrvc.abilities]"></div>
-	<div fs-select
+		options="[dataSrvc.abilities]"></fs-select>
+	<fs-select
 		selection="gridDefense.dodge.dice_b"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.dice, dataSrvc.abilities]"></fs-select>
 	<div resize-handle="Width" id="Dodge"
 		resize-width="shownColumns.dodge.width"></div>
 </div>
 
 <div class="inline-flex" ng-style="{'width': shownColumns.alertness.width}"
 	ng-if="shownColumns.alertness.shown">
-	<div fs-select
+	<fs-select
 		selection="gridDefense.alertness.dice_a"
-		options="[dataSrvc.abilities]"></div>
-	<div fs-select
+		options="[dataSrvc.abilities]"></fs-select>
+	<fs-select
 		selection="gridDefense.alertness.dice_b"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.dice, dataSrvc.abilities]"></fs-select>
 	<div resize-handle="Width" id="Alertness"
 		resize-width="shownColumns.alertness.width"></div>
 </div>
 
 <div class="inline-flex" ng-style="{'width': shownColumns.tenacity.width}"
 	ng-if="shownColumns.tenacity.shown">
-	<div fs-select
+	<fs-select
 		selection="gridDefense.tenacity.dice_a"
-		options="[dataSrvc.abilities]"></div>
-	<div fs-select
+		options="[dataSrvc.abilities]"></fs-select>
+	<fs-select
 		selection="gridDefense.tenacity.dice_b"
-		options="[dataSrvc.dice, dataSrvc.abilities]"></div>
+		options="[dataSrvc.dice, dataSrvc.abilities]"></fs-select>
 	<div resize-handle="Width" id="Tenacity"
 		resize-width="shownColumns.tenacity.width"></div>
 </div>

@@ -1,0 +1,29 @@
+<div class="content-panel" id="choose-feature-card">
+	<table class="fill-parent" fit-content>
+		<tbody>
+			<tr>
+				<td style="vertical-align: top;">
+					
+					<span class="text-argos text-18"
+						ng-class="{'text-14': vm.card.cardType === 'Augment',
+							'text-16': vm.card.cardType === 'Origin',
+							'text-narrow': vm.card.cardType === 'Augment'}">
+						{{vm.card.cardType}}&nbsp;
+					</span>
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="text-8" colspan="2" style="vertical-align: bottom;">
+					<div>
+						<div fs-modal-toggle stop-event
+							toggle-callback="vm.modalSrvc.fetchCards(vm.card, vm.deck)"
+							toggle-card="vm.card" toggle-deck="vm.deck" modal-deck="vm.modalSrvc.modalDeck">
+							{{vm.card.cardType}} Level {{vm.card.cardLevel}}
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

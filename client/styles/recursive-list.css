@@ -1,0 +1,16 @@
+recursive-list,
+recursive-list div,
+recursive-list ul,
+recursive-list li {
+  padding: 0;
+	margin: 0;
+}
+
+recursive-list,
+recursive-list ul {
+	display: inline-block;
+}
+
+recursive-list recursive-list {
+	padding-left: .5em;
+}

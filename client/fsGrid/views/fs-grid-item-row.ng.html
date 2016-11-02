@@ -1,17 +1,17 @@
 <div class="inline-flex" ng-style="{'width': shownColumns.slot.width}"
 	ng-if="shownColumns.slot.shown">
-	<div fs-select select-header="'Slot'"
+	<fs-select select-header="'Slot'"
 		selection="gridItem.itemSlot"
-		options="[dataSrvc.itemSlots]"></div>
+		options="[dataSrvc.itemSlots]"></fs-select>
 	<div resize-handle="Width" id="Item Slot"
 		resize-width="shownColumns.slot.width"></div>
 </div>
 
 <div class="inline-flex" ng-style="{'width': shownColumns.type.width}"
 	ng-if="shownColumns.type.shown">
-	<div fs-select select-header="'Type'"
+	<fs-select select-header="'Type'"
 		selection="gridItem.itemType"
-		options="[dataSrvc.itemTypes]"></div>
+		options="[dataSrvc.itemTypes]"></fs-select>
 	<div resize-handle="Width" id="Item Type"
 		resize-width="shownColumns.type.width"></div>
 </div>

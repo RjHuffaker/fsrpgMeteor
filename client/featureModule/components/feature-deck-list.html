@@ -1,0 +1,65 @@
+<div class="outerTable">
+	
+	<div class="outerRow">
+		<div class="outerCell" style="height: 80%; padding: 1em">
+			<div style="height: 100%; width: 100%; border: 2px solid black">
+				<div class="scrollDiv">
+					<div class="innerTable">
+						<div class="innerRow">
+							<div class="innerCell" style="">
+								Feature Deck List
+							</div>
+							<div class="innerCell" style="">
+								Deck Type
+							</div>
+							<div class="innerCell" style="">
+								Options
+							</div>
+							<div class="innerCell" style="">
+								Last Modified
+							</div>
+							<div class="innerCell" style="">
+								Created On
+							</div>
+						</div>
+						<div class="innerRow row" ng-click="vm.selectRow(deck)"
+							ng-class="{selected: (deck === vm.currentRow)}"
+							ng-repeat="deck in vm.deckList | orderBy: 'createdOn'">
+							<div class="innerCell">{{deck.name}}</div>
+							<div class="innerCell">{{deck.deckType}}</div>
+							
+							<div class="innerCell">
+								&nbsp; &nbsp;
+								<a href="/featureDeckView/{{deck._id}}">
+									View
+								</a>
+								&nbsp; &nbsp;
+								<a href="/featureDeckEdit/{{deck._id}}">
+									Edit
+								</a>
+								&nbsp; &nbsp;
+								<a href="#" data-ng-click="vm.deleteDeck(deck);">
+									Delete
+								</a>
+								&nbsp; &nbsp;
+							</div>
+							<div class="innerCell" style="">
+								{{deck.lastModified | date:'short'}}
+							</div>
+							<div class="innerCell" style="">
+								{{deck.createdOn | date:'short'}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="outerRow">
+		<div class="outerCell" style="height: 10%; padding: 1em">
+			<a href="/featureDeckNew">
+				New Feature Deck
+			</a>
+		</div>
+	</div>
+</div>

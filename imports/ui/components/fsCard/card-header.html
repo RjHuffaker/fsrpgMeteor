@@ -1,0 +1,60 @@
+<table class="fill-parent">
+	<tbody>
+		<tr>
+			<td style="vertical-align: top;">
+				<span class="text-argos text-18"
+					ng-class="{'text-14': vm.card.cardType === 'Augment',
+						'text-16': vm.card.cardType === 'Origin',
+						'text-narrow': vm.card.cardType === 'Augment'}">
+					{{vm.card.cardType}}&nbsp;
+				</span>
+			</td>
+			
+			<td class="fill-parent">
+				<div class="card-header fill-parent">
+					
+					<span class="text-9">{{vm.card.name}}</span>
+					
+					<hr class="black-line">
+					
+					<div class="text-8" ng-if="vm.card.aspect">
+						{{vm.card.aspect.name}}
+						<span ng-if="!vm.card.aspect.name">
+							[Aspect]
+						</span>
+						<span ng-if="vm.card.cardLevel > -1">
+							Level {{vm.card.cardLevel}}
+						</span>
+					</div>
+					
+					<div class="text-8" ng-if="vm.card.cardType === 'Item'">
+						<span ng-if="vm.dataSrvc.weaponSlots.indexOf(vm.card.itemSlot) > -1">
+							{{vm.card.itemType}}
+						</span>
+						
+						<span ng-if="!vm.dataSrvc.weaponSlots.indexOf(vm.card.itemSlot) > -1">
+							{{vm.card.itemSlot}}
+						</span>
+						
+						<span ng-if="!vm.card.itemType && !vm.card.itemSlot">
+							[Item Type]
+						</span>
+					</div>
+					
+					<div class="text-8" ng-if="['Class','Faction','Race'].indexOf(vm.card.cardType) > -1">
+						{{vm.card.cardType}}
+					</div>
+					
+				</div>
+			</td>
+		</tr>
+		<tr ng-if="vm.card.description">
+			<td colspan="2" class="fill-width">
+				<br>
+				<div class="text-descriptive text-center text-8">
+					{{vm.card.description}}
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

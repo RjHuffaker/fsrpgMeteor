@@ -1,0 +1,14 @@
+<div ng-mouseleave="true" id="fs-deck">
+	<fs-panel ng-repeat="card in vm.deck.cardList track by $index"
+		card="card" deck="vm.deck" class="fs-panel"
+		ng-class="{'dragging': card.dragging}"
+		ng-style="{'z-index': card.z_coord, 'height': card.y_dim+'em', 'width': card.x_dim+'em'}"
+		ng-mousemove="true" ng-click="true">
+	</fs-panel>
+</div>
+<div class="text-8">
+id: {{vm.cardId}} / {{vm.deckId}}, {{vm.cardPressed}}
+<br>
+start: {{vm.startX}} / {{vm.startY}}, col/row: {{vm.startCol}} / {{vm.startRow}}
+<br>
+mouse: {{vm.mouseX}} / {{vm.mouseY}}, move: {{vm.moveX}} / {{vm.moveY}}

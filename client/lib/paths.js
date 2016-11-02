@@ -1,12 +1,9 @@
 paths = {
 	views: 'client/views/',
-	cardModule: {
-		views: 'client/cardModule/views/'
-	},
+	
 	chronicleModule: {
 		views: 'client/chronicleModule/views/'
 	},
-	
 	diceModule: {
 		views: 'client/diceModule/views/'
 	},
@@ -46,11 +43,14 @@ paths = {
 	npcModule: {
 		views: 'client/npcModule/views/'
 	},
+	originModule: {
+		views: 'client/originModule/views/'
+	},
 	pcModule: {
 		views: 'client/pcModule/views/'
 	},
-	originModule: {
-		views: 'client/originModule/views/'
+	profileModule: {
+		views: 'client/profileModule/views/'
 	},
 	diceImage: 'img/dice/'
 };

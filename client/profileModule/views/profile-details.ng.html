@@ -1,0 +1,14 @@
+<div ng-controller="ProfileDetailsCtrl as vm">
+	Profile Details
+	<br>
+	<br>
+	
+	<input type="text" ng-model="vm.user.username">
+	<br>
+	<textarea ng-model="vm.user.profile"></textarea>
+	<br>
+	<button ng-click="vm.saveProfile()">Save</button>
+	<br>
+	<div ng-repeat="user in vm.users">{{user}}</div>
+	
+</div>

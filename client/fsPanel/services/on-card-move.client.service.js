@@ -2,7 +2,7 @@
 angular.module('freedomsworn').factory('onCardMove',
 	function(CoreVars, checkEdge){
 		'ngInject'
-
+		
 		return function(deck, object){
 			
 			if(deck.cardMoving) return;

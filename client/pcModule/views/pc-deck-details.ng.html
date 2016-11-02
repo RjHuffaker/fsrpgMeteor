@@ -1,6 +1,6 @@
 <div ng-controller="PcDeckDetailsCtrl as vm">
 	
-	<div fs-dropdown>
+	<fs-dropdown dropdown-id="PcOptions">
 		<div class="fs-dropdown-toggle">
 			Options
 		</div>
@@ -31,7 +31,7 @@
 				</ul>
 	 		</div>
 		</div>
-	</div>
+	</fs-dropdown>
 	
-	<div fs-deck="vm.pcDeck"></div>
+	<fs-deck deck="vm.pcDeck"></fs-deck>
 </div>

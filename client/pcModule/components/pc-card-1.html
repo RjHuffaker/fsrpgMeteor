@@ -1,0 +1,131 @@
+<div class="content-panel flex-column" style="padding: 5px">
+	
+	<div class="inline-flex-center text-10" style="flex: 2;">
+		<div class="inline-flex" style="flex: 1;">
+			<label for="name" stop-event><b>Name: </b></label>
+		</div>
+		<div class="inline-flex" style="flex: 3;">
+			<input id="name" class="card-input" type="text"
+				ng-model="vm.deck.name" stop-event/>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center text-9" style="flex: 3;">
+		<div class="inline-flex" style="flex: 5;">
+			<label for="race" stop-event><b>Race: </b></label>
+		</div>
+		<div class="inline-flex" style="flex: 6;">
+			<span id="race">{{deck.race.name}}</span>
+		</div>
+		
+		<div class="inline-flex" style="flex: 3;">
+			<label for="sex" stop-event><b>Sex: </b></label>
+		</div>
+		<div class="inline-flex" style="flex: 6;">
+			<fs-select select-id="'sex'" selection="deck.sex" 
+				options="[[' ','Male','Female']]"
+				stop-event></fs-select>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 3;">
+		<div ability="deck.abilities[0]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 8;">
+			<strong>STR</strong>ength
+		</div>
+		<div ability="deck.abilities[1]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 6;">
+			<strong>PHY</strong>sique
+		</div>	
+	</div>
+	
+	<div class="inline-flex" style="flex: 3;">
+		<div class="text-right text-6" style="flex: 1;">
+			<strong>Block Defense:</strong><br>
+			Item + (STR or PHY)
+		</div>
+		<div class="text-center text-9" style="flex: 1;">
+			<small>
+				{{deck.block}}
+			</small>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 3;">
+		<div ability="deck.abilities[2]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 8;">
+			<strong>FLE</strong>xibility
+		</div>
+		<div ability="deck.abilities[3]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 6;">
+			<strong>DEX</strong>terity
+		</div>	
+	</div>
+	
+	<div class="inline-flex" style="flex: 3;">
+		<div class="text-right text-6" style="flex: 1;">
+			<strong>Dodge Defense:</strong><br>
+			2d(FLE or DEX)
+		</div>
+		<div class="text-center text-9" style="flex: 1;">
+			<small>
+				{{deck.dodge}}
+			</small>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 3;">
+		<div ability="deck.abilities[4]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 8;">
+			<strong>ACU</strong>ity
+		</div>
+		<div ability="deck.abilities[5]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 6;">
+			<strong>INT</strong>ellect
+		</div>	
+	</div>
+	
+	<div class="inline-flex" style="flex: 3;">
+		<div class="text-right text-6" style="flex: 1;">
+			<strong>Alertness Defense:</strong><br>
+			2d(ACU or INT)
+		</div>
+		<div class="text-center text-9" style="flex: 1;">
+			<small>
+				{{deck.alertness}}
+			</small>
+		</div>
+	</div>
+	
+	<div class="inline-flex-center" style="flex: 3;">
+		<div ability="deck.abilities[6]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 8;">
+			<strong>WIS</strong>dom
+		</div>
+		<div ability="deck.abilities[7]"
+			deck="deck" style="flex: 3;"></div>
+		<div class="text-9" style="flex: 6;">
+			<strong>CHA</strong>risma
+		</div>	
+	</div>
+	
+	<div class="inline-flex" style="flex: 3;">
+		<div class="text-right text-6" style="flex: 1;">
+			<strong>Tenacity Defense:</strong><br>
+			2d(WIS or CHA)
+		</div>
+		<div class="text-center text-9" style="flex: 1;">
+			<small>
+				{{deck.tenacity}}
+			</small>
+		</div>
+	</div>
+	
+</div>

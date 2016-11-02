@@ -31,3 +31,8 @@
 .Origin .grid-card-icon {
 	background-color: Beige !important;
 }
+
+fs-dropdown .feature-card {
+	width: 15em;
+	height: 21em;
+}

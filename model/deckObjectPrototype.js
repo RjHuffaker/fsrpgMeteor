@@ -289,12 +289,12 @@ _.extend(deckObject.prototype, {
 	},
 	
 	setCardMoving: function(direction){
-		clearTimeout(this.moveTimer);
+		Meteor.clearTimeout(this.moveTimer);
 		this.cardMoving = true;
 		this.cardMoved.push(direction);
-		this.moveTimer = setTimeout(function(){
+		this.moveTimer = Meteor.setTimeout(function(){
 			this.cardMoving = false;
-			clearTimeout(this.moveTimer);
+			Meteor.clearTimeout(this.moveTimer);
 		}, 500);
 	},
 	
@@ -308,6 +308,8 @@ _.extend(deckObject.prototype, {
 		if(this.dropdownOpen) return;
 		
 		if(this.cardMoving || this.cardMoved.length) return;
+		
+		console.log('overlap', panelId);
 		
 		var _curr = this.getPanel(panelId);
 		var _next = this.getNext(panelId);
@@ -366,7 +368,7 @@ _.extend(deckObject.prototype, {
 			this.setAdjacent(panelStartPrev, panelEndNext);
 			
 		}
-
+		
 		this.setPanelPosition();
 		
 	},

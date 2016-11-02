@@ -1,0 +1,66 @@
+<div ng-if="vm.action.name">
+	<div class="title-row text-9">
+		<div class="title-block">
+			<strong class="pull-left">{{vm.action.name}}</strong>
+		</div>
+		
+		<div class="title-block">
+			<span class="pull-right">
+				{{vm.action.targetType}} {{vm.action.targetDetail}}
+			</span>
+		</div>
+	</div>
+	<hr class="black-line text-9">
+	
+	<div class="title-row text-9">
+		<div class="title-block">
+			<strong class="pull-left">
+				{{vm.action.usage}}<span ng-if="vm.action.attackType">, {{vm.action.attackType}}</span>
+			</strong>
+		</div>
+		<div class="title-block">
+			<div class="pull-right">
+				<span ng-if="vm.action.count">
+					<strong>Count: </strong>{{vm.action.count}}
+					<span ng-if="dataSrvc.dualItemSlots.indexOf(vm.card.itemSlot) > -1">or {{vm.action.count-1}}*</span>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<div ng-if="vm.action.frequency === 'Free'
+		|| vm.action.frequency === 'Responsive'"
+		style="white-space: normal;" class="text-9">
+		<strong>Prompt: </strong>{{vm.action.prompt}}
+	</div>
+	
+	<div ng-if="vm.action.effect.customEffect || vm.action.effect.moveEffect" class="text-9">
+		<div>
+			<strong>Effect: </strong>{{vm.action.effect.customEffect}}{{effectData.moveEffect[vm.action.effect.moveEffect]}}
+		</div>
+		
+		<div ng-repeat="listItem in vm.action.effect.list track by $index">
+			<span ng-show="listItem.content">
+				<strong ng-show="listItem.leader">{{listItem.leader}}: </strong>
+				<span ng-hide="listItem.leader">&nbsp;&#8226; </span>
+				{{listItem.content}}
+			</span>
+		</div>
+		
+	</div>
+	
+	<div ng-if="vm.action.attackType" class="text-9">
+		<strong>Attack: </strong>
+		{{vm.action.dice_a}} + {{vm.action.dice_b}}{{vm.action.attackModifier}} vs {{vm.action.versus}}
+	</div>
+	
+	<action-success success="vm.action.success"></div>
+	
+	<div ng-if="vm.action.criticalSuccess.damage || vm.action.criticalSuccess.effect" class="text-9">
+		<strong>Critical Success: </strong>{{vm.action.criticalSuccess.damage}} {{vm.action.criticalSuccess.effect}}
+	</div>
+	
+	
+	
+	<br>
+</div>

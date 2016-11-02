@@ -1,0 +1,17 @@
+<div>
+	<h1>
+		<a href="/forum">Forum</a>
+		-
+		{{forumCategory.category.name}}
+	</h1>
+	
+	<h2>Topics</h2>
+	<div ng-repeat="topic in vm.topics">
+		<a href="/forum/category/topic/{{topic._id}}"><h3>{{topic.name}}</h3></a>
+		<button ng-click="vm.deleteTopic(topic._id)">X</button>
+	</div>
+	
+	<button ng-click="vm.addTopic()">Add Topic</button>
+	<input type="text" ng-model="vm.newTopic.name">
+	
+</div>

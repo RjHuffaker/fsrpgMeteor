@@ -1,0 +1,42 @@
+<div class="content-panel">
+	<table class="fill-parent" fit-content>
+		<tbody>
+			<tr>
+				<td class="text-8" style="vertical-align: top;">
+					
+					<div ng-if="vm.deck.deckType.includes('Choose')"
+						class="card-icon-top-left text-8"
+						ng-click="modalSrvc.replaceCard(card); "
+						stop-event="{{vm.card.below}}">
+						<b>(+)</b>
+					</div>
+					
+					<div ng-if="vm.deck.deckType === 'pcDeck'"
+						fs-modal-toggle class="card-icon-top-left text-8"
+						toggle-callback="modalSrvc.fetchCards(card, deck)"
+						toggle-card="vm.card" toggle-deck="vm.deck"
+						modal-deck="modalSrvc.modalDeck" 
+						stop-event="{{vm.card.below}}">
+						<b>(+)</b>
+					</div>
+					
+					<card-header card="vm.card"></card-header>
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="text-8" colspan="2" style="vertical-align: bottom;">
+					
+					<card-properties card="vm.card"></card-properties>
+					
+					<card-action action="vm.card.action1" card="vm.card"></card-action>
+					
+					<card-action action="vm.card.action2" card="vm.card"></card-action>
+					
+					<card-footer card="vm.card"></card-footer>
+					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

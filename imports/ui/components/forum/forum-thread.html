@@ -1,0 +1,28 @@
+<div>
+	<h1>
+		<a href="/forum">Forum</a>
+		-
+		<a href="/forum/category/{{vm.category._id}}">{{forumThread.category.name}}</a>
+		-
+		<a href="/forum/category/topic/{{vm.topic._id}}">{{forumThread.topic.name}}</a>
+		-
+		{{vm.thread.name}}
+	</h1>
+	
+	<h2>Posts</h2>
+	<hr>
+	<div ng-repeat="post in vm.posts">
+		<h4>{{post.title}} - {{post.timestamp | date : 'longDate'}} - {{post.username}}</h4>
+		<hr>
+		{{post.content}}
+		<button ng-click="vm.deletePost(post._id)">X</button>
+		<hr>
+	</div>
+	<hr>
+	<input ng-model="vm.newPost.title">
+	<br>
+	<textarea ng-model="vm.newPost.content"></textarea>
+	<br>
+	<button ng-click="vm.addPost()">Add Post</button>
+	
+</div>

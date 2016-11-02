@@ -1,9 +1,0 @@
-<li ng-repeat="(key, value) in recursiveList">
-	<div ng-class="{current: value.shown}"
-		ng-click="itemClick(value)">
-		{{value.sectionTitle}}{{value.columnTitle}}
-	</div>
-	<ul ng-if="value.nodes && value.shown"
-		class="text-9" style="padding-left: .5em"
-		recursive-list="value.nodes"></ul>
-</li>

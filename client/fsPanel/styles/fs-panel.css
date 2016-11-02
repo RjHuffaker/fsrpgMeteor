@@ -1,10 +1,11 @@
+fs-panel,
 [fs-panel] {
 	position: absolute;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	padding: .2em;
+	padding: 2px;
 	margin-top: 3em;
 	cursor: move;
 	cursor: -webkit-grab;
@@ -13,6 +14,7 @@
 	box-sizing: border-box;
 }
 
+fs-panel.card-moving,
 [fs-panel].card-moving {
 	-webkit-transition: .5s ease-in-out !important;
 	-moz-transition: .5s ease-in-out !important;
@@ -21,6 +23,7 @@
 	transition: .5s ease-in-out !important;
 }
 
+fs-panel.dragging,
 [fs-panel].dragging {
 	cursor: move;
 	cursor: -webkit-grabbing;
@@ -28,14 +31,16 @@
 	cursor: grabbing;
 }
 
-[fs-panel].dragging > div > div {
-	border-top: 2px solid #222;
-	border-left: 2px solid #222;
+fs-panel.dragging > * > *,
+[fs-panel].dragging > * > * {
+	border-top: 1px solid #222;
+	border-left: 1px solid #222;
 	border-right: 3px solid #111;
 	border-bottom: 3px solid #111;
 }
 
-[fs-panel] > div > div {
+fs-panel > * > *,
+[fs-panel] > * > * {
 	-moz-border-radius: .5em;
 	-webkit-border-radius: .5em;
 	border-radius: .5em;

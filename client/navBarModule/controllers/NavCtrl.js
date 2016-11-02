@@ -1,5 +1,5 @@
 angular.module("freedomsworn")
-	.controller("NavCtrl", function($scope, $meteor, $location, pcBread, featureBread, modalSrvc){
+	.controller("NavCtrl", function($scope, $meteor, $location, pcBread, modalSrvc){
 		'ngInject';
 
     $scope.modalSrvc = modalSrvc;
@@ -50,7 +50,7 @@ angular.module("freedomsworn")
 		};
 		
     $scope.editFeatureDeck = function(){
-      featureBread.edit();
+      console.log('does nothing atm');
     };
     
 	});

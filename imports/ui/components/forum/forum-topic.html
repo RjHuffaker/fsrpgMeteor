@@ -1,0 +1,19 @@
+<div>
+	<h1>
+		<a href="/forum">Forum</a>
+		-
+		<a href="/forum/category/{{forumTopic.category._id}}">{{forumTopic.category.name}}</a>
+		-
+		{{forumTopic.topic.name}}
+	</h1>
+	
+	<h2>Threads</h2>
+	<div ng-repeat="thread in vm.threads">
+		<a href="/forum/category/topic/thread/{{thread._id}}"><h3>{{thread.name}}</h3></a>
+		<button ng-click="vm.deleteThread(thread._id)">X</button>
+	</div>
+	
+	<button ng-click="vm.addThread()">Add Thread</button>
+	<input type="text" ng-model="vm.newThread.name">
+	
+</div>

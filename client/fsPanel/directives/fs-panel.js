@@ -13,7 +13,7 @@ angular.module('freedomsworn')
 					return Math.min.apply(Math, array);
 				};
 				
-				var _startX, _startY, 
+				var _startX, _startY,
 					_mouseX, _mouseY,
 					_moveX, _moveY,
 					_panelX, _panelY,

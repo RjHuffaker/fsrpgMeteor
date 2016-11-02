@@ -1,4 +1,7 @@
-<div ng-if="panel.cardType === 'pc1'" card-pc-1="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
+<pc-card-1 ng-if="panel.cardType === 'pc1'"
+	card="panel" deck="deck"
+	class="{{panel.cardType}} fill-parent">
+</pc-card-1>
 
 <div ng-if="panel.cardType === 'pc2'" card-pc-2="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
 
@@ -6,8 +9,8 @@
 
 <div ng-if="panel.cardType === 'pc4'" card-pc-4="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
 
-<div ng-if="['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(panel.cardType) > -1"
-	feature-card="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
+<feature-card ng-if="['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(panel.cardType) > -1"
+	card="panel" deck="deck" class="{{panel.cardType}} fill-parent"></feature-card>
 	
-<div ng-if="['Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'].indexOf(panel.cardType) > -1" 
-	choose-feature-card="panel" deck="deck" class="{{panel.cardType}} fill-parent"></div>
+<choose-feature-card ng-if="['Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'].indexOf(panel.cardType) > -1" 
+	card="panel" deck="deck" class="{{panel.cardType}} fill-parent"></choose-feature-card>

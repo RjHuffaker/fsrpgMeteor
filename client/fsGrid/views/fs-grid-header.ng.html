@@ -2,7 +2,7 @@
 	<div ng-if="gridHeader.shown && gridHeader.sectionTitle"
 		class="inline-flex" style="flex-grow: 0">
 
-		<div fs-select="'nested'" options="gridHeader.nodes"></div>
+		<fs-select select-type="'nested'" options="gridHeader.nodes"></fs-select>
 
 		<div class="row-header">{{gridHeader.sectionTitle}}</div>
 		

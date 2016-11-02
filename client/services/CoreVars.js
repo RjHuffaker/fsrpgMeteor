@@ -39,10 +39,10 @@ angular.module('freedomsworn')
 			});
 			
 			service.setCardMoving = function(direction){
-				clearTimeout(moveTimer);
+				Meteor.clearTimeout(moveTimer);
 				service.cardMoving = true;
 				service.cardMoved.push(direction);
-				moveTimer = setTimeout(function(){
+				moveTimer = Meteor.setTimeout(function(){
 					service.cardMoving = false;
 					$rootScope.$broadcast('CoreVars:getDeckWidth');
 				}, 500);

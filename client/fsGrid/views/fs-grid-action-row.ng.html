@@ -7,50 +7,50 @@
 
 <div class="inline-flex" ng-style="{'width': shownColumns.target.width}"
 	ng-if="shownColumns.target.shown">
-		<div fs-select style="flex: 2"
+		<fs-select style="flex: 2"
 			selection="gridAction.targetType"
-			options="[dataSrvc.targetTypes]"></div>
-		<div fs-select style="flex: 1"
+			options="[dataSrvc.targetTypes]"></fs-select>
+		<fs-select style="flex: 1"
 			ng-if="gridAction.targetType === 'Close'"
 			selection="gridAction.targetDetail"
-			options="[dataSrvc.closeDetails]"></div>
-		<div fs-select style="flex: 1"
+			options="[dataSrvc.closeDetails]"></fs-select>
+		<fs-select style="flex: 1"
 			ng-if="gridAction.targetType === 'Close Area'"
 			selection="gridAction.targetDetail"
-			options="[dataSrvc.closeAreaDetails]"></div>
-		<div fs-select style="flex: 1"
+			options="[dataSrvc.closeAreaDetails]"></fs-select>
+		<fs-select style="flex: 1"
 			ng-if="gridAction.targetType === 'Distant'"
 			selection="gridAction.targetDetail"
-			options="[dataSrvc.distantDetails]"></div>
-		<div fs-select style="flex: 1"
+			options="[dataSrvc.distantDetails]"></fs-select>
+		<fs-select style="flex: 1"
 			ng-if="gridAction.targetType === 'Distant Area'"
 			selection="gridAction.targetDetail"
-			options="[dataSrvc.distantAreaDetails]"></div>
+			options="[dataSrvc.distantAreaDetails]"></fs-select>
 	<div resize-handle="Width" id="Target {{actionId}}"
 		resize-width="shownColumns.target.width"></div>
 </div>
 
 <div class="inline-flex" ng-style="{'width': shownColumns.usage.width}"
 	ng-if="shownColumns.usage.shown">
-	<div fs-select selection="gridAction.usage"
-		options="[['Default', 'Single-use']]"></div>
+	<fs-select selection="gridAction.usage"
+		options="[['Default', 'Single-use']]"></fs-select>
 	<div resize-handle="Width" id="Usage {{actionId}}"
 		resize-width="shownColumns.usage.width"></div>
 </div>
 
 <div class="inline-flex" ng-style="{'width': shownColumns.frequency.width}"
 	ng-if="shownColumns.frequency.shown">
-	<div fs-select ng-if="!gridCard.itemSlot"
+	<fs-select ng-if="!gridCard.itemSlot"
 		selection="gridAction.frequency"
-		options="[dataSrvc.actionCount]"></div>
+		options="[dataSrvc.actionCount]"></fs-select>
 	
-	<div fs-select ng-if="dataSrvc.nonDualItemSlots.indexOf(gridCard.itemSlot) > -1"
+	<fs-select ng-if="dataSrvc.nonDualItemSlots.indexOf(gridCard.itemSlot) > -1"
 		selection="gridAction.frequency"
-		options="[dataSrvc.actionCount]"></div>
+		options="[dataSrvc.actionCount]"></fs-select>
 		
-	<div fs-select ng-if="dataSrvc.dualItemSlots.indexOf(gridCard.itemSlot) > -1"
+	<fs-select ng-if="dataSrvc.dualItemSlots.indexOf(gridCard.itemSlot) > -1"
 		selection="gridAction.frequency"
-		options="[dataSrvc.dualItemCount]"></div>
+		options="[dataSrvc.dualItemCount]"></fs-select>
 	<div resize-handle="Width" id="Frequency {{actionId}}"
 		resize-width="shownColumns.frequency.width"></div>
 </div>
@@ -125,30 +125,30 @@
 
 <div class="inline-flex" ng-style="{'width': shownColumns.attackType.width}"
 	ng-if="shownColumns.attackType.shown">
-	<div fs-select
+	<fs-select
 		selection="gridAction.attackType"
-		options="[dataSrvc.attackTypes]"></div>
+		options="[dataSrvc.attackTypes]"></fs-select>
 	<div resize-handle="Width" id="Attack Type {{actionId}}"
 		resize-width="shownColumns.attackType.width"></div>
 </div>
 
 <div class="inline-flex" ng-style="{'width': shownColumns.attackRoll.width}"
 	ng-if="shownColumns.attackRoll.shown">
-	<div fs-select style="flex: 4"
+	<fs-select style="flex: 4"
 		selection="gridAction.dice_a"
-		options="[dataSrvc.abilities]"></div>
+		options="[dataSrvc.abilities]"></fs-select>
 	<div class="text-center" style="flex: 1">+</div>
-	<div fs-select style="flex: 4"
+	<fs-select style="flex: 4"
 		selection="gridAction.dice_b"
-		options="[dataSrvc.abilities]"></div>
-	<div fs-select style="flex: 2"
+		options="[dataSrvc.abilities]"></fs-select>
+	<fs-select style="flex: 2"
 		selection="gridAction.attackModifier"
 		toggle-header="'+ / -'"
-		options="[[' + 1',' - 1']]"></div>
+		options="[[' + 1',' - 1']]"></fs-select>
 	<div class="text-center" style="flex: 2">vs.</div>
-	<div fs-select style="flex: 6"
+	<fs-select style="flex: 6"
 		selection="gridAction.versus"
-		options="[dataSrvc.defenseTypes]"></div>
+		options="[dataSrvc.defenseTypes]"></fs-select>
 	<div resize-handle="Width" id="Attack Roll {{actionId}}"
 		resize-width="shownColumns.attackRoll.width"></div>
 </div>
@@ -273,9 +273,9 @@
 
 <div class="inline-flex" style="width: 20em"
 	ng-if="shownColumns.attackCriticalSuccess.shown">
-	<div fs-select
+	<fs-select
 		selection="gridAction.criticalSuccess.damage" style="flex: 1"
-		options="[dataSrvc.damageDice]"></div>
+		options="[dataSrvc.damageDice]"></fs-select>
 	<textarea ng-model="gridAction.criticalSuccess.effect"
 		style="flex: 2"></textarea>
 	<div resize-handle="Width" id="Attack Critical Success {{actionId}}"

@@ -1,0 +1,53 @@
+<div class="flex-column fill-height" id="fs-grid">
+	
+	<div class="inline-flex" style="flex-shrink: 0;">
+		
+		<div style="flex: 2">
+			Deck Name: <input ng-model="vm.featureDeck.name">
+			Deck Id: {{vm.featureDeck._id}}
+			<button ng-click="vm.fixStuff()">Fix Stuff</button>
+		</div>
+		
+		<div style="flex: 1">
+			Created On:
+			<input ng-model="vm.featureDeck.createdOn">
+			{{vm.featureDeck.createdOn | date:'short'}}
+		</div>
+		
+		<div style="flex: 1">
+			<button ng-click="vm.saveDeck(vm.featureDeck)">Save Deck</button>
+		</div>
+		
+		<div style="flex: 1">
+			<fs-select select-type="'id'" ng-if="['Trait','Feat','Augment','Item'].indexOf(vm.featureDeck.deckType) > -1"
+				toggle-header="'Dependencies'"
+				selection="vm.featureDeck.dependencies"
+				options="[vm.depList]"
+				callback="vm.deckDependencies.fetchDependencies(vm.featureDeck)"></fs-select>
+		</div>
+
+		<div style="flex: 1">
+			<button ng-click="vm.setCardList()">Set Card List</button>
+		</div>
+		
+		<div class="flex-column" style="flex: 1">
+			Move Card
+			<div class="inline-flex" style="flex: 1; padding: 1em">
+				<button class="remain-selected" ng-click="vm.moveUp()">UP</button>
+				<button class="remain-selected" ng-click="vm.moveDown()">DOWN</button>
+			</div>
+		</div>
+		
+		<div style="flex: 1">
+			<button class="remain-selected" ng-click="vm.addCard()">Add Card</button>
+		</div>
+		
+		<div style="flex: 1">
+			<button class="remain-selected" ng-click="vm.removeCard()">Remove Selected</button>
+		</div>
+		
+	</div>
+	
+	<div fs-grid="vm.featureDeck" shown-columns="vm.shownColumns" class="fill-height" style="flex: 5"></div>
+	
+</div>

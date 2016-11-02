@@ -1,0 +1,69 @@
+<div>
+	<b>Edit Chronicle</b>
+	<input type="text" ng-model="vm.chronicle.name">
+	
+	<hr>
+	<div>
+		<button ng-click="vm.togglePause(vm.chronicle, vm.timer)">
+			<span ng-show="vm.chronicle.paused()">Start</span>
+			<span ng-hide="vm.chronicle.paused()">Stop</span>
+		</button>
+		
+		<button ng-click="vm.resetTimer(vm.chronicle)">Reset</button>
+		
+		<input type="number" ng-show="vm.chronicle.paused()"
+			ng-model="vm.chronicle.timerSpeed">
+		
+		Pause on Action: <input type="checkbox" ng-model="vm.chronicle.pauseOnAction">
+		
+		<br>
+		<br>
+		
+		{{vm.pause}}
+		
+	</div>
+	
+	<div>
+		<hr>
+		
+		Chronicle.timer: {{vm.chronicle.timer}}
+		<br>
+		Clock: {{vm.clock}}
+		
+		<hr>
+		
+		<span ng-repeat="increment in vm.chronicle.timeline track by $index"> | {{increment.startTime}} - {{increment.stopTime}} | </span>
+		
+	</div>
+		
+	<div ng-repeat="player in vm.chronicle.players track by $index" style="flex: 1"> 
+		<hr>
+		<div>
+			Player {{$index+1}}: {{player.count}}
+		</div>
+		
+		<div>
+			<button ng-class="{'text-error': player.count < 1000, 'text-success': player.count > 1000}"
+				ng-click="vm.chronicle.takeAction(player, {count: 1000, timestamp: vm.timer})"><b>1</b></button>
+			<button ng-class="{'text-error': player.count < 2000, 'text-success': player.count > 2000}"
+				ng-click="vm.chronicle.takeAction(player, {count: 2000, timestamp: vm.timer})"><b>2</b></button>
+			<button ng-class="{'text-error': player.count < 3000, 'text-success': player.count > 3000}"
+				ng-click="vm.chronicle.takeAction(player, {count: 3000, timestamp: vm.timer})"><b>3</b></button>
+			<button ng-class="{'text-error': player.count < 4000, 'text-success': player.count > 4000}"
+				ng-click="vm.chronicle.takeAction(player, {count: 4000, timestamp: vm.timer})"><b>4</b></button>
+			<button ng-class="{'text-error': player.count < 5000, 'text-success': player.count > 5000}"
+				ng-click="vm.chronicle.takeAction(player, {count: 5000, timestamp: vm.timer})"><b>5</b></button>
+		</div>
+		
+		<div>
+			Actions Taken:
+			<div class="flex-wrap">
+				<div style="border: 1px dotted blue" ng-repeat="action in player.actions track by $index">
+					Count: {{action.count}} <br> Time: {{action.timestamp}}
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+</div>
