@@ -47,7 +47,7 @@ angular.module('freedomsworn')
 			};
 			
 			var onDestroy = function(enable){
-				Meteor.setTimeout(_pressTimer);
+				Meteor.clearTimeout(_pressTimer);
 				toggleListeners(false);
 			};
 			
@@ -71,7 +71,6 @@ angular.module('freedomsworn')
 			};
 			
 			var onPress = function(event){
-				console.log('onPress');
 				if(_hasTouch){
 					Meteor.clearTimeout(_pressTimer);
 					_pressTimer = Meteor.setTimeout(function(){
@@ -99,7 +98,6 @@ angular.module('freedomsworn')
 				_cardY = _startRow;
 				
 				$element.removeClass('card-moving');
-				$element.addClass('dragging');
 				
 				_deck.getStack(_card,
 					function(stackArray){
@@ -116,24 +114,13 @@ angular.module('freedomsworn')
 				Session.set('cardId', _card._id);
 				Session.set('moveX', 0);
 				Session.set('moveY', 0);
+				Session.set('mouseX', _startX);
+				Session.set('mouseY', _startY);
 				Session.set('startCol', _startCol);
 				Session.set('startRow', _startRow);
 				
 			};
 			
-			this.autorun(() => {
-				// Watch for changes in card position. Move card to default position unless it is being dragged.
-				
-				var _x_coord = this.getReactively('card.x_coord');
-				var _Y_coord = this.getReactively('card.y_coord');
-				var _dragging = this.getReactively('card.dragging');
-				
-				if(!_dragging){
-					$element.addClass('card-moving');
-					setPosition(_x_coord, _Y_coord);
-				}
-				
-			});
 			
 			
 			// MOVE
@@ -144,15 +131,8 @@ angular.module('freedomsworn')
 				
 				_mouseX = (event.pageX || event.touches[0].pageX);
 				_mouseY = (event.pageY || event.touches[0].pageY);
-				
-				_cardCol = convertEm(_card.x_coord);
-				_cardRow = convertEm(_card.y_coord);
-				
 				_moveX = _mouseX - _startX;
 				_moveY = _mouseY - _startY;
-				
-				_cardX = _moveX + _startCol - (_startCol - _cardCol);
-				_cardY = _moveY + _startRow - (_startRow - _cardRow);
 				
 				Session.set('cardPressed', true);
 				Session.set('deckId', _deck._id);
@@ -171,48 +151,52 @@ angular.module('freedomsworn')
 				_moveX = Session.get('moveX');
 				_moveY = Session.get('moveY');
 				
-				_cardX = _moveX + _startCol;
-				_cardY = _moveY + _startRow;
-				
-				var _cardPressed = Session.get('cardPressed');
-				
-				if(_cardPressed){
+				if(Session.equals('deckId', _deck._id)){
 					
-					if(_card.dragging){
+					var _cardPressed = Session.get('cardPressed');
+					
+					if(_cardPressed){
 						
-						$element.css({
-							left: _cardX + 'px',
-							top: _cardY + 'px'
-						});
+						_cardX = _moveX + _startCol;
+						_cardY = _moveY + _startRow;
 						
-					} else {
-						
-						if(Session.equals('deckId', _deck._id)){
+						if(_card.dragging){
 							
-							if(!Session.equals('cardId', _card._id)){
-								
-								_mouseX = Session.get('mouseX');
-								_mouseY = Session.get('mouseY');
-								
-								var _panel = _deck.getPanel(Session.get('cardId'));
-								var _offset = $element.offset();
-								var _emPx = convertEm(1);
-								
-								onCardMove(_deck, {
-									deckId: _deck._id,
-									mouseX: _mouseX,
-									mouseY: _mouseY,
-									moveX: _moveX,
-									moveY: _moveY,
-									panelX: _cardX,
-									panelY: _cardY,
-									panel: _panel,
-									slot: _card,
-									offset: _offset,
-									emPx: _emPx
-								});
-								
-							}
+							$element.css({
+								left: _cardX + 'px',
+								top: _cardY + 'px'
+							});
+							
+						} else {
+							
+							_mouseX = Session.get('mouseX');
+							_mouseY = Session.get('mouseY');
+							
+							var _panel = _deck.getPanel(Session.get('cardId'));
+							var _offset = $element.offset();
+							var _emPx = convertEm(1);
+							
+							onCardMove(_deck, {
+								deckId: _deck._id,
+								mouseX: _mouseX,
+								mouseY: _mouseY,
+								moveX: _moveX,
+								moveY: _moveY,
+								panelX: _cardX,
+								panelY: _cardY,
+								panel: _panel,
+								slot: _card,
+								offset: _offset,
+								emPx: _emPx
+							});
+							
+						//	$element.addClass('card-moving');
+							
+							var _x_coord = this.getReactively('card.x_coord');
+							var _Y_coord = this.getReactively('card.y_coord');
+							
+							setPosition(_x_coord, _Y_coord);
+							
 						}
 					}
 				}
@@ -270,28 +254,33 @@ angular.module('freedomsworn')
 						
 						Session.set('deckId', _deck._id);
 						Session.set('cardId', 0);
-						Session.set('moveX', 0);
-						Session.set('moveY', 0);
-						Session.set('mouseX', 0);
-						Session.set('mouseY', 0);
 						
 						_moveX = 0;
 						_moveY = 0;
-						_cardX = _card.x_coord;
-						_cardY = _card.y_coord;
 					}
 				} else {
 					_startCol = convertEm(_card.x_coord);
 					_startRow = convertEm(_card.y_coord);
 					
+					var _dragging = this.getReactively('card.dragging');
+					
+					if(!_dragging){
+						
+						var _x_coord = this.getReactively('card.x_coord');
+						var _Y_coord = this.getReactively('card.y_coord');
+						
+						$element.addClass('card-moving');
+						
+						setPosition(_x_coord, _Y_coord);
+						
+					} else {
+						$element.removeClass('card-moving');
+					}
+					
 				}
 				
 				Session.set('deckId', _deck._id);
 				Session.set('cardId', 0);
-				Session.set('moveX', 0);
-				Session.set('moveY', 0);
-				Session.set('mouseX', 0);
-				Session.set('mouseY', 0);
 				
 			});
 			

@@ -10,42 +10,6 @@ angular.module('freedomsworn')
 			
 			$reactive(this).attach($scope);
 			
-			this.helpers({
-				cardId(){
-					return Session.get('cardId');
-				},
-				deckId(){
-					return Session.get('deckId');
-				},
-				cardPressed(){
-					return Session.get('cardPressed');
-				},
-				startX(){
-					return Session.get('startX');
-				},
-				startY(){
-					return Session.get('startY');
-				},
-				moveX(){
-					return Session.get('moveX');
-				},
-				moveY(){
-					return Session.get('moveY');
-				},
-				mouseX(){
-					return Session.get('mouseX');
-				},
-				mouseY(){
-					return Session.get('mouseY');
-				},
-				startCol(){
-					return Session.get('startCol');
-				},
-				startRow(){
-					return Session.get('startRow');
-				}
-			});
-			
 			var _moveEvents = 'touchmove mousemove';
 			var _releaseEvents = 'touchend mouseup';
 			

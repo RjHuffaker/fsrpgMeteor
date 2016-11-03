@@ -309,8 +309,6 @@ _.extend(deckObject.prototype, {
 		
 		if(this.cardMoving || this.cardMoved.length) return;
 		
-		console.log('overlap', panelId);
-		
 		var _curr = this.getPanel(panelId);
 		var _next = this.getNext(panelId);
 		
