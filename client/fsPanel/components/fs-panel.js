@@ -6,7 +6,7 @@ angular.module('freedomsworn')
 			card: '=',
 			deck: '='
 		},
-		controller($scope, $reactive, $element, $document, $window, onCardMove){
+		controller($rootScope, $scope, $reactive, $element, $document, $window, onCardMove){
 			'ngInject';
 			
 			var _hasTouch = ('ontouchstart' in window);
@@ -21,7 +21,7 @@ angular.module('freedomsworn')
 					_slotX, _slotY,
 					_startCol, _cardCol,
 					_startRow, _cardRow,
-					_moveTimer;
+					_moveTimer, _moveHandler, _releaseHander;
 			
 			var _pressTimer = null;
 			
@@ -35,9 +35,18 @@ angular.module('freedomsworn')
 				if(enable){
 					$scope.$on('$destroy', onDestroy);
 					$element.on(_pressEvents, onPress);
+					_pressHandler = $scope.$on('fsPanel:onPressCard', onPressCard);
+					_moveHandler = $scope.$on('fsPanel:onMoveCard', onMoveCard);
+					_releaseHander = $scope.$on('fsPanel:onReleaseCard', onReleaseCard);
+					_leaveHander = $scope.$on('fsDeck:onMouseLeave', onMouseLeave);
 				} else {
+					if(_moveHandler) _moveHandler();
+					if(_pressHandler) _pressHandler();
+					if(_releaseHander) _releaseHander();
 					
 					$element.off(_pressEvents, onPress);
+					$document.off(_moveEvents, onMove);
+					$document.off(_releaseEvents, onRelease);
 				}
 			};
 			
@@ -70,19 +79,29 @@ angular.module('freedomsworn')
 				});
 			};
 			
+			// Initial local "press" function
 			var onPress = function(event){
 				if(_hasTouch){
-					Meteor.clearTimeout(_pressTimer);
+					cancelPress();
 					_pressTimer = Meteor.setTimeout(function(){
-						Meteor.clearTimeout(_pressTimer);
+						cancelPress();
 						onLongPress(event);
 					}, 100);
 					
+					$document.on(_moveEvents, cancelPress);
+					$document.on(_releaseEvents, cancelPress);
 				}else if(!_hasTouch){
 					onLongPress(event);
 				}
 			};
 			
+			var cancelPress = function(){
+				Meteor.clearTimeout(_pressTimer);
+				$document.off(_moveEvents, cancelPress);
+				$document.off(_releaseEvents, cancelPress);
+			};
+			
+			// Local "press" function
 			var onLongPress = function(event){
 				
 				_startX = (event.pageX || event.touches[0].pageX);
@@ -91,13 +110,12 @@ angular.module('freedomsworn')
 				_moveX = 0;
 				_moveY = 0;
 				
-				_startCol = convertEm(_card.x_coord);
-				_startRow = convertEm(_card.y_coord);
-				
-				_cardX = _startCol;
-				_cardY = _startRow;
+				$document.on(_moveEvents, onMove);
+				$document.on(_releaseEvents, onRelease);
 				
 				$element.removeClass('card-moving');
+				
+				_card.dragging = true;
 				
 				_deck.getStack(_card,
 					function(stackArray){
@@ -106,111 +124,91 @@ angular.module('freedomsworn')
 						}
 				});
 				
-				$document.on(_moveEvents, onMove);
-				$document.on(_releaseEvents, onRelease);
-				
-				Session.set('cardPressed', true);
-				Session.set('deckId', _deck._id);
-				Session.set('cardId', _card._id);
-				Session.set('moveX', 0);
-				Session.set('moveY', 0);
-				Session.set('mouseX', _startX);
-				Session.set('mouseY', _startY);
-				Session.set('startCol', _startCol);
-				Session.set('startRow', _startRow);
+				$rootScope.$broadcast('fsPanel:onPressCard', {
+					deckId: _deck._id
+				});
 				
 			};
 			
+			// Global "press" function
+			var onPressCard = function(event, object){
+				if(object.deckId === _deck._id){
+					
+					_startCol = convertEm(_card.x_coord);
+					
+					_startRow = convertEm(_card.y_coord);
+					
+					if(_card.dragging){
+						
+						$element.addClass('dragging');
+						
+						$element.removeClass('card-moving');
+						
+					} else {
+						
+						$element.removeClass('dragging');
+						
+						$element.addClass('card-moving');
+						
+					}
+				}
+			};
 			
 			
 			// MOVE
-			// Primary "move" function
+			// Local "move" function
 			var onMove = function(event){
 				
 				event.preventDefault();
 				
 				_mouseX = (event.pageX || event.touches[0].pageX);
 				_mouseY = (event.pageY || event.touches[0].pageY);
+				
 				_moveX = _mouseX - _startX;
 				_moveY = _mouseY - _startY;
 				
-				Session.set('cardPressed', true);
-				Session.set('deckId', _deck._id);
-				Session.set('cardId', _card._id);
-				Session.set('mouseX', _mouseX);
-				Session.set('mouseY', _mouseY);
-				Session.set('moveX', _moveX);
-				Session.set('moveY', _moveY);
+				$rootScope.$broadcast('fsPanel:onMoveCard', {
+					deckId: _deck._id,
+					panel: _card,
+					moveX: _moveX,
+					moveY: _moveY,
+					mouseX: _mouseX,
+					mouseY: _mouseY
+				});
+				
 			};
 			
-			
-			this.autorun(() => {
-				// Watch for mouse movement. If card is being dragged, move it with the cursor.
-				// Replaces global onCardMove function
+			// Global "move" function
+			var onMoveCard = function(event, object){
 				
-				_moveX = Session.get('moveX');
-				_moveY = Session.get('moveY');
-				
-				if(Session.equals('deckId', _deck._id)){
+				if(object.deckId === _deck._id){
 					
-					var _cardPressed = Session.get('cardPressed');
-					
-					if(_cardPressed){
+					if(_card.dragging){
 						
-						_cardX = _moveX + _startCol;
-						_cardY = _moveY + _startRow;
+						$element.css({
+							left: object.moveX + _startCol + 'px',
+							top: object.moveY + _startRow + 'px'
+						});
 						
-						if(_card.dragging){
-							
-							$element.css({
-								left: _cardX + 'px',
-								top: _cardY + 'px'
-							});
-							
-						} else {
-							
-							_mouseX = Session.get('mouseX');
-							_mouseY = Session.get('mouseY');
-							
-							var _panel = _deck.getPanel(Session.get('cardId'));
-							var _offset = $element.offset();
-							var _emPx = convertEm(1);
-							
-							onCardMove(_deck, {
-								deckId: _deck._id,
-								mouseX: _mouseX,
-								mouseY: _mouseY,
-								moveX: _moveX,
-								moveY: _moveY,
-								panelX: _cardX,
-								panelY: _cardY,
-								panel: _panel,
-								slot: _card,
-								offset: _offset,
-								emPx: _emPx
-							});
-							
-						//	$element.addClass('card-moving');
-							
-							var _x_coord = this.getReactively('card.x_coord');
-							var _Y_coord = this.getReactively('card.y_coord');
-							
-							setPosition(_x_coord, _Y_coord);
-							
-						}
+					} else {
+						
+						object.slot = _card;
+						object.offset = $element.offset();
+						object.emPx = convertEm(1);
+						
+						onCardMove(_deck, object);
+						
+						setPosition(_card.x_coord, _card.y_coord);
+						
 					}
 				}
-			});
-			
-			
+			};
 			
 			// RELEASE
-			// Primary "release" function
+			// Local "release" function
 			var onRelease = function(){
 				$document.off(_moveEvents, onMove);
 				$document.off(_releaseEvents, onRelease);
-				
-				Session.set('cardPressed', false);
 				
 				if(Math.abs(_moveX) <= convertEm(1) && Math.abs(_moveY) <= convertEm(1)){
 					_deck.toggleOverlap(_card._id);
@@ -218,74 +216,44 @@ angular.module('freedomsworn')
 				
 				_deck.setCardStop();
 				
-				for(var i = 0; i < _deck.cardList.length; i++){
-					_deck.cardList[i].dragging = false;
+				$rootScope.$broadcast('fsPanel:onReleaseCard', {
+					deckId: _deck._id
+				});
+				
+			};
+			
+			// Global "release" function
+			var onReleaseCard = function(event, object){
+				if(object.deckId === _deck._id){
+					
+					_card.dragging = false;
+					
+					$element.removeClass('dragging');
+					
+					$element.addClass('card-moving');
+					
+					Meteor.setTimeout(function(){
+						setPosition(_card.x_coord, _card.y_coord);
+					}, 0);
+					
+					_moveTimer = Meteor.setTimeout(function(){
+						$element.removeClass('card-moving');
+					}, 750);
+					
 				}
 			};
 			
-			this.autorun(() => {
-				// Watch for changes to 'cardPressed'
-				// Replaces global onCardRelease function
+			// Respond to 'onMouseLeave' event similar to onRelease, but without toggling overlap
+			var onMouseLeave = function(){
+				$document.off(_moveEvents, onMove);
+				$document.off(_releaseEvents, onRelease);
 				
-				var cardPressed = Session.get('cardPressed');
+				_deck.setCardStop();
 				
-				if(!cardPressed && Session.equals('cardId', _card._id)){
-					
-					if(_card.dragging){
-						
-						Session.set('deck', _deck);
-						
-						for(var i = 0; i < _deck.cardList.length; i++){
-							_deck.cardList[i].dragging = false;
-						}
-						
-						
-						if(Math.abs(_moveX) <= convertEm(1) && Math.abs(_moveY) <= convertEm(1)){
-							
-							console.log();
-							
-							_deck.setCardStop();
-							
-							_deck.toggleOverlap(_card._id);
-							
-						}
-						
-						setPosition(_card.x_coord, _card.y_coord);
-						
-						Session.set('deckId', _deck._id);
-						Session.set('cardId', 0);
-						
-						_moveX = 0;
-						_moveY = 0;
-					}
-				} else {
-					_startCol = convertEm(_card.x_coord);
-					_startRow = convertEm(_card.y_coord);
-					
-					var _dragging = this.getReactively('card.dragging');
-					
-					if(!_dragging){
-						
-						var _x_coord = this.getReactively('card.x_coord');
-						var _Y_coord = this.getReactively('card.y_coord');
-						
-						$element.addClass('card-moving');
-						
-						setPosition(_x_coord, _Y_coord);
-						
-					} else {
-						$element.removeClass('card-moving');
-					}
-					
-				}
-				
-				Session.set('deckId', _deck._id);
-				Session.set('cardId', 0);
-				
-			});
-			
-			
-			
+				$rootScope.$broadcast('fsPanel:onReleaseCard', {
+					deckId: _deck._id
+				});
+			};
 			
 			initialize();
 			

@@ -3,14 +3,20 @@
 	class="{{vm.card.cardType}} fill-parent">
 </pc-card-1>
 
-<div ng-if="vm.card.cardType === 'pc2'" card-pc-2="vm.card"
-	deck="vm.deck" class="{{vm.card.cardType}} fill-parent"></div>
+<pc-card-2 ng-if="vm.card.cardType === 'pc2'"
+	card="vm.card" deck="deck"
+	class="{{vm.card.cardType}} fill-parent">
+</pc-card-2>
 
-<div ng-if="vm.card.cardType === 'pc3'" card-pc-3="vm.card"
-	deck="vm.deck" class="{{vm.card.cardType}} fill-parent"></div>
+<pc-card-3 ng-if="vm.card.cardType === 'pc3'"
+	card="vm.card" deck="deck"
+	class="{{vm.card.cardType}} fill-parent">
+</pc-card-3>
 
-<div ng-if="vm.card.cardType === 'pc4'" card-pc-4="vm.card"
-	deck="vm.deck" class="{{vm.card.cardType}} fill-parent"></div>
+<pc-card-4 ng-if="vm.card.cardType === 'pc4'"
+	card="vm.card" deck="deck"
+	class="{{vm.card.cardType}} fill-parent">
+</pc-card-4>
 
 <feature-card ng-if="['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(vm.card.cardType) > -1"
 	card="vm.card" deck="vm.deck" class="{{vm.card.cardType}} fill-parent"></feature-card>

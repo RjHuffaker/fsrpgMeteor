@@ -232,8 +232,6 @@ angular.module('freedomsworn')
 						mouseY: _mouseY,
 						moveX: _moveX,
 						moveY: _moveY,
-						panelX: _panelX,
-						panelY: _panelY,
 						panel: _panel
 					});
 				};
@@ -241,15 +239,18 @@ angular.module('freedomsworn')
 				// Function to move a single card or each card in a vertical stack
 				var onMoveCard = function(event, object){
 					if(object.deckId === _deck._id){
-						object.slot = _panel;
-						object.offset = element.offset();
-						object.emPx = convertEm(1);
+						
 						if(_panel.dragging){
 							element.css({
 								left: object.moveX + _startCol + 'px',
 								top: object.moveY + _startRow + 'px'
 							});
 						} else {
+							
+							object.slot = _panel;
+							object.offset = element.offset();
+							object.emPx = convertEm(1);
+							
 							onCardMove(_deck, object);
 						}
 					}

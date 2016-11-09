@@ -319,7 +319,7 @@ _.extend(deckObject.prototype, {
 		} else if(_curr.right){
 			this.setOverlap(_curr, _next);
 		}
-
+		
 		this.setPanelPosition();
 		
 		this.cardMoved.length = 0;

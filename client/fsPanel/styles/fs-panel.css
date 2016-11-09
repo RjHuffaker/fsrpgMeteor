@@ -16,6 +16,7 @@ fs-panel,
 
 fs-panel.card-moving,
 [fs-panel].card-moving {
+	background-color: darkgreen;
 	-webkit-transition: .5s ease-in-out !important;
 	-moz-transition: .5s ease-in-out !important;
 	-o-transition: .5s ease-in-out !important;
