@@ -1,0 +1,21 @@
+fs-grid-numpicker {
+	display: flex;
+}
+
+fs-grid-numpicker > div {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow: hidden;
+}
+
+fs-grid-numpicker input {
+	min-width: 2em;
+	flex-grow: 2;
+	flex-shrink: 2;
+}
+
+fs-grid-numpicker button {
+	min-width: 2em;
+	flex-grow: 1;
+	flex-shrink: 1;
+}

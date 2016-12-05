@@ -1,0 +1,65 @@
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.block.width}"
+	ng-if="vm.shownColumns.block.shown">
+	<div class="fill-width">
+		<fs-select
+			selection="vm.card.block.dice_a"
+			options="[vm.dataSrvc.abilities]"></fs-select>
+		<fs-select ng-if="!vm.card.itemSlot"
+			selection="vm.card.block.dice_b"
+			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
+			+
+		<fs-select ng-if="vm.dataSrvc.nonDualItemSlots.indexOf(vm.card.itemSlot) > -1"
+			selection="vm.card.block.dice_b"
+			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
+		<fs-select ng-if="vm.dataSrvc.dualItemSlots.indexOf(vm.card.itemSlot) > -1"
+			selection="vm.card.block.dice_b"
+			options="[vm.dataSrvc.dualDice, vm.dataSrvc.abilities]"></fs-select>
+	</div>
+	<fs-grid-resize resize-id="'Block'" column-shown="vm.shownColumns.block"
+		resize-width="vm.shownColumns.block.width"></fs-grid-resize>
+</div>
+
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.dodge.width}"
+	ng-if="vm.shownColumns.dodge.shown">
+	<div class="fill-width">
+		<fs-select
+			selection="vm.card.dodge.dice_a"
+			options="[vm.dataSrvc.abilities]"></fs-select>
+			+
+		<fs-select
+			selection="vm.card.dodge.dice_b"
+			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
+	</div>
+	<fs-grid-resize resize-id="'Dodge'" column-shown="vm.shownColumns.dodge"
+		resize-width="vm.shownColumns.dodge.width"></fs-grid-resize>
+</div>
+
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.alertness.width}"
+	ng-if="vm.shownColumns.alertness.shown">
+	<div class="fill-width">
+		<fs-select
+			selection="vm.card.alertness.dice_a"
+			options="[vm.dataSrvc.abilities]"></fs-select>
+			+
+		<fs-select
+			selection="vm.card.alertness.dice_b"
+			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
+	</div>
+	<fs-grid-resize resize-id="'Alertness'" column-shown="vm.shownColumns.alertness"
+		resize-width="vm.shownColumns.alertness.width"></fs-grid-resize>
+</div>
+
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.tenacity.width}"
+	ng-if="vm.shownColumns.tenacity.shown">
+	<div class="fill-width">
+		<fs-select
+			selection="vm.card.tenacity.dice_a"
+			options="[vm.dataSrvc.abilities]"></fs-select>
+			+
+		<fs-select
+			selection="vm.card.tenacity.dice_b"
+			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
+	</div>
+	<fs-grid-resize resize-id="'Tenacity'" column-shown="vm.shownColumns.tenacity"
+		resize-width="vm.shownColumns.tenacity.width"></fs-grid-resize>
+</div>

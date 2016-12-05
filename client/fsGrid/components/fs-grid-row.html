@@ -1,0 +1,96 @@
+<div class="inline-flex fill-height">
+	
+	<div class="flex-column fill-height">
+	
+		<div class="inline-flex fill-height">
+			
+			<div class="inline-flex">
+				<fs-dropdown id="vm.card.id" class="open-down">
+					<div class="fs-dropdown-toggle {{vm.card.cardType}}">
+						<div class="grid-card-icon text-center">
+							<div class="text-6">
+								<b>#{{vm.card.cardNumber}}</b>
+								<br>
+								<fs-grid-stats card="vm.card"></fs-grid-stats>
+							</div>
+						</div>
+					</div>
+					<div class="fs-dropdown-panel">
+						<div class="feature-card">
+							<feature-card
+								card="vm.card" class="{{vm.card.cardType}}"
+								class="fill-parent content-panel grid-card"></feature-card>
+						</div>
+					</div>
+				</fs-dropdown>
+				<div faux-handle="Width"></div>
+			</div>
+			
+			<fs-grid-input class="inline-flex" input-model="vm.card.name"
+				input-type="'text'" column-shown="vm.shownColumns.nodes.name"></fs-grid-input>
+			
+			<fs-grid-input class="inline-flex" input-model="vm.card.aspect"
+				input-type="'fs-select'"
+				toggle-header="'Aspect'" option-headers="['Classes','Factions','Races']"
+				options="[deckDependencies.classes, deckDependencies.factions, deckDependencies.races]"
+				column-shown="vm.shownColumns.nodes.aspect"></fs-grid-input>
+			
+			<fs-grid-input class="inline-flex" input-model="vm.card.description"
+				input-type="'textarea'" column-shown="vm.shownColumns.nodes.description"></fs-grid-input>
+			
+			<div ng-if="vm.shownColumns.nodes.benefit.shown" class="inline-flex">
+				
+				<fs-grid-input class="inline-flex" input-model="vm.card.benefit"
+					input-type="'textarea'" column-shown="vm.shownColumns.nodes.benefit.nodes.benefit">
+				</fs-grid-input>
+				
+				<fs-grid-input class="inline-flex" input-model="vm.card.benefitCritical"
+					input-type="'textarea'" column-shown="vm.shownColumns.nodes.benefit.nodes.criticalSuccess">
+				</fs-grid-input>
+				
+			</div>
+			
+			<fs-grid-statistics class="inline-flex"
+			 	ng-if="vm.shownColumns.nodes.statistics.shown"
+			 	card="vm.card"
+				shown-columns="vm.shownColumns.nodes.statistics.nodes">
+			</fs-grid-statistics>
+			
+			<fs-grid-item class="inline-flex"
+			 	ng-if="vm.shownColumns.nodes.item.shown"
+			 	card="vm.card"
+				shown-columns="vm.shownColumns.nodes.item.nodes">
+			</fs-grid-item>
+			
+			<fs-grid-modifier class="inline-flex"
+				ng-if="vm.shownColumns.nodes.modifiers.shown"
+				card="vm.card"
+				shown-columns="vm.shownColumns.nodes.modifiers.nodes">
+			</fs-grid-modifier>
+			
+			<fs-grid-defenses class="inline-flex"
+				ng-if="vm.shownColumns.nodes.defenses.shown"
+				card="vm.card"
+				shown-columns="vm.shownColumns.nodes.defenses.nodes">
+			</fs-grid-defenses>
+			
+			<fs-grid-action class="inline-flex" 
+				ng-if="vm.shownColumns.nodes.action1.shown"
+				card="vm.card" action="vm.card.action1" action-id="0"
+				shown-columns="vm.shownColumns.nodes.action1.nodes">
+			</fs-grid-action>
+
+			<fs-grid-action class="inline-flex" 
+				ng-if="vm.shownColumns.nodes.action2.shown"
+				card="vm.card" action="vm.card.action2" action-id="1"
+				shown-columns="vm.shownColumns.nodes.action2.nodes">
+			</fs-grid-action>
+			
+		</div>
+
+	</div>
+	
+</div>
+
+<fs-grid-resize resize-id="vm.card._id"
+	resize-height="1"></fs-grid-resize>

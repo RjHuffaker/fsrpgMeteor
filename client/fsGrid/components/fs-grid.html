@@ -1,0 +1,33 @@
+<div class="flex-column fill-width">
+	<div class="inline-flex fill-height">
+		<div class="inline-flex">
+			<div style="height: 3em; width: 3em"></div>
+			<div faux-handle="Width"></div>
+			<fs-grid-header class="inline-flex" shown-columns="vm.shownColumns"></fs-grid-header>
+		</div>
+		
+	</div>
+	<fs-grid-resize resize-id="'title-row'"
+		resize-height="1"></fs-grid-resize>
+	
+</div>
+
+<fs-grid-row class="remain-selected flex-column fill-width"
+	ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize"
+	ng-class="{selectrow: (card === vm.deck.currentRow)}"
+	card="card"
+	deck-type="vm.deck.deckType"
+	ng-click="vm.selectRow(card);"
+	shown-columns="vm.shownColumns"></fs-grid-row>
+	
+<div>
+	<div style="width: 3em; display: inline-block">
+		<button ng-show="vm.currentPage > 0" style="width: 100%"
+			ng-click="vm.currentPage = vm.currentPage-1;">Prev</button>
+	</div>
+		{{vm.currentPage * vm.pageSize + 1}} - {{(vm.currentPage+1) * vm.pageSize}} of {{vm.deck.cardList.length}}
+	<div style="width: 3em; display: inline-block">
+		<button ng-show="vm.currentPage < vm.numberOfPages()-1" style="width: 100%"
+			ng-click="vm.currentPage = vm.currentPage+1;">Next</button>
+	</div>
+</div>

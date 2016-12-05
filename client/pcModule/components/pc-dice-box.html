@@ -1,0 +1,61 @@
+<div style="display: table; height: 100%; width: 100%">
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[0].image}}
+				ng-click="vm.chooseDie(0);"
+				class="pc-dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[1].image}}
+				ng-show="vm.deck.dicepool[1].order > 0"
+				ng-click="vm.chooseDie(1);"
+				class="pc-dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[2].image}}
+				ng-show="vm.deck.dicepool[2].order > 0"
+				ng-click="vm.chooseDie(2);"
+				class="pc-dice-box-image" />
+		</div>
+	</div>
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[3].image}}
+				ng-show="vm.deck.dicepool[3].order > 0"
+				ng-click="vm.chooseDie(3);"
+				class="pc-dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[4].image}}
+				ng-show="vm.deck.dicepool[4].order > 0"
+				ng-click="vm.chooseDie(4);"
+				class="pc-dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[5].image}}
+				ng-show="vm.deck.dicepool[5].order > 0"
+				ng-click="vm.chooseDie(5);"
+				class="pc-dice-box-image" />
+		</div>
+	</div>
+	<div class="content-row" style="height: 33%">
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[6].image}}
+				ng-show="vm.deck.dicepool[6].order > 0"
+				ng-click="vm.chooseDie(6);"
+				class="pc-dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[7].image}}
+				ng-show="vm.deck.dicepool[7].order > 0"
+				ng-click="vm.chooseDie(7);"
+				class="pc-dice-box-image" />
+		</div>
+		<div class="content-cell" style="width: 33%">
+			<img ng-src={{vm.deck.dicepool[8].image}}
+				ng-show="vm.deck.dicepool[8].order > 0"
+				ng-click="vm.chooseDie(8);"
+				class="pc-dice-box-image" />
+		</div>
+	</div>
+</div>

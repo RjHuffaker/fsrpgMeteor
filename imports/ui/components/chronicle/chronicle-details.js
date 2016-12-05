@@ -52,18 +52,14 @@ class ChronicleDetails {
 				
 				if(this.chronicle){
 					
+					var _chronicle = angular.copy(this.chronicle);
+					
+					delete _chronicle._id;
+					
 					Chronicles.update({
 						_id: this.chronicle._id
-					}, { $set: 
-						{
-							name: this.chronicle.name,
-							timerSpeed: this.chronicle.timerSpeed,
-							timer: this.chronicle.timer,
-							pause: this.chronicle.pause,
-							timeline: this.chronicle.timeline,
-							players: this.chronicle.players
-						}
-					});
+					}, { $set: _chronicle });
+					
 				}
 			});
 			

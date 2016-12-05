@@ -1,0 +1,37 @@
+<div>
+	
+	<fs-dropdown dropdown-id="PcOptions">
+		<div class="fs-dropdown-toggle">
+			Options
+		</div>
+		<div class="fs-dropdown-panel">
+			<div>
+				<ul class="card-menu-list">
+					<li ng-click="vm.editPc(vm.pcDeck);"><label>
+						Save Character
+					</label></li>
+					<li ng-click="vm.editPc(vm.pcDeck); vm.exitPc();"><label>
+						Save & Exit
+					</label></li>
+					<li ng-click="vm.exitPc();"><label>
+						Exit Without Saving
+					</label></li>
+					<li>
+						<div fs-modal-toggle toggle-deck="vm.pcDeck"
+							modalxalign="center" modalyalign="center"
+							modalxdim="15" modalYdim="20">
+							PC Dependencies
+							<div class="fs-modal-content">
+								<div>
+									<pc-deck-dependencies deck="toggle_deck"><pc-deck-dependencies>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+	 		</div>
+		</div>
+	</fs-dropdown>
+	
+	<fs-deck deck="vm.pcDeck"></fs-deck>
+</div>

@@ -1,5 +1,5 @@
 angular.module("freedomsworn")
-	.controller("NavCtrl", function($scope, $meteor, $location, pcBread, modalSrvc){
+	.controller("NavCtrl", function($scope, $meteor, $location, modalSrvc){
 		'ngInject';
 
     $scope.modalSrvc = modalSrvc;

@@ -1,10 +1,10 @@
-div.flex-column {
+.flex-column {
 	display: flex;
 	flex-direction: column;
 }
 
-div.flex-column > input,
-div.flex-column > textarea {
+.flex-column > input,
+.flex-column > textarea {
 	box-sizing: border-box;
 	font: inherit;
 	width: 100%;
@@ -16,23 +16,23 @@ div.flex-column > textarea {
 	resize: none;
 }
 
-div.flex-wrap {
+.flex-wrap {
 	display: flex;
 	flex-flow: row wrap;
 }
 
-div.inline-flex {
+.inline-flex {
 	display: inline-flex;
 	flex-wrap: nowrap;
 }
 
-div.inline-flex-center {
+.inline-flex-center {
 	display: inline-flex;
 	flex-wrap: nowrap;
 	align-items: center;
 }
 
-div.inline-flex > b {
+.inline-flex > b {
 	height: 100%;
 	width: 100%;
 }

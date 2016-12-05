@@ -2,7 +2,7 @@
 	
 	<div class="inline-flex-center text-10" style="flex: 2;">
 		<div class="inline-flex" style="flex: 1;">
-			<label for="name" stop-event><b>Name: </b></label>
+			<strong>Name: </strong>
 		</div>
 		<div class="inline-flex" style="flex: 3;">
 			<input id="name" class="card-input" type="text"
@@ -12,14 +12,14 @@
 	
 	<div class="inline-flex-center text-9" style="flex: 3;">
 		<div class="inline-flex" style="flex: 5;">
-			<label for="race" stop-event><b>Race: </b></label>
+			<strong>Race: </strong>
 		</div>
 		<div class="inline-flex" style="flex: 6;">
 			<span id="race">{{vm.deck.race.name}}</span>
 		</div>
 		
 		<div class="inline-flex" style="flex: 3;">
-			<label for="sex" stop-event><b>Sex: </b></label>
+			<strong>Sex: </strong>
 		</div>
 		<div class="inline-flex" style="flex: 6;">
 			<fs-select select-id="'sex'" selection="vm.deck.sex" 
@@ -29,13 +29,15 @@
 	</div>
 	
 	<div class="inline-flex-center" style="flex: 3;">
-		<div ability="vm.deck.abilities[0]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[0]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 8;">
 			<strong>STR</strong>ength
 		</div>
-		<div ability="vm.deck.abilities[1]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[1]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 6;">
 			<strong>PHY</strong>sique
 		</div>	
@@ -54,13 +56,15 @@
 	</div>
 	
 	<div class="inline-flex-center" style="flex: 3;">
-		<div ability="vm.deck.abilities[2]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[2]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 8;">
 			<strong>FLE</strong>xibility
 		</div>
-		<div ability="vm.deck.abilities[3]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[3]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 6;">
 			<strong>DEX</strong>terity
 		</div>	
@@ -79,13 +83,15 @@
 	</div>
 	
 	<div class="inline-flex-center" style="flex: 3;">
-		<div ability="vm.deck.abilities[4]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[4]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 8;">
 			<strong>ACU</strong>ity
 		</div>
-		<div ability="vm.deck.abilities[5]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[5]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 6;">
 			<strong>INT</strong>ellect
 		</div>	
@@ -104,13 +110,15 @@
 	</div>
 	
 	<div class="inline-flex-center" style="flex: 3;">
-		<div ability="vm.deck.abilities[6]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[6]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 8;">
 			<strong>WIS</strong>dom
 		</div>
-		<div ability="vm.deck.abilities[7]"
-			deck="vm.deck" style="flex: 3;"></div>
+		<pc-ability ability-dice="vm.deck.abilities[7]"
+			deck="vm.deck" card="vm.card" style="flex: 3;">
+		</pc-ability>
 		<div class="text-9" style="flex: 6;">
 			<strong>CHA</strong>risma
 		</div>	

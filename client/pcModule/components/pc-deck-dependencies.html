@@ -1,0 +1,17 @@
+<div>
+	<b>Pc Deck Dependencies</b>
+	<br>
+	<br>
+	<label ng-repeat="dep in vm.depList">
+		<input
+	    type="checkbox"
+	    name="selectedDecks[]"
+	    value="{{dep._id}}"
+	    ng-checked="vm.deck.dependencies.indexOf(dep._id) > -1"
+	    ng-click="vm.toggleDependency(vm.deck, dep._id)">
+	  {{dep.name}}
+	  <br>
+	</label>
+	<br>
+	
+</div>

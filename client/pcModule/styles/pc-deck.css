@@ -4,3 +4,16 @@
 .pc4 .content-panel {
 	background-color: cornsilk !important;
 }
+
+pc-ability img{
+	height: 2em;
+	width: 2em;
+	cursor: pointer;
+}
+
+.pc-dice-box-image {
+	height: 2em;
+	width: 2em;
+	margin: .25em;
+	cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.slot.width}"
+	ng-if="vm.shownColumns.slot.shown">
+	<fs-select select-header="'Slot'"
+		selection="vm.card.itemSlot"
+		options="[vm.dataSrvc.itemSlots]"></fs-select>
+	<fs-grid-resize resize-id="'Item Slot'"
+		resize-width="vm.shownColumns.slot.width"
+		column-shown="vm.shownColumns.slot"></fs-grid-resize>
+</div>
+
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.type.width}"
+	ng-if="vm.shownColumns.type.shown">
+	<fs-select select-header="'Type'"
+		selection="vm.card.itemType"
+		options="[vm.dataSrvc.itemTypes]"></fs-select>
+	<fs-grid-resize resize-id="'Item Type'"
+		resize-width="vm.shownColumns.type.width"
+		column-shown="vm.shownColumns.type"></fs-grid-resize>
+</div>
+
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.weight.width}"
+	ng-if="vm.shownColumns.weight.shown">
+	<div fs-numpicker
+		numvalue="vm.card.weight"
+		numvaluemin="0"
+		numvaluemax="99"
+		numdefault="0"
+		numdelay="200"></div>
+	<fs-grid-resize resize-id="'Item Weight'"
+		resize-width="vm.shownColumns.weight.width"
+		column-shown="vm.shownColumns.weight"></fs-grid-resize>
+</div>
+
+<div class="inline-flex" ng-style="{'width': vm.shownColumns.cost.width}"
+	ng-if="vm.shownColumns.cost.shown">
+	<div fs-numpicker
+		numvalue="vm.card.cost"
+		numvaluemin="0"
+		numvaluemax="999"
+		numdefault="0"
+		numdelay="200"></div>
+	<fs-grid-resize resize-id="'Item Cost'"
+		resize-width="vm.shownColumns.cost.width"
+		column-shown="vm.shownColumns.cost"></fs-grid-resize>
+</div>

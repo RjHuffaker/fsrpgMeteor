@@ -1,0 +1,35 @@
+<div class="flex-column">
+	<div ng-if="vm.shownColumns.shown && vm.shownColumns.sectionTitle"
+		class="inline-flex" style="flex-grow: 0;">
+
+		<fs-select select-type="'nested'" options="vm.shownColumns.nodes"></fs-select>
+
+		<div class="row-header">{{vm.shownColumns.sectionTitle}}</div>
+		
+		<a class="hide-link" ng-click="vm.shownColumns.shown = false">(-)</a>
+
+	</div>
+
+	<div ng-if="vm.shownColumns.shown && vm.shownColumns.sectionTitle"
+		class="section-underline" style="flex: 0"></div>
+
+	<div ng-if="vm.shownColumns.shown"
+		class="inline-flex" style="flex: 1; white-space: nowrap;"
+		ng-style="{'width': vm.shownColumns.width}">
+		
+		<strong style="flex: 1; overflow: hidden;">{{vm.shownColumns.columnTitle}}</strong>
+		
+		<a ng-if="vm.shownColumns.columnTitle" class="hide-link" style="flex: 0"
+			ng-click="vm.shownColumns.shown = false">(-)</a>
+		
+		<fs-grid-resize ng-if="vm.shownColumns.columnTitle"
+			resize-id="vm.shownColumns.id"
+			resize-width="vm.shownColumns.width"
+			column-shown="vm.shownColumns"></fs-grid-resize>
+		
+		<fs-grid-header class="inline-flex" ng-repeat="node in vm.shownColumns.nodes"
+			shown-columns="node"></fs-grid-header>
+		
+	</div>
+</div>
+

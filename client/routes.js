@@ -11,13 +11,12 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 			
 			.state('pcDeckList', {
 				url: '/pcDecks',
-				templateUrl: paths.pcModule.views+'pc-deck-list.ng.html'
+				template: '<pc-deck-list></pc-deck-list>'
 			})
 			.state('pcDeckDetails', {
 				url: '/pcDecks/:deckId',
-				templateUrl: paths.pcModule.views+'pc-deck-details.ng.html'
+				template: '<pc-deck-details></pc-deck-details>'
 			})
-			
 			.state('featureDeckList', {
 				url: '/featureDeckList',
 				template: '<feature-deck-list></feature-deck-list>'
@@ -34,7 +33,6 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 				url: '/featureDeckNew',
 				template: '<feature-deck-new></feature-deck-new>'
 			})
-			
 			.state('chronicleList', {
 				url: '/chronicles',
 				template: '<chronicle-list></chronicle-list>'
@@ -43,7 +41,6 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 				url: '/chronicles/:chronicleId',
 				template: '<chronicle-details></chronicle-details>'
 			})
-			
 			.state('forum', {
 				url: '/forum',
 				template: '<forum></forum>'

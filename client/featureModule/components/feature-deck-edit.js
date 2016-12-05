@@ -4,9 +4,11 @@ angular.module('freedomsworn')
 		controllerAs: 'vm',
 		controller($scope, $reactive, $meteor,
 		           $stateParams, CoreVars, dataSrvc,
-		           shownColumns, deckDependencies) {
+		           columnSrvc, deckDependencies) {
 			
 			'ngInject';
+			
+			$reactive(this).attach($scope);
 			
 			this.CoreVars = CoreVars;
 			
@@ -14,50 +16,73 @@ angular.module('freedomsworn')
 			
 			this.deckDependencies = deckDependencies;
 			
-			$reactive(this).attach($scope);
-			
 			this.subscribe('featureDecks');
+			
+			this.columnSrvc = columnSrvc;
+			
+			this.deckId = $stateParams.deckId;
 			
 			this.helpers({
 				featureDeck(){
-					var deck = FeatureDecks.findOne({_id: $stateParams.deckId});
 					
-					if(deck.dependencies) deckDependencies.fetchDependencies(deck);
-					switch(deck.deckType){
-						case 'Class':
-							this.shownColumns = shownColumns.class;
-							break;
-						case 'Faction':
-							this.shownColumns = shownColumns.faction;
-							break;
-						case 'Race':
-							this.shownColumns = shownColumns.race;
-							break;
-						case 'Trait':
-							this.shownColumns = shownColumns.trait;
-							break;
-						case 'Feat':
-							this.shownColumns = shownColumns.feat;
-							break;
-						case 'Augment':
-							this.shownColumns = shownColumns.augment;
-							break;
-						case 'Item':
-							this.shownColumns = shownColumns.item;
-							break;
-					}
+					var _deck = FeatureDecks.findOne(this.getReactively('deckId'));
 					
-					return deck;
+					if(_deck) if(_deck.dependencies) deckDependencies.fetchDependencies(_deck);
+					
+					return _deck;
 				},
 				depList(){
 					return FeatureDecks.find({"deckType": { $in: ["Class", "Faction", "Race"] }});
+				},
+				shownColumns(){
+					
+					var _deck = this.getReactively('featureDeck');
+					
+					if(_deck){
+						
+						switch(_deck.deckType){
+							case 'Class':
+								return this.columnSrvc.class;
+								break;
+							case 'Faction':
+								return this.columnSrvc.faction;
+								break;
+							case 'Race':
+								return this.columnSrvc.race;
+								break;
+							case 'Trait':
+								return this.columnSrvc.trait;
+								break;
+							case 'Feat':
+								return this.columnSrvc.feat;
+								break;
+							case 'Augment':
+								return this.columnSrvc.augment;
+								break;
+							case 'Item':
+								return this.columnSrvc.item;
+								break;
+						}
+						
+					}
+					
 				}
+				
 			});
 			
 			this.saveDeck = function(deck){
-				delete deck.currentRow;
+				
 				deck.lastModified = new Date();
-				deck.save();
+				
+				var _deck = angular.copy(deck);
+				
+				delete _deck._id;
+				
+				FeatureDecks.update({
+					_id: deck._id
+				}, { $set: _deck });
+				
+				
 			};
 			
 			this.toggleDependency = function(deck, deckId){

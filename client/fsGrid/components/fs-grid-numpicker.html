@@ -1,0 +1,23 @@
+<div ng-style="{'width': vm.columnShown.width}" ng-if="vm.columnShown.shown">
+	<div class="inline-flex">
+		<button class="text-center"
+		  ng-mousedown="vm.decreaseDown()"
+		  ng-mouseup="vm.mouseUp()"
+		  ng-mouseleave="vm.mouseUp()">
+			-
+		</button>
+
+		<input class="text-center"
+		  type="text" ng-model="vm.numvalue" ng-change="vm.onChange(value)"/>
+		  
+		<button class="text-center"
+		  ng-mousedown="vm.increaseDown()"
+		  ng-mouseup="vm.mouseUp()"
+		  ng-mouseleave="vm.mouseUp()">
+		  +
+		</button>
+	</div>
+	<fs-grid-resize resize-id="vm.columnShown.id"
+		resize-width="vm.columnShown.width"
+		column-shown="vm.columnShown"></fs-grid-resize>
+</div>

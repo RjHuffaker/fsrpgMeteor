@@ -1,0 +1,11 @@
+<fs-modal-toggle toggle-card="vm.card" toggle-deck="vm.deck"
+	modalxalign="'left'" modalxdim="8" modalydim="8"
+	toggle-callback="vm.deck.chooseAbility(vm.ability)">
+	
+	<img ng-src={{vm.ability.dice.image}} />
+	
+	<div class="fs-modal-content" card="modalSrvc.current.toggle_card">
+		<pc-dice-box deck="modalSrvc.current.toggle_deck"></pc-dice-box>
+	</div>
+	
+</fs-modal-toggle>

@@ -1,12 +1,12 @@
-[fs-grid] [fs-select],
-[fs-grid] [fs-select] [fs-dropdown],
-[fs-grid] [fs-select] [fs-dropdown] .fs-dropdown-toggle {
+fs-grid [fs-select],
+fs-grid [fs-select] [fs-dropdown],
+fs-grid [fs-select] [fs-dropdown] .fs-dropdown-toggle {
 	height: 100%;
 	width: 100%;
 }
 
-[faux-handle],
-[resize-handle] {
+fs-grid-resize,
+[faux-handle] {
 	z-index: 10;
 	flex-grow: 0;
 	flex-shrink: 0;
@@ -15,16 +15,17 @@
 	border-bottom: 2px ridge;
 	border-left: 2px groove;
 	border-right: 2px ridge;
+	background-color: lightgrey;
 }
 
-[faux-handle~=Width],
-[resize-handle~=Width] {
+[resize-width],
+[faux-handle~=Width] {
 	width: 6px;
 	cursor: ew-resize;
 }
 
-[faux-handle~=Height],
-[resize-handle~=Height] {
+[resize-height],
+[faux-handle~=Height] {
 	height: 6px;
 	cursor: ns-resize;
 }
@@ -69,10 +70,10 @@
 .section-underline { 
   border-bottom: 3px double #777;
   margin-left: -5px;
-  margin-right: -5px;
+  padding-right: 5px;
 }
 
-[fs-grid] div.inline-flex > textarea {
+fs-grid div.inline-flex > textarea {
 	box-sizing: border-box;
 	font: 0.9em Arial;
 	width: 100%;
@@ -85,11 +86,11 @@
 	resize: none;
 }
 
-[fs-grid] div.inline-flex > input {
+fs-grid div.inline-flex > input {
 	box-sizing: border-box;
 	font: 0.9em Arial;
 	width: 100%;
-	min-width: 4em !important;
+	min-width: 2em !important;
 	height: 100%;
 	min-height: 1em !important;
 	padding: 0.2em !important;
@@ -97,6 +98,6 @@
 	margin: 0 !important;
 }
 
-[fs-grid] .hide-link {
+fs-grid .hide-link {
 	cursor: pointer;
 }
