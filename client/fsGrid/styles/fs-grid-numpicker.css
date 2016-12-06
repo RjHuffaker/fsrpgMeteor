@@ -8,7 +8,7 @@ fs-grid-numpicker > div {
 	overflow: hidden;
 }
 
-fs-grid-numpicker input {
+fs-grid-numpicker .num-display {
 	min-width: 2em;
 	flex-grow: 2;
 	flex-shrink: 2;

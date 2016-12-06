@@ -1,15 +1,14 @@
 <div ng-style="{'width': vm.columnShown.width}" ng-if="vm.columnShown.shown">
-	<div class="inline-flex">
+	<div class="inline-flex fill-width">
 		<button class="text-center"
 		  ng-mousedown="vm.decreaseDown()"
 		  ng-mouseup="vm.mouseUp()"
 		  ng-mouseleave="vm.mouseUp()">
 			-
 		</button>
-
-		<input class="text-center"
-		  type="text" ng-model="vm.numvalue" ng-change="vm.onChange(value)"/>
-		  
+		
+		<div class="num-display text-center">{{vm.numvalue}}</div>
+		
 		<button class="text-center"
 		  ng-mousedown="vm.increaseDown()"
 		  ng-mouseup="vm.mouseUp()"

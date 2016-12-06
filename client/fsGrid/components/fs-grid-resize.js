@@ -163,9 +163,6 @@ angular.module('freedomsworn')
 						angular.element(_parent).css('height', object.height+'px');
 					} else if(_resizeHeight){
 						var _width = _parent.children[0].children[0].offsetWidth;
-						
-						console.log('_width', _width);
-						
 						$element.css('width', _width+'px');
 					}
 				}

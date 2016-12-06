@@ -3,7 +3,7 @@
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.target.width}"
 	ng-if="vm.shownColumns.target.shown">
-	<div class="inline-flex">
+	<div class="fill-width">
 		<fs-select style="flex: 2"
 			selection="vm.action.targetType"
 			options="[vm.dataSrvc.targetTypes]"></fs-select>
@@ -24,16 +24,18 @@
 			selection="vm.action.targetDetail"
 			options="[vm.dataSrvc.distantAreaDetails]"></fs-select>
 	</div>
-	<fs-grid-resize resize-id="Target {{vm.actionId}}"
-		resize-width="vm.shownColumns.target.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.target.id"
+		resize-width="vm.shownColumns.target.width"
+		column-shown="vm.shownColumns.target"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.usage.width}"
 	ng-if="vm.shownColumns.usage.shown">
 	<fs-select selection="vm.action.usage"
 		options="[['Default', 'Single-use']]"></fs-select>
-	<fs-grid-resize resize-id="Usage {{vm.actionId}}"
-		resize-width="vm.shownColumns.usage.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.usage.id"
+		resize-width="vm.shownColumns.usage.width"
+		column-shown="vm.shownColumns.usage"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.frequency.width}"
@@ -51,8 +53,9 @@
 			selection="vm.action.frequency"
 			options="[vm.dataSrvc.dualItemCount]"></fs-select>
 	</div>
-	<fs-grid-resize resize-id="Frequency {{vm.actionId}}"
-		resize-width="vm.shownColumns.frequency.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.frequency.id"
+		resize-width="vm.shownColumns.frequency.width"
+		column-shown="vm.shownColumns.frequency"></fs-grid-resize>
 </div>
 
 <fs-grid-numpicker
@@ -68,8 +71,9 @@
 	ng-if="vm.shownColumns.effect.shown &&
 		vm.shownColumns.effect.nodes.customEffect.shown">
 	<textarea ng-model="vm.action.effect.customEffect" style="flex: 1"></textarea>
-	<fs-grid-resize resize-id="Custom Effect {{vm.actionId}}"
-		resize-width="vm.shownColumns.effect.nodes.customEffect.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.effect.nodes.customEffect.id"
+		resize-width="vm.shownColumns.effect.nodes.customEffect.width"
+		column-shown="vm.shownColumns.effect.nodes.customEffect"></fs-grid-resize>
 </div>
 
 <fs-grid-numpicker
@@ -89,8 +93,9 @@
 		<input type="text" ng-model="vm.action.effect.list[0].leader" style="flex: 0;">
 		<textarea ng-model="vm.action.effect.list[0].content" style="flex: 1"></textarea>
 	</div>
-	<fs-grid-resize resize-id="List Item 1 {{vm.actionId}}"
-		resize-width="vm.shownColumns.effect.nodes.listItem1.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.effect.nodes.listItem1.id"
+		resize-width="vm.shownColumns.effect.nodes.listItem1.width"
+		column-shown="vm.shownColumns.effect.nodes.listItem1"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.effect.nodes.listItem2.width}"
@@ -100,8 +105,9 @@
 		<input type="text" ng-model="vm.action.effect.list[1].leader" style="flex: 0;">
 		<textarea ng-model="vm.action.effect.list[1].content" style="flex: 1"></textarea>
 	</div>
-	<fs-grid-resize resize-id="List Item 2 {{vm.actionId}}"
-		resize-width="vm.shownColumns.effect.nodes.listItem2.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.effect.nodes.listItem2.id"
+		resize-width="vm.shownColumns.effect.nodes.listItem2.width"
+		column-shown="vm.shownColumns.effect.nodes.listItem2"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.effect.nodes.listItem3.width}"
@@ -111,8 +117,9 @@
 		<input type="text" ng-model="vm.action.effect.list[2].leader" style="flex: 0;">
 		<textarea ng-model="vm.action.effect.list[2].content" style="flex: 1"></textarea>
 	</div>
-	<fs-grid-resize resize-id="List Item 3 {{vm.actionId}}"
-		resize-width="vm.shownColumns.effect.nodes.listItem3.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.effect.nodes.listItem3.id"
+		resize-width="vm.shownColumns.effect.nodes.listItem3.width"
+		column-shown="vm.shownColumns.effect.nodes.listItem3"></fs-grid-resize>
 </div>
 
 <!-- Action Attack -->
@@ -122,8 +129,9 @@
 	<fs-select
 		selection="vm.action.attackType"
 		options="[vm.dataSrvc.attackTypes]"></fs-select>
-	<fs-grid-resize resize-id="Attack Type {{vm.actionId}}"
-		resize-width="vm.shownColumns.attackType.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.attackType.id"
+		resize-width="vm.shownColumns.attackType.width"
+		column-shown="vm.shownColumns.attackType"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.attackRoll.width}"
@@ -143,8 +151,9 @@
 	<fs-select style="flex: 6"
 		selection="vm.action.versus"
 		options="[vm.dataSrvc.defenseTypes]"></fs-select>
-	<fs-grid-resize resize-id="Attack Roll {{vm.actionId}}"
-		resize-width="vm.shownColumns.attackRoll.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.attackRoll.id"
+		resize-width="vm.shownColumns.attackRoll.width"
+		column-shown="vm.shownColumns.attackRoll"></fs-grid-resize>
 </div>
 
 <fs-grid-numpicker
@@ -245,6 +254,7 @@
 		options="[vm.dataSrvc.damageDice]"></fs-select>
 	<textarea ng-model="vm.action.criticalSuccess.effect"
 		style="flex: 2"></textarea>
-	<fs-grid-resize id="Attack Critical Success {{vm.actionId}}"
-		resize-width="vm.shownColumns.attackCriticalSuccess.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.attackCriticalSuccess.id"
+		resize-width="vm.shownColumns.attackCriticalSuccess.width"
+		column-shown="vm.shownColumns.attackCriticalSuccess"></fs-grid-resize>
 </div>
