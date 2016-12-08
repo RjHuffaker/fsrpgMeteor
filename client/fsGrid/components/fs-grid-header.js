@@ -3,7 +3,8 @@ angular.module('freedomsworn')
 		templateUrl: '/client/fsGrid/components/fs-grid-header.html',
 		controllerAs: 'vm',
 		bindings: {
-			shownColumns: '='
+			shownColumns: '=',
+			resizeable: '='
 		},
 		controller($scope, $reactive, dataSrvc, deckDependencies) {
 			'ngInject';

@@ -15,8 +15,9 @@
 			selection="vm.card.block.dice_b"
 			options="[vm.dataSrvc.dualDice, vm.dataSrvc.abilities]"></fs-select>
 	</div>
-	<fs-grid-resize resize-id="'Block'" column-shown="vm.shownColumns.block"
-		resize-width="vm.shownColumns.block.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.block.id"
+		resize-width="vm.shownColumns.block.width"
+		column-shown="vm.shownColumns.block"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.dodge.width}"
@@ -30,8 +31,9 @@
 			selection="vm.card.dodge.dice_b"
 			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
 	</div>
-	<fs-grid-resize resize-id="'Dodge'" column-shown="vm.shownColumns.dodge"
-		resize-width="vm.shownColumns.dodge.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.dodge.id"
+		resize-width="vm.shownColumns.dodge.width"
+		column-shown="vm.shownColumns.dodge"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.alertness.width}"
@@ -45,8 +47,9 @@
 			selection="vm.card.alertness.dice_b"
 			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
 	</div>
-	<fs-grid-resize resize-id="'Alertness'" column-shown="vm.shownColumns.alertness"
-		resize-width="vm.shownColumns.alertness.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.alertness.id"
+		resize-width="vm.shownColumns.alertness.width"
+		column-shown="vm.shownColumns.alertness"></fs-grid-resize>
 </div>
 
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.tenacity.width}"
@@ -60,6 +63,7 @@
 			selection="vm.card.tenacity.dice_b"
 			options="[vm.dataSrvc.dice, vm.dataSrvc.abilities]"></fs-select>
 	</div>
-	<fs-grid-resize resize-id="'Tenacity'" column-shown="vm.shownColumns.tenacity"
-		resize-width="vm.shownColumns.tenacity.width"></fs-grid-resize>
+	<fs-grid-resize resize-id="vm.shownColumns.tenacity.id"
+		resize-width="vm.shownColumns.tenacity.width"
+		column-shown="vm.shownColumns.tenacity"></fs-grid-resize>
 </div>

@@ -38,6 +38,19 @@ angular.module('freedomsworn')
 			
 			var toggleListeners = function(enable){
 				if(enable){
+					if(_resizeWidth){
+						_parent = angular.element($element.context.parentElement);
+					} else if(_resizeHeight){
+						
+						_parent = angular.element(
+												angular.element(
+							            angular.element(
+							              $element.context.parentElement
+							            )[0].parentElement
+						            )[0].parentElement
+						          );
+					}
+					
 					_onDestroy = $scope.$on('$destroy', onDestroy);
 					_onPress = $scope.$on('fsGridResize:onLongPress', select);
 					_onRelease = $scope.$on('fsGridResize:onRelease', cancelPress);
@@ -102,9 +115,8 @@ angular.module('freedomsworn')
 			
 			var select = function(event, object){
 				_onMove = $scope.$on('fsGridResize:onMove', resize);
-				_parent = angular.element($element.context.parentElement)[0];
-				_startHeight = _parent.offsetHeight;
-				_startWidth = _parent.offsetWidth;
+				_startHeight = _parent[0].offsetHeight;
+				_startWidth = _parent[0].offsetWidth;
 			};
 			
 			var onMove = function(event){
@@ -135,55 +147,24 @@ angular.module('freedomsworn')
 						if(_minWidth < object.width){
 							if(object.width < _maxWidth){
 								this.resizeWidth = object.width;
-								angular.element(_parent).css('width', object.width+'px');
+								_parent.css('width', object.width+'px');
 							} else {
 								this.resizeWidth = _maxWidth;
-								angular.element(_parent).css('width', _maxWidth+'px');
+								_parent.css('width', _maxWidth+'px');
 							}
 						} else {
 							this.resizeWidth = _minWidth;
-							angular.element(_parent).css('width', _minWidth+'px');
+							_parent.css('width', _minWidth+'px');
 						}
-					} else if(_resizeId === object.id && _resizeHeight){
-						this.resizeHeight = object.height;
-						angular.element(_parent).css('height', object.height+'px');
-					} else if(_resizeHeight){
-						var _width = _parent.children[0].children[0].offsetWidth;
-						$element.css('width', _width+'px');
 					}
-					
-					
-					
 				} else {
-					if(_resizeId === object.id && _resizeWidth){
-						this.resizeWidth = object.width;
-						angular.element(_parent).css('width', object.width+'px');
-					} else if(_resizeId === object.id && _resizeHeight){
+					if(_resizeId === object.id && _resizeHeight){
 						this.resizeHeight = object.height;
-						angular.element(_parent).css('height', object.height+'px');
-					} else if(_resizeHeight){
-						var _width = _parent.children[0].children[0].offsetWidth;
-						$element.css('width', _width+'px');
+						_parent.css('height', object.height+'px');	
 					}
 				}
 				
 			};
-			
-			var getWidth = function(){
-				var _nephew = $element.context.parentElement.children[0].children[0];
-				if(_nephew){
-					var _width = _nephew.offsetWidth;
-					console.log('getWidth', _width);
-					return _width;
-				}
-			};
-			
-			var setWidth = function(_width){
-				console.log('setWidth', _width);
-				$element.css('width', _width+'px');
-				
-			};
-			
 			
 			var onRelease = function(){
 				
@@ -199,12 +180,6 @@ angular.module('freedomsworn')
 				if(_onMove) _onMove();
 				$document.off(_moveEvents, cancelPress);
 				$document.off(_releaseEvents, cancelPress);
-				
-				if(_resizeHeight){
-					var _width = _parent.children[0].children[0].offsetWidth;
-					$element.css('width', _width+'px');
-				}
-				
 			};
 			
 			initialize();

@@ -3,7 +3,7 @@
 	<fs-select select-header="'Slot'"
 		selection="vm.card.itemSlot"
 		options="[vm.dataSrvc.itemSlots]"></fs-select>
-	<fs-grid-resize resize-id="'Item Slot'"
+	<fs-grid-resize resize-id="vm.shownColumns.slot.id"
 		resize-width="vm.shownColumns.slot.width"
 		column-shown="vm.shownColumns.slot"></fs-grid-resize>
 </div>
@@ -13,7 +13,7 @@
 	<fs-select select-header="'Type'"
 		selection="vm.card.itemType"
 		options="[vm.dataSrvc.itemTypes]"></fs-select>
-	<fs-grid-resize resize-id="'Item Type'"
+	<fs-grid-resize resize-id="vm.shownColumns.type.id"
 		resize-width="vm.shownColumns.type.width"
 		column-shown="vm.shownColumns.type"></fs-grid-resize>
 </div>
@@ -26,7 +26,7 @@
 		numvaluemax="99"
 		numdefault="0"
 		numdelay="200"></div>
-	<fs-grid-resize resize-id="'Item Weight'"
+	<fs-grid-resize resize-id="vm.shownColumns.weight"
 		resize-width="vm.shownColumns.weight.width"
 		column-shown="vm.shownColumns.weight"></fs-grid-resize>
 </div>
@@ -39,7 +39,7 @@
 		numvaluemax="999"
 		numdefault="0"
 		numdelay="200"></div>
-	<fs-grid-resize resize-id="'Item Cost'"
+	<fs-grid-resize resize-id="vm.shownColumns.cost"
 		resize-width="vm.shownColumns.cost.width"
 		column-shown="vm.shownColumns.cost"></fs-grid-resize>
 </div>

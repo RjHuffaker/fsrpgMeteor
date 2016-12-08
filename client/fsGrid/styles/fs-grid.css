@@ -27,6 +27,7 @@ fs-grid-resize,
 [resize-height],
 [faux-handle~=Height] {
 	height: 6px;
+	width: 100%;
 	cursor: ns-resize;
 }
 

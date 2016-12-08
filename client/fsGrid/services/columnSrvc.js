@@ -5,9 +5,9 @@ angular.module('freedomsworn')
 			return {
 				id: 'Card Name',
 				columnTitle: 'Name',
-				width: 200,
-				minWidth: 50,
-				maxWidth: 200,
+				width: 130,
+				minWidth: 65,
+				maxWidth: 195,
 				shown: true
 			};
 		};
@@ -27,9 +27,9 @@ angular.module('freedomsworn')
 			return {
 				id: 'Description',
 				columnTitle: 'Description',
-				width: 200,
-				minWidth: 100,
-				maxWidth: 300,
+				width: 220,
+				minWidth: 110,
+				maxWidth: 330,
 				shown: true
 			};
 		};
@@ -237,9 +237,9 @@ angular.module('freedomsworn')
 					name: {
 						id: 'Name '+num,
 						columnTitle: 'Name',
-						width: 150,
+						width: 100,
 						minWidth: 50,
-						maxWidth: 250,
+						maxWidth: 150,
 						shown: true
 					},
 					target: {
