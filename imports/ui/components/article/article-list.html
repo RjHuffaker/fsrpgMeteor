@@ -1,0 +1,83 @@
+<div class="item-list" style="flex: 1;">
+	
+	<div>
+		<h2>Lore</h2>
+	</div>
+	
+	<div class="item-list-header">
+		<div style="flex: 3">
+			<a href="#" ng-click="vm.toggleOrder('title')">Title</a>
+		</div>
+		<div style="flex: 2">
+			<a href="#" ng-click="vm.toggleOrder('createdOn')">Created</a>
+		</div>
+		<div style="flex: 2">
+			<a href="#" ng-click="vm.toggleOrder('lastModified')">Last Edited</a>
+		</div>
+		<div style="flex: 2">
+			Options
+		</div>
+	</div>
+
+	<div class="item-list-body">
+		<div ng-repeat="item in vm.itemList | orderBy: vm.orderBy : vm.reverse"
+			class="item-list-row" ng-click="vm.selectItem(item)"
+			ng-class="{selected: (item === vm.currentItem)}">
+			
+			<div style="flex: 3">
+				<a href="/articleView/{{item._id}}">{{item.title}}{{item.name}}</a>
+			</div>
+			
+			<div style="flex: 2">
+				{{item.createdOn | customDate}}
+			</div>
+			
+			<div style="flex: 2">
+				{{item.lastModified | customDate}}
+			</div>
+			
+			<div style="flex: 1">
+				<a href="/articleEdit/{{item._id}}" >Edit</a>
+			</div>
+			
+			<div style="flex: 1">
+				<fs-modal-toggle
+					modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
+					<a href="#">Delete</a>
+					<div class="fs-modal-content">
+						<div class="flex-column">
+							<div>Delete "{{item.title}}"?</div>
+							<div>Are you sure?</div>
+							<div class="inline-flex">
+								<button style="flex: 1" ng-click="vm.deleteItem(item); overlayToggle();">Yes</button>
+								<button style="flex: 1" ng-click="overlayToggle()">No</button>
+							</div>
+						</div>
+					</div>
+				</fs-modal-toggle>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<fs-modal-toggle
+			modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
+			<a href="#">Create New Article</a>
+			<div class="fs-modal-content">
+				<div class="flex-column">
+					<div>Create New Article</div>
+					<div>
+						<button ng-click="vm.addItem(); overlayToggle();">Ok</button>
+						<button ng-click="overlayToggle()">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</fs-modal-toggle>
+	</div>
+</div>
+
+<div style="flex: 1; border: 3px double black; overflow-y: auto;">
+	<h3>{{vm.currentItem.title}}</h3>
+	<fs-bbcode content="vm.currentItem.content">
+	</fs-bbcode>
+</div>

@@ -16,8 +16,8 @@ paths = {
 	fsDeck: {
 		views: 'client/fsDeck/views/'
 	},
-	fsGrid: {
-		views: 'client/fsGrid/views/'
+	fsTable: {
+		views: 'client/fsTable/views/'
 	},
 	fsModal: {
 		views: 'client/fsModal/views/',

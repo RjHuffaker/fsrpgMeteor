@@ -53,6 +53,8 @@ angular.module('freedomsworn')
 			skillMax: 0,
 			deckType: 'pcDeck',
 			deckSize: 4,
+			x_margin: 3,
+			y_margin: 3,
 			dependencies: [
 				'RJuhMum5v9r6v5N5w',
 				'up7kQPiv29f4Dvc59',

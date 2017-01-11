@@ -2,54 +2,64 @@ angular.module('freedomsworn')
 	.component('pcDeckList', {
 		templateUrl: '/client/pcModule/components/pc-deck-list.html',
 		controllerAs: 'vm',
-		controller($rootScope, $scope, $reactive, pcDefault) {
+		controller($rootScope, $scope, $reactive, $location, $timeout, pcDefault) {
 			'ngInject';
 			
 			$reactive(this).attach($scope);
 			
 			this.subscribe('pcDecks');
 			
-			this.currentRow ='';
-			
 			this.helpers({
-				deckList(){
+				itemList(){
 					return PcDecks.find({});
 				}
 			});
 			
-			this.selectRow = function(row){
-				this.currentRow = row;
-				console.log(row);
-				
-				row.testPanelIds();
-				
+			this.selectItem = function(item){
+				this.currentItem = item;
+				console.log(item);
 			};
 			
-			this.addDeck = function(){
-				var newDeck = pcDefault;
+			this.orderBy = 'title';
+			
+			this.reverse = false;
+			
+			this.toggleOrder = function(column){
+				if(this.orderBy !== column){
+					this.orderBy = column;
+					this.reverse = false;
+				} else {
+					this.reverse = !this.reverse;
+				}
+			};
+			
+			this.addItem = function(){
+				var newItem = pcDefault;
 				
-				newDeck._id = Random.id();
-				newDeck.owner = $rootScope.currentUser._id;
-				newDeck.createdOn = new Date();
-				newDeck.lastModified = new Date();
+				newItem._id = Random.id();
+				newItem.owner = $rootScope.currentUser._id;
+				newItem.createdOn = new Date();
+				newItem.lastModified = new Date();
 				
-				newDeck = new pcObject(new deckObject(newDeck));
+				newItem = new pcObject(new deckObject(newItem));
 				
-				newDeck.setCardList();
+				newItem.setCardList();
 				
-				newDeck.setPanelPosition();
+				newItem.setPanelPosition();
 				
-				PcDecks.insert(newDeck, function(error, result){
+				PcDecks.insert(newItem, function(error, result){
 					if(error){
 						console.log(error);
 					} else if(result) {
-						console.log(result);
+						$timeout(function(){
+							$location.path('/pcDecks/'+result);
+						}, 0);
 					}
 				});
 			};
 			
-			this.deleteDeck = function(deck){
-				PcDecks.remove(deck._id);
+			this.deleteItem = function(item){
+				PcDecks.remove(item._id);
 			};
 			
 		}

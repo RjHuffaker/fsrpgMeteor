@@ -1,0 +1,23 @@
+<fs-table-header class="flex-column fill-width" 
+	shown-columns="vm.shownColumns"
+	resizeable="1"></fs-table-header>
+
+<fs-table-row class="remain-selected flex-column fill-width"
+	ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize"
+	ng-class="{selectrow: (card === vm.deck.currentRow)}"
+	card="card"
+	deck-type="vm.deck.deckType"
+	ng-click="vm.selectRow(card);"
+	shown-columns="vm.shownColumns"></fs-table-row>
+	
+<div>
+	<div style="width: 3em; display: inline-block">
+		<button ng-show="vm.currentPage > 0" style="width: 100%"
+			ng-click="vm.currentPage = vm.currentPage-1;">Prev</button>
+	</div>
+		{{vm.currentPage * vm.pageSize + 1}} - {{(vm.currentPage+1) * vm.pageSize}} of {{vm.deck.cardList.length}}
+	<div style="width: 3em; display: inline-block">
+		<button ng-show="vm.currentPage < vm.numberOfPages()-1" style="width: 100%"
+			ng-click="vm.currentPage = vm.currentPage+1;">Next</button>
+	</div>
+</div>

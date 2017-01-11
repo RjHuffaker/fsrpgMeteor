@@ -1,0 +1,49 @@
+<div class="inline-flex fill-height">
+
+	<div class="flex-column">
+		
+		<div class="inline-flex fill-height">
+		
+			<div style="width: 3em;" ng-if="vm.resizeable"></div>
+			
+			<div class="flex-column">
+				<div ng-if="vm.shownColumns.shown && vm.shownColumns.sectionTitle"
+					class="inline-flex" style="flex-grow: 0;">
+
+					<fs-select select-type="'nested'" options="vm.shownColumns.nodes"></fs-select>
+
+					<div class="row-header">{{vm.shownColumns.sectionTitle}}</div>
+					
+					<a ng-if="!vm.shownColumns.keepOpen" class="hide-link" 
+						ng-click="vm.shownColumns.shown = false">(-)</a>
+
+				</div>
+
+				<div ng-if="vm.shownColumns.shown && vm.shownColumns.sectionTitle"
+					class="section-underline" style="flex: 0"></div>
+
+				<div ng-if="vm.shownColumns.shown"
+					class="inline-flex" style="flex: 1; white-space: nowrap;"
+					ng-style="{'width': vm.shownColumns.width}">
+					
+					<strong style="flex: 1; overflow: hidden;">{{vm.shownColumns.columnTitle}}</strong>
+					
+					<a ng-if="vm.shownColumns.columnTitle && !vm.shownColumns.keepOpen"
+						class="hide-link"
+						ng-click="vm.shownColumns.shown = false">(-)</a>
+					
+					<fs-table-header class="inline-flex" ng-repeat="node in vm.shownColumns.nodes"
+						shown-columns="node"></fs-table-header>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<fs-table-resize resize-id="'title-row'" ng-if="vm.resizeable"
+			resize-height="1" min-height="40"></fs-table-resize>
+		
+	</div>
+	
+</div>

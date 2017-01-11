@@ -11,15 +11,16 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 			
 			.state('pcDeckList', {
 				url: '/pcDecks',
-				template: '<pc-deck-list></pc-deck-list>'
+				template: '<pc-deck-list class="inline-flex fill-parent"></pc-deck-list>'
 			})
 			.state('pcDeckDetails', {
 				url: '/pcDecks/:deckId',
 				template: '<pc-deck-details></pc-deck-details>'
 			})
+			
 			.state('featureDeckList', {
 				url: '/featureDeckList',
-				template: '<feature-deck-list></feature-deck-list>'
+				template: '<feature-deck-list class="inline-flex fill-parent"></feature-deck-list>'
 			})
 			.state('featureDeckView', {
 				url: '/featureDeckView/:deckId',
@@ -29,18 +30,39 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 				url: '/featureDeckEdit/:deckId',
 				template: '<feature-deck-edit></feature-deck-edit>'
 			})
+			
+			.state('featureDeckGrid', {
+				url: '/featureDeckGrid/:deckId',
+				template: '<feature-deck-grid></feature-deck-grid>'
+			})
+			
 			.state('featureDeckNew', {
 				url: '/featureDeckNew',
 				template: '<feature-deck-new></feature-deck-new>'
 			})
+			
 			.state('chronicleList', {
 				url: '/chronicles',
-				template: '<chronicle-list></chronicle-list>'
+				template: '<chronicle-list class="inline-flex fill-parent"></chronicle-list>'
 			})
 			.state('chronicleDetails', {
 				url: '/chronicles/:chronicleId',
 				template: '<chronicle-details></chronicle-details>'
 			})
+			
+			.state('articleView', {
+				url: '/articleView/:articleId',
+				template: '<article-view></article-view>'
+			})
+			.state('articleEdit', {
+				url: '/articleEdit/:articleId',
+				template: '<article-edit></article-edit>'
+			})
+			.state('articleList', {
+				url: '/articleList',
+				template: '<article-list class="inline-flex fill-parent"></article-list>'
+			})
+			
 			.state('forum', {
 				url: '/forum',
 				template: '<forum></forum>'

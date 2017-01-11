@@ -1,0 +1,9 @@
+<div class="inline-flex" ng-style="{'width': vm.columnShown.width}" ng-if="vm.columnShown.shown">
+	<input ng-if="vm.inputType === 'text'" type="text" ng-model="vm.inputModel">
+	<textarea ng-if="vm.inputType === 'textarea'" type="text" ng-model="vm.inputModel"></textarea>
+	<div ng-if="vm.inputType === 'fs-select'" class="fill-width"
+		fs-select selection="vm.inputModel"
+		toggle-header="vm.toggleHeader"
+		option-headers="vm.optionHeaders"
+		options="vm.options"></div>
+</div>

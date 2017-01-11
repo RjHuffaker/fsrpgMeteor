@@ -1,0 +1,14 @@
+<div class="article-edit">
+	<div>
+		Title:
+	</div>
+	<input type="text" ng-model="vm.article.title">
+	<div>
+		Content:
+	</div>
+	<textarea ng-model="vm.article.content"></textarea>
+	<div>
+		<button ng-click="vm.editArticle(vm.article)">Save</button>
+		<a href="/articleView/{{vm.article._id}}">View</a>
+	</div>
+</div>

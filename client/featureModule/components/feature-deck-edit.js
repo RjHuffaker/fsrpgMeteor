@@ -72,6 +72,13 @@ angular.module('freedomsworn')
 			
 			this.saveDeck = function(deck){
 				
+				// Patch to fix margins
+				if(deck.x_margin) delete deck.x_margin;
+				if(deck.y_margin) delete deck.y_margin;
+				deck.setPanelPosition();
+				
+				
+				
 				deck.lastModified = new Date();
 				
 				var _deck = angular.copy(deck);
@@ -214,6 +221,7 @@ angular.module('freedomsworn')
 					fixEffects(_card.action2);
 					
 				}
+				
 			};
 			
 		}

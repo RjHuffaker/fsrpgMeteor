@@ -15,6 +15,12 @@ angular.module('freedomsworn')
 			
 			this.pageSize = 8;
 			
+			this.rowLimit = 4;
+			
+			this.rowWidth = function(){
+				return 100/this.rowLimit+'%';
+			}
+			
 			this.numberOfPages = function(){
 				if(this.deck)
 				if(this.deck.cardList)

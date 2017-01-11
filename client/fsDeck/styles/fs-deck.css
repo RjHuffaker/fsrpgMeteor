@@ -1,15 +1,8 @@
-fs-deck,
-[fs-deck] {
-	position: absolute;
+fs-deck {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-
-fs-deck,
-div[fs-deck] {
-	margin-left: 3em;
 	-webkit-transition: .75s ease-in-out width;
 	-moz-transition: .75s ease-in-out width;
 	-o-transition: .75s ease-in-out width;
@@ -17,7 +10,19 @@ div[fs-deck] {
 	transition: .75s ease-in-out width;
 }
 
-fs-deck > div > ul,
-[fs-deck] > div > ul{
+fs-deck > div {
+	position: relative;
+	overflow: auto;
+	height: 100%;
+	width: 100%;
+}
+
+fs-deck > div > div {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+fs-deck > div > div > ul {
 	list-style: none;
 }

@@ -1,0 +1,34 @@
+fs-table-numpicker {
+	box-sizing: border-box;
+	border-right: 1px solid black;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+}
+
+fs-table-numpicker > div {
+	box-sizing: border-box;
+	white-space: nowrap;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+fs-table-numpicker input {
+	box-sizing: border-box;
+	display: inline-block;
+	height: 100%;
+	width: 50%;
+	padding: 0;
+	margin: 0;
+}
+
+fs-table-numpicker button {
+	box-sizing: border-box;
+	display: inline-block;
+	height: 100%;
+	width: 25%;
+	padding: 0;
+	margin: 0;
+}

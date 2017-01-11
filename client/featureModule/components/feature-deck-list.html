@@ -1,65 +1,126 @@
-<div class="outerTable">
+<div class="item-list">
 	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 80%; padding: 1em">
-			<div style="height: 100%; width: 100%; border: 2px solid black">
-				<div class="scrollDiv">
-					<div class="innerTable">
-						<div class="innerRow">
-							<div class="innerCell" style="">
-								Feature Deck List
-							</div>
-							<div class="innerCell" style="">
-								Deck Type
-							</div>
-							<div class="innerCell" style="">
-								Options
-							</div>
-							<div class="innerCell" style="">
-								Last Modified
-							</div>
-							<div class="innerCell" style="">
-								Created On
-							</div>
-						</div>
-						<div class="innerRow row" ng-click="vm.selectRow(deck)"
-							ng-class="{selected: (deck === vm.currentRow)}"
-							ng-repeat="deck in vm.deckList | orderBy: 'createdOn'">
-							<div class="innerCell">{{deck.name}}</div>
-							<div class="innerCell">{{deck.deckType}}</div>
-							
-							<div class="innerCell">
-								&nbsp; &nbsp;
-								<a href="/featureDeckView/{{deck._id}}">
-									View
-								</a>
-								&nbsp; &nbsp;
-								<a href="/featureDeckEdit/{{deck._id}}">
-									Edit
-								</a>
-								&nbsp; &nbsp;
-								<a href="#" data-ng-click="vm.deleteDeck(deck);">
-									Delete
-								</a>
-								&nbsp; &nbsp;
-							</div>
-							<div class="innerCell" style="">
-								{{deck.lastModified | date:'short'}}
-							</div>
-							<div class="innerCell" style="">
-								{{deck.createdOn | date:'short'}}
-							</div>
+	<div>
+		<h2>Feature Decks</h2>
+	</div>
+	
+	<div class="item-list-header">
+		<div style="flex: 3;">
+			<a href="#" ng-click="vm.toggleOrder('title')">Name</a>
+		</div>
+		<div style="flex: 1;">
+			<a href="#" ng-click="vm.toggleOrder('deckType')">Deck Type</a>
+		</div>
+		<div style="flex: 4;">
+			Options
+		</div>
+		<div style="flex: 2">
+			<a href="#" ng-click="vm.toggleOrder('lastModified')">Last Edited</a>
+		</div>
+		<div style="flex: 2">
+			<a href="#" ng-click="vm.toggleOrder('createdOn')">Created</a>
+		</div>
+	</div>
+	
+	<div ng-repeat="item in vm.itemList | orderBy: vm.orderBy : vm.reverse"
+		class="item-list-row" ng-click="vm.selectItem(item)"
+		ng-class="{selected: (item === vm.currentItem)}">
+		
+		<div style="flex: 3">
+			{{item.name}}
+		</div>
+		
+		<div style="flex: 1">
+			{{item.deckType}}
+		</div>
+		
+		<div style="flex: 1">
+			<a href="/featureDeckEdit/{{item._id}}" >Edit</a>
+		</div>
+		
+		<div style="flex: 1">
+			<a href="/featureDeckGrid/{{item._id}}" >Grid</a>
+		</div>
+		
+		<div style="flex: 1">
+			<a href="/featureDeckView/{{item._id}}" >View</a>
+		</div>
+		
+		<div style="flex: 1">
+			<fs-modal-toggle
+				modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
+				<a href="#">Delete</a>
+				<div class="fs-modal-content">
+					<div class="flex-column">
+						<div>Delete "{{item.name}}"?</div>
+						<div>Are you sure?</div>
+						<div class="inline-flex">
+							<button style="flex: 1" ng-click="vm.deleteDeck(item)">Yes</button>
+							<button style="flex: 1" ng-click="overlayToggle()">No</button>
 						</div>
 					</div>
 				</div>
+				
+			</fs-modal-toggle>
+			
+			
+		</div>
+		
+		<div style="flex: 2">
+			{{item.lastModified | date:'short'}}
+		</div>
+		
+		<div style="flex: 2">
+			{{item.createdOn | date:'short'}}
+		</div>
+		
+	</div>
+	
+	<div>
+		<a href="/featureDeckNew">
+			New Feature Deck
+		</a>
+		<fs-modal-toggle
+			modalxalign="'center'" modalxalign="'center'" modalxdim="16" modalydim="12">
+			<a href="#">Create New Feature Deck</a>
+			<div class="fs-modal-content">
+				<div class="flex-column">
+					<div>Create New Feature Deck</div>
+					<div>
+						<h4>Deck Size</h4>
+						<div fs-numpicker
+							numvalue="item.size"
+							numvaluemin="0"
+							numvaluemax="64"
+							numdefault="0"
+							numdelay="200"></div>
+							
+						<h4>Dependencies</h4>
+						<label ng-repeat="item in vm.deckList">
+							<input
+						    type="checkbox"
+						    name="selectedDecks[]"
+						    value="{{item._id}}"
+						    ng-checked="item.dependencies.indexOf(item._id) > -1"
+						    ng-click="vm.toggleDependency(item._id)">
+						  {{item.name}}
+						  <br>
+						</label>	
+						
+						<h4>Deck Type</h4>
+						<fs-select selection="item.type" 
+							options="[['Class', 'Faction', 'Race', 'Trait', 'Feat', 'Augment', 'Item']]">
+						</fs-select>
+						
+						<button ng-click="vm.addDeck(); overlayToggle();">Ok</button>
+						<button ng-click="overlayToggle()">Cancel</button>
+					</div>
+				</div>
 			</div>
-		</div>
+		</fs-modal-toggle>
 	</div>
-	<div class="outerRow">
-		<div class="outerCell" style="height: 10%; padding: 1em">
-			<a href="/featureDeckNew">
-				New Feature Deck
-			</a>
-		</div>
-	</div>
+</div>
+
+<div style="flex: 1; border: 3px double black;">
+	<fs-deck deck="vm.currentItem"></fs-deck>
 </div>

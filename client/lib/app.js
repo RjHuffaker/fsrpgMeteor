@@ -11,6 +11,8 @@ import { name as FsCard } from '/imports/ui/components/fsCard/fs-card';
 import { name as FsDropdown } from '/imports/ui/components/fsDropdown/fs-dropdown';
 import { name as FsSelect } from '/imports/ui/components/fsSelect/fs-select';
 
+import { name as Article } from '/imports/ui/components/article/article';
+
 angular.module('freedomsworn', [
-  angularMeteor, uiRouter, ngAnimate, Forum, Chronicle, FsCard, FsDropdown, FsSelect
+  angularMeteor, uiRouter, ngAnimate, Forum, Chronicle, FsCard, FsDropdown, FsSelect, Article
 ]);

@@ -1,0 +1,28 @@
+.item-list {
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	border: 3px double black;
+}
+
+.item-list-header {
+	display: flex;
+}
+
+.item-list-header div {
+	border: 1px solid grey;
+}
+
+.item-list-row {
+	display: flex
+}
+
+.item-list-row div {
+	border: 1px solid grey;
+}
+
+.selected div {
+	color: darkred;
+	border: 1px solid green;
+	background-color: lightblue;
+}

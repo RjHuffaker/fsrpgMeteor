@@ -1,104 +1,17 @@
-fs-grid [fs-select],
-fs-grid [fs-select] [fs-dropdown],
-fs-grid [fs-select] [fs-dropdown] .fs-dropdown-toggle {
+fs-grid {
 	height: 100%;
-	width: 100%;
+	border: 3px double blue;
+	display: flex;
+	flex-direction: column;
 }
 
-fs-grid-resize,
-[faux-handle] {
-	z-index: 10;
-	flex-grow: 0;
-	flex-shrink: 0;
+.fs-grid-row {
+	flex: 1;
+}
+
+.fs-grid-row > div{
+	border: 3px double green;
+	display: inline-block;
+	overflow: hidden;
 	box-sizing: border-box;
-	border-top: 2px groove;
-	border-bottom: 2px ridge;
-	border-left: 2px groove;
-	border-right: 2px ridge;
-	background-color: lightgrey;
-}
-
-[resize-width],
-[faux-handle~=Width] {
-	width: 6px;
-	cursor: ew-resize;
-}
-
-[resize-height],
-[faux-handle~=Height] {
-	height: 6px;
-	width: 100%;
-	cursor: ns-resize;
-}
-
-.grid-card {
-	-moz-border-radius: .5em;
-	-webkit-border-radius: .5em;
-	border-radius: .5em;
-	border-top: 1px solid #222;
-	border-left: 1px solid #222;
-	border-right: 2px solid #111;
-	border-bottom: 2px solid #111;
-}
-
-.grid-card-icon {
-	height: 3em; width: 3em;
-	border: 1px solid black;
-	-moz-border-radius: .2em;
-	-webkit-border-radius: .2em;
-	border-radius: .2em;
-}
-
-.selectrow .grid-card-icon {
-	border: 2px solid black;
-}
-
-.selectrow textarea,
-.selectrow input {
-	background-color: lightcyan;
-}
-
-.selectrow [fs-select] [fs-dropdown] .fs-dropdown-toggle {
-	background-color: darkseagreen;
-}
-
-.row-header {
-	font-weight: bold;
-	font-variant: small-caps;
-	font-style: italic;
-}
-
-.section-underline { 
-  border-bottom: 3px double #777;
-  margin-left: -5px;
-  padding-right: 5px;
-}
-
-fs-grid div.inline-flex > textarea {
-	box-sizing: border-box;
-	font: 0.9em Arial;
-	width: 100%;
-	min-width: 4em !important;
-	height: 100%;
-	min-height: 1em !important;
-	padding: 0.2em !important;
-	border: 0 !important;
-	margin: 0 !important;
-	resize: none;
-}
-
-fs-grid div.inline-flex > input {
-	box-sizing: border-box;
-	font: 0.9em Arial;
-	width: 100%;
-	min-width: 2em !important;
-	height: 100%;
-	min-height: 1em !important;
-	padding: 0.2em !important;
-	border: 0 !important;
-	margin: 0 !important;
-}
-
-fs-grid .hide-link {
-	cursor: pointer;
 }

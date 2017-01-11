@@ -14,7 +14,9 @@
 	<div ng-repeat="post in vm.posts">
 		<h4>{{post.title}} - {{post.timestamp | date : 'longDate'}} - {{post.username}}</h4>
 		<hr>
-		{{post.content}}
+		<fs-bbcode>
+			{{post.content}}
+		</fs-bbcode>
 		<button ng-click="vm.deletePost(post._id)">X</button>
 		<hr>
 	</div>
