@@ -34,9 +34,9 @@
 <div class="inline-flex" ng-style="{'width': vm.shownColumns.cost.width}"
 	ng-if="vm.shownColumns.cost.shown">
 	<div fs-numpicker
-		numvalue="vm.card.cost"
+		numvalue="vm.card.weight"
 		numvaluemin="0"
-		numvaluemax="999"
+		numvaluemax="99"
 		numdefault="0"
 		numdelay="200"></div>
 	<fs-table-resize resize-id="vm.shownColumns.cost"

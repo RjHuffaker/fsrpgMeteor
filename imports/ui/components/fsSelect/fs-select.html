@@ -1,6 +1,6 @@
 <fs-dropdown dropdown-id="selectId" class="open-down {{vm.selectType}}"
-	ng-class="{'keep-open': (vm.selectType === 'boolean' || vm.selectType === 'id' || vm.selectType === 'nested')}">
-	<div class="fs-dropdown-toggle">
+	ng-class="{'keep-open': (vm.selectType === 'boolean' || vm.selectType === 'id' || vm.selectType === 'nested' || vm.selectType === 'nested-array')}">
+	<div class="fs-dropdown-toggle text-center" ng-style="{'width': vm.toggleWidth}">
 		
 		<span ng-if="!vm.selectType">
 			<span ng-if="!vm.selection">
@@ -28,7 +28,7 @@
 			(+)
 		</span>
 		
-		<span ng-if="vm.selectType === 'nested'">
+		<span ng-if="vm.selectType === 'nested' || vm.selectType === 'nested-array'">
 			{{vm.toggleHeader}}
 			<span ng-if="!vm.toggleHeader">
 				(+)
@@ -40,13 +40,13 @@
 		<div>
 			
 			<ul ng-if="vm.selectType === 'id' || !vm.selectType"
-				ng-repeat="optionList in vm.options track by $index" class="text-9">
+				ng-repeat="optionList in vm.options track by $index" class="text-9 text-center">
 				<li ng-show="vm.optionHeaders.length" class="header" stop-event>
 					{{vm.optionHeaders[$index]}}
 				</li>
 				<li ng-click="vm.selectOption('')">&nbsp;</li>
 				<li ng-repeat="option in optionList track by $index"
-					ng-class="{current: showSelected(option)}"
+					ng-class="{current: vm.showSelected(option)}"
 					ng-click="vm.selectOption(option)"
 					stop-event="">
 					<span ng-show="option.name">
@@ -58,7 +58,7 @@
 				</li>
 			</ul>
 			
-			<ul ng-if="vm.selectType === 'boolean'" class="text-9">
+			<ul ng-if="vm.selectType === 'boolean'" class="text-9 text-center">
 				<li ng-repeat="(key, value) in vm.options"
 					ng-class="{current: value}"
 					ng-click="vm.selectOption(key)"
@@ -69,7 +69,12 @@
 				</li>
 			</ul>
 			
-			<recursive-list ng-if="vm.selectType === 'nested'" options="vm.options"></recursive-list>
+			<recursive-list ng-if="vm.selectType === 'nested'"
+				options="vm.options"></recursive-list>
+			
+			<recursive-list ng-if="vm.selectType === 'nested-array'"
+				single-select="1"
+				options="vm.options"></recursive-list>
 			
 		</div>
 	</div>

@@ -1,0 +1,22 @@
+<card-action ng-show="vm.currentFilter.id === 'Action '+vm.actionId"
+	action="vm.action" card="vm.card"></card-action>
+
+<div ng-show="vm.currentFilter.id === 'Name '+vm.actionId">
+	{{vm.action.name}}
+</div>
+
+<div ng-show="vm.currentFilter.id === 'Target '+vm.actionId">
+	{{vm.action.targetType}} {{vm.action.targetDetail}}
+</div>
+
+<div ng-show="vm.currentFilter.id === 'Usage '+vm.actionId">
+	{{vm.action.targetType}} {{vm.action.usage}}
+</div>
+
+<div ng-show="vm.currentFilter.id === 'Count '+vm.actionId">
+	{{vm.action.count}}
+</div>
+
+<div ng-show="vm.currentFilter.id === 'Effect '+vm.actionId">
+	<textarea ng-model="vm.action.effect.content"></textarea>
+</div>

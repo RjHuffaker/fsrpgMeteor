@@ -3,28 +3,72 @@ angular.module('freedomsworn')
 		templateUrl: '/client/fsGrid/components/fs-grid.html',
 		controllerAs: 'vm',
 		bindings: {
-			deck: '=',
-			shownColumns: '='
+			deck: '='
 		},
-		controller($scope, $reactive, $document) {
+		controller($scope, $reactive, $document, fsGridSrvc, dataSrvc) {
 			'ngInject';
 			
 			$reactive(this).attach($scope);
 			
+			this.helpers({
+				shownCells(){
+					
+					var _deck = this.getReactively('deck');
+					
+					if(_deck){
+						switch(_deck.deckType){
+							case 'Class':
+								return fsGridSrvc.class;
+								break;
+							case 'Faction':
+								return fsGridSrvc.faction;
+								break;
+							case 'Race':
+								return fsGridSrvc.race;
+								break;
+							case 'Trait':
+								return fsGridSrvc.trait;
+								break;
+							case 'Feat':
+								return fsGridSrvc.feat;
+								break;
+							case 'Augment':
+								return fsGridSrvc.augment;
+								break;
+							case 'Item':
+								return fsGridSrvc.item;
+								break;
+						}
+					}
+				},
+				currentFilter(){
+					return Session.get('currentSelection');
+				},
+				currentCell(){
+					return Session.get('currentCell');
+				}
+			});
+			
+			this.dataSrvc = dataSrvc;
+			
+			this.gridColumns = 8;
+			
+			this.gridRows = 8;
+			
 			this.currentPage = 0;
 			
-			this.pageSize = 8;
+			this.columnWidth = function(){
+				return 100/this.gridColumns+'%';
+			}
 			
-			this.rowLimit = 4;
-			
-			this.rowWidth = function(){
-				return 100/this.rowLimit+'%';
+			this.rowHeight = function(){
+				return 100/this.gridRows+'%';
 			}
 			
 			this.numberOfPages = function(){
 				if(this.deck)
 				if(this.deck.cardList)
-				return Math.ceil(this.deck.cardList.length / this.pageSize);
+				return Math.ceil(this.deck.cardList.length / (this.gridColumns * this.gridRows));
 			};
 			
 			var initialize = function(){
@@ -36,18 +80,20 @@ angular.module('freedomsworn')
 				$document.off('click', deselect);
 			};
 			
-			this.selectRow = function(row){
-				console.log(row);
-				this.deck.currentRow = row;
+			this.selectCell = function(card){
+				Session.set('currentCell', card);
+				console.log(card);
+			};
+			
+			this.showSelected = function(card){
+				return this.currentCell._id === card._id;
 			};
 			
 			var deselect = function(event){
-				if(!this.deck) return;
-				if(!this.deck.currentRow) return;
 				for(elem = event.target; elem; elem = elem.parentNode){
 					if(angular.element(elem).hasClass('remain-selected')) return;
 				}
-				delete this.deck.currentRow;
+				Session.set('currentCell', {_id: 0});
 			};
 			
 			initialize();

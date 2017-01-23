@@ -4,18 +4,37 @@ import angularMeteor from 'angular-meteor';
 import templateUrl from './recursive-list.html';
 
 class RecursiveList {
-	constructor($scope, $reactive) {
+	constructor($rootScope, $scope, $reactive) {
 		'ngInject';
 		
 		$reactive(this).attach($scope);
 		
-		this.itemClick = function(value){
-			value.shown = !value.shown;
-		};
+		this.helpers({
+			currentSelection(){
+				return Session.get('currentSelection');
+			}
+		});
+		
+		this.selectOption = function(selection){
+			console.log(selection);
 			
+			selection.shown = !selection.shown;
+			if(this.singleSelect){
+				Session.set('currentSelection', selection);
+			}
+		};
+		
+		this.showSelected = function(selection){
+			if(this.singleSelect){
+				return this.currentSelection.id === selection.id;
+			} else {
+				return selection.shown;
+			}
+			
+		};
+		
 	}
 }
-
 
 const name = 'recursiveList';
 
@@ -29,6 +48,6 @@ export default angular.module(name, [
 		controller: RecursiveList,
 		bindings: {
 			options: '=',
-			recursiveClick: '&'
+			singleSelect: '='
 		}
 	});

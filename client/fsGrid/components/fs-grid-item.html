@@ -1,0 +1,30 @@
+<div>
+	Slot:
+	<fs-select select-header="'Slot'"
+		selection="vm.card.itemSlot"
+		options="[vm.dataSrvc.itemSlots]"></fs-select>
+</div>
+<div>
+	Type:
+	<fs-select select-header="'Type'"
+		selection="vm.card.itemType"
+		options="[vm.dataSrvc.itemTypes]"></fs-select>
+</div>
+<div>
+	Cost:
+	<div fs-numpicker style="display: inline;"
+		numvalue="vm.card.cost"
+		numvaluemin="0"
+		numvaluemax="99"
+		numdefault="0"
+		numdelay="200"></div>
+</div>
+<div>
+	Weight:
+	<div fs-numpicker style="display: inline;"
+		numvalue="vm.card.cost"
+		numvaluemin="0"
+		numvaluemax="99"
+		numdefault="0"
+		numdelay="200"></div>
+</div>

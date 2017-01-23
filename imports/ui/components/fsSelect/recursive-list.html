@@ -1,11 +1,11 @@
 <ul>
 	<li ng-repeat="(key, value) in vm.options">
-		<div ng-class="{current: value.shown}"
-			ng-click="vm.itemClick(value)">
+		<div ng-class="{current: vm.showSelected(value)}"
+			ng-click="vm.selectOption(value)">
 			{{value.sectionTitle}}{{value.columnTitle}}
 		</div>
 		<recursive-list ng-if="value.nodes && value.shown"
-			class="text-9"
+			class="text-9" single-select="vm.singleSelect"
 			options="value.nodes"></recursive-list>
 	</li>
 </ul>

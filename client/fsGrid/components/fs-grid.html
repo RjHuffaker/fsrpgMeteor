@@ -1,63 +1,77 @@
-<div class="fs-grid-row">
-	<fs-select select-header="vm.rowLimit"
-		selection="vm.rowLimit"
-		options="[[2,4,8,16]]"></fs-select>
-	{{vm.rowWidth()}}
+<div class="inline-flex">
+	
+	<div style="flex: 1">
+		Filter:
+		<fs-select select-type="'nested-array'" options="vm.shownCells.nodes"
+			toggle-header="vm.currentFilter.id"></fs-select>
+	</div>
+	
+	<div style="flex: 1">
+		Columns: <fs-select select-header="vm.gridColumns"
+			selection="vm.gridColumns"
+			toggle-width="'3em'"
+			options="[[2,4,8,16]]"></fs-select>
+	</div>
+	
+	<div style="flex: 1">
+		Rows: <fs-select select-header="vm.gridRows"
+			selection="vm.gridRows"
+			toggle-width="'3em'"
+			options="[[2,4,8,16]]"></fs-select>
+	</div>
+	
+	<div class="inline-flex" style="flex: 2">
+		<div style="width: 2em;">
+			<button class="text-12 fill-parent" ng-show="vm.currentPage > 0" style="padding: 0; border: 1px solid red;"
+				ng-click="vm.currentPage = vm.currentPage-1;">
+				&#65513
+			</button>
+		</div>
+		<div style="width: 6em; text-align: center;">
+			{{vm.currentPage*vm.gridColumns*vm.gridRows + 1}} - {{(vm.currentPage+1) * vm.gridColumns*vm.gridRows}} of {{vm.deck.cardList.length}}
+		</div>
+		<div style="width: 2em;">
+			<button class="text-12 fill-parent" ng-show="vm.currentPage < vm.numberOfPages()-1"
+				ng-click="vm.currentPage = vm.currentPage+1;">
+				&#65515
+			</button>
+		</div>
+	</div>
+	
 </div>
 
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber'" ng-style="{'width': vm.rowWidth()}">
-		{{card.name}}
+<div class="fs-grid-row text-7 remain-selected" style="flex: 1">
+	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.currentPage*vm.gridColumns*vm.gridRows | limitTo:vm.gridColumns*vm.gridRows"
+	class="fs-grid-cell"
+	ng-click="vm.selectCell(card)"
+	ng-class="{'selected': vm.showSelected(card)}"
+	ng-style="{'width': vm.columnWidth()}">
+		
+		<div ng-if='vm.currentFilter.id === "Card Name"'>
+			{{card.name}}
+		</div>
+		
+		<div ng-if='vm.currentFilter.id === "Description"'>
+			{{card.description}}
+		</div>
+		
+		<div ng-if='vm.currentFilter.id === "Item Properties"'>
+			<fs-grid-item card="card"></fs-grid-item>
+		</div>
+		
+		<div ng-if='vm.currentFilter.id === "Benefit"'>
+			<fs-grid-benefit card="card"></fs-grid-benefit>
+		</div>
+		
+		<div>
+			<fs-grid-action card="card" action="card.action1" action-id="'1'"
+				current-filter="vm.currentFilter"></fs-grid-action>
+		</div>
+		
+		<div>
+			<fs-grid-action card="card" action="card.action2" action-id="2"
+				current-filter="vm.currentFilter"></fs-grid-action>
+		</div>
+		
 	</div>
 </div>
-
-
-<!--
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:0 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit*2 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit*3 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit*4 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit*5 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit*6 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
-
-<div class="fs-grid-row">
-	<div ng-repeat="card in vm.deck.cardList | orderBy: 'cardNumber' | startFrom:vm.rowLimit*7 | limitTo:vm.rowLimit">
-		{{card.name}}
-	</div>
-</div>
--->

@@ -6,7 +6,7 @@ import { name as RecursiveList } from '/imports/ui/components/fsSelect/recursive
 import templateUrl from './fs-select.html';
 
 class FsSelect {
-	constructor($scope, $reactive) {
+	constructor($rootScope, $scope, $reactive) {
 		'ngInject';
 		
 		$reactive(this).attach($scope);
@@ -16,41 +16,35 @@ class FsSelect {
 		this.selectOption = function(selection){
 			console.log('select option', selection);
 			if(selection){
-				if(this.fsSelect === 'array'){
-					var _index = this.selection.indexOf(selection);
-					if(_index > -1) {
-						var newarray = this.selection.splice(_index, 1);
-					} else {
+				if(this.selectType === 'array'){
+					if(this.selection.indexOf(selection) < 0) {
 						this.selection.push(selection);
 					}
-				} else if(this.fsSelect === 'id'){
-					var _index = this.selection.indexOf(selection._id);
-					if(_index > -1) {
-						var newarray = this.selection.splice(_index, 1);
-					} else {
+				} else if(this.selectType === 'id'){
+					if(this.selection.indexOf(selection) > 0) {
 						this.selection.push(selection._id);
 					}
-				} else if(this.fsSelect === 'boolean'){
+				} else if(this.selectType === 'boolean'){
 					this.options[selection] = !this.options[selection];
-				} else if(this.fsSelect === 'nested'){
-					selection.shown = !selection.shown;
 				} else {
 					this.selection = selection;
 				}
-			} else if(this.fsSelect === undefined){
+			} else if(this.selectType === undefined){
 				this.selection = '';
 			}
 			
-			if(this.callback) this.callback();
+			if(this.callback){
+				this.callback();
+			}
 			
 			$scope.$eval(this.callback());
 		};
 		
 		this.showSelected = function(selection){
 			if(!this.selection) return;
-			if(this.fsSelect === 'array'){
+			if(this.selectType === 'array'){
 				return this.selection.indexOf(selection) > -1;
-			} else if(this.fsSelect === 'id'){
+			} else if(this.selectType === 'id'){
 				return this.selection.indexOf(selection._id) > -1;
 			} else {
 				return angular.equals(selection, this.selection);
@@ -76,6 +70,7 @@ export default angular.module(name, [
 			selection: '=',
 			options: '=',
 			toggleHeader: '=',
+			toggleWidth: '=',
 			optionHeaders: '=',
 			callback: '&'
 		}

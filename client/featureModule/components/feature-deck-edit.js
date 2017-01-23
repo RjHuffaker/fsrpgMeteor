@@ -18,8 +18,6 @@ angular.module('freedomsworn')
 			
 			this.subscribe('featureDecks');
 			
-			this.columnSrvc = columnSrvc;
-			
 			this.deckId = $stateParams.deckId;
 			
 			this.helpers({
@@ -42,25 +40,25 @@ angular.module('freedomsworn')
 						
 						switch(_deck.deckType){
 							case 'Class':
-								return this.columnSrvc.class;
+								return columnSrvc.class;
 								break;
 							case 'Faction':
-								return this.columnSrvc.faction;
+								return columnSrvc.faction;
 								break;
 							case 'Race':
-								return this.columnSrvc.race;
+								return columnSrvc.race;
 								break;
 							case 'Trait':
-								return this.columnSrvc.trait;
+								return columnSrvc.trait;
 								break;
 							case 'Feat':
-								return this.columnSrvc.feat;
+								return columnSrvc.feat;
 								break;
 							case 'Augment':
-								return this.columnSrvc.augment;
+								return columnSrvc.augment;
 								break;
 							case 'Item':
-								return this.columnSrvc.item;
+								return columnSrvc.item;
 								break;
 						}
 						

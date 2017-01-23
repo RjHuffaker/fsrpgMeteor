@@ -21,7 +21,7 @@
 	border: 1px solid grey;
 }
 
-.selected div {
+.item-list .selected div {
 	color: darkred;
 	border: 1px solid green;
 	background-color: lightblue;
