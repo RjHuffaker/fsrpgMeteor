@@ -1,0 +1,22 @@
+<div class="flex-column">
+	<div style="flex: 1">
+		<h3>Create Article</h3>
+	</div>
+	
+	<div style="flex: 1">
+		<h4>Article Title: </h4>
+		<input ng-model="vm.newItem.title">
+	</div>
+	
+	<div style="flex: 1">
+		<h4>Content: </h4>
+		<textarea ng-model="vm.newItem.content"></textarea>
+	</div>
+	
+	<div style="flex: 1">
+			<button ng-click="vm.addNewItem(vm.newItem);">Ok</button>
+			&nbsp;
+			<button ng-click="vm.cancel();">Cancel</button>
+	</div>
+	
+</div>

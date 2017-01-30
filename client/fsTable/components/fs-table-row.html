@@ -4,14 +4,12 @@
 	
 		<div class="inline-flex fill-height">
 			
-			<div class="inline-flex">
+			<div class="flex-column">
 				<fs-dropdown id="vm.card.id" class="open-down">
 					<div class="fs-dropdown-toggle {{vm.card.cardType}}">
 						<div class="grid-card-icon text-center">
-							<div class="text-6">
+							<div class="text-9">
 								<b>#{{vm.card.cardNumber}}</b>
-								<br>
-								<fs-table-stats card="vm.card"></fs-table-stats>
 							</div>
 						</div>
 					</div>
@@ -20,6 +18,21 @@
 							<feature-card
 								card="vm.card" class="{{vm.card.cardType}}"
 								class="fill-parent content-panel grid-card"></feature-card>
+						</div>
+					</div>
+				</fs-dropdown>
+				
+				<fs-dropdown id="vm.card.id" class="open-down">
+					<div class="fs-dropdown-toggle {{vm.card.cardType}}">
+						<div class="grid-card-icon text-center">
+							<div class="text-6">
+								<fs-table-stats card="vm.card"></fs-table-stats>
+							</div>
+						</div>
+					</div>
+					<div class="fs-dropdown-panel">
+						<div class="feature-card">
+							<fs-table-stats card="vm.card" details="1" class="fill-parent"></fs-table-stats>
 						</div>
 					</div>
 				</fs-dropdown>

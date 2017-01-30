@@ -27,6 +27,14 @@ angular.module('freedomsworn')
 			
 			$reactive(this).attach($scope);
 			
+			this.featureCardTypes = [
+				'Terrain','Surge','Hindrance',
+				'Class','Faction','Race',
+				'Trait','Feat','Augment','Item'
+			];
+			
+			this.featureCardChoices = ['Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'];
+			
 			var _card = this.getReactively('card', true);
 			
 			var _deck = this.getReactively('deck', true);

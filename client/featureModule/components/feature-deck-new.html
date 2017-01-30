@@ -1,19 +1,15 @@
-<div class="outerTable">
-	<div class="outerRow">
-		<div class="outerCell" style="height: 10%; padding: 1em">
-			<h3>New Feature Deck</h3>
-		</div>
+<div class="flex-column">
+	<div style="flex: 1">
+		<h3>New Feature Deck</h3>
 	</div>
 	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 10%; padding: 1em">
-			<h4>Name</h4>
-			<input ng-model="vm.deck.name">
-		</div>
+	<div style="flex: 1">
+		<h4>Deck Name: </h4>
+		<input ng-model="vm.deck.name">
 	</div>
 	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 10%; padding: 1em">
+	<div style="flex: 1" class="inline-flex">
+		<div style="flex: 1">
 			<h4>Deck Size</h4>
 			<div fs-numpicker
 				numvalue="vm.deck.size"
@@ -22,34 +18,31 @@
 				numdefault="0"
 				numdelay="200"></div>
 		</div>
-		<div class="outerCell" style="height: 30%; padding: 1em">
-			<h4>Dependencies</h4>
-			<label ng-repeat="deck in vm.deckList">
-				<input
-			    type="checkbox"
-			    name="selectedDecks[]"
-			    value="{{deck._id}}"
-			    ng-checked="deck.dependencies.indexOf(deck._id) > -1"
-			    ng-click="vm.toggleDependency(deck._id)">
-			  {{deck.name}}
-			  <br>
-			</label>
-		</div>
-	</div>
-	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 10%; padding: 1em">
+		<div style="flex: 1">
 			<h4>Deck Type</h4>
-			<fs-select selection="vm.deck.type" 
-				options="[['Class', 'Faction', 'Race', 'Trait', 'Feat', 'Augment', 'Item']]">
+			<fs-select selection="vm.deck.deckType" 
+				options="[['Terrain','Surge','Hindrance','Class', 'Faction', 'Race', 'Trait', 'Feat', 'Augment', 'Item']]">
 			</fs-select>
 		</div>
 	</div>
 	
-	<div class="outerRow">
-		<div class="outerCell" style="height: 10%; padding: 1em">
-			<button ng-click="vm.addNewDeck(vm.deck.name, vm.deck.size, vm.deck.type, vm.deck.dependencies);">Create Deck</button>
-		</div>
+	<div style="flex: 1">
+		<h4>Dependencies</h4>
+		<label ng-repeat="deck in vm.deckList">
+			<input
+		    type="checkbox"
+		    name="selectedDecks[]"
+		    value="{{deck._id}}"
+		    ng-checked="deck.dependencies.indexOf(deck._id) > -1"
+		    ng-click="vm.toggleDependency(deck._id)">
+		  {{deck.name}}
+		  <br>
+		</label>
+	</div>
+	
+	<div style="flex: 1" class="inline-flex">
+			<button style="flex: 1" ng-click="vm.addNewItem(vm.deck);">Ok</button>
+			<button style="flex: 1" ng-click="vm.cancel();">Cancel</button>
 	</div>
 	
 </div>

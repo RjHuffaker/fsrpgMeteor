@@ -1,7 +1,44 @@
-<div ng-class="{'text-error': vm.actionBenefit(vm.card.action1) !== vm.actionCost(vm.card.action1)}">
-	{{vm.actionBenefit(vm.card.action1)}} / {{vm.actionCost(vm.card.action1)}}
+<div ng-show="!vm.details">
+	<div ng-class="{'text-error': vm.actionBenefit(vm.card.action1) !== vm.actionCost(vm.card.action1)}">
+		{{vm.actionBenefit(vm.card.action1)}} / {{vm.actionCost(vm.card.action1)}}
+	</div>
+
+	<div ng-class="{'text-error': vm.actionBenefit(vm.card.action2) !== vm.actionCost(vm.card.action2)}">
+		{{vm.actionBenefit(vm.card.action2)}} / {{vm.actionCost(vm.card.action2)}}
+	</div>
 </div>
 
-<div ng-class="{'text-error': vm.actionBenefit(vm.card.action2) !== vm.actionCost(vm.card.action2)}">
-	{{vm.actionBenefit(vm.card.action2)}} / {{vm.actionCost(vm.card.action2)}}
+<div ng-show="vm.details" class="inline-flex fill-parent text-8">
+	
+	<div style="flex: 2;" class="flex-column">
+		<div style="text-decoration: underline;">Benefits</div>
+		<div>Move Effect:</div>
+		<div>Damage/2:</div>
+		<div>Enable Move:</div>
+		<div>Force Move:</div>
+		<div>Enable Action:</div>
+		<div>Force Action:</div>
+		<div>Nagate Injury:</div>
+		<div>Attack Curse:</div>
+		<div>Expel Curse:</div>
+		<div>Trap Curse:</div>
+		<div>Total:</div>
+	</div>
+	
+	<div style="flex: 1;" class="flex-column"
+		ng-repeat="action in [vm.card.action1, vm.card.action2] track by $index">
+		<div style="text-decoration: underline;">Action {{$index+1}}</div>
+		<div>{{action.effect.moveEffect || '&nbsp;'}}</div>
+		<div>{{action.success.damage/2 || '&nbsp;'}}</div>
+		<div>{{action.success.enableMove || '&nbsp;'}}</div>
+		<div>{{action.success.forceMove || '&nbsp;'}}</div>
+		<div>{{action.success.enableAction || '&nbsp;'}}</div>
+		<div>{{action.success.forceAction || '&nbsp;'}}</div>
+		<div>{{action.success.negateInjury || '&nbsp;'}}</div>
+		<div>{{action.success.attackCurse || '&nbsp;'}}</div>
+		<div>{{action.success.expelCurse || '&nbsp;'}}</div>
+		<div>{{action.success.trapCurse || '&nbsp;'}}</div>
+		<div>{{vm.actionBenefit(action)}}</div>
+	</div>
+	
 </div>

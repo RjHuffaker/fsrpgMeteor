@@ -30,15 +30,9 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 				url: '/featureDeckEdit/:deckId',
 				template: '<feature-deck-edit></feature-deck-edit>'
 			})
-			
 			.state('featureDeckGrid', {
 				url: '/featureDeckGrid/:deckId',
 				template: '<feature-deck-grid></feature-deck-grid>'
-			})
-			
-			.state('featureDeckNew', {
-				url: '/featureDeckNew',
-				template: '<feature-deck-new></feature-deck-new>'
 			})
 			
 			.state('chronicleList', {

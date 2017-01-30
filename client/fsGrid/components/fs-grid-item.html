@@ -1,28 +1,34 @@
-<div>
-	Slot:
+<div ng-show="vm.currentFilter.id === 'Item Properties'">
+	<p><b>Slot:</b> {{vm.card.itemSlot}}</p>
+	<p><b>Type:</b> {{vm.card.itemType}}</p>
+	<p><b>Cost:</b> {{vm.card.cost}}</p>
+	<p><b>Weight:</b> {{vm.card.weight}}</p>
+</div>
+
+<div ng-show="vm.currentFilter.id === 'Item Slot'">
 	<fs-select select-header="'Slot'"
 		selection="vm.card.itemSlot"
 		options="[vm.dataSrvc.itemSlots]"></fs-select>
 </div>
-<div>
-	Type:
+
+<div ng-show="vm.currentFilter.id === 'Item Type'">
 	<fs-select select-header="'Type'"
 		selection="vm.card.itemType"
 		options="[vm.dataSrvc.itemTypes]"></fs-select>
 </div>
-<div>
-	Cost:
-	<div fs-numpicker style="display: inline;"
+
+<div ng-show="vm.currentFilter.id === 'Item Cost'">
+	<div fs-numpicker
 		numvalue="vm.card.cost"
 		numvaluemin="0"
 		numvaluemax="99"
 		numdefault="0"
 		numdelay="200"></div>
 </div>
-<div>
-	Weight:
-	<div fs-numpicker style="display: inline;"
-		numvalue="vm.card.cost"
+
+<div ng-show="vm.currentFilter.id === 'Item Weight'">
+	<div fs-numpicker
+		numvalue="vm.card.weight"
 		numvaluemin="0"
 		numvaluemax="99"
 		numdefault="0"

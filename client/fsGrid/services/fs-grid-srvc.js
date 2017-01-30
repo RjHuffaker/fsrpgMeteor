@@ -111,7 +111,29 @@ angular.module('freedomsworn')
 			return {
 				id: 'Item Properties',
 				sectionTitle: 'Item Properties',
-				shown: false
+				shown: false,
+				nodes: {
+					slot: {
+						id: 'Item Slot',
+						columnTitle: 'Slot',
+						shown: true
+					},
+					type: {
+						id: 'Item Type',
+						columnTitle: 'Type',
+						shown: true
+					},
+					weight: {
+						id: 'Item Weight',
+						columnTitle: 'Weight',
+						shown: true
+					},
+					cost: {
+						id: 'Item Cost',
+						columnTitle: 'Cost',
+						shown: true
+					}
+				}
 			};
 		};
 		

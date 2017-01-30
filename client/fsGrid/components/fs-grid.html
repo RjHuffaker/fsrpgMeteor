@@ -1,5 +1,9 @@
 <div class="inline-flex">
 	
+	<div style="flex: 2">
+		<strong class="text-12">{{vm.deck.name}}</strong>
+	</div>
+	
 	<div style="flex: 1">
 		Filter:
 		<fs-select select-type="'nested-array'" options="vm.shownCells.nodes"
@@ -55,23 +59,18 @@
 			{{card.description}}
 		</div>
 		
-		<div ng-if='vm.currentFilter.id === "Item Properties"'>
-			<fs-grid-item card="card"></fs-grid-item>
-		</div>
+		<fs-grid-item card="card" current-filter="vm.currentFilter"></fs-grid-item>
 		
 		<div ng-if='vm.currentFilter.id === "Benefit"'>
 			<fs-grid-benefit card="card"></fs-grid-benefit>
 		</div>
 		
-		<div>
-			<fs-grid-action card="card" action="card.action1" action-id="'1'"
-				current-filter="vm.currentFilter"></fs-grid-action>
-		</div>
+		<fs-grid-action card="card" action="card.action1" action-id="'1'"
+			current-filter="vm.currentFilter"></fs-grid-action>
 		
-		<div>
-			<fs-grid-action card="card" action="card.action2" action-id="2"
-				current-filter="vm.currentFilter"></fs-grid-action>
-		</div>
+		<fs-grid-action card="card" action="card.action2" action-id="2"
+			current-filter="vm.currentFilter"></fs-grid-action>
+		
 		
 	</div>
 </div>

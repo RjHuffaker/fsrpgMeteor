@@ -3,7 +3,8 @@ angular.module('freedomsworn')
 		templateUrl: '/client/fsGrid/components/fs-grid-item.html',
 		controllerAs: 'vm',
 		bindings: {
-			card: '='
+			card: '=',
+			currentFilter: '='
 		},
 		controller($scope, $reactive, dataSrvc) {
 			'ngInject';

@@ -4,7 +4,8 @@ angular.module('freedomsworn')
 		controllerAs: 'vm',
 		bindings: {
 			card: '=',
-			shownColumns: '='
+			shownColumns: '=',
+			details: '='
 		},
 		controller($scope, $reactive) {
 			'ngInject';

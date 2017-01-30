@@ -16,6 +16,7 @@ fs-dropdown div {
 	z-index: 7000;
 	overflow: hidden;
 	height: 0;
+	box-sizing: content-box;
 	-webkit-transition: all .5s ease-out;
 	-moz-transition: all .5s ease-out;
 	-o-transition: all .5s ease-out;

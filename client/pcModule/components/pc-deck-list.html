@@ -46,7 +46,7 @@
 					<a href="#">Delete</a>
 					<div class="fs-modal-content">
 						<div class="flex-column">
-							<div>Delete "{{item.title}}"?</div>
+							<div>Delete "{{item.name}}"?</div>
 							<div>Are you sure?</div>
 							<div class="inline-flex">
 								<button style="flex: 1" ng-click="vm.deleteItem(item); overlayToggle();">Yes</button>
@@ -59,18 +59,12 @@
 		</div>
 	</div>
 
-	<div>
-		<fs-modal-toggle
-			modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
-			<a href="#">Create New PC</a>
+	<div ng-show="$root.currentUser">
+		<fs-modal-toggle modalxdim="24" modalydim="32"
+			modalxalign="'center'" modalyalign="'center'">
+			<button>Create New PC</button>
 			<div class="fs-modal-content">
-				<div class="flex-column">
-					<div>Create New PC</div>
-					<div>
-						<button ng-click="vm.addItem(); overlayToggle();">Ok</button>
-						<button ng-click="overlayToggle()">Cancel</button>
-					</div>
-				</div>
+				<pc-deck-new></pc-deck-new>
 			</div>
 		</fs-modal-toggle>
 	</div>

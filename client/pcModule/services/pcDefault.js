@@ -56,6 +56,9 @@ angular.module('freedomsworn')
 			x_margin: 3,
 			y_margin: 3,
 			dependencies: [
+				'j3WBTRgCDuA2kHJ7p',
+				'ACcgpNSvQnfpdXogi',
+				'4fR2Wbgou5WEKJv47',
 				'RJuhMum5v9r6v5N5w',
 				'up7kQPiv29f4Dvc59',
 				'TFb6brdQzr8pJBmRk',

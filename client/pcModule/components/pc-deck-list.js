@@ -33,33 +33,9 @@ angular.module('freedomsworn')
 				}
 			};
 			
-			this.addItem = function(){
-				var newItem = pcDefault;
-				
-				newItem._id = Random.id();
-				newItem.owner = $rootScope.currentUser._id;
-				newItem.createdOn = new Date();
-				newItem.lastModified = new Date();
-				
-				newItem = new pcObject(new deckObject(newItem));
-				
-				newItem.setCardList();
-				
-				newItem.setPanelPosition();
-				
-				PcDecks.insert(newItem, function(error, result){
-					if(error){
-						console.log(error);
-					} else if(result) {
-						$timeout(function(){
-							$location.path('/pcDecks/'+result);
-						}, 0);
-					}
-				});
-			};
-			
 			this.deleteItem = function(item){
 				PcDecks.remove(item._id);
+				this.currentItem = '';
 			};
 			
 		}

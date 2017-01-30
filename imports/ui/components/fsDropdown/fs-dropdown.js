@@ -94,21 +94,21 @@ class FsDropdown {
 			console.log('start:', startingHeight);
 			console.log('content:', contentHeight);
 			
-			if(startingHeight > 10)
-			if(startingHeight < contentHeight){
-				console.log('growing');
-				dropdownPanel.addClass('anchor-top');
-				dropdownPanel.removeClass('anchor-bottom');
-				
-			} else {
-				console.log('shrinking');
-				dropdownPanel.addClass('anchor-top');
-				dropdownPanel.removeClass('anchor-bottom');
-				
+			if(startingHeight > 10){
+				if(startingHeight < contentHeight){
+					console.log('growing');
+					dropdownPanel.addClass('anchor-top');
+					dropdownPanel.removeClass('anchor-bottom');
+					
+				} else {
+					console.log('shrinking');
+					dropdownPanel.addClass('anchor-top');
+					dropdownPanel.removeClass('anchor-bottom');
+					
+				}
 			}
-			
 			dropdownPanel.height(contentHeight);
-			
+				
 			/*
 			if(startingHeight > 10){
 				dropdownPanel.addClass('anchor-bottom');

@@ -17,6 +17,8 @@ class ArticleList {
 			}
 		});
 		
+		this.currentItem = '';
+		
 		this.selectItem = function(item){
 			this.currentItem = item;
 			console.log(item);
@@ -35,32 +37,9 @@ class ArticleList {
 			}
 		};
 		
-		this.addItem = function(){
-			
-			var newItem = {
-				title: 'Title goes here.',
-				content: 'Content goes here.'
-			};
-			
-			newItem._id = Random.id();
-			newItem.owner = $rootScope.currentUser._id;
-			newItem.createdOn = new Date();
-			newItem.lastModified = new Date();
-			
-			Articles.insert(newItem, function(error, result){
-				if(error){
-					console.log(error);
-				} else if(result) {
-					$timeout(function(){
-						$location.path('/articleEdit/'+result);
-					}, 0);
-				}
-			});
-			
-		};
-		
 		this.deleteItem = function(item){
 			Articles.remove(item._id);
+			this.currentItem = '';
 		};
 		
 	}
@@ -70,7 +49,7 @@ const name = 'articleList';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor
+	angularMeteor
 ])
 	.component(name, {
 		templateUrl,

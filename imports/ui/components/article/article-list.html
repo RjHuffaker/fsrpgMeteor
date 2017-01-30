@@ -60,17 +60,11 @@
 	</div>
 
 	<div>
-		<fs-modal-toggle
-			modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
-			<a href="#">Create New Article</a>
+		<fs-modal-toggle modalxdim="24" modalydim="32"
+			modalxalign="'center'" modalyalign="'center'">
+			<button>Create New Article</button>
 			<div class="fs-modal-content">
-				<div class="flex-column">
-					<div>Create New Article</div>
-					<div>
-						<button ng-click="vm.addItem(); overlayToggle();">Ok</button>
-						<button ng-click="overlayToggle()">Cancel</button>
-					</div>
-				</div>
+				<article-new></article-new>
 			</div>
 		</fs-modal-toggle>
 	</div>

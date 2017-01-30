@@ -47,16 +47,16 @@
 		</div>
 		
 		<div style="flex: 1">
-			<fs-modal-toggle
-				modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
+			<fs-modal-toggle modalxdim="12" modalydim="6"
+				modalxalign="'center'" modalyalign="'center'">
 				<a href="#">Delete</a>
 				<div class="fs-modal-content">
 					<div class="flex-column">
 						<div>Delete "{{item.name}}"?</div>
 						<div>Are you sure?</div>
 						<div class="inline-flex">
-							<button style="flex: 1" ng-click="vm.deleteDeck(item)">Yes</button>
-							<button style="flex: 1" ng-click="overlayToggle()">No</button>
+							<button style="flex: 1" ng-click="vm.deleteDeck(item); overlayToggle();">Yes</button>
+							<button style="flex: 1" ng-click="overlayToggle();">No</button>
 						</div>
 					</div>
 				</div>
@@ -76,46 +76,12 @@
 		
 	</div>
 	
-	<div>
-		<a href="/featureDeckNew">
-			New Feature Deck
-		</a>
-		<fs-modal-toggle
-			modalxalign="'center'" modalxalign="'center'" modalxdim="16" modalydim="12">
-			<a href="#">Create New Feature Deck</a>
+	<div ng-show="$root.currentUser">
+		<fs-modal-toggle modalxdim="24" modalydim="32"
+			modalxalign="'center'" modalyalign="'center'">
+			<button>Create New Feature Deck</button>
 			<div class="fs-modal-content">
-				<div class="flex-column">
-					<div>Create New Feature Deck</div>
-					<div>
-						<h4>Deck Size</h4>
-						<div fs-numpicker
-							numvalue="item.size"
-							numvaluemin="0"
-							numvaluemax="64"
-							numdefault="0"
-							numdelay="200"></div>
-							
-						<h4>Dependencies</h4>
-						<label ng-repeat="item in vm.deckList">
-							<input
-						    type="checkbox"
-						    name="selectedDecks[]"
-						    value="{{item._id}}"
-						    ng-checked="item.dependencies.indexOf(item._id) > -1"
-						    ng-click="vm.toggleDependency(item._id)">
-						  {{item.name}}
-						  <br>
-						</label>	
-						
-						<h4>Deck Type</h4>
-						<fs-select selection="item.type" 
-							options="[['Class', 'Faction', 'Race', 'Trait', 'Feat', 'Augment', 'Item']]">
-						</fs-select>
-						
-						<button ng-click="vm.addDeck(); overlayToggle();">Ok</button>
-						<button ng-click="overlayToggle()">Cancel</button>
-					</div>
-				</div>
+				<feature-deck-new></feature-deck-new>
 			</div>
 		</fs-modal-toggle>
 	</div>

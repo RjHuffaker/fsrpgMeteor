@@ -18,8 +18,8 @@
 	class="{{vm.card.cardType}} fill-parent">
 </pc-card-4>
 
-<feature-card ng-if="['Class','Faction','Race','Trait','Feat','Augment','Item'].indexOf(vm.card.cardType) > -1"
+<feature-card ng-if="vm.featureCardTypes.indexOf(vm.card.cardType) > -1"
 	card="vm.card" deck="vm.deck" class="{{vm.card.cardType}} fill-parent"></feature-card>
 	
-<choose-feature-card ng-if="['Choose Trait', 'Choose Feat', 'Choose Augment', 'Choose Item'].indexOf(vm.card.cardType) > -1" 
+<choose-feature-card ng-if="vm.featureCardChoices.indexOf(vm.card.cardType) > -1" 
 	card="vm.card" deck="vm.deck" class="{{vm.card.cardType}} fill-parent"></choose-feature-card>
