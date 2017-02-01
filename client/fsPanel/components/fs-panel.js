@@ -9,6 +9,8 @@ angular.module('freedomsworn')
 		controller($rootScope, $scope, $reactive, $element, $document, $window, onCardMove){
 			'ngInject';
 			
+			$reactive(this).attach($scope);
+			
 			var _hasTouch = ('ontouchstart' in window);
 			var _pressEvents = 'touchstart mousedown';
 			var _moveEvents = 'touchmove mousemove';
@@ -24,8 +26,6 @@ angular.module('freedomsworn')
 					_moveTimer, _moveHandler, _releaseHander;
 			
 			var _pressTimer = null;
-			
-			$reactive(this).attach($scope);
 			
 			this.featureCardTypes = [
 				'Terrain','Surge','Hindrance',
@@ -89,6 +89,9 @@ angular.module('freedomsworn')
 			
 			// Initial local "press" function
 			var onPress = function(event){
+				console.log(_deck);
+				
+				
 				if(_hasTouch){
 					cancelPress();
 					_pressTimer = Meteor.setTimeout(function(){
@@ -140,6 +143,7 @@ angular.module('freedomsworn')
 			
 			// Global "press" function
 			var onPressCard = function(event, object){
+				
 				if(object.deckId === _deck._id){
 					
 					_startCol = convertEm(_card.x_coord);

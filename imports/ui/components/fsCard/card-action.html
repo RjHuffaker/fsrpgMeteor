@@ -1,40 +1,48 @@
 <div ng-if="vm.action.name">
-	<div class="title-row text-9">
-		<div class="title-block">
-			<strong class="pull-left">{{vm.action.name}}</strong>
+	<div class="inline-flex fill-parent">
+		<div style="flex: 1">
+			<strong>{{vm.action.name}}</strong>
 		</div>
 		
-		<div class="title-block">
-			<span class="pull-right">
+		<div>
 				{{vm.action.targetType}} {{vm.action.targetDetail}}
-			</span>
 		</div>
 	</div>
 	<hr class="black-line text-9">
 	
-	<div class="title-row text-9">
-		<div class="title-block">
-			<strong class="pull-left">
+	<div class="inline-flex fill-parent">
+		<div style="flex: 1">
+			<strong>
 				{{vm.action.usage}}<span ng-if="vm.action.attackType">, {{vm.action.attackType}}</span>
 			</strong>
 		</div>
-		<div class="title-block">
-			<div class="pull-right">
+		<div>
+			<div>
 				<span ng-if="vm.action.count">
 					<strong>Count: </strong>{{vm.action.count}}
 					<span ng-if="dataSrvc.dualItemSlots.indexOf(vm.card.itemSlot) > -1">or {{vm.action.count-1}}*</span>
+				</span>
+				<span ng-if="vm.action.disruptivePrompt">
+					<strong>Disruptive</strong>
+				</span>
+				<span ng-if="vm.action.responsivePrompt">
+					<strong>Responsive</strong>
 				</span>
 			</div>
 		</div>
 	</div>
 	
-	<div ng-if="vm.action.frequency === 'Free'
-		|| vm.action.frequency === 'Responsive'"
-		style="white-space: normal;" class="text-9">
-		<strong>Prompt: </strong>{{vm.action.prompt}}
+	<div ng-if="vm.action.disruptivePrompt"
+		style="white-space: normal;">
+		<strong>Prompt: </strong>{{vm.action.disruptivePrompt}}
 	</div>
 	
-	<div ng-if="vm.action.effect.customEffect || vm.action.effect.moveEffect" class="text-9">
+	<div ng-if="vm.action.responsivePrompt"
+		style="white-space: normal;">
+		<strong>Prompt: </strong>{{vm.action.responsivePrompt}}
+	</div>
+	
+	<div ng-if="vm.action.effect.customEffect || vm.action.effect.moveEffect">
 		<div>
 			<strong>Effect: </strong>{{vm.action.effect.customEffect}}{{effectData.moveEffect[vm.action.effect.moveEffect]}}
 		</div>
@@ -49,18 +57,14 @@
 		
 	</div>
 	
-	<div ng-if="vm.action.attackType" class="text-9">
+	<div ng-if="vm.action.attackType">
 		<strong>Attack: </strong>
 		{{vm.action.dice_a}} + {{vm.action.dice_b}}{{vm.action.attackModifier}} vs {{vm.action.versus}}
 	</div>
 	
-	<action-success success="vm.action.success"></div>
+	<action-success success="vm.action.success"></action-success>
 	
-	<div ng-if="vm.action.criticalSuccess.damage || vm.action.criticalSuccess.effect" class="text-9">
-		<strong>Critical Success: </strong>{{vm.action.criticalSuccess.damage}} {{vm.action.criticalSuccess.effect}}
-	</div>
-	
-	
+	<action-critical-success critical-success="vm.action.criticalSuccess"></action-critical-success>
 	
 	<br>
 </div>

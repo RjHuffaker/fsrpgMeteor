@@ -1,4 +1,4 @@
-<div ng-if="vm.success.damage || vm.success.effect" class="text-9">
+<div ng-if="vm.success.damage || vm.success.effect">
 	<strong>Success: </strong><span ng-if="vm.success.damage">+</span>{{vm.success.damage}}
 	<span ng-if="vm.success.damage">damage</span>{{vm.effectData.enableMove[vm.success.enableMove]}}{{vm.effectData.forceMove[vm.success.forceMove]}}{{vm.effectData.enableAction[vm.success.enableAction]}}{{vm.effectData.negateInjury[vm.success.negateInjury]}}{{vm.effectData.forceAction[vm.success.forceAction]}}{{vm.effectData.attackCurse[vm.success.attackCurse]}}{{vm.effectData.expelCurse[vm.success.expelCurse]}}{{vm.effectData.trapCurse[vm.success.trapCurse]}}.
 </div>

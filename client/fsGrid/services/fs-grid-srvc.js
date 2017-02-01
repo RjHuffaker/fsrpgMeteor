@@ -47,6 +47,26 @@ angular.module('freedomsworn')
 			}
 		};
 		
+		function penalty(){
+			return {
+				id: 'Penalty',
+				sectionTitle: 'Penalty',
+				shown: false,
+				nodes: {
+					penalty: {
+						id: 'Penalty',
+						columnTitle: 'Penalty',
+						shown: true
+					},
+					criticalSuccess: {
+						id: 'Penalty Critical Failure',
+						columnTitle: 'Critical Failure',
+						shown: false
+					}
+				}
+			}
+		};
+		
 		function statistics(){
 			return {
 				id: 'Core Statistics',
@@ -189,6 +209,16 @@ angular.module('freedomsworn')
 						columnTitle: 'Usage',
 						shown: false
 					},
+					disruptivePrompt: {
+						id: 'Disruptive Prompt '+num,
+						columnTitle: 'Disruptive Prompt',
+						shown: false
+					},
+					responsivePrompt: {
+						id: 'Responsive Prompt '+num,
+						columnTitle: 'Responsive Prompt',
+						shown: false
+					},
 					count: {
 						id: 'Count '+num,
 						columnTitle: 'Count',
@@ -298,6 +328,43 @@ angular.module('freedomsworn')
 		};
 		
 		var service = {
+			
+			terrain: {
+				sectionTitle: 'Terrain Details',
+				shown: true,
+				keepOpen: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					penalty: penalty(),
+					action1: action(1)
+				}
+			},
+			
+			surge: {
+				sectionTitle: 'Surge Details',
+				shown: true,
+				keepOpen: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					action1: action(1)
+				}
+			},
+			
+			hindrance: {
+				sectionTitle: 'Hindrance Details',
+				shown: true,
+				keepOpen: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					penalty: penalty(),
+					action1: action(1)
+				}
+			},
 			
 			class: {
 				sectionTitle: 'Card Details',

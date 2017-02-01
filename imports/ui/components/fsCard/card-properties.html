@@ -31,33 +31,57 @@
 </div>
 
 <div ng-if="vm.card.block.dice_a" class="fill-width">
-	<strong>Block Defense: </strong>
-	{{vm.card.block.dice_a}} +	{{vm.card.block.dice_b}}
+	<div>
+		<strong>Block Defense: </strong>
+		{{vm.card.block.dice_a}} +	{{vm.card.block.dice_b}}
+	</div>
+	<br>
 </div>
 
 <div ng-if="vm.card.dodge.dice_a" class="fill-width">
-	<strong>Dodge Defense: </strong>
-	{{vm.card.dodge.dice_a}} +	{{vm.card.dodge.dice_b}}
+	<div>
+		<strong>Dodge Defense: </strong>
+		{{vm.card.dodge.dice_a}} +	{{vm.card.dodge.dice_b}}
+		<br>
+	</div>
 </div>
 
 <div ng-if="vm.card.alertness.dice_a" class="fill-width">
-	<strong>Alertness Defense: </strong>
-	{{vm.card.alertness.dice_a}} +	{{vm.card.alertness.dice_b}}
+	<div>
+		<strong>Alertness Defense: </strong>
+		{{vm.card.alertness.dice_a}} +	{{vm.card.alertness.dice_b}}
+		<br>
+	</div>
 </div>
 
 <div ng-if="vm.card.tenacity.dice_a" class="fill-width">
-	<strong>Tenacity Defense: </strong>
-	{{vm.card.tenacity.dice_a}} +	{{vm.card.tenacity.dice_b}}
+	<div>
+		<strong>Tenacity Defense: </strong>
+		{{vm.card.tenacity.dice_a}} +	{{vm.card.tenacity.dice_b}}
+		<br>
+	</div>
 </div>
-
-<br>
 
 <div ng-if="vm.card.benefit"
 	style="white-space: normal;">
-	<b>Benefit: </b>{{vm.card.benefit}}
+	<div>
+		<b>Benefit: </b>{{vm.card.benefit}}
+	</div>
 	<br />
 	<div ng-if="vm.card.benefitCritical"
 		style="white-space: normal;">
 		<b>Critical Success: </b>{{vm.card.benefitCritical}}
+	</div>
+</div>
+
+<div ng-if="vm.card.penalty"
+	style="white-space: normal;">
+	<div>
+		<b>Penalty: </b>{{vm.card.penalty}}
+	</div>
+	<br />
+	<div ng-if="vm.card.penaltyCritical"
+		style="white-space: normal;">
+		<b>Critical Failure: </b>{{vm.card.penaltyCritical}}
 	</div>
 </div>

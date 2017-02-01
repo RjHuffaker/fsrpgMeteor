@@ -51,6 +51,28 @@ angular.module('freedomsworn')
 			}
 		};
 		
+		function penalty(){
+			return {
+				id: 'Penalty',
+				sectionTitle: 'Penalty',
+				shown: false,
+				nodes: {
+					penalty: {
+						id: 'Penalty',
+						columnTitle: 'Penalty',
+						width: 200,
+						shown: true
+					},
+					criticalFailure: {
+						id: 'Penalty Critical Failure',
+						columnTitle: 'Critical Failure',
+						width: 200,
+						shown: false
+					}
+				}
+			}
+		};
+		
 		function statistics(){
 			return {
 				id: 'Core Statistics',
@@ -196,7 +218,7 @@ angular.module('freedomsworn')
 					name: {
 						id: 'Name '+num,
 						columnTitle: 'Name',
-						width: 100,
+						width: 160,
 						shown: true,
 						keepOpen: true
 					},
@@ -212,52 +234,58 @@ angular.module('freedomsworn')
 						width: 88,
 						shown: false
 					},
-					frequency: {
-						id: 'Frequency '+num,
-						columnTitle: 'Frequency',
-						width: 88,
+					disruptivePrompt: {
+						id: 'Disruptive Prompt '+num,
+						columnTitle: 'Disruptive Prompt',
+						width: 200,
+						shown: false
+					},
+					responsivePrompt: {
+						id: 'Responsive Prompt '+num,
+						columnTitle: 'Responsive Prompt',
+						width: 200,
 						shown: false
 					},
 					count: {
 						id: 'Count '+num,
 						columnTitle: 'Count',
 						width: 88,
-						shown: true
+						shown: false
 					},
 					effect: {
 						id: 'Effect '+num,
 						sectionTitle: 'Effect',
 						shown: false,
 						nodes: {
-							moveEffect: {
-								id: 'Move Effect '+num,
-								columnTitle: 'Move Effect',
-								width: 100,
-								shown: true
-							},
 							customEffect: {
 								id: 'Custom Effect '+num,
 								columnTitle: 'Custom Effect',
-								width: 88,
+								width: 200,
 								shown: true
+							},
+							moveEffect: {
+								id: 'Move Effect '+num,
+								columnTitle: 'Move Effect',
+								width: 200,
+								shown: false
 							},
 							listItem1: {
 								id: 'List Item 1 '+num,
 								columnTitle: 'List Item 1',
 								width: 88,
-								shown: true
+								shown: false
 							},
 							listItem2: {
 								id: 'List Item 2 '+num,
 								columnTitle: 'List Item 2',
 								width: 88,
-								shown: true
+								shown: false
 							},
 							listItem3: {
 								id: 'List Item 3 '+num,
 								columnTitle: 'List Item 3',
 								width: 88,
-								shown: true
+								shown: false
 							}
 						}
 					},
@@ -345,6 +373,43 @@ angular.module('freedomsworn')
 		};
 		
 		var service = {
+			
+			terrain: {
+				sectionTitle: 'Terrain Details',
+				shown: true,
+				keepOpen: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					penalty: penalty(),
+					action1: action(1)
+				}
+			},
+			
+			surge: {
+				sectionTitle: 'Surge Details',
+				shown: true,
+				keepOpen: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					benefit: benefit(),
+					action1: action(1)
+				}
+			},
+			
+			hindrance: {
+				sectionTitle: 'Hindrance Details',
+				shown: true,
+				keepOpen: true,
+				nodes: {
+					name: name(),
+					description: description(),
+					penalty: penalty(),
+					action1: action(1)
+				}
+			},
 			
 			class: {
 				sectionTitle: 'Card Details',

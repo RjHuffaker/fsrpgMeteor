@@ -39,6 +39,15 @@ angular.module('freedomsworn')
 					if(_deck){
 						
 						switch(_deck.deckType){
+							case 'Terrain':
+								return columnSrvc.terrain;
+								break;
+							case 'Surge':
+								return columnSrvc.surge;
+								break;
+							case 'Hindrance':
+								return columnSrvc.hindrance;
+								break;
 							case 'Class':
 								return columnSrvc.class;
 								break;

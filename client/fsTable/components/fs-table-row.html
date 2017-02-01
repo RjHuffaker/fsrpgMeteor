@@ -62,6 +62,18 @@
 				
 			</div>
 			
+			<div ng-if="vm.shownColumns.nodes.penalty.shown" class="inline-flex">
+				
+				<fs-table-input class="inline-flex" input-model="vm.card.penalty"
+					input-type="'textarea'" column-shown="vm.shownColumns.nodes.penalty.nodes.penalty">
+				</fs-table-input>
+				
+				<fs-table-input class="inline-flex" input-model="vm.card.penaltyCritical"
+					input-type="'textarea'" column-shown="vm.shownColumns.nodes.penalty.nodes.criticalFailure">
+				</fs-table-input>
+				
+			</div>
+			
 			<fs-table-statistics class="inline-flex"
 			 	ng-if="vm.shownColumns.nodes.statistics.shown"
 			 	card="vm.card"

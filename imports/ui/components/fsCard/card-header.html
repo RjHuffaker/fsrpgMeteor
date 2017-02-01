@@ -13,11 +13,11 @@
 			<td class="fill-parent">
 				<div class="card-header fill-parent">
 					
-					<span class="text-9">{{vm.card.name}}</span>
+					<span>{{vm.card.name}}</span>
 					
 					<hr class="black-line">
 					
-					<div class="text-8" ng-if="vm.card.aspect">
+					<div class="text-9" ng-if="vm.card.aspect">
 						{{vm.card.aspect.name}}
 						<span ng-if="!vm.card.aspect.name">
 							[Aspect]
@@ -27,7 +27,7 @@
 						</span>
 					</div>
 					
-					<div class="text-8" ng-if="vm.card.cardType === 'Item'">
+					<div class="text-9" ng-if="vm.card.cardType === 'Item'">
 						<span ng-if="vm.dataSrvc.weaponSlots.indexOf(vm.card.itemSlot) > -1">
 							{{vm.card.itemType}}
 						</span>
@@ -41,7 +41,7 @@
 						</span>
 					</div>
 					
-					<div class="text-8" ng-if="['Class','Faction','Race'].indexOf(vm.card.cardType) > -1">
+					<div class="text-9" ng-if="['Class','Faction','Race'].indexOf(vm.card.cardType) > -1">
 						{{vm.card.cardType}}
 					</div>
 					
@@ -51,7 +51,7 @@
 		<tr ng-if="vm.card.description">
 			<td colspan="2" class="fill-width">
 				<br>
-				<div class="text-descriptive text-center text-8">
+				<div class="text-descriptive text-center">
 					{{vm.card.description}}
 				</div>
 			</td>

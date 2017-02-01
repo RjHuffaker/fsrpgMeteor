@@ -1,9 +1,9 @@
 <div ng-mouseleave="true" id="fs-deck">
-	<div>
+	
 		<fs-panel ng-repeat="card in vm.deck.cardList track by $index"
 			card="card" deck="vm.deck" class="fs-panel"
 			ng-style="{'z-index': card.z_coord, 'height': card.y_dim+'em', 'width': card.x_dim+'em'}"
 			ng-mousemove="true" ng-click="true">
 		</fs-panel>
-	</div>
+	
 </div>

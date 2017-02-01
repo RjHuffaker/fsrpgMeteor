@@ -7,6 +7,16 @@
 	background-color: navajoWhite !important;
 }
 
+.Surge .content-panel,
+.Surge .grid-card-icon {
+	background-color: DarkSeaGreen !important;
+}
+
+.Hindrance .content-panel,
+.Hindrance .grid-card-icon {
+	background-color: DarkSalmon !important;
+}
+
 .Trait .content-panel,
 .Trait .grid-card-icon {
 	background-color: Moccasin !important;
