@@ -30,11 +30,20 @@ angular.module('freedomsworn')
 						action.success.enableMove,
 						action.success.forceMove,
 						action.success.enableAction,
-						action.success.negateInjury,
+						action.success.negateInjury, // remove?
 						action.success.forceAction,
-						action.success.attackCurse,
-						action.success.expelCurse,
-						action.success.trapCurse
+						action.success.attackCurse, // remove
+						action.success.expelCurse, // remove
+						action.success.trapCurse // remove
+						// action.success.mettle
+						// action.success.haste
+						// action.success.cunning
+						// action.success.courage
+						// action.success.slowed
+						// action.success.bleeding
+						// action.success.hobbled
+						// action.success.stunned
+						
 					];
 					
 					if(action.effect){

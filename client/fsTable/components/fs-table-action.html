@@ -64,16 +64,37 @@
 		numdefault="0"
 		numdelay="500">
 	</fs-table-numpicker>
+	
+	<div class="inline-flex" ng-if="vm.shownColumns.effect.nodes.listItem1.shown">
+	
+		<fs-table-input class="inline-flex" input-model="vm.action.effect.list[0].leader"
+			input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem1.nodes.leader"></fs-table-input>
+		
+		<fs-table-input class="inline-flex" input-model="vm.action.effect.list[0].content"
+			input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem1.nodes.content"></fs-table-input>
 
-	<fs-table-input class="inline-flex" input-model="vm.action.effect.nodes.listItem1"
-		input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem1"></fs-table-input>
+	</div>
+	
+	<div class="inline-flex" ng-if="vm.shownColumns.effect.nodes.listItem2.shown">
+		
+		<fs-table-input class="inline-flex" input-model="vm.action.effect.list[1].leader"
+			input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem2.nodes.leader"></fs-table-input>
+		
+		<fs-table-input class="inline-flex" input-model="vm.action.effect.list[1].content"
+			input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem2.nodes.content"></fs-table-input>
 
-	<fs-table-input class="inline-flex" input-model="vm.action.effect.nodes.listItem2"
-		input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem2"></fs-table-input>
+	</div>
+	
+	<div class="inline-flex" ng-if="vm.shownColumns.effect.nodes.listItem3.shown">
 
-	<fs-table-input class="inline-flex" input-model="vm.action.effect.nodes.listItem3"
-		input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem3"></fs-table-input>
-
+		<fs-table-input class="inline-flex" input-model="vm.action.effect.list[2].leader"
+			input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem3.nodes.leader"></fs-table-input>
+	
+		<fs-table-input class="inline-flex" input-model="vm.action.effect.list[2].content"
+			input-type="'textarea'" column-shown="vm.shownColumns.effect.nodes.listItem3.nodes.content"></fs-table-input>
+	
+	</div>
+	
 </div>
 
 <!-- Action Attack -->

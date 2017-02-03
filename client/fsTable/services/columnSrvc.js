@@ -271,21 +271,60 @@ angular.module('freedomsworn')
 							},
 							listItem1: {
 								id: 'List Item 1 '+num,
-								columnTitle: 'List Item 1',
-								width: 88,
-								shown: false
+								sectionTitle: 'List Item 1',
+								shown: false,
+								nodes: {
+									leader: {
+										id: 'Leader',
+										columnTitle: 'Leader',
+										width: 200,
+										shown: false
+									},
+									content: {
+										id: 'Content',
+										columnTitle: 'Content',
+										width: 200,
+										shown: true
+									}
+								}
 							},
 							listItem2: {
 								id: 'List Item 2 '+num,
-								columnTitle: 'List Item 2',
-								width: 88,
-								shown: false
+								sectionTitle: 'List Item 2',
+								shown: false,
+								nodes: {
+									leader: {
+										id: 'Leader',
+										columnTitle: 'Leader',
+										width: 200,
+										shown: false
+									},
+									content: {
+										id: 'Content',
+										columnTitle: 'Content',
+										width: 200,
+										shown: true
+									}
+								}
 							},
 							listItem3: {
 								id: 'List Item 3 '+num,
-								columnTitle: 'List Item 3',
-								width: 88,
-								shown: false
+								sectionTitle: 'List Item 3',
+								shown: false,
+								nodes: {
+									leader: {
+										id: 'Leader',
+										columnTitle: 'Leader',
+										width: 200,
+										shown: false
+									},
+									content: {
+										id: 'Content',
+										columnTitle: 'Content',
+										width: 200,
+										shown: true
+									}
+								}
 							}
 						}
 					},

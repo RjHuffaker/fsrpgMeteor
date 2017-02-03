@@ -9,6 +9,10 @@ class CardProperties {
 		
 		$reactive(this).attach($scope);
 		
+		this.isNumber = function(n) {
+		  return !isNaN(parseFloat(n)) && isFinite(n);
+		};
+		
 	}
 }
 

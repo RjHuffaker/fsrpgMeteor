@@ -7,6 +7,11 @@
 	background-color: navajoWhite !important;
 }
 
+.Terrain .content-panel,
+.Terrain .grid-card-icon {
+	background-color: Peru !important;
+}
+
 .Surge .content-panel,
 .Surge .grid-card-icon {
 	background-color: DarkSeaGreen !important;

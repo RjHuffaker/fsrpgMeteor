@@ -49,5 +49,11 @@ angular.module('freedomsworn')
 				FeatureDecks.remove(deck._id);
 			};
 			
+			this.currentItemJson = function(){
+				return JSON.stringify(this.currentItem,undefined, 2)
+				
+			};
+			
+			
 		}
 	});

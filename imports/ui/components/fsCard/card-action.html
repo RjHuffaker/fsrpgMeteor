@@ -49,8 +49,9 @@
 		
 		<div ng-repeat="listItem in vm.action.effect.list track by $index">
 			<span ng-show="listItem.content">
+				&nbsp;
 				<strong ng-show="listItem.leader">{{listItem.leader}}: </strong>
-				<span ng-hide="listItem.leader">&nbsp;&#8226; </span>
+				<span ng-hide="listItem.leader">&#8226; </span>
 				{{listItem.content}}
 			</span>
 		</div>
