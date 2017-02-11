@@ -44,6 +44,7 @@ angular.module('freedomsworn')
 					newDeck.cardList.push({
 						_id: Random.id(),
 						deckId: newDeck._id,
+						deckSize: newDeck.size,
 						x_dim: 15,
 						y_dim: 21,
 						name: 'Card '+(i+1),

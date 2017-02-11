@@ -337,7 +337,7 @@ angular.module('freedomsworn')
 					attackRoll: {
 						id: 'Attack Roll '+num,
 						columnTitle: 'Attack Roll',
-						width: 120,
+						width: 240,
 						shown: false
 					},
 					attackSuccess: {
@@ -351,62 +351,118 @@ angular.module('freedomsworn')
 								width: 88,
 								shown: true
 							},
-							enableMove: {
-								id: 'Enable Move '+num,
-								columnTitle: 'Enable Move',
+							mettle: {
+								id: 'Mettle '+num,
+								columnTitle: 'Mettle',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							forceMove: {
-								id: 'Force Move '+num,
-								columnTitle: 'Force Move',
+							slowed: {
+								id: 'Slowed '+num,
+								columnTitle: 'Slowed',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							enableAction: {
-								id: 'Enable Action '+num,
-								columnTitle: 'Enable Action',
+							haste: {
+								id: 'Haste '+num,
+								columnTitle: 'Haste',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							negateInjury: {
-								id: 'Negate Injury '+num,
-								columnTitle: 'Negate Injury',
+							bleeding: {
+								id: 'Bleeding '+num,
+								columnTitle: 'Bleeding',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							forceAction: {
-								id: 'Force Action '+num,
-								columnTitle: 'Force Action',
+							cunning: {
+								id: 'Cunning '+num,
+								columnTitle: 'Cunning',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							attackCurse: {
-								id: 'Attack Curse '+num,
-								columnTitle: 'Attack Curse',
+							hobbled: {
+								id: 'Hobbled '+num,
+								columnTitle: 'Hobbled',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							expelCurse: {
-								id: 'Expel Curse '+num,
-								columnTitle: 'Expel Curse',
+							courage: {
+								id: 'Courage '+num,
+								columnTitle: 'Courage',
 								width: 88,
-								shown: true
+								shown: false
 							},
-							trapCurse: {
-								id: 'Trap Curse '+num,
-								columnTitle: 'Trap Curse',
+							stunned: {
+								id: 'Stunned '+num,
+								columnTitle: 'Stunned',
 								width: 88,
-								shown: true
+								shown: false
 							}
 						}
 					},
 					attackCriticalSuccess: {
-						columnTitle: 'Attack Critical Success',
-						width: 100,
-						shown: false
+						id: 'Attack Critical Success '+num,
+						sectionTitle: 'Attack Critical Success',
+						width: 150,
+						shown: false,
+						nodes: {
+							damage: {
+								id: 'Damage '+num,
+								columnTitle: 'Damage',
+								width: 88,
+								shown: true
+							},
+							mettle: {
+								id: 'Mettle '+num,
+								columnTitle: 'Mettle',
+								width: 88,
+								shown: false
+							},
+							slowed: {
+								id: 'Slowed '+num,
+								columnTitle: 'Slowed',
+								width: 88,
+								shown: false
+							},
+							haste: {
+								id: 'Haste '+num,
+								columnTitle: 'Haste',
+								width: 88,
+								shown: false
+							},
+							bleeding: {
+								id: 'Bleeding '+num,
+								columnTitle: 'Bleeding',
+								width: 88,
+								shown: false
+							},
+							cunning: {
+								id: 'Cunning '+num,
+								columnTitle: 'Cunning',
+								width: 88,
+								shown: false
+							},
+							hobbled: {
+								id: 'Hobbled '+num,
+								columnTitle: 'Hobbled',
+								width: 88,
+								shown: false
+							},
+							courage: {
+								id: 'Courage '+num,
+								columnTitle: 'Courage',
+								width: 88,
+								shown: false
+							},
+							stunned: {
+								id: 'Stunned '+num,
+								columnTitle: 'Stunned',
+								width: 88,
+								shown: false
+							}
+						}
 					}
-					
 				}
 			};
 		};

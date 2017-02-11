@@ -1,4 +1,4 @@
-<div ng-controller="NavCtrl">
+<div>
 	<a href="/" class="text-16">Freedomsworn</a>
 	-
 	<a href="/pcDecks" class="text-14">PCs</a>
@@ -11,6 +11,8 @@
 	-
 	<a href="/forum" class="text-14">Forum</a>
 	-
+	<a href="/ruleSets" class="text-14">Rule-sets</a>
+	-
 	<fs-dropdown dropdown-id="userDropdown" ng-show="$root.currentUser" stop-event="1">
 		<div class="fs-dropdown-toggle text-12">
 			<span>{{ $root.currentUser.username }}</span>
@@ -19,7 +21,7 @@
 			<div>
 				<ul>
 					<li><a href="/profile">My Profile</a></li>
-					<li><a href="" ng-click="logout()" ng-show="$root.currentUser">Logout</a></li>
+					<li><a href="" ng-click="vm.logout()" ng-show="$root.currentUser">Logout</a></li>
 				</ul>
 			</div>
 		</div>
@@ -34,11 +36,11 @@
 				<form class="form login-register">
 					<input class="form-control" type="text"
 						placeholder="username" aria-label="username"
-						ng-model="credentials.username"/>
+						ng-model="vm.credentials.username"/>
 					<input class="form-control" type="password"
 						placeholder="password" aria-label="password"
-						ng-model="credentials.password"/>
-					<button class="btn btn-primary form-control" ng-click="login()">
+						ng-model="vm.credentials.password"/>
+					<button class="btn btn-primary form-control" ng-click="vm.login()">
 						Login
 					</button>
 					<div ng-if="loginError" class="alert-danger">Login Error</div>
@@ -56,11 +58,11 @@
 				<form class="form login-register">
 					<input class="form-control" type="text"
 						placeholder="username" aria-label="username"
-						ng-model="credentials.username"/>
+						ng-model="vm.credentials.username"/>
 					<input class="form-control" type="password"
 						placeholder="password" aria-label="password"
-						ng-model="credentials.password"/>
-					<button class="btn btn-primary form-control" ng-click="register()">
+						ng-model="vm.credentials.password"/>
+					<button class="btn btn-primary form-control" ng-click="vm.register()">
 						Register
 					</button>
 					<div ng-if="registerError" class="alert-danger">Registration Error</div>
@@ -68,5 +70,9 @@
 			</div>
 		</div>
 	</fs-dropdown>
-	
+	-
+	<span>
+		{{vm.ruleSet.name}}
+		{{ $root.currentUser }}
+	</span>
 </div>

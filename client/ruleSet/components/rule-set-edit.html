@@ -1,0 +1,93 @@
+<div>
+	<h4>Testing Area</h4>
+	<input type="number" ng-model="vm.testObject.var1">
+	<input type="number" ng-model="vm.testObject.var2">
+	<input type="number" ng-model="vm.testObject.var3">
+	<input type="text" ng-model="vm.testObject.var4">
+	<button ng-click="vm.testFunction()">testFunction</button>
+	
+</div>
+
+<div>
+	<div>
+		Name:
+	</div>
+	<div>
+		<input type="text" ng-model="vm.ruleSet.name">
+		<div style="flex: 3">
+			<fs-modal-toggle
+				modalxalign="'center'" modalxalign="'center'" modalxdim="24" modalydim="24">
+				<a href="#">View JSON</a>
+				<div class="fs-modal-content">
+					<div class="flex-column">
+						<div style="overflow-y: scroll">
+							{{vm.ruleSet}}
+						</div>
+						<button ng-click="overlayToggle()">Close</button>
+					</div>
+				</div>
+			</fs-modal-toggle>
+		</div>
+	</div>
+	
+	<div>
+		<button ng-click="vm.editRuleSet(vm.ruleSet)">Save Rule-set</button>
+	</div>
+	
+</div>
+
+<div class="inline-flex fill-parent">
+	
+	<div style="flex: 1">
+		
+		<h3>Rules</h3>
+		
+		<h4>New Rule</h4>
+		
+		<div>
+			<input type="text" ng-model="vm.newRule.name">
+		</div>
+		
+		<div>
+			<button ng-click="vm.addNewRule(vm.ruleSet, vm.newRule)">Add New Rule</button>
+		</div>
+		
+		<h4>Rule List</h4>
+		
+		<div ng-repeat="(key, value) in vm.ruleSet.rules">
+			<div>
+				<input type="text" ng-model="vm.ruleSet.rules[key]['name']">
+				<button ng-click="vm.ruleSrvc.evalRule(key, vm.testObject)">Test</button>
+				
+				<button ng-click="vm.deleteRule(vm.ruleSet, key)">X</button>
+			</div>
+			{{key}}, {{value}}
+		</div>
+		
+	</div>
+
+	<div style="flex: 1">
+		
+		<h3>Templates</h3>
+		
+		<h4>New Template</h4>
+		
+		<div>
+			<input type="text" ng-model="vm.newTemplate.name">
+		</div>
+		
+		<div>
+			<button ng-click="vm.addNewTemplate(vm.ruleSet, vm.newTemplate)">Add New Template</button>
+		</div>
+		
+		<h4>Template List</h4>
+		
+		<div ng-repeat="(key, value) in vm.ruleSet.templates">
+			<div>
+				<input type="text" ng-model="vm.ruleSet.templates[key]['name']">
+				<button ng-click="vm.deleteTemplate(vm.ruleSet, key)">X</button>
+			</div>
+			{{key}}, {{value}}
+		</div>
+		
+	</div>

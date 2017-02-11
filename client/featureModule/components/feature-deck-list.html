@@ -5,13 +5,13 @@
 	</div>
 	
 	<div class="item-list-header">
-		<div style="flex: 3;">
+		<div style="flex: 3">
 			<a href="#" ng-click="vm.toggleOrder('title')">Name</a>
 		</div>
-		<div style="flex: 1;">
+		<div style="flex: 1">
 			<a href="#" ng-click="vm.toggleOrder('deckType')">Deck Type</a>
 		</div>
-		<div style="flex: 4;">
+		<div style="flex: 4">
 			Options
 		</div>
 		<div style="flex: 2">
@@ -20,58 +20,63 @@
 		<div style="flex: 2">
 			<a href="#" ng-click="vm.toggleOrder('createdOn')">Created</a>
 		</div>
+		<div style="width: 1em"></div>
 	</div>
 	
-	<div ng-repeat="item in vm.itemList | orderBy: vm.orderBy : vm.reverse"
-		class="item-list-row" ng-click="vm.selectItem(item)"
-		ng-class="{selected: (item === vm.currentItem)}">
+	<div style="box-sizing: border-box; overflow-y: scroll">
 		
-		<div style="flex: 3">
-			{{item.name}}
-		</div>
-		
-		<div style="flex: 1">
-			{{item.deckType}}
-		</div>
-		
-		<div style="flex: 1">
-			<a href="/featureDeckEdit/{{item._id}}" >Edit</a>
-		</div>
-		
-		<div style="flex: 1">
-			<a href="/featureDeckGrid/{{item._id}}" >Grid</a>
-		</div>
-		
-		<div style="flex: 1">
-			<a href="/featureDeckView/{{item._id}}" >View</a>
-		</div>
-		
-		<div style="flex: 1">
-			<fs-modal-toggle modalxdim="12" modalydim="6"
-				modalxalign="'center'" modalyalign="'center'">
-				<a href="#">Delete</a>
-				<div class="fs-modal-content">
-					<div class="flex-column">
-						<div>Delete "{{item.name}}"?</div>
-						<div>Are you sure?</div>
-						<div class="inline-flex">
-							<button style="flex: 1" ng-click="vm.deleteDeck(item); overlayToggle();">Yes</button>
-							<button style="flex: 1" ng-click="overlayToggle();">No</button>
+		<div ng-repeat="item in vm.itemList | orderBy: vm.orderBy : vm.reverse"
+			class="item-list-row" ng-click="vm.selectItem(item)"
+			ng-class="{selected: (item === vm.currentItem)}">
+			
+			<div style="flex: 3">
+				{{item.name}}
+			</div>
+			
+			<div style="flex: 1">
+				{{item.deckType}}
+			</div>
+			
+			<div style="flex: 1">
+				<a href="/featureDeckEdit/{{item._id}}" >Edit</a>
+			</div>
+			
+			<div style="flex: 1">
+				<a href="/featureDeckGrid/{{item._id}}" >Grid</a>
+			</div>
+			
+			<div style="flex: 1">
+				<a href="/featureDeckView/{{item._id}}" >View</a>
+			</div>
+			
+			<div style="flex: 1">
+				<fs-modal-toggle modalxdim="12" modalydim="6"
+					modalxalign="'center'" modalyalign="'center'">
+					<a href="#">Delete</a>
+					<div class="fs-modal-content">
+						<div class="flex-column">
+							<div>Delete "{{item.name}}"?</div>
+							<div>Are you sure?</div>
+							<div class="inline-flex">
+								<button style="flex: 1" ng-click="vm.deleteDeck(item); overlayToggle();">Yes</button>
+								<button style="flex: 1" ng-click="overlayToggle();">No</button>
+							</div>
 						</div>
 					</div>
-				</div>
+					
+				</fs-modal-toggle>
 				
-			</fs-modal-toggle>
+				
+			</div>
 			
+			<div style="flex: 2">
+				{{item.lastModified | date:'short'}}
+			</div>
 			
-		</div>
-		
-		<div style="flex: 2">
-			{{item.lastModified | date:'short'}}
-		</div>
-		
-		<div style="flex: 2">
-			{{item.createdOn | date:'short'}}
+			<div style="flex: 2">
+				{{item.createdOn | date:'short'}}
+			</div>
+			
 		</div>
 		
 	</div>
@@ -87,12 +92,13 @@
 	</div>
 </div>
 
-<!--
+
 <div style="flex: 1; border: 3px double black;">
 	<fs-deck deck="vm.currentItem"></fs-deck>
 </div>
--->
 
+<!--
 <div style="flex: 1; border: 3px double black;">
 	<textarea class="fill-parent" ng-model="vm.currentItemJson()"></textarea>
 </div>
+-->

@@ -276,45 +276,46 @@ angular.module('freedomsworn')
 								columnTitle: 'Damage',
 								shown: true
 							},
-							enableMove: {
-								id: 'Enable Move '+num,
-								columnTitle: 'Enable Move',
-								shown: true
+							mettle: {
+								id: 'Mettle '+num,
+								columnTitle: 'Mettle',
+								shown: false
 							},
-							forceMove: {
-								id: 'Force Move '+num,
-								columnTitle: 'Force Move',
-								shown: true
+							slowed: {
+								id: 'Slowed '+num,
+								columnTitle: 'Slowed',
+								shown: false
 							},
-							enableAction: {
-								id: 'Enable Action '+num,
-								columnTitle: 'Enable Action',
-								shown: true
+							haste: {
+								id: 'Haste '+num,
+								columnTitle: 'Haste',
+								shown: false
 							},
-							negateInjury: {
-								id: 'Negate Injury '+num,
-								columnTitle: 'Negate Injury',
-								shown: true
+							bleeding: {
+								id: 'Bleeding '+num,
+								columnTitle: 'Bleeding',
+								shown: false
 							},
-							forceAction: {
-								id: 'Force Action '+num,
-								columnTitle: 'Force Action',
-								shown: true
+							cunning: {
+								id: 'Cunning '+num,
+								columnTitle: 'Cunning',
+								shown: false
 							},
-							attackCurse: {
-								id: 'Attack Curse '+num,
-								columnTitle: 'Attack Curse',
-								shown: true
+							hobbled: {
+								id: 'Hobbled '+num,
+								columnTitle: 'Hobbled',
+								shown: false
 							},
-							expelCurse: {
-								id: 'Expel Curse '+num,
-								columnTitle: 'Expel Curse',
-								shown: true
+							courage: {
+								id: 'Courage '+num,
+								columnTitle: 'Courage',
+								width: 88,
+								shown: false
 							},
-							trapCurse: {
-								id: 'Trap Curse '+num,
-								columnTitle: 'Trap Curse',
-								shown: true
+							stunned: {
+								id: 'Stunned '+num,
+								columnTitle: 'Stunned',
+								shown: false
 							}
 						}
 					},

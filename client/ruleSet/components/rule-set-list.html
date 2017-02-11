@@ -1,0 +1,89 @@
+<div class="item-list" style="flex: 1;">
+	
+	<div>
+		<h2>Rule-set List</h2>
+		Current: {{vm.ruleSrvc.current.name}}
+	</div>
+	
+	<div class="item-list-header">
+		<div style="flex: 3">
+			<a href="#" ng-click="vm.toggleOrder('name')">Name</a>
+		</div>
+		<div style="flex: 2">
+			<a href="#" ng-click="vm.toggleOrder('createdOn')">Created</a>
+		</div>
+		<div style="flex: 2">
+			<a href="#" ng-click="vm.toggleOrder('lastModified')">Last Edited</a>
+		</div>
+		<div style="flex: 2">
+			Options
+		</div>
+	</div>
+
+	<div class="item-list-body">
+		<div ng-repeat="item in vm.itemList | orderBy: vm.orderBy : vm.reverse"
+			class="item-list-row" ng-click="vm.selectItem(item)"
+			ng-class="{selected: (item === vm.currentItem)}">
+			
+			<div style="flex: 3">
+				<fs-modal-toggle
+					modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
+					<a href="#">{{item.title}}{{item.name}}</a>
+					<div class="fs-modal-content">
+						<div class="flex-column">
+							<div>Load this Rule-set?</div>
+							<div>"{{item.name}}"</div>
+							<div class="inline-flex">
+								<button style="flex: 1" ng-click="vm.loadRuleSet(item); overlayToggle();">Yes</button>
+								<button style="flex: 1" ng-click="overlayToggle()">No</button>
+							</div>
+						</div>
+					</div>
+				</fs-modal-toggle>
+			</div>
+			
+			<div style="flex: 2">
+				{{item.createdOn | customDate}}
+			</div>
+			
+			<div style="flex: 2">
+				{{item.lastModified | customDate}}
+			</div>
+			
+			<div style="flex: 1">
+				<a href="/ruleSetEdit/{{item._id}}">Edit</a>
+			</div>
+			
+			<div style="flex: 1">
+				<fs-modal-toggle
+					modalxalign="'center'" modalxalign="'center'" modalxdim="12" modalydim="6">
+					<a href="#">Delete</a>
+					<div class="fs-modal-content">
+						<div class="flex-column">
+							<div>Delete "{{item.name}}"?</div>
+							<div>Are you sure?</div>
+							<div class="inline-flex">
+								<button style="flex: 1" ng-click="vm.deleteItem(item); overlayToggle();">Yes</button>
+								<button style="flex: 1" ng-click="overlayToggle()">No</button>
+							</div>
+						</div>
+					</div>
+				</fs-modal-toggle>
+			</div>
+		</div>
+	</div>
+
+	<div ng-show="$root.currentUser">
+		<fs-modal-toggle modalxdim="24" modalydim="32"
+			modalxalign="'center'" modalyalign="'center'">
+			<button>Create New Rule-set</button>
+			<div class="fs-modal-content">
+				<rule-set-new></rule-set-new>
+			</div>
+		</fs-modal-toggle>
+	</div>
+</div>
+
+<div style="flex: 1; border: 3px double black;">
+	<fs-deck style="padding: 3em;" deck="vm.currentItem"></fs-deck>
+</div>

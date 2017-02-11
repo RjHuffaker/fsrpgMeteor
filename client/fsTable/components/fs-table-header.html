@@ -8,11 +8,11 @@
 			
 			<div class="flex-column">
 				<div ng-if="vm.shownColumns.shown && vm.shownColumns.sectionTitle"
-					class="inline-flex" style="flex-grow: 0;">
+					class="inline-flex row-header" style="flex-grow: 0; padding: 1px;">
 
 					<fs-select select-type="'nested'" options="vm.shownColumns.nodes"></fs-select>
 
-					<div class="row-header">{{vm.shownColumns.sectionTitle}}</div>
+					<div style="flex: 1; overflow: hidden; text-indent: 5px;">{{vm.shownColumns.sectionTitle}}</div>
 					
 					<a ng-if="!vm.shownColumns.keepOpen" class="hide-link" 
 						ng-click="vm.shownColumns.shown = false">(-)</a>
@@ -20,13 +20,13 @@
 				</div>
 
 				<div ng-if="vm.shownColumns.shown && vm.shownColumns.sectionTitle"
-					class="section-underline" style="flex: 0"></div>
+					class="section-underline"></div>
 
 				<div ng-if="vm.shownColumns.shown"
-					class="inline-flex" style="flex: 1; white-space: nowrap;"
+					class="inline-flex row-title" style="flex: 1; white-space: nowrap;"
 					ng-style="{'width': vm.shownColumns.width}">
 					
-					<strong style="flex: 1; overflow: hidden;">{{vm.shownColumns.columnTitle}}</strong>
+					<div style="flex: 1; overflow: hidden; font-weight: bold; text-indent: 5px;">{{vm.shownColumns.columnTitle}}</div>
 					
 					<a ng-if="vm.shownColumns.columnTitle && !vm.shownColumns.keepOpen"
 						class="hide-link"

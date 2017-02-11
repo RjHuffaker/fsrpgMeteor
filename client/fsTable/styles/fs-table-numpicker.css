@@ -1,16 +1,14 @@
 fs-table-numpicker {
 	box-sizing: border-box;
-	border-right: 1px solid black;
 	height: 100%;
-	width: 100%;
 	padding: 0;
 }
 
 fs-table-numpicker > div {
 	box-sizing: border-box;
+	border-right: 1px solid black;
 	white-space: nowrap;
 	height: 100%;
-	width: 100%;
 	padding: 0;
 	margin: 0;
 }

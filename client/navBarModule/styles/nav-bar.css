@@ -1,8 +1,9 @@
-div[nav-bar] {
-	border: 2px solid black;
+nav-bar {
+	position: fixed;
 	z-index: 10000;
-}
-
-div[nav-bar] > div > div[fs-dropdown] {
-	display: inline-block;
+	top: 0;
+	height: 7.5%;
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid black;
 }

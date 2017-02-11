@@ -115,7 +115,7 @@
 	<fs-select style="flex: 4"
 		selection="vm.action.dice_b"
 		options="[vm.dataSrvc.abilities]"></fs-select>
-	<fs-select style="flex: 2"
+	<fs-select style="flex: 3"
 		selection="vm.action.attackModifier"
 		toggle-header="'+ / -'"
 		options="[[' + 1',' - 1']]"></fs-select>
@@ -124,6 +124,8 @@
 		selection="vm.action.versus"
 		options="[vm.dataSrvc.defenseTypes]"></fs-select>
 </div>
+
+<!-- Attack Success -->
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
@@ -137,28 +139,8 @@
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.enableMove"
-	numvalue="vm.action.success.enableMove"
-	numvaluemin="0"
-	numvaluemax="3"
-	numdefault="0"
-	numdelay="500">
-</fs-table-numpicker>
-
-<fs-table-numpicker
-	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.forceMove"
-	numvalue="vm.action.success.forceMove"
-	numvaluemin="0"
-	numvaluemax="3"
-	numdefault="0"
-	numdelay="500">
-</fs-table-numpicker>
-
-<fs-table-numpicker
-	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.enableAction"
-	numvalue="vm.action.success.enableAction"
+	column-shown="vm.shownColumns.attackSuccess.nodes.mettle"
+	numvalue="vm.action.success.surge.mettle"
 	numvaluemin="0"
 	numvaluemax="5"
 	numdefault="0"
@@ -167,8 +149,8 @@
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.negateInjury"
-	numvalue="vm.action.success.negateInjury"
+	column-shown="vm.shownColumns.attackSuccess.nodes.slowed"
+	numvalue="vm.action.success.hindrance.slowed"
 	numvaluemin="0"
 	numvaluemax="5"
 	numdefault="0"
@@ -177,8 +159,8 @@
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.forceAction"
-	numvalue="vm.action.success.forceAction"
+	column-shown="vm.shownColumns.attackSuccess.nodes.haste"
+	numvalue="vm.action.success.surge.haste"
 	numvaluemin="0"
 	numvaluemax="5"
 	numdefault="0"
@@ -187,8 +169,8 @@
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.attackCurse"
-	numvalue="vm.action.success.attackCurse"
+	column-shown="vm.shownColumns.attackSuccess.nodes.bleeding"
+	numvalue="vm.action.success.hindrance.bleeding"
 	numvaluemin="0"
 	numvaluemax="5"
 	numdefault="0"
@@ -197,8 +179,8 @@
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.expelCurse"
-	numvalue="vm.action.success.expelCurse"
+	column-shown="vm.shownColumns.attackSuccess.nodes.cunning"
+	numvalue="vm.action.success.surge.cunning"
 	numvaluemin="0"
 	numvaluemax="5"
 	numdefault="0"
@@ -207,23 +189,122 @@
 
 <fs-table-numpicker
 	ng-if="vm.shownColumns.attackSuccess.shown"
-	column-shown="vm.shownColumns.attackSuccess.nodes.trapCurse"
-	numvalue="vm.action.success.trapCurse"
+	column-shown="vm.shownColumns.attackSuccess.nodes.hobbled"
+	numvalue="vm.action.success.hindrance.hobbled"
 	numvaluemin="0"
 	numvaluemax="5"
 	numdefault="0"
 	numdelay="500">
 </fs-table-numpicker>
 
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackSuccess.shown"
+	column-shown="vm.shownColumns.attackSuccess.nodes.courage"
+	numvalue="vm.action.success.surge.courage"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
 
-<div class="inline-flex" style="width: 20em"
-	ng-if="vm.shownColumns.attackCriticalSuccess.shown">
-	<fs-select
-		selection="vm.action.criticalSuccess.damage" style="flex: 1"
-		options="[vm.dataSrvc.damageDice]"></fs-select>
-	<textarea ng-model="vm.action.criticalSuccess.effect"
-		style="flex: 2"></textarea>
-	<fs-table-resize resize-id="vm.shownColumns.attackCriticalSuccess.id"
-		resize-width="vm.shownColumns.attackCriticalSuccess.width"
-		column-shown="vm.shownColumns.attackCriticalSuccess"></fs-table-resize>
-</div>
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackSuccess.shown"
+	column-shown="vm.shownColumns.attackSuccess.nodes.stunned"
+	numvalue="vm.action.success.hindrance.stunned"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<!-- Attack Critical Success -->
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.damage"
+	numvalue="vm.action.criticalSuccess.damage"
+	numvaluemin="2"
+	numvaluemax="14"
+	numdefault="8"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.mettle"
+	numvalue="vm.action.criticalSuccess.surge.mettle"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.slowed"
+	numvalue="vm.action.criticalSuccess.hindrance.slowed"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.haste"
+	numvalue="vm.action.criticalSuccess.surge.haste"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.bleeding"
+	numvalue="vm.action.criticalSuccess.hindrance.bleeding"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.cunning"
+	numvalue="vm.action.criticalSuccess.surge.cunning"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.hobbled"
+	numvalue="vm.action.criticalSuccess.hindrance.hobbled"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.courage"
+	numvalue="vm.action.criticalSuccess.surge.courage"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>
+
+<fs-table-numpicker
+	ng-if="vm.shownColumns.attackCriticalSuccess.shown"
+	column-shown="vm.shownColumns.attackCriticalSuccess.nodes.stunned"
+	numvalue="vm.action.criticalSuccess.hindrance.stunned"
+	numvaluemin="0"
+	numvaluemax="5"
+	numdefault="0"
+	numdelay="500">
+</fs-table-numpicker>

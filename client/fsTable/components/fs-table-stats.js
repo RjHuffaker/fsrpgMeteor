@@ -26,29 +26,16 @@ angular.module('freedomsworn')
 					var benefit = 0;
 					
 					var benefitArray = [
-						action.success.damage/2-1,
-						action.success.enableMove,
-						action.success.forceMove,
-						action.success.enableAction,
-						action.success.negateInjury, // remove?
-						action.success.forceAction,
-						action.success.attackCurse, // remove
-						action.success.expelCurse, // remove
-						action.success.trapCurse // remove
-						// action.success.mettle
-						// action.success.haste
-						// action.success.cunning
-						// action.success.courage
-						// action.success.slowed
-						// action.success.bleeding
-						// action.success.hobbled
-						// action.success.stunned
-						
+						action.success.damage,
+						action.success.mettle,
+						action.success.slowed,
+						action.success.haste,
+						action.success.bleeding,
+						action.success.cunning,
+						action.success.hobbled,
+						action.success.courage,
+						action.success.stunned
 					];
-					
-					if(action.effect){
-						if(action.effect.moveEffect) benefit += Math.ceil(action.effect.moveEffect/4);
-					}
 					
 					for(var i = 0; i < benefitArray.length; i++){
 						if(benefitArray[i])
@@ -57,15 +44,11 @@ angular.module('freedomsworn')
 					
 					if(action.attackModifier === ' + 1') benefit += 1;
 					
+					if(action.attackType)
 					if(action.attackType.includes('Reflexive') && action.targetDetail === '2/1') benefit += 1;
 					
+					if(action.targetType)
 					if(action.targetType.includes('Area')) benefit += 1;
-					
-					if(this.card.itemType.includes('/')){
-						if(action.attackType.includes('voc')){
-							benefit += 1;
-						}
-					}
 					
 					return benefit;
 				} else {

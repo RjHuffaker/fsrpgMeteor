@@ -74,6 +74,15 @@ angular.module('freedomsworn').config(['$urlRouterProvider', '$stateProvider', '
 				template: '<forum-thread></forum-thread>'
 			})
 			
+			.state('ruleSetList', {
+				url: '/ruleSets',
+				template: '<rule-set-list class="inline-flex fill-parent"></rule-set-list>'
+			})
+			.state('ruleSetEdit', {
+				url: '/ruleSetEdit/:ruleSetId',
+				template: '<rule-set-edit></rule-set-edit>'
+			})
+			
 			.state('npcDeck', {
 				url: '/npcDeck',
 				templateUrl: paths.npcModule.views+'npc-deck.ng.html',

@@ -62,16 +62,31 @@ fs-table-resize,
 	background-color: darkseagreen;
 }
 
-.row-header {
+fs-table-header .row-header {
+	border-left: 1px solid grey;
+	border-right: 1px solid black;
+	margin-left: -1px;
+	margin-right: -1px;
+}
+
+fs-table-header .row-header > *:not(fs-select):not(a){
 	font-weight: bold;
 	font-variant: small-caps;
 	font-style: italic;
 }
 
+fs-table-header .row-title {
+	border-left: 1px solid grey;
+	border-right: 1px solid black;
+	margin-left: -1px;
+	margin-right: -1px;
+}
+
 .section-underline { 
-  border-bottom: 3px double #777;
-  margin-left: -5px;
-  padding-right: 5px;
+  height: 1px;
+  border: 1px solid black;
+	margin-left: -1px;
+	margin-right: -1px;
 }
 
 fs-table div.inline-flex > textarea {
@@ -82,7 +97,10 @@ fs-table div.inline-flex > textarea {
 	height: 100%;
 	min-height: 1em !important;
 	padding: 0.2em !important;
-	border: 0 !important;
+	border-top: 1px solid grey;
+	border-left: 1px solid grey;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	margin: 0 !important;
 	resize: none;
 }
@@ -95,16 +113,13 @@ fs-table div.inline-flex > input {
 	height: 100%;
 	min-height: 1em !important;
 	padding: 0.2em !important;
-	border: 0 !important;
+	border-top: 1px solid grey;
+	border-left: 1px solid grey;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	margin: 0 !important;
 }
 
 fs-table .hide-link {
 	cursor: pointer;
-}
-
-fs-table-input {
-	border: 1px solid black;
-	box-sizing: border-box;
-	margin: -1px;
 }
